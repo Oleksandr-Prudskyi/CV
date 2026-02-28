@@ -1447,11 +1447,7 @@
             setTimeout(function() {
                 btn.classList.remove('downloading');
                 btn.classList.add('done');
-                fetch('CV_Oleksandr_Prudskyi_kratky.pdf').then(function(r){return r.blob();}).then(function(blob){
-                    var url=URL.createObjectURL(blob);var a=document.createElement('a');
-                    a.href=url;a.download='CV_Oleksandr_Prudskyi_kratky.pdf';a.style.display='none';
-                    document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
-                }).catch(function(){window.open('CV_Oleksandr_Prudskyi_kratky.pdf','_blank');});
+                window.open('CV_Oleksandr_Prudskyi_kratky.pdf', '_blank');
                 setTimeout(function(){btn.classList.remove('done');},2500);
             }, 700);
         });

@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oleksandr Prudskyi - CV</title>
+    <meta property="og:title" content="Oleksandr Prudskyi - životopis">
+    <meta property="og:description" content="Prohlédněte si můj interaktivní životopis">
+    <meta property="og:image" content="image-html-hello.png">
+    <meta property="og:type" content="website">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto+Condensed:wght@300;400;500&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" rel="stylesheet">
     <link href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css" rel="stylesheet">
@@ -486,7 +490,7 @@
         @keyframes drift { from { transform: translateX(0); } to { transform: translateX(calc(100vw + 400px)); } }
 
         /* 3D Logo container in card */
-        .logo-3d-container { position: absolute; top: 8px; right: 8px; width: 55px; height: 55px; pointer-events: none; opacity: 0.85; z-index: 2; }
+        .logo-3d-container { position: absolute; top: 8px; right: 12px; width: 85px; height: 85px; pointer-events: none; opacity: 1; z-index: 2; }
         .logo-3d-container canvas { width: 100% !important; height: 100% !important; }
 
         .exp-card {
@@ -1540,7 +1544,7 @@
                 var center = box.getCenter(new THREE.Vector3());
                 var size = box.getSize(new THREE.Vector3());
                 model.position.sub(center);
-                var scale = 0.6 / Math.max(size.x, size.y, size.z);
+                var scale = 0.4 / Math.max(size.x, size.y, size.z);
                 model.scale.setScalar(scale);
                 scene.add(model);
                 instances.push({
@@ -1560,8 +1564,8 @@
             var t = performance.now() * 0.001;
             for (var i = 0; i < instances.length; i++) {
                 var inst = instances[i];
-                inst.model.rotation.y = t * 0.4 + inst.phase;
-                inst.model.rotation.x = Math.sin(t * 0.3 + inst.phase) * 0.1;
+                inst.model.rotation.y = Math.sin(t * 1.5 + inst.phase) * 0.4; // Ефект плавного погойдування вліво-вправо (маятник)
+                inst.model.rotation.x = Math.sin(t * 1.0 + inst.phase) * 0.15; // Легке погойдування вгору-вниз для об'ємності
                 inst.renderer.render(inst.scene, inst.camera);
             }
         }

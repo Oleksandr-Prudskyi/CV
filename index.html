@@ -37,7 +37,14 @@
         html {
             scroll-behavior: smooth;
         }
-
+        /* Перемикач для номера телефону */
+        .mobile-phone { display: none; }
+        
+        @media (max-width: 768px) {
+            .mobile-phone { display: block; }
+            span.mobile-phone { display: inline; }
+            .desktop-phone { display: none; }
+        }
         body {
             font-family: Georgia, 'Times New Roman', serif;
             background: linear-gradient(135deg, var(--pearl) 0%, #E8E4F3 100%);
@@ -885,16 +892,31 @@
             }
             /* Розміри карток контактів на мобільному */
             .contact-card {
-                padding: 0.8rem; /* Повертаємо нормальний відступ */
+                padding: 0.8rem;
+                flex-wrap: wrap; /* ДОДАНО: дозволяє елементам стрибати на новий рядок */
             }
             .contact-card .icon {
-                font-size: 1.5rem; /* Робимо іконку видимою */
+                font-size: 1.5rem; /* Зробив іконку трішки більшою, щоб гармоніювало */
             }
             .contact-card .label {
-                 font-size: 0.75rem; /* Нормальний підпис */
+                font-size: 0.75rem;
             }
-                .contact-card .value {
-             font-size: 1rem; /* Читабельний текст */
+            .contact-card .text {
+                flex: 1;
+                min-width: 0;
+            }
+            .contact-card .value {
+                font-size: 1rem;
+                word-break: break-word; /* ДОДАНО: розриває довгий email, щоб не ламав екран */
+            }
+            /* Стилі спеціально для кнопки копіювання на телефоні */
+            .contact-card.email-card .copy-btn-hero {
+                width: 100%; /* Кнопка на всю ширину картки */
+                margin-top: 0.5rem; /* Відступ від пошти */
+                padding: 0.6rem;
+                font-size: 0.9rem;
+                display: flex;
+                justify-content: center; /* Центруємо іконку і текст */
             }
 
             .section-title {
@@ -1164,7 +1186,9 @@
             </div>
             <div class="contact-item">
                 <span class="icon"><i class="ph ph-phone"></i></span>
-                <span><a href="tel:+420773714660" style="color: white; text-decoration: none;">+420 773 714 660</a></span>
+                <span class="desktop-phone">+420 773 714 660</span>
+                <span class="mobile-phone"><a href="tel:+420773714660" style="color: white; text-decoration: none;">+420 773 714
+                        660</a></span>
             </div>
             <div class="contact-item">
                 <span class="icon"><i class="ph ph-envelope-simple"></i></span>
@@ -1235,7 +1259,9 @@
                     <span class="icon"><i class="ph-fill ph-phone"></i></span>
                     <div class="text">
                         <div class="label">Telefon</div>
-                        <div class="value">+420 773 714 660</div>
+                        <div class="value desktop-phone">+420 773 714 660</div>
+                        <div class="value mobile-phone"><a href="tel:+420773714660"
+                                style="color: var(--deep-purple); text-decoration: none;">+420 773 714 660</a></div>
                     </div>
                 </div>
                 <div class="contact-card email-card">
@@ -1597,26 +1623,31 @@
         document.querySelectorAll('.section').forEach(section => {
             observer.observe(section);
         });
-
         // Download CV Button
-        document.getElementById('dlCvBtn').addEventListener('click', function() {
-            var btn = this;
-            if (btn.classList.contains('downloading') || btn.classList.contains('done')) return;
-            btn.classList.add('downloading');
-            setTimeout(function () {
-                btn.classList.remove('downloading');
-                btn.classList.add('done');
-                // Створюємо приховане посилання для примусового завантаження
-                const link = document.createElement('a');
-                link.href = 'CV_Oleksandr_Prudskyi.pdf';
-                link.download = 'CV_Oleksandr_Prudskyi.pdf';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                setTimeout(function () { btn.classList.remove('done'); }, 2500);
-            }, 700);
-        });
-
+            document.getElementById('dlCvBtn').addEventListener('click', function () {
+                var btn = this;
+                if (btn.classList.contains('downloading') || btn.classList.contains('done')) return;
+                btn.classList.add('downloading');
+                setTimeout(function () {
+                    btn.classList.remove('downloading');
+                    btn.classList.add('done');
+                    // Перевіряємо, чи це мобільний пристрій (за User-Agent або шириною екрана)
+                    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+                    if (isMobile) {
+                        // Для мобільних: примусове скачування файлу
+                        var link = document.createElement('a');
+                        link.href = 'CV_Oleksandr_Prudskyi.pdf';
+                        link.download = 'CV_Oleksandr_Prudskyi.pdf'; // Цей атрибут дає команду "скачати"
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    } else {
+                        // Для комп'ютерів: відкриття у новій вкладці
+                        window.open('CV_Oleksandr_Prudskyi.pdf', '_blank');
+                    }
+                    setTimeout(function () { btn.classList.remove('done'); }, 2500);
+                }, 700);
+            });
         // Photo Lightbox
         function openPhotoModal(){document.getElementById('photoModal').classList.add('open');document.body.style.overflow='hidden';}
         function closePhotoModal(){document.getElementById('photoModal').classList.remove('open');document.body.style.overflow='';}

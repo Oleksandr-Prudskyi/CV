@@ -885,16 +885,16 @@
             }
             /* Розміри карток контактів на мобільному */
             .contact-card {
-                padding: 0.2rem; /* Внутрішні відступи картки (щоб вона була компактнішою) */
+                padding: 0.8rem; /* Повертаємо нормальний відступ */
             }
             .contact-card .icon {
-                font-size: 0.7rem; /* Розмір іконки (в оригіналі 2rem) */
+                font-size: 1.5rem; /* Робимо іконку видимою */
             }
             .contact-card .label {
-                font-size: 0.5rem; /* Розмір сірого підпису "Email", "Телефон" */
+                 font-size: 0.75rem; /* Нормальний підпис */
             }
-            .contact-card .value {
-                font-size: 0.1rem; /* Розмір самого номера телефону чи адреси */
+                .contact-card .value {
+             font-size: 1rem; /* Читабельний текст */
             }
 
             .section-title {
@@ -1061,7 +1061,7 @@
         /* Зменшуємо кнопку копіювання email на мобільних */
             .copy-btn-hero {
                 padding: 0.4rem 0.7rem; /* Зменшуємо внутрішні відступи (було 0.5rem 1rem) */
-                font-size: 0.1rem;     /* Зменшуємо розмір шрифту (було 0.9rem) */
+                font-size: 0.8rem;     /* Зменшуємо розмір шрифту (було 0.9rem) */
                 border-radius: 8px;     /* Трохи зменшуємо заокруглення кутів */
             }
 
@@ -1164,7 +1164,7 @@
             </div>
             <div class="contact-item">
                 <span class="icon"><i class="ph ph-phone"></i></span>
-                <span>+420 773 714 660</span>
+                <span><a href="tel:+420773714660" style="color: white; text-decoration: none;">+420 773 714 660</a></span>
             </div>
             <div class="contact-item">
                 <span class="icon"><i class="ph ph-envelope-simple"></i></span>
@@ -1519,6 +1519,10 @@
         // Digital Work Counter (from 16.08.2021)
         // Uses Europe/Prague timezone
         // ==========================================
+        const counterYearsEl = document.getElementById('counterYears');
+            const counterMonthsEl = document.getElementById('counterMonths');
+            const counterDaysEl = document.getElementById('counterDays');
+            const counterHoursEl = document.getElementById('counterHours');
         function updateWorkCounter() {
             const startYear = 2021, startMonth = 7, startDay = 16;
 
@@ -1545,10 +1549,10 @@
 
             const pad = (n) => n < 10 ? '0' + n : String(n);
 
-            document.getElementById('counterYears').textContent = pad(years);
-            document.getElementById('counterMonths').textContent = pad(months);
-            document.getElementById('counterDays').textContent = pad(days);
-            document.getElementById('counterHours').textContent = pad(hours);
+            if (counterYearsEl) counterYearsEl.textContent = pad(years);
+            if (counterMonthsEl) counterMonthsEl.textContent = pad(months);
+            if (counterDaysEl) counterDaysEl.textContent = pad(days);
+            if (counterHoursEl) counterHoursEl.textContent = pad(hours);
         }
 
         updateWorkCounter();
@@ -1599,11 +1603,17 @@
             var btn = this;
             if (btn.classList.contains('downloading') || btn.classList.contains('done')) return;
             btn.classList.add('downloading');
-            setTimeout(function() {
+            setTimeout(function () {
                 btn.classList.remove('downloading');
                 btn.classList.add('done');
-                window.open('CV_Oleksandr_Prudskyi.pdf', '_blank');
-                setTimeout(function(){btn.classList.remove('done');},2500);
+                // Створюємо приховане посилання для примусового завантаження
+                const link = document.createElement('a');
+                link.href = 'CV_Oleksandr_Prudskyi.pdf';
+                link.download = 'CV_Oleksandr_Prudskyi.pdf';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                setTimeout(function () { btn.classList.remove('done'); }, 2500);
             }, 700);
         });
 

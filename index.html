@@ -1152,6 +1152,111 @@
             .avatar-wrapper { margin-bottom: 0.8rem !important; }
             .birth-info { margin-bottom: 1rem !important; }
         }
+        /* ==========================================
+           COMBINED CARD (Vzdělání + Jazyky + Zájmy)
+           ========================================== */
+        .profil-wrap {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 4px 16px var(--shadow);
+            transition: all 0.3s ease;
+        }
+        .profil-wrap:hover {
+            box-shadow: 0 6px 22px rgba(79, 66, 181, 0.14);
+        }
+        .profil-cols {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr 1fr;
+            gap: 0;
+        }
+        .profil-col {
+            padding: 1.3rem 1.5rem;
+        }
+        .profil-col:not(:last-child) {
+            border-right: 1px solid rgba(79, 66, 181, 0.08);
+        }
+        .profil-col-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--tanzanite);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .profil-col-title i {
+            font-size: 1.3rem;
+            color: var(--gold);
+        }
+        .edu-list { display: flex; flex-direction: column; gap: 0.7rem; }
+        .edu-row {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.6rem 0.8rem;
+            border-radius: 10px;
+            background: rgba(79, 66, 181, 0.04);
+            border-left: 3px solid var(--tanzanite);
+            transition: all 0.25s ease;
+        }
+        .edu-row:hover {
+            background: rgba(79, 66, 181, 0.08);
+            transform: translateX(3px);
+        }
+        .edu-row > i {
+            font-size: 1.4rem;
+            color: var(--tanzanite);
+            flex-shrink: 0;
+        }
+        .edu-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--deep-purple);
+            line-height: 1.3;
+        }
+        .edu-sub {
+            font-size: 0.8rem;
+            color: var(--silver);
+            margin-top: 0.1rem;
+            font-style: italic;
+        }
+        .lang-simple, .zajmy-simple {
+            list-style: none;
+            padding: 0;
+        }
+        .lang-simple li, .zajmy-simple li {
+            padding: 0.7rem 0;
+            border-bottom: 1px solid rgba(79, 66, 181, 0.08);
+            color: var(--deep-purple);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .lang-simple li:last-child, .zajmy-simple li:last-child { border-bottom: none; }
+        .lang-simple li i {
+            color: var(--tanzanite-light);
+            font-size: 1.1rem;
+        }
+        .zajmy-simple li i {
+            color: var(--gold);
+            font-size: 1.1rem;
+        }
+        @media (max-width: 768px) {
+            .profil-cols {
+                grid-template-columns: 1fr;
+            }
+            .profil-col:not(:last-child) {
+                border-right: none;
+                border-bottom: 1px solid rgba(79, 66, 181, 0.08);
+            }
+            .profil-col { padding: 1rem 1.2rem; }
+        }
     </style>
 </head>
 <body>
@@ -1475,24 +1580,47 @@
             </div>
         </section>
 
-        <!-- Jazyky & Zájmy -->
+        <!-- Vzdělání · Jazyky · Zájmy -->
         <section class="section">
-            <div class="info-grid">
-                <div class="info-card">
-                    <h3><i class="ph-bold ph-translate card-icon"></i> Jazyky</h3>
-                    <ul>
-                        <li><i class="ph ph-flag-pennant"></i> Čeština</li>
-                        <li><i class="ph ph-flag-pennant"></i> Ukrajinština</li>
-                    </ul>
-                </div>
-
-                <div class="info-card">
-                    <h3><i class="ph-bold ph-lightning card-icon"></i> Zájmy</h3>
-                    <ul>
-                        <li><i class="ph ph-gear-six"></i> Práce s technickým vybavením a nástroji</li>
-                        <li><i class="ph ph-book-open-text"></i> Osobní rozvoj a neustálé vzdělávání</li>
-                        <li><i class="ph ph-barbell"></i> Sportovní aktivity a udržování kondice</li>
-                    </ul>
+            <div class="profil-wrap">
+                <div class="profil-cols">
+                    <!-- Vzdělání -->
+                    <div class="profil-col">
+                        <h3 class="profil-col-title"><i class="ph-bold ph-graduation-cap"></i> Vzdělání</h3>
+                        <div class="edu-list">
+                            <div class="edu-row">
+                                <i class="ph-fill ph-certificate"></i>
+                                <div>
+                                    <div class="edu-title">Bakalářský titul (nostrifikace)</div>
+                                    <div class="edu-sub">Ukrajina</div>
+                                </div>
+                            </div>
+                            <div class="edu-row">
+                                <i class="ph-fill ph-code"></i>
+                                <div>
+                                    <div class="edu-title">GO IT – Fullstack Development</div>
+                                    <div class="edu-sub">začátečník</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Jazyky -->
+                    <div class="profil-col">
+                        <h3 class="profil-col-title"><i class="ph-bold ph-translate"></i> Jazyky</h3>
+                        <ul class="lang-simple">
+                            <li><i class="ph ph-flag-pennant"></i> Čeština – B1</li>
+                            <li><i class="ph ph-flag-pennant"></i> Ukrajinština – rodný jazyk</li>
+                        </ul>
+                    </div>
+                    <!-- Zájmy -->
+                    <div class="profil-col">
+                        <h3 class="profil-col-title"><i class="ph-bold ph-lightning"></i> Zájmy</h3>
+                        <ul class="zajmy-simple">
+                            <li><i class="ph ph-gear-six"></i> Práce s technickým vybavením</li>
+                            <li><i class="ph ph-book-open-text"></i> Osobní rozvoj a vzdělávání</li>
+                            <li><i class="ph ph-barbell"></i> Sport a kondice</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>

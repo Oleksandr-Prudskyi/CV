@@ -1,10 +1,10 @@
 (function () {
   "use strict";
   var LOGOS = [
-    { id: "logo3d-magna", file: "magna+logo+3d+model.glb" },
-    { id: "logo3d-asphericon", file: "asphericon+logo+3d+model.glb" },
-    { id: "logo3d-preciosa", file: "preciosa+logo+3d.glb" },
-    { id: "logo3d-lukov", file: "lukov+3d+model.glb" },
+    { id: "logo3d-magna", file: "/logo/magna+logo+3d+model.glb" },
+    { id: "logo3d-asphericon", file: "/logo/asphericon+logo+3d+model.glb" },
+    { id: "logo3d-preciosa", file: "/logo/preciosa+logo+3d.glb" },
+    { id: "logo3d-lukov", file: "/logo/lukov+3d+model.glb" },
   ];
   var isPageVisible = true;
   var instances = [];

@@ -152,14 +152,14 @@ document.getElementById("dlCvBtn").addEventListener("click", function () {
     if (isMobile) {
       // Для мобільних: примусове скачування файлу
       var link = document.createElement("a");
-      link.href = "CV_Oleksandr_Prudskyi.pdf?v=2";
-      link.download = "CV_Oleksandr_Prudskyi.pdf"; // Цей атрибут дає команду "скачати"
+      link.href = "Files/CV_Oleksandr_Prudskyi.pdf?v=2";
+      link.download = "Files/CV_Oleksandr_Prudskyi.pdf"; // Цей атрибут дає команду "скачати"
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
     } else {
       // Для комп'ютерів: відкриття у новій вкладці
-      window.open("CV_Oleksandr_Prudskyi.pdf?v=2", "_blank");
+      window.open("Files/CV_Oleksandr_Prudskyi.pdf?v=2", "_blank");
     }
     setTimeout(function () {
       btn.classList.remove("done");

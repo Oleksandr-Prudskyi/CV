@@ -1,0 +1,177 @@
+/* ═══════════════════════════════════════════════════════════
+CONTACTS — картки контактів у Hero + кнопки копіювання
+═══════════════════════════════════════════════════════════ */
+
+/* ── Сітка контактних карток (під фото в hero) ── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+  margin-top: 1rem;
+  animation: fadeInUp 1s ease-out 0.4s both;
+}
+
+/* Email картка займає всю ширину (весь рядок) */
+.contact-grid .email-card {
+  grid-column: 1 / -1;
+}
+
+/* ── Одна картка контакту ── */
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px var(--shadow);
+  transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px var(--shadow);
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+.contact-card .icon {
+  font-size: 2rem;
+  color: var(--tanzanite);
+}
+
+.contact-card .text {
+  flex: 1;
+  text-align: left;
+}
+
+.contact-card .label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--silver);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.contact-card .value {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--deep-purple);
+  /* Системні шрифти з рівними цифрами для телефону/email */
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial,
+    sans-serif;
+  font-variant-numeric: lining-nums tabular-nums;
+  letter-spacing: 0.5px;
+}
+/* На мобільних пристроях показуємо тільки мобільну клікабельну версію */
+.contact-card .desktop-phone {
+  display: inline-block;
+}
+.contact-card .mobile-phone {
+  display: none;
+}
+/* Приховуєм звичайний текст, підключаєм посилання */ 
+@media (max-width: 768px) {
+  .contact-card .desktop-phone {
+    display: none;
+  }
+  .contact-card .mobile-phone {
+    display: inline-block;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+COPY BUTTONS — кнопка копіювання email
+═══════════════════════════════════════════════════════════ */
+
+/* Маленька кнопка (у верхній панелі .contact-bar) */
+.copy-btn {
+  padding: 0.3rem 0.6rem;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  color: white;
+  font-size: 0.8rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.copy-btn:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(1.05);
+}
+
+/* Велика кнопка (у hero контакт-картці) */
+.copy-btn-hero {
+  padding: 0.4rem 0.7rem;
+  background: linear-gradient(
+    135deg,
+    var(--tanzanite-light) 0%,
+    var(--tanzanite) 100%
+  );
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+}
+
+.copy-btn-hero:hover {
+  background: linear-gradient(
+    135deg,
+    var(--tanzanite) 0%,
+    var(--tanzanite-dark) 100%
+  );
+  box-shadow: 0 4px 15px var(--shadow);
+}
+
+/* Стан "успішно скопійовано" — зелений */
+.copy-btn.copied,
+.copy-btn-hero.copied {
+  background: #28a745;
+  border-color: #28a745;
+}
+
+/* ═══════════════════════════════════════════════════════════
+RESPONSIVE — мобільна адаптація
+═══════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .contact-card {
+    padding: 0.8rem;
+    flex-wrap: wrap;
+  }
+  .contact-card .icon {
+    font-size: 1.5rem;
+  }
+  .contact-card .label {
+    font-size: 0.75rem;
+  }
+  .contact-card .text {
+    flex: 1;
+    min-width: 0;
+  }
+  .contact-card .value {
+    font-size: 1rem;
+    /* Розриває довгий email, щоб не ламав макет */
+    word-break: break-word;
+  }
+  /* Кнопка копіювання email на всю ширину картки */
+  .contact-card.email-card .copy-btn-hero {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
+}

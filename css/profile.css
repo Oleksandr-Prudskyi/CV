@@ -1,0 +1,176 @@
+/* ═══════════════════════════════════════════════════════════
+PROFILE — комбінована картка VZDĚLÁNÍ · JAZYKY · ZÁJMY
+Три колонки в одній обгортці з вертикальними роздільниками
+═══════════════════════════════════════════════════════════ */
+
+/* ── Зовнішня обгортка (стиль скляної картки) ── */
+.profil-wrap {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px var(--shadow);
+  transition: all 0.3s ease;
+}
+
+.profil-wrap:hover {
+  box-shadow: 0 6px 22px rgba(79, 66, 181, 0.14);
+}
+
+/* ── Сітка з 3 колонками (різні пропорції) ── */
+.profil-cols {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr 1fr;
+  gap: 0;
+}
+
+.profil-col {
+  padding: 1.3rem 1.5rem;
+}
+
+/* Вертикальні роздільники між колонками */
+.profil-col:not(:last-child) {
+  border-right: 1px solid rgba(79, 66, 181, 0.08);
+}
+
+/* ── Заголовок колонки (з іконкою) ── */
+.profil-col-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  font-family: "Playfair Display", serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--tanzanite);
+}
+
+.profil-col-title i {
+  font-size: 1.3rem;
+  color: var(--gold);
+}
+
+/* ═══════════════════════════════════════════════════════════
+VZDĚLÁNÍ — освіта (диплом + курси)
+═══════════════════════════════════════════════════════════ */
+.edu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+/* ── Один пункт освіти ── */
+.edu-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.6rem 0.8rem;
+  background: rgba(79, 66, 181, 0.04);
+  border-left: 3px solid var(--tanzanite);
+  border-radius: 10px;
+  transition: all 0.25s ease;
+}
+
+.edu-row:hover {
+  transform: translateX(3px);
+  background: rgba(79, 66, 181, 0.08);
+}
+
+.edu-row > i {
+  flex-shrink: 0;
+  font-size: 1.4rem;
+  color: var(--tanzanite);
+}
+
+.edu-title {
+  display: block;
+  font-family: "Playfair Display", serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--deep-purple);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings:
+    "tnum" 1,
+    "lnum" 1;
+  -webkit-font-feature-settings:
+    "tnum" 1,
+    "lnum" 1;
+  -moz-font-feature-settings:
+    "tnum" 1,
+    "lnum" 1;
+}
+
+.edu-sub {
+  display: block;
+  margin-top: 0.1rem;
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--silver);
+}
+
+/* ── Підзаголовок "Kurzy" між списками ── */
+.edu-subgroup-title {
+  margin: 0.75rem 0 0.25rem 0;
+  padding-left: 2px;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  color: var(--tanzanite);
+  opacity: 0.85;
+}
+
+/* ═══════════════════════════════════════════════════════════
+JAZYKY · ZÁJMY — прості списки з іконками
+═══════════════════════════════════════════════════════════ */
+.lang-simple,
+.zajmy-simple {
+  padding: 0;
+}
+
+.lang-simple li,
+.zajmy-simple li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid rgba(79, 66, 181, 0.08);
+  font-weight: 500;
+  color: var(--deep-purple);
+}
+
+.lang-simple li:last-child,
+.zajmy-simple li:last-child {
+  border-bottom: none;
+}
+
+/* Кольори іконок: жалюзі — синій, інтереси — золотий */
+.lang-simple li i {
+  font-size: 1.1rem;
+  color: var(--tanzanite-light);
+}
+
+.zajmy-simple li i {
+  font-size: 1.1rem;
+  color: var(--gold);
+}
+
+/* ═══════════════════════════════════════════════════════════
+RESPONSIVE — на мобільному 3 колонки → 1 (вертикально)
+═══════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .profil-cols {
+    grid-template-columns: 1fr;
+  }
+  /* Замість правого бордюру — нижній (між рядками) */
+  .profil-col:not(:last-child) {
+    border-right: none;
+    border-bottom: 1px solid rgba(79, 66, 181, 0.08);
+  }
+  .profil-col {
+    padding: 1rem 1.2rem;
+  }
+}

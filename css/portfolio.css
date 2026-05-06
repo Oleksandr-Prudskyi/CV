@@ -1,0 +1,535 @@
+/* ═══════════════════════════════════════════════════════════
+Включає: container, section base, profile-card (O mně),
+counter-inline, experience grid, exp-card
+═══════════════════════════════════════════════════════════ */
+
+/* ── Головний контейнер контенту ── */
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+}
+
+/* ── Базова секція (.section використовується для O mně, Praxe, Skills, Profil) ── */
+.section {
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Каскадні затримки анімації для послідовної появи секцій */
+.section:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.section:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.section:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.section:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+/* ── Заголовок секції з іконкою + декоративна підкреслювальна риска ── */
+.section-title {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.2rem;
+  font-family: "Playfair Display", serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--tanzanite);
+}
+
+/* Золота риска під заголовком */
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 60%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
+}
+
+.section-title .section-icon {
+  font-size: 1.5rem;
+  color: var(--gold);
+}
+
+/* ═══════════════════════════════════════════════════════════
+PROFILE CARD — картка "O mně"
+═══════════════════════════════════════════════════════════ */
+.profile-card {
+  position: relative;
+  padding: 0.8rem;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-left: 4px solid var(--tanzanite);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px var(--shadow);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.profile-card:hover {
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 6px 20px rgba(79, 66, 181, 0.15);
+}
+
+/* Декоративна золота пляма у верхньому правому куті */
+.profile-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, var(--gold) 0%, transparent 70%);
+  opacity: 0.1;
+  transform: translate(30%, -30%);
+}
+
+.profile-card p {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 0.45rem;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--deep-purple);
+}
+
+.profile-card p:last-child {
+  margin-bottom: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════
+EXPERIENCE HEADER — заголовок "Pracovní zkušenosti" + counter
+═══════════════════════════════════════════════════════════ */
+.experience-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.experience-header .section-title {
+  margin-bottom: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════
+COUNTER INLINE — компактний лічильник часу роботи
+"Od 2021: XX Let | XX Měs. | XX Dní | XX Hod."
+═══════════════════════════════════════════════════════════ */
+.counter-inline {
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(
+    135deg,
+    var(--deep-purple) 0%,
+    var(--tanzanite-dark) 100%
+  );
+  border-radius: 14px;
+  box-shadow: 0 6px 25px var(--shadow);
+  overflow: hidden;
+}
+
+/* Ефект "сканлайн" — тонкі вертикальні лінії */
+.counter-inline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 255, 255, 0.015) 2px,
+    rgba(255, 255, 255, 0.015) 4px
+  );
+}
+
+.counter-inline .ci-label {
+  margin-right: 0.6rem;
+  font-family: "Roboto Condensed", Arial, sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.8;
+  white-space: nowrap;
+}
+
+.counter-inline .ci-segment {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 32px;
+}
+
+.counter-inline .ci-value {
+  font-family: "Roboto Condensed", Arial, sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 1px;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings:
+    "tnum" 1,
+    "lnum" 1;
+  -webkit-font-feature-settings:
+    "tnum" 1,
+    "lnum" 1;
+  -moz-font-feature-settings:
+    "tnum" 1,
+    "lnum" 1;
+  animation: counterGlow 3s ease-in-out infinite;
+}
+
+.counter-inline .ci-unit {
+  margin-top: 0.15rem;
+  font-family: "Roboto Condensed", Arial, sans-serif;
+  font-size: 0.5rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.7;
+}
+
+.counter-inline .ci-sep {
+  margin: 0 0.15rem;
+  padding-bottom: 0.6rem;
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: var(--gold);
+  opacity: 0.35;
+}
+
+/* Анімація світіння цифр */
+@keyframes counterGlow {
+  0%,
+  100% {
+    text-shadow: 0 0 12px rgba(107, 91, 206, 0.4);
+  }
+  50% {
+    text-shadow:
+      0 0 20px rgba(107, 91, 206, 0.7),
+      0 0 35px rgba(212, 175, 55, 0.15);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+EXPERIENCE GRID — сітка карток робочого досвіду (2×2)
+═══════════════════════════════════════════════════════════ */
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+  align-items: start;
+}
+
+/* ═══════════════════════════════════════════════════════════
+3D LOGO CONTAINER — місце для GLB-логотипу через Three.js
+═══════════════════════════════════════════════════════════ */
+.logo-3d-container {
+  position: absolute;
+  top: 35px;
+  right: 24px;
+  display: block;
+  width: 100px;
+  height: 100px;
+  z-index: 2;
+  opacity: 1;
+  pointer-events: none;
+}
+
+/*
+ * УВАГА: Three.js додає inline-style на canvas (width/height у px).
+ * !important тут НЕОБХІДНИЙ — це єдиний спосіб перебити inline-style.
+ * НЕ ВИДАЛЯТИ.
+ */
+.logo-3d-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* ═══════════════════════════════════════════════════════════
+EXPERIENCE CARD — одна картка робочого місця (praxe)
+═══════════════════════════════════════════════════════════ */
+.exp-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px var(--shadow);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.exp-card:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(79, 66, 181, 0.2);
+  box-shadow: 0 8px 25px rgba(79, 66, 181, 0.18);
+}
+
+/* Стан "розгорнуто" — золотий бордюр */
+.exp-card.expanded {
+  border-color: var(--gold);
+}
+
+/* Кольорова смужка зверху картки */
+.exp-card::before {
+  content: "";
+  display: block;
+  flex-shrink: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--tanzanite) 0%, var(--gold) 100%);
+  border-radius: 12px 12px 0 0;
+}
+
+/* ── Шапка картки (посада, фірма, період, опис) ── */
+.exp-summary {
+  flex: 1;
+  padding: 1.8rem 1.8rem 1rem 1.8rem;
+}
+
+.exp-summary h3 {
+  margin-bottom: 0.4rem;
+  font-family: "Playfair Display", serif;
+  font-size: 1.3rem;
+  line-height: 1.3;
+  color: var(--tanzanite);
+}
+
+.exp-summary .company {
+  margin-bottom: 0.3rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--deep-purple);
+}
+
+.exp-summary .period {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.7rem;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--silver);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings:
+    "tnum" 1,
+    "lnum" 1;
+  -webkit-font-feature-settings:
+    "tnum" 1,
+    "lnum" 1;
+  -moz-font-feature-settings:
+    "tnum" 1,
+    "lnum" 1;
+}
+
+.exp-summary .period i {
+  font-size: 0.9rem;
+  color: var(--tanzanite-light);
+}
+
+.exp-summary .short-desc {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--deep-purple);
+  opacity: 0.75;
+}
+
+/* ── Розгортаний блок з деталями ── */
+.exp-details {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition:
+    max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.3s ease;
+}
+
+.exp-card.expanded .exp-details {
+  opacity: 1;
+}
+
+/* ul.exp-details-inner — список обов'язків */
+.exp-details-inner {
+  padding: 0.6rem 0.8rem;
+  border-top: 1px dashed rgba(79, 66, 181, 0.15);
+}
+
+.exp-details-inner li {
+  position: relative;
+  padding-left: 1.3rem;
+  margin-bottom: 0.55rem;
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--deep-purple);
+}
+
+/* Золотий маркер ▸ перед кожним пунктом */
+.exp-details-inner li::before {
+  content: "\25B8";
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+  color: var(--gold);
+}
+
+/* ── Кнопка "Zobrazit / Skrýt podrobnosti" ── */
+.toggle-details-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  width: 100%;
+  padding: 0.7rem;
+  background: linear-gradient(
+    135deg,
+    rgba(79, 66, 181, 0.04) 0%,
+    rgba(212, 175, 55, 0.04) 100%
+  );
+  border: none;
+  border-top: 1px solid rgba(79, 66, 181, 0.08);
+  font-family: "Roboto Condensed", Arial, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: var(--tanzanite);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.toggle-details-btn:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(79, 66, 181, 0.08) 0%,
+    rgba(212, 175, 55, 0.08) 100%
+  );
+  color: var(--tanzanite-dark);
+}
+
+.toggle-details-btn i {
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+}
+
+/* Стрілка обертається при розгортанні */
+.exp-card.expanded .toggle-details-btn i {
+  transform: rotate(180deg);
+}
+
+/* Перемикач тексту "Zobrazit ↔ Skrýt" */
+.exp-card.expanded .toggle-details-btn .btn-text {
+  display: none;
+}
+
+.exp-card.expanded .toggle-details-btn .btn-text-hide {
+  display: inline;
+}
+
+.toggle-details-btn .btn-text-hide {
+  display: none;
+}
+
+/* ═══════════════════════════════════════════════════════════
+RESPONSIVE — порядок важливий: 480 ПЕРЕД 768
+═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 480px) {
+  .container {
+    padding: 2rem 1rem;
+  }
+  .counter-inline {
+    padding: 0.7rem 1rem;
+  }
+  .counter-inline .ci-value {
+    font-size: 1.1rem;
+  }
+  .counter-inline .ci-segment {
+    min-width: 26px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem 0.5rem;
+  }
+  .section {
+    margin-bottom: 1.2rem;
+  }
+  .section-title {
+    margin-bottom: 0.8rem;
+    font-size: 2rem;
+  }
+  .section-title .section-icon {
+    font-size: 1.8rem;
+  }
+  .experience-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .counter-inline {
+    align-self: stretch;
+    justify-content: center;
+  }
+  .experience-grid {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+  /* Менший лого + більший правий padding для тексту */
+  .exp-summary {
+    padding: 1.3rem 85px 1.3rem 1.3rem;
+  }
+  .exp-summary h3 {
+    padding-right: 10px;
+    font-size: 1.15rem;
+  }
+  /*
+   * УВАГА: !important тут НЕОБХІДНИЙ для перебиття inline-style Three.js.
+   * НЕ ВИДАЛЯТИ.
+   */
+  .logo-3d-container {
+    width: 70px !important;
+    height: 70px !important;
+    top: 20px;
+    right: 10px;
+  }
+  .exp-details-inner {
+    padding: 0.6rem 1.3rem 1rem 1.3rem;
+  }
+  .profile-card {
+    padding: 0.8rem;
+  }
+  .profile-card p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+}

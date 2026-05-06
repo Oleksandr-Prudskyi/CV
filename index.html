@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Oleksandr Prudskyi - CV</title>
+
+    <!-- Open Graph metadata (для соц. мереж) -->
     <meta property="og:title" content="Oleksandr Prudskyi - životopis" />
     <meta
       property="og:description"
@@ -15,17 +17,21 @@
     />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- SEO metadata -->
     <meta
       name="description"
       content="Oleksandr Prudskyi (Prudskyi Oleksandr) — životopis, CNC operátor, Liberec. Tel: +420773714660, 773714660"
     />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="keywords"
       content="Oleksandr Prudskyi, Prudskyi Oleksandr, Олександр Прудський, CNC operátor, Liberec, životopis, CV"
     />
     <link rel="canonical" href="https://cv-oleksandr-prudskyi.vercel.app/" />
+
+    <!-- Google Fonts: Playfair Display (заголовки) + Roboto Condensed (цифри) -->
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto+Condensed:wght@300;400;500&display=swap"
       rel="stylesheet"
@@ -34,6 +40,8 @@
       href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Phosphor Icons (3 стилі: regular, bold, fill) -->
     <link
       href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css"
       rel="stylesheet"
@@ -46,11 +54,15 @@
       href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css"
       rel="stylesheet"
     />
-    <!-- Three.js -->
+
+    <!-- Three.js + GLTFLoader (для 3D логотипів) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
-    <link rel="stylesheet" href="css/styles.css" />
-    <!-- Hlavní CSS pro stylování stránky styles.css -->
+
+    <!-- Головний CSS — оркестратор з @import-ами -->
+    <link rel="stylesheet" href="css/main.css" />
+
+    <!-- Schema.org structured data (для пошукових систем) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -76,91 +88,136 @@
       }
     </script>
   </head>
+
   <body>
-    <!-- Floating Clouds -->
-    <div class="clouds">
-      <div class="cloud cloud-1"></div>
-      <div class="cloud cloud-2"></div>
-      <div class="cloud cloud-3"></div>
-      <div class="cloud cloud-4"></div>
-      <div class="cloud cloud-5"></div>
-    </div>
-    <!-- Download CV Button -->
-    <div class="dl-cv-wrapper">
-      <div class="dl-cv-btn" id="dlCvBtn" title="Stáhnout krátký životopis">
-        <div class="dl-arrow-shaft"></div>
-        <div class="dl-arrow-head"></div>
-        <div class="dl-tray"></div>
-      </div>
+<!-- ═══════════════════════════════════════════════════════
+FLOATING CLOUDS — декоративні хмари на фоні
+═══════════════════════════════════════════════════════ -->
+    <aside class="clouds" aria-hidden="true">
+      <span class="cloud cloud-1"></span>
+      <span class="cloud cloud-2"></span>
+      <span class="cloud cloud-3"></span>
+      <span class="cloud cloud-4"></span>
+      <span class="cloud cloud-5"></span>
+    </aside>
+
+<!-- ═══════════════════════════════════════════════════════
+DOWNLOAD CV — плаваюча кнопка завантаження
+═══════════════════════════════════════════════════════ -->
+    <aside class="dl-cv-wrapper">
+      <button
+        class="dl-cv-btn"
+        id="dlCvBtn"
+        type="button"
+        title="Stáhnout krátký životopis"
+        aria-label="Stáhnout krátký životopis"
+      >
+        <span class="dl-arrow-shaft"></span>
+        <span class="dl-arrow-head"></span>
+        <span class="dl-tray"></span>
+      </button>
       <span class="dl-cv-label">Krátký životopis</span>
-    </div>
-    <!-- Photo Modal -->
-    <div class="photo-modal" id="photoModal" onclick="closePhotoModal()">
-      <button class="photo-modal-close" onclick="closePhotoModal()">
+    </aside>
+
+<!-- ═══════════════════════════════════════════════════════
+PHOTO MODAL — lightbox для розгортання фото
+═══════════════════════════════════════════════════════ -->
+    <aside
+      class="photo-modal"
+      id="photoModal"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Fotografie"
+      onclick="closePhotoModal()"
+    >
+      <button
+        class="photo-modal-close"
+        type="button"
+        onclick="closePhotoModal()"
+        aria-label="Zavřít"
+      >
         &times;
       </button>
       <img src="/image/photo.png" alt="Oleksandr Prudskyi" />
-    </div>
+    </aside>
 
-    <!-- Fixed Contact Bar -->
-    <div class="contact-bar" id="contactBar">
-      <div class="name">OLEKSANDR PRUDSKYI</div>
-      <div class="contact-info">
-        <div class="contact-item">
+<!-- ═══════════════════════════════════════════════════════
+DECORATIVE CIRCLES — декоративні фонові кола
+═══════════════════════════════════════════════════════ -->
+    <span class="deco-circle deco-circle-1" aria-hidden="true"></span>
+    <span class="deco-circle deco-circle-2" aria-hidden="true"></span>
+
+<!-- ═══════════════════════════════════════════════════════
+CONTACT BAR — плаваюча верхня панель (з'являється при скролі)
+═══════════════════════════════════════════════════════ -->
+    <header class="contact-bar" id="contactBar">
+      <p class="name">OLEKSANDR PRUDSKYI</p>
+      <ul class="contact-info">
+        <li class="contact-item">
           <span class="icon"><i class="ph ph-map-pin"></i></span>
           <span>U Nisy 913/4, Liberec</span>
-        </div>
-        <div class="contact-item">
+        </li>
+        <li class="contact-item">
           <span class="icon"><i class="ph ph-phone"></i></span>
           <span class="desktop-phone">+420 773 714 660</span>
-          <span class="mobile-phone"
-            ><a
+          <span class="mobile-phone">
+            <a
               href="tel:+420773714660"
               style="color: white; text-decoration: none"
               >+420 773 714 660</a
-            ></span
-          >
-        </div>
-        <div class="contact-item">
+            >
+          </span>
+        </li>
+        <li class="contact-item">
           <span class="icon"><i class="ph ph-envelope-simple"></i></span>
           <span>oleksandr.prudskyi@gmail.com</span>
           <button
             class="copy-btn"
+            type="button"
             onclick="copyEmail()"
             title="Zkopírovat email"
+            aria-label="Zkopírovat email"
           >
             <i class="ph ph-copy"></i>
           </button>
-        </div>
-      </div>
-    </div>
+        </li>
+      </ul>
+    </header>
 
-    <!-- Decorative -->
-    <div class="deco-circle deco-circle-1"></div>
-    <div class="deco-circle deco-circle-2"></div>
-
-    <!-- Hero -->
+<!-- ═══════════════════════════════════════════════════════
+HERO — головна секція (фото + ім'я + дата + контакти)
+═══════════════════════════════════════════════════════ -->
     <section class="hero">
-      <div class="hero-content">
-        <!-- AVATAR -->
-        <div class="avatar-wrapper">
-          <div
+      <article class="hero-content">
+        <!-- AVATAR — клікабельне фото відкриває modal -->
+        <figure class="avatar-wrapper">
+          <button
             class="avatar-placeholder has-image"
             id="avatarPlaceholder"
+            type="button"
             onclick="openPhotoModal()"
-            style="cursor: pointer"
+            aria-label="Zobrazit fotografii"
           >
             <i class="ph ph-user avatar-icon"></i>
-            <img src="/image/photo.png" alt="Oleksandr Prudskyi" id="avatarImage" />
-          </div>
-        </div>
+            <img
+              src="/image/photo.png"
+              alt="Oleksandr Prudskyi"
+              id="avatarImage"
+            />
+          </button>
+        </figure>
 
         <h1>OLEKSANDR<br />PRUDSKYI</h1>
 
-        <!-- Birth date & Libra symbol (PLACEHOLDER — will be replaced after user picks variant) -->
-        <div class="birth-info">
-          <span class="birth-date">26. 09. 1997</span>
-          <span class="libra-icon" title="Váhy / Libra" id="libraSymbol">
+        <!-- BIRTH INFO — дата народження + знак Терезів -->
+        <p class="birth-info">
+          <time class="birth-date" datetime="1997-09-26">26. 09. 1997</time>
+          <span
+            class="libra-icon"
+            id="libraSymbol"
+            title="Váhy / Libra"
+            aria-label="Váhy"
+          >
             <svg
               viewBox="0 0 32 32"
               fill="none"
@@ -202,152 +259,152 @@
               <circle cx="16" cy="6" r="2" fill="#D4AF37" />
             </svg>
           </span>
-        </div>
+        </p>
 
-        <!-- Contact Cards -->
-        <div class="contact-grid">
-          <div class="contact-card">
+        <!-- CONTACT GRID — 3 контактні картки (адреса, телефон, email) -->
+        <ul class="contact-grid">
+          <li class="contact-card">
             <span class="icon"><i class="ph-fill ph-map-pin"></i></span>
-            <div class="text">
-              <div class="label">Adresa</div>
-              <div class="value">U Nisy 913/4, Liberec</div>
-            </div>
-          </div>
-          <div class="contact-card">
+            <p class="text">
+              <span class="label">Adresa</span>
+              <span class="value">U Nisy 913/4, Liberec</span>
+            </p>
+          </li>
+          <li class="contact-card">
             <span class="icon"><i class="ph-fill ph-phone"></i></span>
-            <div class="text">
-              <div class="label">Telefon</div>
-              <div class="value desktop-phone">+420 773 714 660</div>
-              <div class="value mobile-phone">
+            <p class="text">
+              <span class="label">Telefon</span>
+              <span class="value desktop-phone">+420 773 714 660</span>
+              <span class="value mobile-phone">
                 <a
                   href="tel:+420773714660"
                   style="color: var(--deep-purple); text-decoration: none"
                   >+420 773 714 660</a
                 >
-              </div>
-            </div>
-          </div>
-          <div class="contact-card email-card">
+              </span>
+            </p>
+          </li>
+          <li class="contact-card email-card">
             <span class="icon"><i class="ph-fill ph-envelope-simple"></i></span>
-            <div class="text">
-              <div class="label">Email</div>
-              <div class="value">oleksandr.prudskyi@gmail.com</div>
-            </div>
+            <p class="text">
+              <span class="label">Email</span>
+              <span class="value">oleksandr.prudskyi@gmail.com</span>
+            </p>
             <button
               class="copy-btn copy-btn-hero"
+              type="button"
               onclick="copyEmail()"
               title="Zkopírovat email"
             >
               <i class="ph ph-copy"></i> Zkopírovat
             </button>
-          </div>
-        </div>
-      </div>
+          </li>
+        </ul>
+      </article>
     </section>
 
-    <!-- Main Content -->
-    <div class="container">
-      <!-- O mně -->
+<!-- ═══════════════════════════════════════════════════════
+MAIN CONTENT — основний контент (4 секції)
+═══════════════════════════════════════════════════════ -->
+    <main class="container">
+      <!-- ═════ SECTION 1: O mně ═════ -->
       <section class="section">
         <h2 class="section-title" id="aboutSection">
           <i class="ph-bold ph-briefcase section-icon"></i> O mně
         </h2>
-        <div class="profile-card">
+        <article class="profile-card">
+          <p>Pracuji ve výrobě a vyhovuje mi technické prostředí.</p>
           <p>
-            Pracuji ve výrobě a vyhovuje mi technické prostředí.
+            Snažím se učit nové postupy a přizpůsobit se technologiím, se
+            kterými firma pracuje.
           </p>
-          <p>
-            Snažím se učit nové postupy a přizpůsobit se technologiím, se kterými firma pracuje.</p>
           <p>
             Mám základní zkušenosti s CNC stroji a s měřením na úrovni mikronů.
           </p>
           <p>
-            Ve volném čase se zajímám o IT a zkouším různé AI nástroje - například jak pomocí promptů zrychlit rutinní úkoly.
+            Ve volném čase se zajímám o IT a zkouším různé AI nástroje -
+            například jak pomocí promptů zrychlit rutinní úkoly.
           </p>
           <p>
             Snažím se pracovat pečlivě, spolehlivě a s pozorností k detailům.
           </p>
+          <p>Češtinu si průběžně zlepšuji a učení beru jako dlouhodobý proces.</p>
           <p>
-            Češtinu si průběžně zlepšuji a učení beru jako dlouhodobý proces.
+            Hledám pozici, kde můžu poctivě dělat svou práci a postupně si
+            rozšiřovat dovednosti.
           </p>
-          <p>
-            Hledám pozici, kde můžu poctivě dělat svou práci a postupně si rozšiřovat dovednosti.
-          </p>
-        </div>
+        </article>
       </section>
 
-      <!-- Pracovní zkušenosti -->
+      <!-- ═════ SECTION 2: Pracovní zkušenosti (PRAXE) ═════ -->
       <section class="section">
-        <!-- Header row: title + compact counter -->
-        <div class="experience-header">
+        <!-- Заголовок секції + лічильник часу роботи -->
+        <header class="experience-header">
           <h2 class="section-title">
             <i class="ph-bold ph-factory section-icon"></i> Pracovní zkušenosti
           </h2>
 
-          <!-- Compact inline counter -->
-          <div class="counter-inline">
+          <p class="counter-inline" aria-label="Délka pracovní praxe od roku 2021">
             <span class="ci-label">Od 2021</span>
-            <div class="ci-segment">
+            <span class="ci-segment">
               <span class="ci-value" id="counterYears">00</span>
               <span class="ci-unit">Let</span>
-            </div>
+            </span>
             <span class="ci-sep">:</span>
-            <div class="ci-segment">
+            <span class="ci-segment">
               <span class="ci-value" id="counterMonths">00</span>
               <span class="ci-unit">Měs.</span>
-            </div>
+            </span>
             <span class="ci-sep">:</span>
-            <div class="ci-segment">
+            <span class="ci-segment">
               <span class="ci-value" id="counterDays">00</span>
               <span class="ci-unit">Dní</span>
-            </div>
+            </span>
             <span class="ci-sep">:</span>
-            <div class="ci-segment">
+            <span class="ci-segment">
               <span class="ci-value" id="counterHours">00</span>
               <span class="ci-unit">Hod.</span>
-            </div>
-          </div>
-        </div>
+            </span>
+          </p>
+        </header>
 
-        <!-- 2×2 Grid of experience cards -->
-        <div class="experience-grid">
-          <!-- Magna Exteriors -->
-          <div class="exp-card" onclick="toggleDetails(this)">
-            <div class="logo-3d-container" id="logo3d-magna"></div>
-            <div class="exp-summary">
+        <!-- Сітка 4 карток робочих місць -->
+        <ul class="experience-grid">
+          <!-- ─── Magna Exteriors ─── -->
+          <li class="exp-card" onclick="toggleDetails(this)">
+            <span class="logo-3d-container" id="logo3d-magna"></span>
+            <header class="exp-summary">
               <h3>Operátor výrobních strojů</h3>
-              <div class="company">Magna Exteriors (Bohemia) s.r.o.</div>
-              <div class="period">
+              <p class="company">Magna Exteriors (Bohemia) s.r.o.</p>
+              <p class="period">
                 <i class="ph ph-calendar-blank"></i> 01. 07. 2024 - současnost
-              </div>
-              <div class="short-desc">
+              </p>
+              <p class="short-desc">
                 Obsluha strojů pro výrobu a zpracování plastových výrobků.
-              </div>
-            </div>
-            <div class="exp-details">
-              <div class="exp-details-inner">
-                <ul>
-                  <li>
-                    Montáž a kompletace plastových komponentů pro automobilový
-                    průmysl
-                  </li>
-                  <li>
-                    Průběžná vizuální kontrola kvality výrobků, včetně
-                    identifikace a třídění vadných kusů
-                  </li>
-                  <li>
-                    Spolupráce s týmem na optimalizaci výrobních procesů a
-                    důsledné dodržování bezpečnostních předpisů
-                  </li>
-                  <li>
-                    Udržování vysoké produktivity i v období zvýšené výrobní
-                    zátěže
-                  </li>
-                </ul>
-              </div>
-            </div>
+              </p>
+            </header>
+            <section class="exp-details">
+              <ul class="exp-details-inner">
+                <li>
+                  Montáž a kompletace plastových komponentů pro automobilový
+                  průmysl
+                </li>
+                <li>
+                  Průběžná vizuální kontrola kvality výrobků, včetně identifikace
+                  a třídění vadných kusů
+                </li>
+                <li>
+                  Spolupráce s týmem na optimalizaci výrobních procesů a důsledné
+                  dodržování bezpečnostních předpisů
+                </li>
+                <li>
+                  Udržování vysoké produktivity i v období zvýšené výrobní zátěže
+                </li>
+              </ul>
+            </section>
             <button
               class="toggle-details-btn"
+              type="button"
               onclick="
                 event.stopPropagation();
                 toggleDetails(this.closest('.exp-card'));
@@ -357,59 +414,57 @@
               <span class="btn-text-hide">Skrýt podrobnosti</span>
               <i class="ph-bold ph-caret-down"></i>
             </button>
-          </div>
+          </li>
 
-          <!-- asphericon -->
-          <div class="exp-card" onclick="toggleDetails(this)">
-            <div class="logo-3d-container" id="logo3d-asphericon"></div>
-            <div class="exp-summary">
+          <!-- ─── asphericon ─── -->
+          <li class="exp-card" onclick="toggleDetails(this)">
+            <span class="logo-3d-container" id="logo3d-asphericon"></span>
+            <header class="exp-summary">
               <h3>Pracovník ve výrobě optických komponentů</h3>
-              <div class="company">asphericon s.r.o.</div>
-              <div class="period">
+              <p class="company">asphericon s.r.o.</p>
+              <p class="period">
                 <i class="ph ph-calendar-blank"></i> 01. 06. 2023 - 18. 06. 2024
-              </div>
-              <div class="short-desc">
+              </p>
+              <p class="short-desc">
                 Dělník ve výrobě - výroba optických komponentů (obsluha
                 CNC-strojů).
-              </div>
-            </div>
-            <div class="exp-details">
-              <div class="exp-details-inner">
-                <ul>
-                  <li>
-                    Práce s přesnými CNC stroji při výrobě optických komponentů
-                    s mikronovou tolerancí
-                  </li>
-                  <li>
-                    Obsluha softwaru při použití CORS pro přípravu programů
-                    broušení a leštění, zadávání parametrů do CNC strojů
-                    řízených systémem Siemens
-                  </li>
-                  <li>
-                    Měření pomocí kontaktních i bezkontaktních přístrojů. Práce
-                    s posuvnými měřítky, mikrometry a měřicími sondami
-                  </li>
-                  <li>
-                    Kalibrace měřicích zařízení. Využití interferometrického
-                    měření (fringe) pro přesnou kalibraci a korekci strojů
-                  </li>
-                  <li>
-                    Opracování optických čoček podle přesných technických
-                    specifikací zákazníka
-                  </li>
-                  <li>
-                    Úzká spolupráce s oddělením kontroly kvality, detailní
-                    předávání směn s informacemi o stavu výroby
-                  </li>
-                  <li>
-                    Diagnostika a řešení běžných technických problémů během
-                    provozu
-                  </li>
-                </ul>
-              </div>
-            </div>
+              </p>
+            </header>
+            <section class="exp-details">
+              <ul class="exp-details-inner">
+                <li>
+                  Práce s přesnými CNC stroji při výrobě optických komponentů s
+                  mikronovou tolerancí
+                </li>
+                <li>
+                  Obsluha softwaru při použití CORS pro přípravu programů
+                  broušení a leštění, zadávání parametrů do CNC strojů řízených
+                  systémem Siemens
+                </li>
+                <li>
+                  Měření pomocí kontaktních i bezkontaktních přístrojů. Práce s
+                  posuvnými měřítky, mikrometry a měřicími sondami
+                </li>
+                <li>
+                  Kalibrace měřicích zařízení. Využití interferometrického měření
+                  (fringe) pro přesnou kalibraci a korekci strojů
+                </li>
+                <li>
+                  Opracování optických čoček podle přesných technických
+                  specifikací zákazníka
+                </li>
+                <li>
+                  Úzká spolupráce s oddělením kontroly kvality, detailní
+                  předávání směn s informacemi o stavu výroby
+                </li>
+                <li>
+                  Diagnostika a řešení běžných technických problémů během provozu
+                </li>
+              </ul>
+            </section>
             <button
               class="toggle-details-btn"
+              type="button"
               onclick="
                 event.stopPropagation();
                 toggleDetails(this.closest('.exp-card'));
@@ -419,49 +474,46 @@
               <span class="btn-text-hide">Skrýt podrobnosti</span>
               <i class="ph-bold ph-caret-down"></i>
             </button>
-          </div>
+          </li>
 
-          <!-- PRECIOSA -->
-          <div class="exp-card" onclick="toggleDetails(this)">
-            <div class="logo-3d-container" id="logo3d-preciosa"></div>
-            <div class="exp-summary">
+          <!-- ─── PRECIOSA ─── -->
+          <li class="exp-card" onclick="toggleDetails(this)">
+            <span class="logo-3d-container" id="logo3d-preciosa"></span>
+            <header class="exp-summary">
               <h3>Operátor obráběcích strojů</h3>
-              <div class="company">PRECIOSA, a. s.</div>
-              <div class="period">
+              <p class="company">PRECIOSA, a. s.</p>
+              <p class="period">
                 <i class="ph ph-calendar-blank"></i> 01. 06. 2022 - 31. 05. 2023
-              </div>
-              <div class="short-desc">
+              </p>
+              <p class="short-desc">
                 Strojník seřizovač - obsluha obráběcích strojů (kromě
                 dřevoobráběcích).
-              </div>
-            </div>
-            <div class="exp-details">
-              <div class="exp-details-inner">
-                <ul>
-                  <li>
-                    Zpracování křehkých materiálů (sklo, drahé kameny) s
-                    vysokými nároky na přesnost
-                  </li>
-                  <li>
-                    Seřizování výrobních zařízení a provádění základní údržby
-                  </li>
-                  <li>
-                    Přesná kontrola rozměrů pomocí různých měřicích přístrojů
-                  </li>
-                  <li>Identifikace a hlášení poruch výrobních zařízení</li>
-                  <li>
-                    Nastavování parametrů broušení a leštění podle typu
-                    zpracovávaného výrobku
-                  </li>
-                  <li>
-                    Seřizování tmelicích stanic, nastavení pracovních cyklů a
-                    rotačních bubnů s plynovými hořáky
-                  </li>
-                </ul>
-              </div>
-            </div>
+              </p>
+            </header>
+            <section class="exp-details">
+              <ul class="exp-details-inner">
+                <li>
+                  Zpracování křehkých materiálů (sklo, drahé kameny) s vysokými
+                  nároky na přesnost
+                </li>
+                <li>Seřizování výrobních zařízení a provádění základní údržby</li>
+                <li>
+                  Přesná kontrola rozměrů pomocí různých měřicích přístrojů
+                </li>
+                <li>Identifikace a hlášení poruch výrobních zařízení</li>
+                <li>
+                  Nastavování parametrů broušení a leštění podle typu
+                  zpracovávaného výrobku
+                </li>
+                <li>
+                  Seřizování tmelicích stanic, nastavení pracovních cyklů a
+                  rotačních bubnů s plynovými hořáky
+                </li>
+              </ul>
+            </section>
             <button
               class="toggle-details-btn"
+              type="button"
               onclick="
                 event.stopPropagation();
                 toggleDetails(this.closest('.exp-card'));
@@ -471,33 +523,32 @@
               <span class="btn-text-hide">Skrýt podrobnosti</span>
               <i class="ph-bold ph-caret-down"></i>
             </button>
-          </div>
+          </li>
 
-          <!-- LUKOV Plast -->
-          <div class="exp-card" onclick="toggleDetails(this)">
-            <div class="logo-3d-container" id="logo3d-lukov"></div>
-            <div class="exp-summary">
+          <!-- ─── LUKOV Plast ─── -->
+          <li class="exp-card" onclick="toggleDetails(this)">
+            <span class="logo-3d-container" id="logo3d-lukov"></span>
+            <header class="exp-summary">
               <h3>Operátor výrobních strojů</h3>
-              <div class="company">LUKOV Plast s. r. o.</div>
-              <div class="period">
+              <p class="company">LUKOV Plast s. r. o.</p>
+              <p class="period">
                 <i class="ph ph-calendar-blank"></i> 16. 08. 2021 - 31. 05. 2022
-              </div>
-              <div class="short-desc">
+              </p>
+              <p class="short-desc">
                 Obsluha strojů pro výrobu a zpracování plastových výrobků.
-              </div>
-            </div>
-            <div class="exp-details">
-              <div class="exp-details-inner">
-                <ul>
-                  <li>
-                    Obsluha a základní údržba strojů pro výrobu plastových dílů
-                  </li>
-                  <li>Kontrola kvality výrobků, spolupráce v týmu</li>
-                </ul>
-              </div>
-            </div>
+              </p>
+            </header>
+            <section class="exp-details">
+              <ul class="exp-details-inner">
+                <li>
+                  Obsluha a základní údržba strojů pro výrobu plastových dílů
+                </li>
+                <li>Kontrola kvality výrobků, spolupráce v týmu</li>
+              </ul>
+            </section>
             <button
               class="toggle-details-btn"
+              type="button"
               onclick="
                 event.stopPropagation();
                 toggleDetails(this.closest('.exp-card'));
@@ -507,98 +558,100 @@
               <span class="btn-text-hide">Skrýt podrobnosti</span>
               <i class="ph-bold ph-caret-down"></i>
             </button>
-          </div>
-        </div>
+          </li>
+        </ul>
       </section>
 
-      <!-- Dovednosti -->
+      <!-- ═════ SECTION 3: Dovednosti (SKILLS) ═════ -->
       <section class="section">
         <h2 class="section-title">
           <i class="ph-bold ph-wrench section-icon"></i> Dovednosti
         </h2>
-        <div class="skills-grid">
-          <div class="skills-category">
+        <ul class="skills-grid">
+          <!-- Технічні навички -->
+          <li class="skills-category">
             <h3>Technické znalosti</h3>
-            <div>
-              <span class="skill-tag">Obsluha CNC strojů</span>
-              <span class="skill-tag">Software Cors</span>
-              <span class="skill-tag">Siemens systémy</span>
-              <span class="skill-tag">Přesné měření</span>
-              <span class="skill-tag">Kalibrace přístrojů</span>
-              <span class="skill-tag">Seřizování strojů</span>
-              <span class="skill-tag">Nastavení cyklů</span>
-              <span class="skill-tag">Práce s CVD diamantem</span>
-              <span class="skill-tag"
-                >Použití polyuretanových a semišových nástrojů</span
-              >
-              <span class="skill-tag"
-                >Zodpovědnost za kvalitu a bezpečnost</span
-              >
-              <span class="skill-tag">Práce s plasty</span>
-              <span class="skill-tag">Práce se sklem</span>
-              <span class="skill-tag">Optické komponenty</span>
-              <span class="skill-tag">Diagnostika poruch</span>
-              <span class="skill-tag">AI prompting</span>
-              <span class="skill-tag">Pokročilý uživatel PC</span>
-            </div>
-          </div>
+            <ul class="skill-tag-list">
+              <li class="skill-tag">Obsluha CNC strojů</li>
+              <li class="skill-tag">Software Cors</li>
+              <li class="skill-tag">Siemens systémy</li>
+              <li class="skill-tag">Přesné měření</li>
+              <li class="skill-tag">Kalibrace přístrojů</li>
+              <li class="skill-tag">Seřizování strojů</li>
+              <li class="skill-tag">Nastavení cyklů</li>
+              <li class="skill-tag">Práce s CVD diamantem</li>
+              <li class="skill-tag">
+                Použití polyuretanových a semišových nástrojů
+              </li>
+              <li class="skill-tag">Zodpovědnost za kvalitu a bezpečnost</li>
+              <li class="skill-tag">Práce s plasty</li>
+              <li class="skill-tag">Práce se sklem</li>
+              <li class="skill-tag">Optické komponenty</li>
+              <li class="skill-tag">Diagnostika poruch</li>
+              <li class="skill-tag">AI prompting</li>
+              <li class="skill-tag">Pokročilý uživatel PC</li>
+            </ul>
+          </li>
 
-          <div class="skills-category">
+          <!-- Особисті якості -->
+          <li class="skills-category">
             <h3>Osobní vlastnosti</h3>
-            <div>
-              <span class="skill-tag">Rychlá adaptabilita</span>
-              <span class="skill-tag">Odolnost proti stresu</span>
-              <span class="skill-tag">Pozornost k detailům</span>
-              <span class="skill-tag">Zodpovědnost</span>
-              <span class="skill-tag">Ochota učit se</span>
-              <span class="skill-tag">Týmová spolupráce</span>
-              <span class="skill-tag">Samostatnost</span>
-            </div>
-          </div>
-        </div>
+            <ul class="skill-tag-list">
+              <li class="skill-tag">Rychlá adaptabilita</li>
+              <li class="skill-tag">Odolnost proti stresu</li>
+              <li class="skill-tag">Pozornost k detailům</li>
+              <li class="skill-tag">Zodpovědnost</li>
+              <li class="skill-tag">Ochota učit se</li>
+              <li class="skill-tag">Týmová spolupráce</li>
+              <li class="skill-tag">Samostatnost</li>
+            </ul>
+          </li>
+        </ul>
       </section>
 
-      <!-- Vzdělání · Jazyky · Zájmy -->
+      <!-- ═════ SECTION 4: Vzdělání · Jazyky · Zájmy ═════ -->
       <section class="section">
-        <div class="profil-wrap">
-          <div class="profil-cols">
-            <!-- Vzdělání -->
-            <div class="profil-col">
+        <article class="profil-wrap">
+          <section class="profil-cols">
+            <!-- ─── Vzdělání ─── -->
+            <article class="profil-col">
               <h3 class="profil-col-title">
                 <i class="ph-bold ph-graduation-cap"></i> Vzdělání
               </h3>
-              <div class="edu-list">
-                <div class="edu-row">
+              <ul class="edu-list">
+                <li class="edu-row">
                   <i class="ph-fill ph-certificate"></i>
-                  <div>
-                    <div class="edu-title">Bakalářský titul (nostrifikace)</div>
-                    <div class="edu-sub">Ukrajina</div>
-                  </div>
-                </div>
+                  <p>
+                    <span class="edu-title">Bakalářský titul (nostrifikace)</span>
+                    <span class="edu-sub">Ukrajina</span>
+                  </p>
+                </li>
+              </ul>
 
-                <!-- Kurzy -->
-                <div class="edu-subgroup-title">Kurzy</div>
+              <h4 class="edu-subgroup-title">Kurzy</h4>
 
-                <div class="edu-row">
+              <ul class="edu-list">
+                <li class="edu-row">
                   <i class="ph-fill ph-code"></i>
-                  <div>
-                    <div class="edu-title">GO IT - Fullstack Development</div>
-                    <div class="edu-sub">probíhá · začátečník</div>
-                  </div>
-                </div>
-                <div class="edu-row">
+                  <p>
+                    <span class="edu-title">GO IT - Fullstack Development</span>
+                    <span class="edu-sub">probíhá · začátečník</span>
+                  </p>
+                </li>
+                <li class="edu-row">
                   <i class="ph-fill ph-flower-lotus"></i>
-                  <div>
-                    <div class="edu-title">Sportovní masér (69-037-M)</div>
-                    <div class="edu-sub">
+                  <p>
+                    <span class="edu-title">Sportovní masér (69-037-M)</span>
+                    <span class="edu-sub">
                       dokončeno · osvědčení o získání kvalifikace
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Jazyky -->
-            <div class="profil-col">
+                    </span>
+                  </p>
+                </li>
+              </ul>
+            </article>
+
+            <!-- ─── Jazyky ─── -->
+            <article class="profil-col">
               <h3 class="profil-col-title">
                 <i class="ph-bold ph-translate"></i> Jazyky
               </h3>
@@ -611,9 +664,10 @@
                   <i class="ph ph-flag-pennant"></i> Angličtina - elementary
                 </li>
               </ul>
-            </div>
-            <!-- Zájmy -->
-            <div class="profil-col">
+            </article>
+
+            <!-- ─── Zájmy ─── -->
+            <article class="profil-col">
               <h3 class="profil-col-title">
                 <i class="ph-bold ph-lightning"></i> Zájmy
               </h3>
@@ -622,20 +676,21 @@
                   <i class="ph ph-gear-six"></i> Práce s technickým vybavením
                 </li>
                 <li>
-                  <i class="ph ph-book-open-text"></i> Osobní rozvoj a
-                  vzdělávání
+                  <i class="ph ph-book-open-text"></i> Osobní rozvoj a vzdělávání
                 </li>
                 <li><i class="ph ph-barbell"></i> Sport a kondice</li>
               </ul>
-            </div>
-          </div>
-        </div>
+            </article>
+          </section>
+        </article>
       </section>
-    </div>
+    </main>
 
-    <script src="js/main.js"></script>
+<!-- ═══════════════════════════════════════════════════════
+JAVASCRIPT — інтерактивність + 3D логотипи
+═══════════════════════════════════════════════════════ -->
     <!-- Hlavní JavaScript pro interaktivitu stránky main.js -->
-
+    <script src="js/main.js"></script>
     <!-- 3D Company Logos Script -->
     <script src="js/logos3d.js"></script>
   </body>

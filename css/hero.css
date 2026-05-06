@@ -1,0 +1,227 @@
+/* ═══════════════════════════════════════════════════════════
+HERO — головна секція (аватар + ім'я + дата народження)
+═══════════════════════════════════════════════════════════ */
+
+.hero {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Компактні відступи (попередньо було 2.5rem 2rem) */
+  padding: 2rem 1rem 1.5rem 1rem;
+  /* Прибрано min-height: 85vh для компактності */
+  min-height: auto;
+  overflow: hidden;
+}
+
+/* ── Декоративний фон з кольоровими радіусами ── */
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  background:
+    radial-gradient(
+      circle at 30% 50%,
+      var(--tanzanite-light) 0%,
+      transparent 50%
+    ),
+    radial-gradient(circle at 70% 50%, var(--gold) 0%, transparent 50%);
+  opacity: 0.1;
+  animation: float 20s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(30px, 30px) rotate(5deg);
+  }
+}
+
+/* ── Контейнер з контентом hero ── */
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  text-align: center;
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+AVATAR — фото в круглій рамці
+═══════════════════════════════════════════════════════════ */
+.avatar-wrapper {
+  margin-bottom: 1rem;
+  animation: fadeInUp 1s ease-out 0.1s both;
+}
+
+.avatar-placeholder {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 160px;
+  height: 160px;
+  margin: 0 auto;
+  background: linear-gradient(
+    135deg,
+    var(--tanzanite-light) 0%,
+    var(--tanzanite-dark) 100%
+  );
+  border: 4px solid var(--gold);
+  border-radius: 50%;
+  box-shadow:
+    0 8px 30px var(--shadow),
+    0 0 0 8px rgba(212, 175, 55, 0.15);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  /* Це <button>, тому скидаємо стандартний фокус-стиль */
+  cursor: pointer;
+}
+
+.avatar-placeholder:hover {
+  transform: scale(1.05);
+  box-shadow:
+    0 12px 40px var(--shadow),
+    0 0 0 10px rgba(212, 175, 55, 0.2);
+}
+
+.avatar-placeholder .avatar-icon {
+  font-size: 4rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.avatar-placeholder img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+  /* Покращення рендерингу фото */
+  image-rendering: auto;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Коли клас .has-image додано — показуємо фото, ховаємо іконку */
+.avatar-placeholder.has-image .avatar-icon {
+  display: none;
+}
+
+.avatar-placeholder.has-image img {
+  display: block;
+}
+
+/* ═══════════════════════════════════════════════════════════
+ІМ'Я — h1 з градієнтним кольором
+═══════════════════════════════════════════════════════════ */
+.hero h1 {
+  font-family: "Playfair Display", serif;
+  /* Адаптивний розмір: мінімум 2.2rem, максимум 3.8rem */
+  font-size: clamp(2.2rem, 6vw, 3.8rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: 2px;
+  margin-bottom: 0.2rem;
+  /* Градієнт через text-fill-color */
+  background: linear-gradient(
+    135deg,
+    var(--tanzanite) 0%,
+    var(--tanzanite-light) 50%,
+    var(--gold) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+/* ═══════════════════════════════════════════════════════════
+BIRTH INFO — дата народження + знак Терезів (Libra)
+═══════════════════════════════════════════════════════════ */
+.birth-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+  animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.birth-date {
+  font-family: "Roboto Condensed", Arial, sans-serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  color: var(--tanzanite);
+}
+
+.libra-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.libra-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+RESPONSIVE — спочатку 480px, потім 768px (порядок важливий)
+═══════════════════════════════════════════════════════════ */
+
+/* Дрібні смартфони (≤480) */
+@media (max-width: 480px) {
+  .hero {
+    padding: 3rem 1rem;
+  }
+}
+
+/* Планшети і середні смартфони (≤768) — перебиває 480 при ширині ≤480 */
+@media (max-width: 768px) {
+  .hero {
+    padding: 1.5rem 0.5rem 1rem 0.5rem;
+  }
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  .avatar-wrapper {
+    margin-bottom: 0.8rem;
+  }
+  .avatar-placeholder {
+    width: 140px;
+    height: 140px;
+  }
+  .avatar-placeholder .avatar-icon {
+    font-size: 3rem;
+  }
+  .birth-info {
+    margin-bottom: 1rem;
+  }
+  .birth-date {
+    font-size: 1rem;
+  }
+  .libra-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+}

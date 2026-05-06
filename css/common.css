@@ -1,0 +1,72 @@
+/* ═══════════════════════════════════════════════════════════
+:root змінні, base typography, reset
+═══════════════════════════════════════════════════════════ */
+
+/* ── Reset ── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ── CSS Variables (фірмові кольори: tanzanite + gold) ── */
+:root {
+  --tanzanite: #4f42b5;
+  --tanzanite-dark: #3a2f8c;
+  --tanzanite-light: #6b5bce;
+  --gold: #d4af37;
+  --pearl: #f8f8ff;
+  --deep-purple: #2a1b5d;
+  --silver: #c0c0c0;
+  --shadow: rgba(79, 66, 181, 0.12);
+}
+
+/* ── Smooth scroll для якорів ── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── Базова типографіка ── */
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  background: linear-gradient(135deg, var(--pearl) 0%, #e8e4f3 100%);
+  color: var(--deep-purple);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── Скидання списків (бо ul/li використовуються як контейнери) ── */
+ul,
+ol {
+  list-style: none;
+}
+
+/* ── Скидання посилань ── */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ── Phosphor іконки — вирівнювання ── */
+.ph,
+.ph-bold,
+.ph-fill {
+  vertical-align: middle;
+}
+
+/* ── Перемикач телефонного номеру (desktop vs mobile) ── */
+.mobile-phone {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-phone {
+    display: block;
+  }
+  span.mobile-phone {
+    display: inline;
+  }
+  .desktop-phone {
+    display: none;
+  }
+}

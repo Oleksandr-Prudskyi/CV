@@ -1,14 +1,10 @@
-/* ═══════════════════════════════════════════════════════════
-FOOTER — декоративні та допоміжні елементи
+/* FOOTER — декоративні та допоміжні елементи
 - Floating clouds (хмари на фоні)
 - Decorative circles (декоративні кола)
 - Download CV button (плаваюча кнопка завантаження)
-- Photo modal (lightbox для фото)
-   ═══════════════════════════════════════════════════════════ */
+- Photo modal (lightbox для фото) */
 
-/* ═══════════════════════════════════════════════════════════
-FLOATING CLOUDS — хмари дрейфують зліва направо
-═══════════════════════════════════════════════════════════ */
+/* FLOATING CLOUDS — хмари дрейфують зліва направо */
 .clouds {
   position: fixed;
   top: 0;
@@ -90,9 +86,7 @@ FLOATING CLOUDS — хмари дрейфують зліва направо
   }
 }
 
-/* ═══════════════════════════════════════════════════════════
-DECORATIVE CIRCLES — два великі кола на фоні
-═══════════════════════════════════════════════════════════ */
+/* DECORATIVE CIRCLES — два великі кола на фоні */
 .deco-circle {
   position: fixed;
   width: 300px;
@@ -121,9 +115,7 @@ DECORATIVE CIRCLES — два великі кола на фоні
   animation: float 20s ease-in-out infinite reverse;
 }
 
-/* ═══════════════════════════════════════════════════════════
-DOWNLOAD CV BUTTON — плаваюча кнопка зверху-справа
-═══════════════════════════════════════════════════════════ */
+/* DOWNLOAD CV BUTTON — плаваюча кнопка зверху-справа */
 .dl-cv-wrapper {
   position: fixed;
   top: 94.5px;
@@ -135,7 +127,7 @@ DOWNLOAD CV BUTTON — плаваюча кнопка зверху-справа
   gap: 0.45rem;
 }
 
-/* ── Кругла кнопка ── */
+/* Кругла кнопка */
 .dl-cv-btn {
   position: relative;
   width: 52px;
@@ -165,7 +157,7 @@ DOWNLOAD CV BUTTON — плаваюча кнопка зверху-справа
   transform: scale(0.95);
 }
 
-/* ── Стрілка вниз: shaft (тіло) + head (голівка) ── */
+/* Стрілка вниз: shaft (тіло) + head (голівка) */
 .dl-arrow-shaft {
   position: absolute;
   top: 50%;
@@ -190,7 +182,7 @@ DOWNLOAD CV BUTTON — плаваюча кнопка зверху-справа
   transition: all 0.3s ease;
 }
 
-/* ── Поличка-приймач знизу (золота смужка) ── */
+/* Поличка-приймач знизу (золота смужка) */
 .dl-tray {
   position: absolute;
   bottom: 9px;
@@ -204,7 +196,7 @@ DOWNLOAD CV BUTTON — плаваюча кнопка зверху-справа
   transition: all 0.3s ease;
 }
 
-/* ── Стан "downloading" — стрілка падає на поличку ── */
+/* Стан "downloading" — стрілка падає на поличку */
 .dl-cv-btn.downloading .dl-arrow-shaft {
   animation: dl-drop 0.6s ease forwards;
 }
@@ -217,7 +209,7 @@ DOWNLOAD CV BUTTON — плаваюча кнопка зверху-справа
   animation: dl-tray-flash 0.6s ease forwards;
 }
 
-/* ── Стан "done" — стрілка стає галочкою ✓ ── */
+/* Стан "done" — стрілка стає галочкою ✓ */
 .dl-cv-btn.done {
   background: linear-gradient(135deg, var(--gold) 0%, #c9a227 100%);
   border-color: var(--gold);
@@ -242,7 +234,7 @@ DOWNLOAD CV BUTTON — плаваюча кнопка зверху-справа
   opacity: 0;
 }
 
-/* ── Анімації стрілки під час завантаження ── */
+/* Анімації стрілки під час завантаження */
 @keyframes dl-drop {
   0% {
     transform: translate(-50%, -55%);
@@ -279,7 +271,7 @@ DOWNLOAD CV BUTTON — плаваюча кнопка зверху-справа
   }
 }
 
-/* ── Підпис під кнопкою "Krátký životopis" ── */
+/* ідпис під кнопкою "Krátký životopis" */
 .dl-cv-label {
   font-family: "Roboto Condensed", Arial, sans-serif;
   font-size: 0.65rem;
@@ -296,9 +288,7 @@ DOWNLOAD CV BUTTON — плаваюча кнопка зверху-справа
   color: var(--gold);
 }
 
-/* ═══════════════════════════════════════════════════════════
-PHOTO MODAL — lightbox для розгортання фото
-═══════════════════════════════════════════════════════════ */
+/* PHOTO MODAL — lightbox для розгортання фото */
 .photo-modal {
   display: none;
   position: fixed;
@@ -329,7 +319,7 @@ PHOTO MODAL — lightbox для розгортання фото
   animation: modalZoomIn 0.3s ease;
 }
 
-/* ── Кнопка закриття × ── */
+/* Кнопка закриття × */
 .photo-modal-close {
   position: absolute;
   top: 1.5rem;
@@ -373,12 +363,10 @@ PHOTO MODAL — lightbox для розгортання фото
   }
 }
 
-/* ═══════════════════════════════════════════════════════════
-RESPONSIVE — кнопка завантаження переїжджає вниз на мобільних
-═══════════════════════════════════════════════════════════ */
+/* RESPONSIVE — кнопка завантаження переїжджає вниз на мобільних */
 @media (max-width: 768px) {
   .dl-cv-wrapper {
-    /* Прив'язка до низу замість верху */
+/* Прив'язка до низу замість верху */
     top: auto;
     right: 1rem;
     bottom: 2rem;

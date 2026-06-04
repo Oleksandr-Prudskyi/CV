@@ -1,9 +1,7 @@
-/* ═══════════════════════════════════════════════════════════
-Включає: container, section base, profile-card (O mně),
-counter-inline, experience grid, exp-card
-═══════════════════════════════════════════════════════════ */
+/* Включає: container, section base, profile-card (O mně),
+counter-inline, experience grid, exp-card  */
 
-/* ── Головний контейнер контенту ── */
+/* Головний контейнер контенту */
 .container {
   position: relative;
   z-index: 1;
@@ -12,7 +10,7 @@ counter-inline, experience grid, exp-card
   padding: 1.5rem 1rem;
 }
 
-/* ── Базова секція (.section використовується для O mně, Praxe, Skills, Profil) ── */
+/* Базова секція (.section використовується для O mně, Praxe, Skills, Profil) */
 .section {
   margin-bottom: 1.5rem;
   opacity: 0;
@@ -34,7 +32,7 @@ counter-inline, experience grid, exp-card
   animation-delay: 0.4s;
 }
 
-/* ── Заголовок секції з іконкою + декоративна підкреслювальна риска ── */
+/* Заголовок секції з іконкою + декоративна підкреслювальна риска */
 .section-title {
   position: relative;
   display: inline-flex;
@@ -63,9 +61,7 @@ counter-inline, experience grid, exp-card
   color: var(--gold);
 }
 
-/* ═══════════════════════════════════════════════════════════
-PROFILE CARD — картка "O mně"
-═══════════════════════════════════════════════════════════ */
+/* PROFILE CARD — картка "O mně" */
 .profile-card {
   position: relative;
   padding: 0.8rem;
@@ -111,9 +107,7 @@ PROFILE CARD — картка "O mně"
   margin-bottom: 0;
 }
 
-/* ═══════════════════════════════════════════════════════════
-EXPERIENCE HEADER — заголовок "Pracovní zkušenosti" + counter
-═══════════════════════════════════════════════════════════ */
+/* EXPERIENCE HEADER — заголовок "Pracovní zkušenosti" + counter */
 .experience-header {
   display: flex;
   flex-wrap: wrap;
@@ -127,10 +121,7 @@ EXPERIENCE HEADER — заголовок "Pracovní zkušenosti" + counter
   margin-bottom: 0;
 }
 
-/* ═══════════════════════════════════════════════════════════
-COUNTER INLINE — компактний лічильник часу роботи
-"Od 2021: XX Let | XX Měs. | XX Dní | XX Hod."
-═══════════════════════════════════════════════════════════ */
+/* COUNTER INLINE — компактний лічильник часу роботи XX Let | XX Měs. | XX Dní | XX Hod */
 .counter-inline {
   position: relative;
   flex-shrink: 0;
@@ -236,9 +227,7 @@ COUNTER INLINE — компактний лічильник часу роботи
   }
 }
 
-/* ═══════════════════════════════════════════════════════════
-EXPERIENCE GRID — сітка карток робочого досвіду (2×2)
-═══════════════════════════════════════════════════════════ */
+/* EXPERIENCE GRID — сітка карток робочого досвіду (2×2) */
 .experience-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -246,9 +235,7 @@ EXPERIENCE GRID — сітка карток робочого досвіду (2×
   align-items: start;
 }
 
-/* ═══════════════════════════════════════════════════════════
-3D LOGO CONTAINER — місце для GLB-логотипу через Three.js
-═══════════════════════════════════════════════════════════ */
+/* 3D LOGO CONTAINER — місце для GLB-логотипу через Three.js */
 .logo-3d-container {
   position: absolute;
   top: 35px;
@@ -271,9 +258,9 @@ EXPERIENCE GRID — сітка карток робочого досвіду (2×
   height: 100% !important;
 }
 
-/* ═══════════════════════════════════════════════════════════
+/*
 EXPERIENCE CARD — одна картка робочого місця (praxe)
-═══════════════════════════════════════════════════════════ */
+*/
 .exp-card {
   position: relative;
   display: flex;
@@ -311,7 +298,7 @@ EXPERIENCE CARD — одна картка робочого місця (praxe)
   border-radius: 12px 12px 0 0;
 }
 
-/* ── Шапка картки (посада, фірма, період, опис) ── */
+/* Шапка картки (посада, фірма, період, опис) */
 .exp-summary {
   flex: 1;
   padding: 1.8rem 1.8rem 1rem 1.8rem;
@@ -402,7 +389,7 @@ EXPERIENCE CARD — одна картка робочого місця (praxe)
   color: var(--gold);
 }
 
-/* ── Кнопка "Zobrazit / Skrýt podrobnosti" ── */
+/* Кнопка "Zobrazit / Skrýt podrobnosti" */
 .toggle-details-btn {
   display: flex;
   align-items: center;
@@ -445,7 +432,7 @@ EXPERIENCE CARD — одна картка робочого місця (praxe)
   transform: rotate(180deg);
 }
 
-/* Перемикач тексту "Zobrazit ↔ Skrýt" */
+/* Перемикач тексту "Zobrazit & Skrýt" */
 .exp-card.expanded .toggle-details-btn .btn-text {
   display: none;
 }
@@ -458,9 +445,7 @@ EXPERIENCE CARD — одна картка робочого місця (praxe)
   display: none;
 }
 
-/* ═══════════════════════════════════════════════════════════
-RESPONSIVE — порядок важливий: 480 ПЕРЕД 768
-═══════════════════════════════════════════════════════════ */
+/* RESPONSIVE — порядок важливий: 480 ПЕРЕД 768 */
 
 @media (max-width: 480px) {
   .container {

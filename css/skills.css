@@ -1,9 +1,6 @@
-/* ═══════════════════════════════════════════════════════════
-SKILLS — секція DOVEDNOSTI (навички)
-Включає: skills-grid, skill-tag, info-grid (для Languages/Interests)
-═══════════════════════════════════════════════════════════ */
+/* DOVEDNOSTI skills-grid, skill-tag, info-grid (для Languages/Interests) */
 
-/* ── Сітка категорій навичок (Технічні / Особисті) ── */
+/* Сітка категорій навичок технічні / особисті */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -34,14 +31,14 @@ SKILLS — секція DOVEDNOSTI (навички)
   color: var(--tanzanite);
 }
 
-/* ── Список тегів навичок (всередині категорії) ── */
+/* Список тегів навичок */
 .skill-tag-list {
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
 }
 
-/* ── Один тег навички ── */
+/* Один тег навички */
 .skill-tag {
   display: inline-block;
   padding: 0.35rem 0.8rem;
@@ -62,11 +59,7 @@ SKILLS — секція DOVEDNOSTI (навички)
   box-shadow: 0 2px 8px rgba(79, 66, 181, 0.12);
 }
 
-/* ═══════════════════════════════════════════════════════════
-INFO GRID — універсальні інформаційні картки (резерв)
-Зараз не використовується активно, але CSS залишено для майбутніх
-секцій типу Languages / Interests, якщо буде потрібно
-═══════════════════════════════════════════════════════════ */
+/* INFO */
 .info-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -125,9 +118,8 @@ INFO GRID — універсальні інформаційні картки (р
   color: var(--tanzanite-light);
 }
 
-/* ═══════════════════════════════════════════════════════════
-RESPONSIVE
-═══════════════════════════════════════════════════════════ */
+
+
 @media (max-width: 768px) {
   .skills-grid,
   .info-grid {

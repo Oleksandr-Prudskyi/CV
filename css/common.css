@@ -1,15 +1,13 @@
-/* ═══════════════════════════════════════════════════════════
-:root змінні, base typography, reset
-═══════════════════════════════════════════════════════════ */
+/* :root змінні, base typography, reset */
 
-/* ── Reset ── */
+/* Reset  */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ── CSS Variables (фірмові кольори: tanzanite + gold) ── */
+/* CSS Variables (фірмові кольори: tanzanite + gold) */
 :root {
   --tanzanite: #4f42b5;
   --tanzanite-dark: #3a2f8c;
@@ -21,12 +19,12 @@
   --shadow: rgba(79, 66, 181, 0.12);
 }
 
-/* ── Smooth scroll для якорів ── */
+/* Smooth scroll для якорів */
 html {
   scroll-behavior: smooth;
 }
 
-/* ── Базова типографіка ── */
+/* Базова типографіка */
 body {
   font-family: Georgia, "Times New Roman", serif;
   background: linear-gradient(135deg, var(--pearl) 0%, #e8e4f3 100%);
@@ -35,26 +33,26 @@ body {
   overflow-x: hidden;
 }
 
-/* ── Скидання списків (бо ul/li використовуються як контейнери) ── */
+/* Скидання списків (бо ul/li використовуються як контейнери) */
 ul,
 ol {
   list-style: none;
 }
 
-/* ── Скидання посилань ── */
+/* Скидання посилань */
 a {
   color: inherit;
   text-decoration: none;
 }
 
-/* ── Phosphor іконки — вирівнювання ── */
+/* Phosphor іконки — вирівнювання */
 .ph,
 .ph-bold,
 .ph-fill {
   vertical-align: middle;
 }
 
-/* ── Перемикач телефонного номеру (desktop vs mobile) ── */
+/* Перемикач телефонного номеру (desktop vs mobile) */
 .mobile-phone {
   display: none;
 }

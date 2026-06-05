@@ -236,27 +236,31 @@ counter-inline, experience grid, exp-card  */
 }
 
 /* 3D LOGO CONTAINER — місце для GLB-логотипу через Three.js */
+.logo-wrapper {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
+}
+
 .logo-3d-container {
-  position: absolute;
-  top: 35px;
-  right: 24px;
   display: block;
-  width: 100px;
-  height: 100px;
   z-index: 2;
   opacity: 1;
   pointer-events: none;
+  /* Колір одноколірних лого (asphericon, preciosa, lukov). РОЗМІРИ — інлайн у HTML на кожному <svg>. */
+  color: #123474;
 }
 
-/*
- * УВАГА: Three.js додає inline-style на canvas (width/height у px).
- * !important тут НЕОБХІДНИЙ — це єдиний спосіб перебити inline-style.
- * НЕ ВИДАЛЯТИ.
- */
-.logo-3d-container canvas {
-  width: 100% !important;
-  height: 100% !important;
+/* Magna — багатоколірна: символ / напис / крапка керуються окремо */
+#logo3d-magna {
+  --magna-mark: #161616;
+  --magna-word: #9a9a9a;
+  --magna-dot: #e22e2f;
 }
+
+/* (3D canvas прибрано — тепер логотипи це SVG-спрайт; розміри задано інлайн у HTML) */
 
 /*
 EXPERIENCE CARD — одна картка робочого місця (praxe)
@@ -301,7 +305,16 @@ EXPERIENCE CARD — одна картка робочого місця (praxe)
 /* Шапка картки (посада, фірма, період, опис) */
 .exp-summary {
   flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
   padding: 1.8rem 1.8rem 1rem 1.8rem;
+}
+
+/* Обгортка для текстового контенту */
+.exp-text {
+  flex: 1;
+  min-width: 0;
 }
 
 .exp-summary h3 {
@@ -488,24 +501,6 @@ EXPERIENCE CARD — одна картка робочого місця (praxe)
   .experience-grid {
     grid-template-columns: 1fr;
     gap: 0.6rem;
-  }
-  /* Менший лого + більший правий padding для тексту */
-  .exp-summary {
-    padding: 1.3rem 85px 1.3rem 1.3rem;
-  }
-  .exp-summary h3 {
-    padding-right: 10px;
-    font-size: 1.15rem;
-  }
-  /*
-   * УВАГА: !important тут НЕОБХІДНИЙ для перебиття inline-style Three.js.
-   * НЕ ВИДАЛЯТИ.
-   */
-  .logo-3d-container {
-    width: 70px !important;
-    height: 70px !important;
-    top: 20px;
-    right: 10px;
   }
   .exp-details-inner {
     padding: 0.6rem 1.3rem 1rem 1.3rem;

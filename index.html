@@ -59,9 +59,6 @@
       rel="stylesheet"
     />
 
-    <!-- Three.js + GLTFLoader (для 3D логотипів) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
 
     <!-- Головний CSS — оркестратор з @import-ами -->
     <link rel="stylesheet" href="css/main.css" />
@@ -375,16 +372,20 @@
         <ul class="experience-grid">
           <!-- #region EXP CARD: Magna Exteriors -->
           <li class="exp-card" onclick="toggleDetails(this)">
-            <span class="logo-3d-container" id="logo3d-magna"></span>
             <header class="exp-summary">
-              <h3>Operátor výrobních strojů</h3>
-              <p class="company">Magna Exteriors (Bohemia) s.r.o.</p>
-              <p class="period">
-                <i class="ph ph-calendar-blank"></i> 01. 07. 2024 - současnost
-              </p>
-              <p class="short-desc">
-                Obsluha strojů pro výrobu a zpracování plastových výrobků.
-              </p>
+              <div class="exp-text">
+                <h3>Operátor výrobních strojů</h3>
+                <p class="company">Magna Exteriors (Bohemia) s.r.o.</p>
+                <p class="period">
+                  <i class="ph ph-calendar-blank"></i> 01. 07. 2024 - současnost
+                </p>
+                <p class="short-desc">
+                  Obsluha strojů pro výrobu a zpracování plastových výrobků.
+                </p>
+              </div>
+              <div class="logo-wrapper">
+                <svg class="logo-3d-container" id="logo3d-magna" viewBox="8.218 0 562.23 125.087" preserveAspectRatio="xMidYMid meet" style="width: 180px;height: auto" role="img" aria-label="Magna Exteriors logo"><use href="./logo/logos-sprite.svg#logo-magna"/></svg>
+              </div>
             </header>
             <section class="exp-details">
               <ul class="exp-details-inner">
@@ -422,17 +423,21 @@
 
           <!-- #region EXP CARD: asphericon -->
           <li class="exp-card" onclick="toggleDetails(this)">
-            <span class="logo-3d-container" id="logo3d-asphericon"></span>
             <header class="exp-summary">
-              <h3>Pracovník ve výrobě optických komponentů</h3>
-              <p class="company">asphericon s.r.o.</p>
-              <p class="period">
-                <i class="ph ph-calendar-blank"></i> 01. 06. 2023 - 18. 06. 2024
-              </p>
-              <p class="short-desc">
-                Dělník ve výrobě - výroba optických komponentů (obsluha
-                CNC-strojů).
-              </p>
+              <div class="exp-text">
+                <h3>Pracovník ve výrobě optických komponentů</h3>
+                <p class="company">asphericon s.r.o.</p>
+                <p class="period">
+                  <i class="ph ph-calendar-blank"></i> 01. 06. 2023 - 18. 06. 2024
+                </p>
+                <p class="short-desc">
+                  Dělník ve výrobě - výroba optických komponentů (obsluha
+                  CNC-strojů).
+                </p>
+              </div>
+              <div class="logo-wrapper">
+                <svg class="logo-3d-container" id="logo3d-asphericon" viewBox="0 0 3811 2055" preserveAspectRatio="xMidYMid meet" style="width: 180px;height: auto" role="img" aria-label="asphericon logo"><use href="./logo/logos-sprite.svg#logo-asphericon"/></svg>
+              </div>
             </header>
             <section class="exp-details">
               <ul class="exp-details-inner">
@@ -483,17 +488,21 @@
 
           <!-- #region EXP CARD: PRECIOSA -->
           <li class="exp-card" onclick="toggleDetails(this)">
-            <span class="logo-3d-container" id="logo3d-preciosa"></span>
             <header class="exp-summary">
-              <h3>Operátor obráběcích strojů</h3>
-              <p class="company">PRECIOSA, a. s.</p>
-              <p class="period">
-                <i class="ph ph-calendar-blank"></i> 01. 06. 2022 - 31. 05. 2023
-              </p>
-              <p class="short-desc">
-                Strojník seřizovač - obsluha obráběcích strojů (kromě
-                dřevoobráběcích).
-              </p>
+              <div class="exp-text">
+                <h3>Operátor obráběcích strojů</h3>
+                <p class="company">PRECIOSA, a. s.</p>
+                <p class="period">
+                  <i class="ph ph-calendar-blank"></i> 01. 06. 2022 - 31. 05. 2023
+                </p>
+                <p class="short-desc">
+                  Strojník seřizovač - obsluha obráběcích strojů (kromě
+                  dřevoobráběcích).
+                </p>
+              </div>
+              <div class="logo-wrapper">
+                <svg class="logo-3d-container" id="logo3d-preciosa" viewBox="0 0 192.756 145" preserveAspectRatio="xMidYMid meet" style="width: 180px;height: auto;" role="img" aria-label="PRECIOSA logo"><use href="./logo/logos-sprite.svg#logo-preciosa"/></svg>
+              </div>
             </header>
             <section class="exp-details">
               <ul class="exp-details-inner">
@@ -533,16 +542,20 @@
 
           <!-- #region EXP CARD: LUKOV Plast -->
           <li class="exp-card" onclick="toggleDetails(this)">
-            <span class="logo-3d-container" id="logo3d-lukov"></span>
             <header class="exp-summary">
-              <h3>Operátor výrobních strojů</h3>
-              <p class="company">LUKOV Plast s. r. o.</p>
-              <p class="period">
-                <i class="ph ph-calendar-blank"></i> 16. 08. 2021 - 31. 05. 2022
-              </p>
-              <p class="short-desc">
-                Obsluha strojů pro výrobu a zpracování plastových výrobků.
-              </p>
+              <div class="exp-text">
+                <h3>Operátor výrobních strojů</h3>
+                <p class="company">LUKOV Plast s. r. o.</p>
+                <p class="period">
+                  <i class="ph ph-calendar-blank"></i> 16. 08. 2021 - 31. 05. 2022
+                </p>
+                <p class="short-desc">
+                  Obsluha strojů pro výrobu a zpracování plastových výrobků.
+                </p>
+              </div>
+              <div class="logo-wrapper">
+                <svg class="logo-3d-container" id="logo3d-lukov" viewBox="0 0 599.157210 106.789103" preserveAspectRatio="xMidYMid meet" style="width: 180px;height: auto;" role="img" aria-label="LUKOV Plast logo"><use href="./logo/logos-sprite.svg#logo-lukov"/></svg>
+              </div>
             </header>
             <section class="exp-details">
               <ul class="exp-details-inner">
@@ -703,8 +716,16 @@
     <!-- #region SCRIPTS — інтерактивність + 3D логотипи -->
     <!-- Hlavní JavaScript pro interaktivitu stránky main.js -->
     <script src="js/main.js"></script>
-    <!-- 3D Company Logos Script -->
-    <script src="js/logos3d.js"></script>
     <!-- #endregion SCRIPTS -->
+    <!-- Підвантаження зовнішнього SVG-спрайта логотипів (logos-sprite.svg) -->
+    <script>
+      fetch("logos-sprite.svg").then(function (r) { return r.text(); }).then(function (t) {
+        var box = document.createElement("div");
+        box.style.display = "none";
+        box.innerHTML = t;
+        var svg = box.querySelector("svg");
+        if (svg) document.body.insertBefore(svg, document.body.firstChild);
+      }).catch(function (e) { console.warn("Logo sprite load failed:", e); });
+    </script>
   </body>
 </html>

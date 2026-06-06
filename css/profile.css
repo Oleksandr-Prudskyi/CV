@@ -163,14 +163,48 @@
 /* RESPONSIVE — мобільна адаптація */
 
 @media (max-width: 768px) {
+  .profil-wrap {
+    display: flex;
+    justify-content: center;
+  }
   .profil-cols {
     flex-direction: column;
+    width: 100%;
   }
   .profil-col {
     flex: 1;
     border-right: none;
     border-bottom: 1px solid rgba(79, 66, 181, 0.08);
     padding: 1rem 1.2rem;
+    text-align: center;
+  }
+  .profil-col-title {
+    justify-content: center;
+  }
+  .edu-row {
+    flex-direction: column;
+    align-items: center;
+    border-left: none;
+    border-top: 3px solid var(--tanzanite);
+    text-align: center;
+  }
+  .edu-row:hover {
+    transform: translateY(-3px);
+  }
+  .edu-row > p {
+    width: 100%;
+  }
+  .lang-simple li,
+  .zajmy-simple li {
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+  .edu-list,
+  .lang-simple,
+  .zajmy-simple {
+    align-items: center;
   }
   .profil-col:last-child {
     border-bottom: none;

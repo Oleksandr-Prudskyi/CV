@@ -169,6 +169,8 @@
 @media (max-width: 768px) {
   .hero {
     padding: 1.5rem 0.5rem;
+    overflow-x: hidden;
+    overflow-y: hidden;
   }
   .hero-content {
     gap: 0.8rem;

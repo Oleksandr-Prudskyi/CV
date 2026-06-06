@@ -8,14 +8,10 @@
   right: 0;
   z-index: 1000;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 2rem;
   padding: 1rem 2rem;
-  background: linear-gradient(
-    135deg,
-    var(--tanzanite) 0%,
-    var(--tanzanite-dark) 100%
-  );
+  background: linear-gradient(135deg, var(--tanzanite) 0%, var(--tanzanite-dark) 100%);
   color: white;
   box-shadow: 0 4px 20px var(--shadow);
   transform: translateY(-100%);
@@ -34,58 +30,51 @@
   font-size: 1.4rem;
   font-weight: 700;
   letter-spacing: 1px;
+  flex-shrink: 0;
 }
 
-/* Список контактів справа */
+/* Список контактів справа (розстягується) */
 .contact-bar .contact-info {
   display: flex;
+  align-items: center;
   gap: 2rem;
+  flex: 1;
   font-size: 0.9rem;
   font-weight: 400;
-  /* Рівні моноширинні цифри для телефонів і дат */
   font-variant-numeric: tabular-nums;
-  font-feature-settings:
-    "tnum" 1,
-    "lnum" 1;
-  -webkit-font-feature-settings:
-    "tnum" 1,
-    "lnum" 1;
-  -moz-font-feature-settings:
-    "tnum" 1,
-    "lnum" 1;
+  font-feature-settings: "tnum" 1, "lnum" 1;
 }
 
 .contact-bar .contact-item {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  white-space: nowrap;
 }
 
 .contact-bar .icon {
   font-size: 1.1rem;
+  flex-shrink: 0;
 }
 
-/* RESPONSIVE — стискаємо панель на мобільних */
+/* RESPONSIVE — мобільна адаптація */
+
 @media (max-width: 768px) {
   .contact-bar {
     flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem;
     text-align: center;
-    padding: 0.4rem 0.5rem;
   }
   .contact-bar .name {
     font-size: 0.95rem;
-    margin-bottom: 0.1rem;
   }
   .contact-bar .contact-info {
     flex-direction: column;
-    gap: 0.1rem;
+    gap: 0.2rem;
+    font-size: 0.75rem;
   }
   .contact-bar .icon {
     font-size: 0.85rem;
-  }
-  /* Менша кнопка копіювання email у верхній панелі */
-  .contact-bar .copy-btn {
-    padding: 0.15rem 0.3rem;
-    font-size: 0.7rem;
   }
 }

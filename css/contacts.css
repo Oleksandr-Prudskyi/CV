@@ -1,20 +1,25 @@
 /* CONTACTS - картки контактів у Hero + кнопки копіювання */
 
-/* Сітка контактних карток (під фото в hero) */
+/* Контейнер контактних карток (під фото в hero) */
 .contact-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: 0.8rem;
-  margin-top: 1rem;
   animation: fadeInUp 1s ease-out 0.4s both;
 }
 
-/* Email картка займає всю ширину (весь рядок) */
+/* Email картка займає всю ширину */
 .contact-grid .email-card {
-  grid-column: 1 / -1;
+  flex-basis: 100%;
 }
 
-/* Одна картка контакту*/
+/* Інші картки по 2 в рядку (50% - gap) */
+.contact-grid .contact-card:not(.email-card) {
+  flex: 1;
+  min-width: calc(50% - 0.4rem);
+}
+
+/* Одна картка контакту */
 .contact-card {
   display: flex;
   align-items: center;
@@ -38,11 +43,14 @@
 .contact-card .icon {
   font-size: 2rem;
   color: var(--tanzanite);
+  flex-shrink: 0;
 }
 
 .contact-card .text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
   flex: 1;
-  text-align: left;
 }
 
 .contact-card .label {
@@ -136,13 +144,17 @@
 }
 
 /* RESPONSIVE — мобільна адаптація */
+
 @media (max-width: 768px) {
   .contact-grid {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+  }
+  .contact-grid .contact-card:not(.email-card) {
+    min-width: 100%;
+    flex: 1 1 auto;
   }
   .contact-card {
     padding: 0.8rem;
-    flex-wrap: wrap;
   }
   .contact-card .icon {
     font-size: 1.5rem;
@@ -150,22 +162,12 @@
   .contact-card .label {
     font-size: 0.75rem;
   }
-  .contact-card .text {
-    flex: 1;
-    min-width: 0;
-  }
   .contact-card .value {
     font-size: 1rem;
-    /* Розриває довгий email, щоб не ламав макет */
     word-break: break-word;
   }
-  /* Кнопка копіювання email на всю ширину картки */
   .contact-card.email-card .copy-btn-hero {
-    display: flex;
-    justify-content: center;
     width: 100%;
     margin-top: 0.5rem;
-    padding: 0.6rem;
-    font-size: 0.9rem;
   }
 }

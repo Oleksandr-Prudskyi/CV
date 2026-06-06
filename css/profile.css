@@ -16,14 +16,17 @@
   box-shadow: 0 6px 22px rgba(79, 66, 181, 0.14);
 }
 
-/* Сітка з 3 колонками (різні пропорції) */
+/* Три колонки через flex */
 .profil-cols {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr 1fr;
+  display: flex;
   gap: 0;
 }
 
 .profil-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   padding: 1.3rem 1.5rem;
 }
 
@@ -122,7 +125,9 @@
 /* JAZYKY · ZÁJMY — прості списки з іконками */
 .lang-simple,
 .zajmy-simple {
-  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
 .lang-simple li,
@@ -145,24 +150,29 @@
 .lang-simple li i {
   font-size: 1.1rem;
   color: var(--tanzanite-light);
+  flex-shrink: 0;
 }
 
 .zajmy-simple li i {
   font-size: 1.1rem;
   color: var(--gold);
+  flex-shrink: 0;
 }
 
-/* RESPONSIVE - на мобільному 3 колонки → 1 (вертикально)*/
+
+/* RESPONSIVE — мобільна адаптація */
+
 @media (max-width: 768px) {
   .profil-cols {
-    grid-template-columns: 1fr;
-  }
-  /* Замість правого бордюру — нижній (між рядками) */
-  .profil-col:not(:last-child) {
-    border-right: none;
-    border-bottom: 1px solid rgba(79, 66, 181, 0.08);
+    flex-direction: column;
   }
   .profil-col {
+    flex: 1;
+    border-right: none;
+    border-bottom: 1px solid rgba(79, 66, 181, 0.08);
     padding: 1rem 1.2rem;
+  }
+  .profil-col:last-child {
+    border-bottom: none;
   }
 }

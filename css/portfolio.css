@@ -227,12 +227,17 @@ counter-inline, experience grid, exp-card  */
   }
 }
 
-/* EXPERIENCE GRID — сітка карток робочого досвіду (2×2) */
+/* EXPERIENCE GRID — сітка карток робочого досвіду через flex (2×2) */
 .experience-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: 0.8rem;
   align-items: start;
+}
+
+.experience-grid .exp-card {
+  flex: 1 1 calc(50% - 0.4rem);
+  min-width: 300px;
 }
 
 /* 3D LOGO CONTAINER — місце для GLB-логотипу через Three.js */
@@ -499,8 +504,11 @@ EXPERIENCE CARD — одна картка робочого місця (praxe)
     justify-content: center;
   }
   .experience-grid {
-    grid-template-columns: 1fr;
-    gap: 0.6rem;
+    flex-direction: column;
+  }
+  .experience-grid .exp-card {
+    flex: 1 1 100%;
+    min-width: 100%;
   }
   .exp-details-inner {
     padding: 0.6rem 1.3rem 1rem 1.3rem;

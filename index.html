@@ -185,11 +185,9 @@
 
     <!-- #region HERO — головна секція (фото + ім'я + дата + контакти) -->
     <section class="hero">
-      <svg class="hero-bg-svg" viewBox="0 0 45 32"
-      preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-  <use href="./logo/logos-sprite.svg#icon-ukr-picture" />
-</svg>
-  </div>
+      <svg class="hero-bg-svg" viewBox="0 0 45 32" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <use href="#icon-ukr-picture" />
+      </svg>
       <article class="hero-content">
         <!-- #region HERO: avatar (клікабельне фото відкриває modal) -->
         <figure class="avatar-wrapper">
@@ -221,45 +219,8 @@
             title="Váhy / Libra"
             aria-label="Váhy"
           >
-            <svg
-              viewBox="0 0 32 32"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <line
-                x1="16"
-                y1="6"
-                x2="16"
-                y2="24"
-                stroke="#4F42B5"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-              <line
-                x1="6"
-                y1="24"
-                x2="26"
-                y2="24"
-                stroke="#D4AF37"
-                stroke-width="2.5"
-                stroke-linecap="round"
-              />
-              <line
-                x1="6"
-                y1="12"
-                x2="26"
-                y2="12"
-                stroke="#4F42B5"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-              <path d="M6 12 L3 19 Q6 22 9 19 Z" fill="#D4AF37" opacity="0.7" />
-              <path
-                d="M26 12 L23 19 Q26 22 29 19 Z"
-                fill="#D4AF37"
-                opacity="0.7"
-              />
-              <circle cx="16" cy="6" r="2" fill="#D4AF37" />
+            <svg viewBox="0 0 32 32" aria-hidden="true">
+              <use href="./logo/logos-sprite.svg#icon-libra" />
             </svg>
           </span>
         </p>
@@ -724,7 +685,7 @@
     <!-- #endregion SCRIPTS -->
     <!-- Підвантаження зовнішнього SVG-спрайта логотипів (logos-sprite.svg) -->
     <script>
-      fetch("logos-sprite.svg").then(function (r) { return r.text(); }).then(function (t) {
+      fetch("./logo/logos-sprite.svg").then(function (r) { return r.text(); }).then(function (t) {
         var box = document.createElement("div");
         box.style.display = "none";
         box.innerHTML = t;

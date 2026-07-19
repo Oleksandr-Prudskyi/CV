@@ -1,10 +1,10 @@
-/* CONTACTS - картки контактів у Hero + кнопки копіювання */
+/* CONTACTS — картки контактів у Hero + кнопки копіювання */
 
-/* Контейнер контактних карток (під фото в hero) */
+/* Контейнер контактних карток */
 .contact-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.8rem;
+  gap: 0.6rem;
   animation: fadeInUp 1s ease-out 0.4s both;
 }
 
@@ -13,7 +13,7 @@
   flex-basis: 100%;
 }
 
-/* Інші картки по 2 в рядку (50% - gap) */
+/* Інші картки по 2 в рядку */
 .contact-grid .contact-card:not(.email-card) {
   flex: 1;
   min-width: calc(50% - 0.4rem);
@@ -23,8 +23,8 @@
 .contact-card {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: 1rem;
+  gap: 0.8rem;
+  padding: 0.8rem;
   background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -66,31 +66,22 @@
   font-size: 1.1rem;
   font-weight: 400;
   color: var(--deep-purple);
-/* Системні шрифти з рівними цифрами для телефону/email */
   font-family:
     -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial,
     sans-serif;
   font-variant-numeric: lining-nums tabular-nums;
   letter-spacing: 0.5px;
 }
-/* На мобільних пристроях показуємо тільки мобільну клікабельну версію */
+
 .contact-card .desktop-phone {
   display: inline-block;
 }
+
 .contact-card .mobile-phone {
   display: none;
 }
-/* Приховуєм звичайний текст, підключаєм посилання */ 
-@media (max-width: 768px) {
-  .contact-card .desktop-phone {
-    display: none;
-  }
-  .contact-card .mobile-phone {
-    display: inline-block;
-  }
-}
 
-/* COPY BUTTONS — кнопка копіювання email */
+/* COPY BUTTONS — кнопки копіювання email */
 
 /* Маленька кнопка (у верхній панелі .contact-bar) */
 .copy-btn {
@@ -136,16 +127,22 @@
   box-shadow: 0 4px 15px var(--shadow);
 }
 
-/* Стан "успішно скопійовано" - зелений */
+/* Стан "успішно скопійовано" */
 .copy-btn.copied,
 .copy-btn-hero.copied {
   background: #28a745;
   border-color: #28a745;
 }
 
-/* RESPONSIVE — мобільна адаптація */
+/* RESPONSIVE */
 
 @media (max-width: 768px) {
+  .contact-card .desktop-phone {
+    display: none;
+  }
+  .contact-card .mobile-phone {
+    display: inline-block;
+  }
   .contact-grid {
     flex-direction: column;
   }
@@ -166,7 +163,6 @@
     font-size: 1rem;
     word-break: break-word;
   }
-  /* Email картка на мобільних: flex-direction row для горизонтального розташування */
   .contact-card.email-card {
     flex-direction: column;
     gap: 0.6rem;

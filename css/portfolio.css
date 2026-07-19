@@ -265,11 +265,7 @@ counter-inline, experience grid, exp-card  */
   --magna-dot: #e22e2f;
 }
 
-/* (3D canvas прибрано — тепер логотипи це SVG-спрайт; розміри задано інлайн у HTML) */
-
-/*
-EXPERIENCE CARD — одна картка робочого місця (praxe)
-*/
+/* EXPERIENCE CARD — одна картка робочого місця */
 .exp-card {
   position: relative;
   display: flex;

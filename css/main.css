@@ -1,9 +1,26 @@
+/* Base: reset, змінні, типографіка */
 @import "./common.css";
-@import "./header.css";
-@import "./contacts.css";
-@import "./hero.css";
-@import "./portfolio.css";
-@import "./skills.css";
-@import "./profile.css";
-@import "./social.css";
+
+/* Page-level decorations: clouds, deco-circles, floating-actions, photo-modal */
 @import "./footer.css";
+
+/* Floating social button + panel (всередині floating-actions) */
+@import "./social.css";
+
+/* Fixed header: contact-bar */
+@import "./header.css";
+
+/* Hero section */
+@import "./hero.css";
+
+/* Contact cards (всередині hero) */
+@import "./contacts.css";
+
+/* Main content: container, sections, experience cards */
+@import "./portfolio.css";
+
+/* Skills grid + tags */
+@import "./skills.css";
+
+/* Profile: vzdělání, jazyky, zájmy */
+@import "./profile.css";

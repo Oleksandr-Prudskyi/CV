@@ -104,22 +104,68 @@
     </aside>
     <!-- #endregion CLOUDS -->
 
-    <!-- #region DOWNLOAD CV — плаваюча кнопка завантаження -->
-    <aside class="dl-cv-wrapper">
-      <button
-        class="dl-cv-btn"
-        id="dlCvBtn"
-        type="button"
-        title="Stáhnout krátký životopis"
-        aria-label="Stáhnout krátký životopis"
-      >
-        <span class="dl-arrow-shaft"></span>
-        <span class="dl-arrow-head"></span>
-        <span class="dl-tray"></span>
-      </button>
-      <span class="dl-cv-label">Krátký životopis</span>
+    <!-- #region DOWNLOAD CV + SOCIAL — плаваючі кнопки справа -->
+    <aside class="floating-actions">
+      <div class="dl-cv-wrapper">
+        <button
+          class="dl-cv-btn"
+          id="dlCvBtn"
+          type="button"
+          title="Stáhnout krátký životopis"
+          aria-label="Stáhnout krátký životopis"
+        >
+          <span class="dl-arrow-shaft"></span>
+          <span class="dl-arrow-head"></span>
+          <span class="dl-tray"></span>
+        </button>
+        <span class="dl-cv-label">Krátký životopis</span>
+      </div>
+      <div class="social-wrapper">
+        <button
+          class="social-btn"
+          id="socialBtn"
+          type="button"
+          title="Sociální sítě"
+          aria-label="Sociální sítě"
+          onclick="toggleSocialPanel(event)"
+        >
+          <svg class="social-btn-icon" width="36" height="36" aria-hidden="true">
+            <use href="./logo/logos-sprite.svg#icon-share-network" />
+          </svg>
+        </button>
+        <span class="social-label">Sociální sítě</span>
+        <div class="social-panel" id="socialPanel">
+          <span class="social-nickname">
+            <svg class="nickname-svg" aria-label="PrO_Libra">
+              <use href="./logo/logos-sprite.svg#icon-nickname" />
+            </svg>
+          </span>
+          <nav class="social-links">
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram">
+              <svg class="social-icon" width="20" height="20" aria-hidden="true">
+                <use href="./logo/logos-sprite.svg#icon-instagram" />
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
+              <svg class="social-icon" width="20" height="20" aria-hidden="true">
+                <use href="./logo/logos-sprite.svg#icon-linkedin" />
+              </svg>
+            </a>
+            <a href="https://github.com/" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">
+              <svg class="social-icon" width="20" height="20" aria-hidden="true">
+                <use href="./logo/logos-sprite.svg#icon-github" />
+              </svg>
+            </a>
+            <a href="https://t.me/PrO_Libra" target="_blank" rel="noopener" title="Telegram" aria-label="Telegram" class="telegram-link">
+              <svg class="social-icon" width="20" height="20" aria-hidden="true">
+                <use href="./logo/logos-sprite.svg#icon-telegram" />
+              </svg>
+            </a>
+          </nav>
+        </div>
+      </div>
     </aside>
-    <!-- #endregion DOWNLOAD CV -->
+    <!-- #endregion DOWNLOAD CV + SOCIAL -->
 
     <!-- #region PHOTO MODAL — lightbox для розгортання фото -->
     <aside
@@ -149,6 +195,11 @@
 
     <!-- #region CONTACT BAR — плаваюча верхня панель (з'являється при скролі) -->
     <header class="contact-bar" id="contactBar">
+      <span class="contact-bar-logo">
+        <svg width="48" height="48" aria-hidden="true">
+          <use href="./logo/logos-sprite.svg#icon-me-logo" />
+        </svg>
+      </span>
       <p class="name">OLEKSANDR PRUDSKYI</p>
       <ul class="contact-info">
         <li class="contact-item">
@@ -679,19 +730,6 @@
     </main>
     <!-- #endregion MAIN -->
 
-    <!-- #region SCRIPTS — інтерактивність + 3D логотипи -->
-    <!-- Hlavní JavaScript pro interaktivitu stránky main.js -->
     <script src="js/main.js"></script>
-    <!-- #endregion SCRIPTS -->
-    <!-- Підвантаження зовнішнього SVG-спрайта логотипів (logos-sprite.svg) -->
-    <script>
-      fetch("./logo/logos-sprite.svg").then(function (r) { return r.text(); }).then(function (t) {
-        var box = document.createElement("div");
-        box.style.display = "none";
-        box.innerHTML = t;
-        var svg = box.querySelector("svg");
-        if (svg) document.body.insertBefore(svg, document.body.firstChild);
-      }).catch(function (e) { console.warn("Logo sprite load failed:", e); });
-    </script>
   </body>
 </html>

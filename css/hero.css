@@ -9,18 +9,20 @@
   justify-content: center;
   padding: 2rem 1rem;
   min-height: auto;
+  /* overflow: hidden; */
 }
 
 /* Декоративний фон з кольоровими радіусами*/
 .hero::before {
   content: "";
   position: absolute;
-  width: 150%;
-  height: 150%;
+  inset: -25%;
   background:
   radial-gradient(circle at 30% 50%, #8B7FE0 0%, #8B7FE000 50%),
-  radial-gradient(circle at 70% 50%, #D4AF37 0%, #D4AF3700 50%);  opacity: 0.1;
+  radial-gradient(circle at 70% 50%, #D4AF37 0%, #D4AF3700 50%);
+  opacity: 0.1;
   animation: float 20s ease-in-out infinite;
+  pointer-events: none;
 }
 
 @keyframes float {

@@ -1,21 +1,39 @@
+// SVG Sprite Loader
+fetch("./logo/logos-sprite.svg")
+  .then(function (r) {
+    return r.text();
+  })
+  .then(function (t) {
+    var box = document.createElement("div");
+    box.style.display = "none";
+    box.innerHTML = t;
+    var svg = box.querySelector("svg");
+    if (svg) document.body.insertBefore(svg, document.body.firstChild);
+  })
+  .catch(function (e) {
+    console.warn("Logo sprite load failed:", e);
+  });
+
 // Copy email
 function copyEmail() {
-  const email = "oleksandr.prudskyi@gmail.com";
+  var email = "oleksandr.prudskyi@gmail.com";
   navigator.clipboard
     .writeText(email)
-    .then(() => {
-      document.querySelectorAll(".copy-btn, .copy-btn-hero").forEach((btn) => {
-        const originalHTML = btn.innerHTML;
-        btn.innerHTML = '<i class="ph ph-check-circle"></i> Zkopírováno!';
-        btn.classList.add("copied");
-        setTimeout(() => {
-          btn.innerHTML = originalHTML;
-          btn.classList.remove("copied");
-        }, 2000);
-      });
+    .then(function () {
+      document
+        .querySelectorAll(".copy-btn, .copy-btn-hero")
+        .forEach(function (btn) {
+          var originalHTML = btn.innerHTML;
+          btn.innerHTML = '<i class="ph ph-check-circle"></i> Zkopírováno!';
+          btn.classList.add("copied");
+          setTimeout(function () {
+            btn.innerHTML = originalHTML;
+            btn.classList.remove("copied");
+          }, 2000);
+        });
     })
-    .catch(() => {
-      const textArea = document.createElement("textarea");
+    .catch(function () {
+      var textArea = document.createElement("textarea");
       textArea.value = email;
       document.body.appendChild(textArea);
       textArea.select();
@@ -27,8 +45,8 @@ function copyEmail() {
 
 // Toggle expandable work details
 function toggleDetails(card) {
-  const details = card.querySelector(".exp-details");
-  const isExpanded = card.classList.contains("expanded");
+  var details = card.querySelector(".exp-details");
+  var isExpanded = card.classList.contains("expanded");
 
   if (isExpanded) {
     details.style.maxHeight = "0px";
@@ -41,26 +59,26 @@ function toggleDetails(card) {
   }
 }
 
-// Digital Work Counter (from 16.08.2021)
-// Uses Europe/Prague timezone
-const counterYearsEl = document.getElementById("counterYears");
-const counterMonthsEl = document.getElementById("counterMonths");
-const counterDaysEl = document.getElementById("counterDays");
-const counterHoursEl = document.getElementById("counterHours");
+// Digital Work Counter (from 16.08.2021, Europe/Prague timezone)
+var counterYearsEl = document.getElementById("counterYears");
+var counterMonthsEl = document.getElementById("counterMonths");
+var counterDaysEl = document.getElementById("counterDays");
+var counterHoursEl = document.getElementById("counterHours");
+
 function updateWorkCounter() {
-  const startYear = 2021,
+  var startYear = 2021,
     startMonth = 7,
     startDay = 16;
 
-  const nowStr = new Date().toLocaleString("en-US", {
+  var nowStr = new Date().toLocaleString("en-US", {
     timeZone: "Europe/Prague",
   });
-  const now = new Date(nowStr);
+  var now = new Date(nowStr);
 
-  let years = now.getFullYear() - startYear;
-  let months = now.getMonth() - startMonth;
-  let days = now.getDate() - startDay;
-  let hours = now.getHours();
+  var years = now.getFullYear() - startYear;
+  var months = now.getMonth() - startMonth;
+  var days = now.getDate() - startDay;
+  var hours = now.getHours();
 
   if (hours < 0) {
     days--;
@@ -68,7 +86,7 @@ function updateWorkCounter() {
   }
   if (days < 0) {
     months--;
-    const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+    var prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
     days += prevMonth.getDate();
   }
   if (months < 0) {
@@ -81,7 +99,9 @@ function updateWorkCounter() {
   days = Math.max(0, days);
   hours = Math.max(0, hours);
 
-  const pad = (n) => (n < 10 ? "0" + n : String(n));
+  function pad(n) {
+    return n < 10 ? "0" + n : String(n);
+  }
 
   if (counterYearsEl) counterYearsEl.textContent = pad(years);
   if (counterMonthsEl) counterMonthsEl.textContent = pad(months);
@@ -92,39 +112,36 @@ function updateWorkCounter() {
 updateWorkCounter();
 setInterval(updateWorkCounter, 1000);
 
-// Scroll behavior: contact bar & indicator
-window.addEventListener("scroll", () => {
-  const contactBar = document.getElementById("contactBar");
-  const scrollIndicator = document.getElementById("scrollIndicator");
-  const aboutSection = document.getElementById("aboutSection");
-
-  const aboutTop = aboutSection.getBoundingClientRect().top;
+// Scroll behavior: contact bar
+window.addEventListener("scroll", function () {
+  var contactBar = document.getElementById("contactBar");
+  var aboutSection = document.getElementById("aboutSection");
+  var aboutTop = aboutSection.getBoundingClientRect().top;
 
   if (aboutTop <= 80) {
     contactBar.classList.add("visible");
-    scrollIndicator.classList.remove("visible");
   } else {
     contactBar.classList.remove("visible");
-    scrollIndicator.classList.add("visible");
   }
 });
 
 // Intersection Observer for scroll animations
-const observerOptions = {
+var observerOptions = {
   threshold: 0.1,
   rootMargin: "0px 0px -100px 0px",
 };
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
+var observer = new IntersectionObserver(function (entries) {
+  entries.forEach(function (entry) {
     if (entry.isIntersecting) {
       entry.target.style.opacity = "1";
       entry.target.style.transform = "translateY(0)";
     }
   });
 }, observerOptions);
-document.querySelectorAll(".section").forEach((section) => {
+document.querySelectorAll(".section").forEach(function (section) {
   observer.observe(section);
 });
+
 // Download CV Button
 document.getElementById("dlCvBtn").addEventListener("click", function () {
   var btn = this;
@@ -134,21 +151,18 @@ document.getElementById("dlCvBtn").addEventListener("click", function () {
   setTimeout(function () {
     btn.classList.remove("downloading");
     btn.classList.add("done");
-// Перевіряємо, чи це мобільний пристрій (за User-Agent або шириною екрана)
     var isMobile =
       /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
         navigator.userAgent,
       ) || window.innerWidth <= 768;
     if (isMobile) {
-// Для мобільних: примусове скачування файлу
       var link = document.createElement("a");
       link.href = "Files/CV_Oleksandr_Prudskyi.pdf?v=2";
-      link.download = "Files/CV_Oleksandr_Prudskyi.pdf"; // Цей атрибут дає команду "скачати"
+      link.download = "Files/CV_Oleksandr_Prudskyi.pdf";
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
     } else {
-// Для комп'ютерів: відкриття у новій вкладці
       window.open("Files/CV_Oleksandr_Prudskyi.pdf?v=2", "_blank");
     }
     setTimeout(function () {
@@ -156,6 +170,32 @@ document.getElementById("dlCvBtn").addEventListener("click", function () {
     }, 2500);
   }, 700);
 });
+
+// Social Panel Toggle
+function toggleSocialPanel(e) {
+  if (e) e.stopPropagation();
+  document.getElementById("socialPanel").classList.toggle("open");
+}
+document.addEventListener("click", function (e) {
+  var panel = document.getElementById("socialPanel");
+  var wrapper = document.querySelector(".social-wrapper");
+  if (panel && wrapper && !wrapper.contains(e.target)) {
+    panel.classList.remove("open");
+  }
+});
+
+// Telegram: mobile opens app, desktop opens new tab
+document.querySelector(".telegram-link").addEventListener("click", function (e) {
+  var isMobile =
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent,
+    ) || window.innerWidth <= 768;
+  if (isMobile) {
+    e.preventDefault();
+    window.location.href = "tg://resolve?domain=PrO_Libra";
+  }
+});
+
 // Photo Lightbox
 function openPhotoModal() {
   document.getElementById("photoModal").classList.add("open");

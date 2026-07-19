@@ -1,0 +1,164 @@
+/* SOCIAL BUTTON + PANEL */
+.social-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  position: relative;
+}
+
+.social-btn {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  background: linear-gradient(
+    135deg,
+    var(--tanzanite-light) 0%,
+    var(--tanzanite-dark) 100%
+  );
+  border: 3px solid var(--tanzanite);
+  border-radius: 50%;
+  box-shadow: 0 4px 18px var(--shadow);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.25s ease;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-btn:hover {
+  transform: scale(1.12);
+  border-color: var(--gold);
+  box-shadow:
+    0 6px 28px var(--shadow),
+    0 0 0 4px rgba(212, 175, 55, 0.2);
+  background: linear-gradient(
+    135deg,
+    var(--gold) 0%,
+    #c9a227 100%
+  );
+}
+
+.social-btn:active {
+  transform: scale(0.95);
+}
+
+.social-btn-icon {
+  fill: currentColor;
+  transition: transform 0.4s ease;
+}
+
+.social-btn:hover .social-btn-icon,
+.social-btn:focus .social-btn-icon {
+  animation: icon-pulse 0.6s ease;
+}
+
+@keyframes icon-pulse {
+  0% { transform: scale(1) rotate(0deg); }
+  30% { transform: scale(1.25) rotate(-8deg); }
+  60% { transform: scale(0.9) rotate(4deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.social-label {
+  font-family: "Roboto Condensed", Arial, sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  color: var(--tanzanite);
+  opacity: 0.85;
+  user-select: none;
+}
+
+.social-wrapper:hover .social-label {
+  opacity: 1;
+  color: var(--gold);
+}
+
+.social-panel {
+  position: absolute;
+  top: 0;
+  right: calc(100% + 0.8rem);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, var(--tanzanite) 0%, var(--tanzanite-dark) 100%);
+  border-radius: 12px;
+  box-shadow: 0 6px 25px var(--shadow);
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(10px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+}
+
+.social-panel.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+.social-nickname {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.nickname-svg {
+  display: block;
+  height: 20px;
+  width: 140px;
+  color: rgba(255, 255, 255, 0.9);
+  fill: currentColor;
+}
+
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  padding-left: 0.6rem;
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.25s ease;
+}
+
+.social-links a:hover {
+  color: var(--gold);
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.15);
+}
+
+.social-icon {
+  fill: currentColor;
+}
+
+@media (max-width: 768px) {
+  .social-panel {
+    right: calc(100% + 0.5rem);
+    max-width: calc(100vw - 5rem);
+  }
+  .social-btn {
+    width: 44px;
+    height: 44px;
+  }
+  .social-label {
+    font-size: 0.58rem;
+  }
+  .nickname-svg {
+    height: 16px;
+    width: 100px;
+  }
+}

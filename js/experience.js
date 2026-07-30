@@ -7,7 +7,7 @@
   }
 
   function bindTabClicks() {
-    var tabs = document.querySelectorAll(".exp-tab");
+    var tabs = document.querySelectorAll(".work-tab");
     tabs.forEach(function (tab) {
       tab.addEventListener("click", function () {
         selectCard(parseInt(tab.dataset.index));
@@ -22,11 +22,11 @@
   }
 
   function selectCard(index) {
-    document.querySelectorAll(".exp-tab").forEach(function (tab) {
+    document.querySelectorAll(".work-tab").forEach(function (tab) {
       tab.classList.toggle("active", parseInt(tab.dataset.index) === index);
     });
 
-    document.querySelectorAll(".exp-card").forEach(function (card) {
+    document.querySelectorAll(".work-card").forEach(function (card) {
       var isTarget = parseInt(card.dataset.index) === index;
 
       if (isTarget) {
@@ -34,7 +34,7 @@
       } else {
         card.classList.remove("visible");
         card.classList.remove("expanded");
-        var details = card.querySelector(".exp-details");
+        var details = card.querySelector(".work-details");
         if (details) {
           details.style.maxHeight = "0px";
           details.style.opacity = "0";
@@ -45,7 +45,7 @@
 
   function bindGlowTracking() {
     document.addEventListener("mousemove", function (e) {
-      var tabs = document.querySelectorAll(".exp-tab");
+      var tabs = document.querySelectorAll(".work-tab");
       tabs.forEach(function (tab) {
         var rect = tab.getBoundingClientRect();
         tab.style.setProperty("--mouse-x", e.clientX - rect.left + "px");
@@ -62,7 +62,7 @@
 })();
 
 function toggleDetails(card) {
-  var details = card.querySelector(".exp-details");
+  var details = card.querySelector(".work-details");
   var isExpanded = card.classList.contains("expanded");
 
   if (isExpanded) {

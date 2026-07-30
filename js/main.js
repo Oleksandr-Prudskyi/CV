@@ -162,7 +162,7 @@ function toggleSocialPanel(e) {
 }
 document.addEventListener("click", function (e) {
   var panel = document.getElementById("socialPanel");
-  var wrapper = document.querySelector(".social-wrapper");
+  var wrapper = document.querySelector(".social-box");
   if (panel && wrapper && !wrapper.contains(e.target)) {
     panel.classList.remove("open");
   }

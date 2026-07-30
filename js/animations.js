@@ -69,7 +69,7 @@
 
     // --- CONTACT BAR LOGO: elastic scale-in when bar appears ---
     var contactBar = document.getElementById("contactBar");
-    var logoSvg = document.querySelector(".contact-bar-logo svg");
+    var logoSvg = document.querySelector(".top-logo svg");
     var logoAnimated = false;
 
     if (contactBar && logoSvg) {
@@ -144,7 +144,7 @@
         tag.style.transform = "scale(0) translateY(30px)";
       });
 
-      var skillsGrid = document.querySelector(".skills-grid");
+      var skillsGrid = document.querySelector(".skills-list");
       if (skillsGrid) {
         var skillObserver = new IntersectionObserver(
           function (entries) {
@@ -214,10 +214,10 @@
     });
 
     // --- FLOATING ACTIONS: attention pulse after page load ---
-    var floatingActions = document.querySelector(".floating-actions");
+    var floatingActions = document.querySelector(".side-buttons");
     if (floatingActions) {
       var buttons = floatingActions.querySelectorAll(
-        ".dl-cv-btn, .social-btn",
+        ".download-btn, .social-btn",
       );
       setTimeout(function () {
         anime({

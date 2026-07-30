@@ -1,4 +1,4 @@
-/* CONTACTS — картки контактів у Hero + кнопки копіювання */
+/* CONTACTS - картки контактів у Hero + кнопки копіювання */
 
 /* Контейнер контактних карток */
 .contact-grid {
@@ -21,17 +21,12 @@
 
 /* Одна картка контакту */
 .contact-card {
+  --glass-blur: 10px;
   display: flex;
   align-items: center;
   gap: 0.8rem;
   padding: 0.8rem;
   background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: 12px;
-  box-shadow: 0 4px 16px var(--shadow);
-  transition: all 0.3s ease;
 }
 
 .contact-card:hover {
@@ -81,7 +76,7 @@
   display: none;
 }
 
-/* COPY BUTTONS — кнопки копіювання email */
+/* COPY BUTTONS - кнопки копіювання email */
 
 /* Маленька кнопка (у верхній панелі .contact-bar) */
 .copy-btn {

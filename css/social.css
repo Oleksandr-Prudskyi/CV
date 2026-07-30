@@ -1,5 +1,5 @@
 /* SOCIAL BUTTON + PANEL */
-.social-wrapper {
+.social-box {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,42 +7,10 @@
   position: relative;
 }
 
-.social-btn {
-  position: relative;
-  width: 52px;
-  height: 52px;
-  background: linear-gradient(
-    135deg,
-    var(--tanzanite-light) 0%,
-    var(--tanzanite-dark) 100%
-  );
-  border: 3px solid var(--tanzanite);
-  border-radius: 50%;
-  box-shadow: 0 4px 18px var(--shadow);
-  cursor: pointer;
-  overflow: hidden;
-  transition: all 0.25s ease;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+/* .social-btn base: see .circle-btn in common.css */
 
 .social-btn:hover {
-  transform: scale(1.12);
-  border-color: var(--gold);
-  box-shadow:
-    0 6px 28px var(--shadow),
-    0 0 0 4px rgba(212, 175, 55, 0.2);
-  background: linear-gradient(
-    135deg,
-    var(--gold) 0%,
-    #c9a227 100%
-  );
-}
-
-.social-btn:active {
-  transform: scale(0.95);
+  background: linear-gradient(135deg, var(--gold) 0%, #c9a227 100%);
 }
 
 .social-btn-icon {
@@ -73,7 +41,7 @@
   user-select: none;
 }
 
-.social-wrapper:hover .social-label {
+.social-box:hover .social-label {
   opacity: 1;
   color: var(--gold);
 }

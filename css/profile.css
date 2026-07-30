@@ -2,27 +2,21 @@
 Три колонки в одній обгортці з вертикальними роздільниками */
 
 /* Зовнішня обгортка (стиль скляної картки) */
-.profil-wrap {
+.info-card {
   background: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: 12px;
-  box-shadow: 0 4px 16px var(--shadow);
-  transition: all 0.3s ease;
 }
 
-.profil-wrap:hover {
+.info-card:hover {
   box-shadow: 0 6px 22px rgba(79, 66, 181, 0.14);
 }
 
 /* Три колонки через flex */
-.profil-cols {
+.info-columns {
   display: flex;
   gap: 0;
 }
 
-.profil-col {
+.info-column {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -31,12 +25,12 @@
 }
 
 /* Вертикальні роздільники між колонками */
-.profil-col:not(:last-child) {
+.info-column:not(:last-child) {
   border-right: 1px solid rgba(79, 66, 181, 0.08);
 }
 
 /* Заголовок колонки (з іконкою) */
-.profil-col-title {
+.info-column-title {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -47,12 +41,12 @@
   color: var(--tanzanite);
 }
 
-.profil-col-title i {
+.info-column-title i {
   font-size: 1.3rem;
   color: var(--gold);
 }
 
-/* VZDĚLÁNÍ — диплом + курси */
+/* VZDĚLÁNÍ - диплом + курси */
 .edu-list {
   display: flex;
   flex-direction: column;
@@ -89,16 +83,6 @@
   font-weight: 700;
   line-height: 1.3;
   color: var(--deep-purple);
-  font-variant-numeric: tabular-nums;
-  font-feature-settings:
-    "tnum" 1,
-    "lnum" 1;
-  -webkit-font-feature-settings:
-    "tnum" 1,
-    "lnum" 1;
-  -moz-font-feature-settings:
-    "tnum" 1,
-    "lnum" 1;
 }
 
 .edu-sub {
@@ -122,7 +106,7 @@
   opacity: 0.85;
 }
 
-/* JAZYKY · ZÁJMY — прості списки з іконками */
+/* JAZYKY · ZÁJMY - прості списки з іконками */
 .lang-simple,
 .zajmy-simple {
   display: flex;
@@ -146,7 +130,7 @@
   border-bottom: none;
 }
 
-/* Кольори іконок: жалюзі — синій, інтереси — золотий */
+/* Кольори іконок: жалюзі - синій, інтереси - золотий */
 .lang-simple li i {
   font-size: 1.1rem;
   color: var(--tanzanite-light);
@@ -160,25 +144,25 @@
 }
 
 
-/* RESPONSIVE — мобільна адаптація */
+/* RESPONSIVE - мобільна адаптація */
 
 @media (max-width: 768px) {
-  .profil-wrap {
+  .info-card {
     display: flex;
     justify-content: center;
   }
-  .profil-cols {
+  .info-columns {
     flex-direction: column;
     width: 100%;
   }
-  .profil-col {
+  .info-column {
     flex: 1;
     border-right: none;
     border-bottom: 1px solid rgba(79, 66, 181, 0.08);
     padding: 1rem 1.2rem;
     text-align: center;
   }
-  .profil-col-title {
+  .info-column-title {
     justify-content: center;
   }
   .edu-row {
@@ -206,7 +190,7 @@
   .zajmy-simple {
     align-items: center;
   }
-  .profil-col:last-child {
+  .info-column:last-child {
     border-bottom: none;
   }
 }

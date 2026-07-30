@@ -1,10 +1,10 @@
-/* FOOTER — декоративні та допоміжні елементи
+/* FOOTER - декоративні та допоміжні елементи
 - Floating clouds (хмари на фоні)
 - Decorative circles (декоративні кола)
 - Download CV button (плаваюча кнопка завантаження)
 - Photo modal (lightbox для фото) */
 
-/* FLOATING CLOUDS — напівпрозорі фіолетово-золоті плями дрейфують зліва направо */
+/* FLOATING CLOUDS - напівпрозорі фіолетово-золоті плями дрейфують зліва направо */
 .clouds {
   position: fixed;
   top: 0;
@@ -80,7 +80,7 @@
   }
 }
 
-/* DECORATIVE CIRCLES — два великі фіолетово-золоті кола що повільно пульсують */
+/* DECORATIVE CIRCLES - два великі фіолетово-золоті кола що повільно пульсують */
 .deco-circle {
   position: fixed;
   z-index: 0;
@@ -107,8 +107,8 @@
   animation: float 20s ease-in-out infinite reverse;
 }
 
-/* FLOATING ACTIONS — обгортка для кнопок справа (download + social) */
-.floating-actions {
+/* FLOATING ACTIONS - обгортка для кнопок справа (download + social) */
+.side-buttons {
   position: fixed;
   top: 50%;
   right: 1.5rem;
@@ -121,42 +121,14 @@
 }
 
 /* DOWNLOAD CV BUTTON */
-.dl-cv-wrapper {
+.download-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.45rem;
 }
 
-/* Кругла кнопка */
-.dl-cv-btn {
-  position: relative;
-  width: 52px;
-  height: 52px;
-  background: linear-gradient(
-    135deg,
-    var(--tanzanite-light) 0%,
-    var(--tanzanite-dark) 100%
-  );
-  border: 3px solid var(--tanzanite);
-  border-radius: 50%;
-  box-shadow: 0 4px 18px var(--shadow);
-  cursor: pointer;
-  overflow: hidden;
-  transition: all 0.35s ease;
-}
-
-.dl-cv-btn:hover {
-  transform: scale(1.12);
-  border-color: var(--gold);
-  box-shadow:
-    0 6px 28px var(--shadow),
-    0 0 0 4px rgba(212, 175, 55, 0.2);
-}
-
-.dl-cv-btn:active {
-  transform: scale(0.95);
-}
+/* .download-btn base: see .circle-btn in common.css */
 
 /* Стрілка вниз: shaft (тіло) + head (голівка) */
 .dl-arrow-shaft {
@@ -197,33 +169,33 @@
   transition: all 0.3s ease;
 }
 
-/* Стан "downloading" — стрілка падає на поличку */
-.dl-cv-btn.downloading .dl-arrow-shaft {
+/* Стан "downloading" - стрілка падає на поличку */
+.download-btn.downloading .dl-arrow-shaft {
   animation: dl-drop 0.6s ease forwards;
 }
 
-.dl-cv-btn.downloading .dl-arrow-head {
+.download-btn.downloading .dl-arrow-head {
   animation: dl-head-drop 0.6s ease forwards;
 }
 
-.dl-cv-btn.downloading .dl-tray {
+.download-btn.downloading .dl-tray {
   animation: dl-tray-flash 0.6s ease forwards;
 }
 
-/* Стан "done" — стрілка стає галочкою ✓ */
-.dl-cv-btn.done {
+/* Стан "done" - стрілка стає галочкою ✓ */
+.download-btn.done {
   background: linear-gradient(135deg, var(--gold) 0%, #c9a227 100%);
   border-color: var(--gold);
 }
 
-.dl-cv-btn.done .dl-arrow-shaft {
+.download-btn.done .dl-arrow-shaft {
   top: 44%;
   left: 55%;
   height: 15px;
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 
-.dl-cv-btn.done .dl-arrow-head {
+.download-btn.done .dl-arrow-head {
   top: 57%;
   left: 35%;
   width: 8px;
@@ -231,7 +203,7 @@
   transform: translate(-50%, -50%) rotate(-2deg);
 }
 
-.dl-cv-btn.done .dl-tray {
+.download-btn.done .dl-tray {
   opacity: 0;
 }
 
@@ -273,7 +245,7 @@
 }
 
 /* ідпис під кнопкою "Krátký životopis" */
-.dl-cv-label {
+.download-label {
   font-family: "Roboto Condensed", Arial, sans-serif;
   font-size: 0.65rem;
   font-weight: 600;
@@ -284,12 +256,12 @@
   user-select: none;
 }
 
-.dl-cv-wrapper:hover .dl-cv-label {
+.download-wrapper:hover .download-label {
   opacity: 1;
   color: var(--gold);
 }
 
-/* PHOTO MODAL — lightbox для розгортання фото */
+/* PHOTO MODAL - lightbox для розгортання фото */
 .photo-modal {
   display: none;
   position: fixed;
@@ -364,15 +336,15 @@
   }
 }
 
-/* RESPONSIVE — кнопки переїжджають вниз на мобільних */
+/* RESPONSIVE - кнопки переїжджають вниз на мобільних */
 @media (max-width: 768px) {
-  .floating-actions {
+  .side-buttons {
     top: auto;
     right: 1rem;
     bottom: 2rem;
     transform: none;
   }
-  .dl-cv-btn {
+  .download-btn {
     width: 44px;
     height: 44px;
   }
@@ -387,7 +359,7 @@
     width: 16px;
     bottom: 8px;
   }
-  .dl-cv-label {
+  .download-label {
     font-size: 0.58rem;
   }
 }

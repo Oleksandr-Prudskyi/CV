@@ -1,6 +1,5 @@
-/* Включає: container, section base, profile-card (O mně), counter-inline */
+/* container, section, about-card, work-counter */
 
-/* Головний контейнер контенту */
 .container {
   position: relative;
   z-index: 1;
@@ -9,7 +8,6 @@
   padding: 1.5rem 1rem;
 }
 
-/* Базова секція (.section використовується для O mně, Praxe, Skills, Profil) */
 .section {
   margin-bottom: 1.5rem;
   opacity: 0;
@@ -17,7 +15,11 @@
   animation: fadeInUp 0.8s ease-out forwards;
 }
 
-/* Каскадні затримки анімації для послідовної появи секцій */
+.section-body {
+  display: flex;
+  flex-direction: column;
+}
+
 .section:nth-child(1) {
   animation-delay: 0.1s;
 }
@@ -31,7 +33,6 @@
   animation-delay: 0.4s;
 }
 
-/* Заголовок секції з іконкою + декоративна підкреслювальна риска */
 .section-title {
   position: relative;
   display: inline-flex;
@@ -44,7 +45,6 @@
   color: var(--tanzanite);
 }
 
-/* Золота риска під заголовком */
 .section-title::after {
   content: "";
   position: absolute;
@@ -60,28 +60,21 @@
   color: var(--gold);
 }
 
-/* PROFILE CARD — картка "O mně" */
-.profile-card {
+/* ABOUT CARD */
+.about-card {
   position: relative;
   padding: 0.8rem;
   background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
   border-left: 4px solid var(--tanzanite);
-  border-radius: 12px;
-  box-shadow: 0 4px 16px var(--shadow);
   overflow: hidden;
-  transition: all 0.3s ease;
 }
 
-.profile-card:hover {
+.about-card:hover {
   background: rgba(255, 255, 255, 0.7);
   box-shadow: 0 6px 20px rgba(79, 66, 181, 0.15);
 }
 
-/* Декоративна золота пляма у верхньому правому куті */
-.profile-card::before {
+.about-card::before {
   content: "";
   position: absolute;
   top: 0;
@@ -93,7 +86,7 @@
   transform: translate(30%, -30%);
 }
 
-.profile-card p {
+.about-card p {
   position: relative;
   z-index: 1;
   margin-bottom: 0.45rem;
@@ -102,12 +95,12 @@
   color: var(--deep-purple);
 }
 
-.profile-card p:last-child {
+.about-card p:last-child {
   margin-bottom: 0;
 }
 
-/* EXPERIENCE HEADER — заголовок "Pracovní zkušenosti" + counter */
-.experience-header {
+/* WORK HEADER */
+.work-header {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -116,12 +109,12 @@
   margin-bottom: 1.2rem;
 }
 
-.experience-header .section-title {
+.work-header .section-title {
   margin-bottom: 0;
 }
 
-/* COUNTER INLINE — компактний лічильник часу роботи XX Let | XX Měs. | XX Dní | XX Hod */
-.counter-inline {
+/* WORK COUNTER */
+.work-counter {
   position: relative;
   flex-shrink: 0;
   display: flex;
@@ -138,8 +131,7 @@
   overflow: hidden;
 }
 
-/* Ефект "сканлайн" — тонкі вертикальні лінії */
-.counter-inline::before {
+.work-counter::before {
   content: "";
   position: absolute;
   top: 0;
@@ -156,7 +148,7 @@
   );
 }
 
-.counter-inline .ci-label {
+.work-counter .counter-label {
   margin-right: 0.6rem;
   font-family: "Roboto Condensed", Arial, sans-serif;
   font-size: 0.6rem;
@@ -167,34 +159,24 @@
   white-space: nowrap;
 }
 
-.counter-inline .ci-segment {
+.work-counter .counter-part {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
   min-width: 32px;
 }
 
-.counter-inline .ci-value {
+.work-counter .counter-number {
   font-family: "Roboto Condensed", Arial, sans-serif;
   font-size: 1.3rem;
   font-weight: 700;
   line-height: 1;
   letter-spacing: 1px;
   color: #fff;
-  font-variant-numeric: tabular-nums;
-  font-feature-settings:
-    "tnum" 1,
-    "lnum" 1;
-  -webkit-font-feature-settings:
-    "tnum" 1,
-    "lnum" 1;
-  -moz-font-feature-settings:
-    "tnum" 1,
-    "lnum" 1;
   animation: counterGlow 3s ease-in-out infinite;
 }
 
-.counter-inline .ci-unit {
+.work-counter .counter-unit {
   margin-top: 0.15rem;
   font-family: "Roboto Condensed", Arial, sans-serif;
   font-size: 0.5rem;
@@ -204,7 +186,7 @@
   opacity: 0.7;
 }
 
-.counter-inline .ci-sep {
+.work-counter .counter-sep {
   margin: 0 0.15rem;
   padding-bottom: 0.6rem;
   font-size: 1.1rem;
@@ -213,7 +195,6 @@
   opacity: 0.35;
 }
 
-/* Анімація світіння цифр */
 @keyframes counterGlow {
   0%,
   100% {
@@ -232,13 +213,13 @@
   .container {
     padding: 2rem 1rem;
   }
-  .counter-inline {
+  .work-counter {
     padding: 0.7rem 1rem;
   }
-  .counter-inline .ci-value {
+  .work-counter .counter-number {
     font-size: 1.1rem;
   }
-  .counter-inline .ci-segment {
+  .work-counter .counter-part {
     min-width: 26px;
   }
 }
@@ -257,19 +238,19 @@
   .section-title .section-icon {
     font-size: 1.8rem;
   }
-  .experience-header {
+  .work-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
   }
-  .counter-inline {
+  .work-counter {
     align-self: stretch;
     justify-content: center;
   }
-  .profile-card {
+  .about-card {
     padding: 0.8rem;
   }
-  .profile-card p {
+  .about-card p {
     font-size: 0.9rem;
     line-height: 1.5;
   }

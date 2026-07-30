@@ -1,4 +1,4 @@
-/* HEADER — плаваюча верхня панель з контактами
+/* HEADER - плаваюча верхня панель з контактами
 З'являється при скролі (клас .visible додається через JS) */
 
 .contact-bar {
@@ -26,13 +26,13 @@
   opacity: 1;
 }
 
-.contact-bar-logo {
+.top-logo {
   flex-shrink: 0;
   display: flex;
   align-items: center;
 }
 
-.contact-bar-logo svg {
+.top-logo svg {
   width: 52px;
   height: 52px;
   color: #fff;
@@ -42,13 +42,13 @@
   transition: opacity 0.6s ease, transform 0.6s ease, filter 0.3s ease;
 }
 
-.contact-bar.visible .contact-bar-logo svg {
+.contact-bar.visible .top-logo svg {
   opacity: 1;
   transform: scale(1);
   filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.4));
 }
 
-.contact-bar-logo:hover svg {
+.top-logo:hover svg {
   filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.7));
   transform: scale(1.08);
 }
@@ -69,8 +69,6 @@
   gap: 1.5rem;
   font-size: 0.9rem;
   font-weight: 400;
-  font-variant-numeric: tabular-nums;
-  font-feature-settings: "tnum" 1, "lnum" 1;
 }
 
 .contact-bar .contact-item {
@@ -85,7 +83,7 @@
   flex-shrink: 0;
 }
 
-/* RESPONSIVE — мобільна адаптація */
+/* RESPONSIVE - мобільна адаптація */
 
 @media (max-width: 768px) {
   .contact-bar {
@@ -95,7 +93,7 @@
     padding: 0.5rem 1rem;
     text-align: center;
   }
-  .contact-bar-logo svg {
+  .top-logo svg {
     width: 24px;
     height: 24px;
   }

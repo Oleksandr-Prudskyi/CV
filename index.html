@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Oleksandr Prudskyi - CV</title>
 
-    <!-- #region META: Open Graph (для соц. мереж) -->
     <meta property="og:title" content="Oleksandr Prudskyi - životopis" />
     <meta
       property="og:description"
@@ -20,22 +19,18 @@
     <meta property="og:image:height" content="630" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
-    <!-- #endregion META: Open Graph -->
 
-    <!-- #region META: SEO -->
     <meta
       name="description"
-      content="Oleksandr Prudskyi (Prudskyi Oleksandr) — životopis, CNC operátor, Liberec. Tel: +420773714660, 773714660"
+      content="Oleksandr Prudskyi (Prudskyi Oleksandr) - životopis, CNC operátor, Liberec. Tel: +420773714660, 773714660"
     />
     <meta
       name="keywords"
       content="Oleksandr Prudskyi, Prudskyi Oleksandr, Олександр Прудський, CNC operátor, Liberec, životopis, CV"
     />
     <link rel="canonical" href="https://cv-oleksandr-prudskyi.vercel.app/" />
-    <!-- #endregion META: SEO -->
 
-    <!-- #region ASSETS: шрифти, іконки, бібліотеки, CSS -->
-    <!-- Google Fonts: Playfair Display (заголовки) + Roboto Condensed (цифри) -->
+    <!-- #region ASSETS -->
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto+Condensed:wght@300;400;500&display=swap"
       rel="stylesheet"
@@ -45,7 +40,6 @@
       rel="stylesheet"
     />
 
-    <!-- Phosphor Icons (3 стилі: regular, bold, fill) -->
     <link
       href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css"
       rel="stylesheet"
@@ -59,15 +53,12 @@
       rel="stylesheet"
     />
 
-
-    <!-- anime.js (lightweight animation library) -->
     <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js" defer crossorigin="anonymous"></script>
 
-    <!-- Головний CSS — оркестратор з @import-ами -->
     <link rel="stylesheet" href="css/main.css" />
     <!-- #endregion ASSETS -->
 
-    <!-- #region SCHEMA.ORG (structured data для пошукових систем) -->
+    <!-- #region SCHEMA.ORG -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -97,7 +88,6 @@
   <!-- #endregion HEAD -->
 
   <body>
-    <!-- #region SVG DEFS — градієнти для folder-іконок -->
     <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true">
       <defs>
         <linearGradient id="fi-grad-back" x1="0.5" y1="0" x2="0.5" y2="1">
@@ -110,9 +100,7 @@
         </linearGradient>
       </defs>
     </svg>
-    <!-- #endregion SVG DEFS -->
 
-    <!-- #region CLOUDS — декоративні хмари на фоні -->
     <aside class="clouds" aria-hidden="true">
       <span class="cloud cloud-1"></span>
       <span class="cloud cloud-2"></span>
@@ -120,13 +108,12 @@
       <span class="cloud cloud-4"></span>
       <span class="cloud cloud-5"></span>
     </aside>
-    <!-- #endregion CLOUDS -->
 
-    <!-- #region DOWNLOAD CV + SOCIAL — плаваючі кнопки справа -->
-    <aside class="floating-actions">
-      <div class="dl-cv-wrapper">
+    <!-- #region SIDE BUTTONS -->
+    <aside class="side-buttons">
+      <div class="download-wrapper">
         <button
-          class="dl-cv-btn"
+          class="download-btn circle-btn"
           id="dlCvBtn"
           type="button"
           title="Stáhnout krátký životopis"
@@ -136,11 +123,11 @@
           <span class="dl-arrow-head"></span>
           <span class="dl-tray"></span>
         </button>
-        <span class="dl-cv-label">Krátký životopis</span>
+        <span class="download-label">Krátký životopis</span>
       </div>
-      <div class="social-wrapper">
+      <div class="social-box">
         <button
-          class="social-btn"
+          class="social-btn circle-btn"
           id="socialBtn"
           type="button"
           title="Sociální sítě"
@@ -183,9 +170,9 @@
         </div>
       </div>
     </aside>
-    <!-- #endregion DOWNLOAD CV + SOCIAL -->
+    <!-- #endregion SIDE BUTTONS -->
 
-    <!-- #region PHOTO MODAL — lightbox для розгортання фото -->
+    <!-- #region PHOTO MODAL -->
     <aside
       class="photo-modal"
       id="photoModal"
@@ -206,20 +193,18 @@
     </aside>
     <!-- #endregion PHOTO MODAL -->
 
-    <!-- #region DECORATIVE CIRCLES — декоративні фонові кола -->
     <span class="deco-circle deco-circle-1" aria-hidden="true"></span>
     <span class="deco-circle deco-circle-2" aria-hidden="true"></span>
-    <!-- #endregion DECORATIVE CIRCLES -->
 
-    <!-- #region CONTACT BAR — плаваюча верхня панель (з'являється при скролі) -->
+    <!-- #region CONTACT BAR -->
     <header class="contact-bar" id="contactBar">
-      <span class="contact-bar-logo">
+      <span class="top-logo">
         <svg width="48" height="48" aria-hidden="true">
           <use href="./logo/logos-sprite.svg#icon-me-logo" />
         </svg>
       </span>
       <p class="name">OLEKSANDR PRUDSKYI</p>
-      <ul class="contact-info">
+      <ul class="contact-info tabular-nums">
         <li class="contact-item">
           <span class="icon"><i class="ph ph-map-pin"></i></span>
           <span>U Nisy 913/4, Liberec</span>
@@ -252,13 +237,12 @@
     </header>
     <!-- #endregion CONTACT BAR -->
 
-    <!-- #region HERO — головна секція (фото + ім'я + дата + контакти) -->
+    <!-- #region HERO -->
     <section class="hero">
       <svg class="hero-bg-svg" viewBox="0 0 45 32" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
         <use href="#icon-ukr-picture" />
       </svg>
       <article class="hero-content">
-        <!-- #region HERO: avatar (клікабельне фото відкриває modal) -->
         <figure class="avatar-wrapper">
           <button
             class="avatar-placeholder has-image"
@@ -275,11 +259,9 @@
             />
           </button>
         </figure>
-        <!-- #endregion HERO: avatar -->
 
         <h1>OLEKSANDR<br />PRUDSKYI</h1>
 
-        <!-- #region HERO: birth-info (дата народження + знак Терезів) -->
         <p class="birth-info">
           <time class="birth-date" datetime="1997-09-26">26. 09. 1997</time>
           <span
@@ -293,18 +275,16 @@
             </svg>
           </span>
         </p>
-        <!-- #endregion HERO: birth-info -->
 
-        <!-- #region HERO: contact-grid (3 контактні картки) -->
         <ul class="contact-grid">
-          <li class="contact-card">
+          <li class="contact-card glass-card">
             <span class="icon"><i class="ph-fill ph-map-pin"></i></span>
             <p class="text">
               <span class="label">Adresa</span>
               <span class="value">U Nisy 913/4, Liberec</span>
             </p>
           </li>
-          <li class="contact-card">
+          <li class="contact-card glass-card">
             <span class="icon"><i class="ph-fill ph-phone"></i></span>
             <p class="text">
               <span class="label">Telefon</span>
@@ -318,7 +298,7 @@
               </span>
             </p>
           </li>
-          <li class="contact-card email-card">
+          <li class="contact-card email-card glass-card">
             <span class="icon"><i class="ph-fill ph-envelope-simple"></i></span>
             <p class="text">
               <span class="label">Email</span>
@@ -334,469 +314,459 @@
             </button>
           </li>
         </ul>
-        <!-- #endregion HERO: contact-grid -->
       </article>
     </section>
     <!-- #endregion HERO -->
 
-    <!-- #region MAIN — основний контент (4 секції) -->
+    <!-- #region MAIN -->
     <main class="container">
+
       <!-- #region SECTION 1: O mně -->
       <section class="section">
-        <h2 class="section-title" id="aboutSection">
-          <i class="ph-bold ph-briefcase section-icon"></i> O mně
-        </h2>
-        <article class="profile-card">
-          <p>Pracuji ve výrobě a vyhovuje mi technické prostředí.</p>
-          <p>
-            Snažím se učit nové postupy a přizpůsobit se technologiím, se
-            kterými firma pracuje.
-          </p>
-          <p>
-            Mám základní zkušenosti s CNC stroji a s měřením na úrovni mikronů.
-          </p>
-          <p>
-            Ve volném čase se zajímám o IT a zkouším různé AI nástroje -
-            například jak pomocí promptů zrychlit rutinní úkoly.
-          </p>
-          <p>
-            Snažím se pracovat pečlivě, spolehlivě a s pozorností k detailům.
-          </p>
-          <p>Češtinu si průběžně zlepšuji a učení beru jako dlouhodobý proces.</p>
-          <p>
-            Hledám pozici, kde můžu poctivě dělat svou práci a postupně si
-            rozšiřovat dovednosti.
-          </p>
-        </article>
+        <div class="section-body">
+          <h2 class="section-title" id="aboutSection">
+            <i class="ph-bold ph-briefcase section-icon"></i> O mně
+          </h2>
+          <article class="about-card glass-card">
+            <p>Pracuji ve výrobě a vyhovuje mi technické prostředí.</p>
+            <p>
+              Snažím se učit nové postupy a přizpůsobit se technologiím, se
+              kterými firma pracuje.
+            </p>
+            <p>
+              Mám základní zkušenosti s CNC stroji a s měřením na úrovni mikronů.
+            </p>
+            <p>
+              Ve volném čase se zajímám o IT a zkouším různé AI nástroje -
+              například jak pomocí promptů zrychlit rutinní úkoly.
+            </p>
+            <p>
+              Snažím se pracovat pečlivě, spolehlivě a s pozorností k detailům.
+            </p>
+            <p>Češtinu si průběžně zlepšuji a učení beru jako dlouhodobý proces.</p>
+            <p>
+              Hledám pozici, kde můžu poctivě dělat svou práci a postupně si
+              rozšiřovat dovednosti.
+            </p>
+          </article>
+        </div>
       </section>
       <!-- #endregion SECTION 1: O mně -->
 
-      <!-- #region SECTION 2: Pracovní zkušenosti (PRAXE) -->
+      <!-- #region SECTION 2: Work -->
       <section class="section">
-        <!-- Заголовок секції + лічильник часу роботи -->
-        <header class="experience-header">
-          <h2 class="section-title">
-            <i class="ph-bold ph-factory section-icon"></i> Pracovní zkušenosti
-          </h2>
+        <div class="section-body">
+          <header class="work-header">
+            <h2 class="section-title">
+              <i class="ph-bold ph-factory section-icon"></i> Pracovní zkušenosti
+            </h2>
 
-          <p class="counter-inline" aria-label="Délka pracovní praxe od roku 2021">
-            <span class="ci-label">Od 2021</span>
-            <span class="ci-segment">
-              <span class="ci-value" id="counterYears">00</span>
-              <span class="ci-unit">Let</span>
-            </span>
-            <span class="ci-sep">:</span>
-            <span class="ci-segment">
-              <span class="ci-value" id="counterMonths">00</span>
-              <span class="ci-unit">Měs.</span>
-            </span>
-            <span class="ci-sep">:</span>
-            <span class="ci-segment">
-              <span class="ci-value" id="counterDays">00</span>
-              <span class="ci-unit">Dní</span>
-            </span>
-            <span class="ci-sep">:</span>
-            <span class="ci-segment">
-              <span class="ci-value" id="counterHours">00</span>
-              <span class="ci-unit">Hod.</span>
-            </span>
-          </p>
-        </header>
-
-        <!-- Sidebar + картка досвіду -->
-        <div class="exp-layout">
-
-          <!-- #region SIDEBAR — навігація по компаніях -->
-          <ul class="exp-sidebar" id="expSidebar" role="tablist">
-            <li class="exp-tab active" role="tab" tabindex="0" data-index="0">
-              <span class="tab-glow"></span>
-              <span class="tab-border-glow"></span>
-              <svg class="folder-icon" viewBox="0 0 38 28" aria-hidden="true">
-                <path class="fi-back" d="M0,5 V2 Q0,0 2,0 H12 L16,5 H36 Q38,5 38,7 V26 Q38,28 36,28 H2 Q0,28 0,26 Z" fill="url(#fi-grad-back)"/>
-                <rect class="fi-sheet fi-sheet-1" x="3" y="8" width="32" height="17" rx="1.5" fill="#f8f8ff"/>
-                <rect class="fi-sheet fi-sheet-2" x="4" y="10" width="30" height="15" rx="1.5" fill="#eae6f0"/>
-                <path class="fi-front" d="M0,14 H38 V26 Q38,28 36,28 H2 Q0,28 0,26 Z" fill="url(#fi-grad-front)"/>
-              </svg>
-              <span class="tab-content">
-                <span class="tab-company">Magna Exteriors</span>
-                <span class="tab-position">obsluha</span>
+            <p class="work-counter" aria-label="Délka pracovní praxe od roku 2021">
+              <span class="counter-label">Od 2021</span>
+              <span class="counter-part">
+                <span class="counter-number tabular-nums" id="counterYears">00</span>
+                <span class="counter-unit">Let</span>
               </span>
-              <span class="arrow-wrap">
-                <svg viewBox="0 0 16 19" aria-hidden="true">
-                  <circle cx="1.613" cy="1.613" r="1.5"/>
-                  <circle cx="5.736" cy="1.613" r="1.5"/>
-                  <circle cx="5.736" cy="5.557" r="1.5"/>
-                  <circle cx="9.859" cy="5.557" r="1.5"/>
-                  <circle cx="9.859" cy="9.5" r="1.5"/>
-                  <circle cx="13.981" cy="9.5" r="1.5"/>
-                  <circle cx="5.736" cy="13.443" r="1.5"/>
-                  <circle cx="9.859" cy="13.443" r="1.5"/>
-                  <circle cx="1.613" cy="17.387" r="1.5"/>
-                  <circle cx="5.736" cy="17.387" r="1.5"/>
+              <span class="counter-sep">:</span>
+              <span class="counter-part">
+                <span class="counter-number tabular-nums" id="counterMonths">00</span>
+                <span class="counter-unit">Měs.</span>
+              </span>
+              <span class="counter-sep">:</span>
+              <span class="counter-part">
+                <span class="counter-number tabular-nums" id="counterDays">00</span>
+                <span class="counter-unit">Dní</span>
+              </span>
+              <span class="counter-sep">:</span>
+              <span class="counter-part">
+                <span class="counter-number tabular-nums" id="counterHours">00</span>
+                <span class="counter-unit">Hod.</span>
+              </span>
+            </p>
+          </header>
+
+          <div class="work-layout">
+
+            <!-- #region WORK SIDEBAR -->
+            <ul class="work-sidebar" id="expSidebar" role="tablist">
+              <li class="work-tab active" role="tab" tabindex="0" data-index="0">
+                <span class="tab-glow"></span>
+                <span class="tab-border-glow"></span>
+                <svg class="folder-icon" viewBox="0 0 38 28" aria-hidden="true">
+                  <path class="fi-back" d="M0,5 V2 Q0,0 2,0 H12 L16,5 H36 Q38,5 38,7 V26 Q38,28 36,28 H2 Q0,28 0,26 Z" fill="url(#fi-grad-back)"/>
+                  <rect class="fi-sheet fi-sheet-1" x="3" y="8" width="32" height="17" rx="1.5" fill="#f8f8ff"/>
+                  <rect class="fi-sheet fi-sheet-2" x="4" y="10" width="30" height="15" rx="1.5" fill="#eae6f0"/>
+                  <path class="fi-front" d="M0,14 H38 V26 Q38,28 36,28 H2 Q0,28 0,26 Z" fill="url(#fi-grad-front)"/>
                 </svg>
-              </span>
-            </li>
+                <span class="tab-content">
+                  <span class="tab-company">Magna Exteriors</span>
+                  <span class="tab-position">obsluha</span>
+                </span>
+                <span class="arrow-wrap">
+                  <svg viewBox="0 0 16 19" aria-hidden="true">
+                    <circle cx="1.613" cy="1.613" r="1.5"/>
+                    <circle cx="5.736" cy="1.613" r="1.5"/>
+                    <circle cx="5.736" cy="5.557" r="1.5"/>
+                    <circle cx="9.859" cy="5.557" r="1.5"/>
+                    <circle cx="9.859" cy="9.5" r="1.5"/>
+                    <circle cx="13.981" cy="9.5" r="1.5"/>
+                    <circle cx="5.736" cy="13.443" r="1.5"/>
+                    <circle cx="9.859" cy="13.443" r="1.5"/>
+                    <circle cx="1.613" cy="17.387" r="1.5"/>
+                    <circle cx="5.736" cy="17.387" r="1.5"/>
+                  </svg>
+                </span>
+              </li>
 
-            <li class="exp-tab" role="tab" tabindex="0" data-index="1">
-              <span class="tab-glow"></span>
-              <span class="tab-border-glow"></span>
-              <svg class="folder-icon" viewBox="0 0 38 28" aria-hidden="true">
-                <path class="fi-back" d="M0,5 V2 Q0,0 2,0 H12 L16,5 H36 Q38,5 38,7 V26 Q38,28 36,28 H2 Q0,28 0,26 Z" fill="url(#fi-grad-back)"/>
-                <rect class="fi-sheet fi-sheet-1" x="3" y="8" width="32" height="17" rx="1.5" fill="#f8f8ff"/>
-                <rect class="fi-sheet fi-sheet-2" x="4" y="10" width="30" height="15" rx="1.5" fill="#eae6f0"/>
-                <path class="fi-front" d="M0,14 H38 V26 Q38,28 36,28 H2 Q0,28 0,26 Z" fill="url(#fi-grad-front)"/>
-              </svg>
-              <span class="tab-content">
-                <span class="tab-company">asphericon</span>
-                <span class="tab-position">dělník</span>
-              </span>
-              <span class="arrow-wrap">
-                <svg viewBox="0 0 16 19" aria-hidden="true">
-                  <circle cx="1.613" cy="1.613" r="1.5"/>
-                  <circle cx="5.736" cy="1.613" r="1.5"/>
-                  <circle cx="5.736" cy="5.557" r="1.5"/>
-                  <circle cx="9.859" cy="5.557" r="1.5"/>
-                  <circle cx="9.859" cy="9.5" r="1.5"/>
-                  <circle cx="13.981" cy="9.5" r="1.5"/>
-                  <circle cx="5.736" cy="13.443" r="1.5"/>
-                  <circle cx="9.859" cy="13.443" r="1.5"/>
-                  <circle cx="1.613" cy="17.387" r="1.5"/>
-                  <circle cx="5.736" cy="17.387" r="1.5"/>
+              <li class="work-tab" role="tab" tabindex="0" data-index="1">
+                <span class="tab-glow"></span>
+                <span class="tab-border-glow"></span>
+                <svg class="folder-icon" viewBox="0 0 38 28" aria-hidden="true">
+                  <path class="fi-back" d="M0,5 V2 Q0,0 2,0 H12 L16,5 H36 Q38,5 38,7 V26 Q38,28 36,28 H2 Q0,28 0,26 Z" fill="url(#fi-grad-back)"/>
+                  <rect class="fi-sheet fi-sheet-1" x="3" y="8" width="32" height="17" rx="1.5" fill="#f8f8ff"/>
+                  <rect class="fi-sheet fi-sheet-2" x="4" y="10" width="30" height="15" rx="1.5" fill="#eae6f0"/>
+                  <path class="fi-front" d="M0,14 H38 V26 Q38,28 36,28 H2 Q0,28 0,26 Z" fill="url(#fi-grad-front)"/>
                 </svg>
-              </span>
-            </li>
+                <span class="tab-content">
+                  <span class="tab-company">asphericon</span>
+                  <span class="tab-position">dělník</span>
+                </span>
+                <span class="arrow-wrap">
+                  <svg viewBox="0 0 16 19" aria-hidden="true">
+                    <circle cx="1.613" cy="1.613" r="1.5"/>
+                    <circle cx="5.736" cy="1.613" r="1.5"/>
+                    <circle cx="5.736" cy="5.557" r="1.5"/>
+                    <circle cx="9.859" cy="5.557" r="1.5"/>
+                    <circle cx="9.859" cy="9.5" r="1.5"/>
+                    <circle cx="13.981" cy="9.5" r="1.5"/>
+                    <circle cx="5.736" cy="13.443" r="1.5"/>
+                    <circle cx="9.859" cy="13.443" r="1.5"/>
+                    <circle cx="1.613" cy="17.387" r="1.5"/>
+                    <circle cx="5.736" cy="17.387" r="1.5"/>
+                  </svg>
+                </span>
+              </li>
 
-            <li class="exp-tab" role="tab" tabindex="0" data-index="2">
-              <span class="tab-glow"></span>
-              <span class="tab-border-glow"></span>
-              <svg class="folder-icon" viewBox="0 0 38 28" aria-hidden="true">
-                <path class="fi-back" d="M0,5 V2 Q0,0 2,0 H12 L16,5 H36 Q38,5 38,7 V26 Q38,28 36,28 H2 Q0,28 0,26 Z" fill="url(#fi-grad-back)"/>
-                <rect class="fi-sheet fi-sheet-1" x="3" y="8" width="32" height="17" rx="1.5" fill="#f8f8ff"/>
-                <rect class="fi-sheet fi-sheet-2" x="4" y="10" width="30" height="15" rx="1.5" fill="#eae6f0"/>
-                <path class="fi-front" d="M0,14 H38 V26 Q38,28 36,28 H2 Q0,28 0,26 Z" fill="url(#fi-grad-front)"/>
-              </svg>
-              <span class="tab-content">
-                <span class="tab-company">PRECIOSA</span>
-                <span class="tab-position">seřizovač-obsluha</span>
-              </span>
-              <span class="arrow-wrap">
-                <svg viewBox="0 0 16 19" aria-hidden="true">
-                  <circle cx="1.613" cy="1.613" r="1.5"/>
-                  <circle cx="5.736" cy="1.613" r="1.5"/>
-                  <circle cx="5.736" cy="5.557" r="1.5"/>
-                  <circle cx="9.859" cy="5.557" r="1.5"/>
-                  <circle cx="9.859" cy="9.5" r="1.5"/>
-                  <circle cx="13.981" cy="9.5" r="1.5"/>
-                  <circle cx="5.736" cy="13.443" r="1.5"/>
-                  <circle cx="9.859" cy="13.443" r="1.5"/>
-                  <circle cx="1.613" cy="17.387" r="1.5"/>
-                  <circle cx="5.736" cy="17.387" r="1.5"/>
+              <li class="work-tab" role="tab" tabindex="0" data-index="2">
+                <span class="tab-glow"></span>
+                <span class="tab-border-glow"></span>
+                <svg class="folder-icon" viewBox="0 0 38 28" aria-hidden="true">
+                  <path class="fi-back" d="M0,5 V2 Q0,0 2,0 H12 L16,5 H36 Q38,5 38,7 V26 Q38,28 36,28 H2 Q0,28 0,26 Z" fill="url(#fi-grad-back)"/>
+                  <rect class="fi-sheet fi-sheet-1" x="3" y="8" width="32" height="17" rx="1.5" fill="#f8f8ff"/>
+                  <rect class="fi-sheet fi-sheet-2" x="4" y="10" width="30" height="15" rx="1.5" fill="#eae6f0"/>
+                  <path class="fi-front" d="M0,14 H38 V26 Q38,28 36,28 H2 Q0,28 0,26 Z" fill="url(#fi-grad-front)"/>
                 </svg>
-              </span>
-            </li>
+                <span class="tab-content">
+                  <span class="tab-company">PRECIOSA</span>
+                  <span class="tab-position">seřizovač-obsluha</span>
+                </span>
+                <span class="arrow-wrap">
+                  <svg viewBox="0 0 16 19" aria-hidden="true">
+                    <circle cx="1.613" cy="1.613" r="1.5"/>
+                    <circle cx="5.736" cy="1.613" r="1.5"/>
+                    <circle cx="5.736" cy="5.557" r="1.5"/>
+                    <circle cx="9.859" cy="5.557" r="1.5"/>
+                    <circle cx="9.859" cy="9.5" r="1.5"/>
+                    <circle cx="13.981" cy="9.5" r="1.5"/>
+                    <circle cx="5.736" cy="13.443" r="1.5"/>
+                    <circle cx="9.859" cy="13.443" r="1.5"/>
+                    <circle cx="1.613" cy="17.387" r="1.5"/>
+                    <circle cx="5.736" cy="17.387" r="1.5"/>
+                  </svg>
+                </span>
+              </li>
 
-            <li class="exp-tab" role="tab" tabindex="0" data-index="3">
-              <span class="tab-glow"></span>
-              <span class="tab-border-glow"></span>
-              <svg class="folder-icon" viewBox="0 0 38 28" aria-hidden="true">
-                <path class="fi-back" d="M0,5 V2 Q0,0 2,0 H12 L16,5 H36 Q38,5 38,7 V26 Q38,28 36,28 H2 Q0,28 0,26 Z" fill="url(#fi-grad-back)"/>
-                <rect class="fi-sheet fi-sheet-1" x="3" y="8" width="32" height="17" rx="1.5" fill="#f8f8ff"/>
-                <rect class="fi-sheet fi-sheet-2" x="4" y="10" width="30" height="15" rx="1.5" fill="#eae6f0"/>
-                <path class="fi-front" d="M0,14 H38 V26 Q38,28 36,28 H2 Q0,28 0,26 Z" fill="url(#fi-grad-front)"/>
-              </svg>
-              <span class="tab-content">
-                <span class="tab-company">LUKOV Plast</span>
-                <span class="tab-position">obsluha</span>
-              </span>
-              <span class="arrow-wrap">
-                <svg viewBox="0 0 16 19" aria-hidden="true">
-                  <circle cx="1.613" cy="1.613" r="1.5"/>
-                  <circle cx="5.736" cy="1.613" r="1.5"/>
-                  <circle cx="5.736" cy="5.557" r="1.5"/>
-                  <circle cx="9.859" cy="5.557" r="1.5"/>
-                  <circle cx="9.859" cy="9.5" r="1.5"/>
-                  <circle cx="13.981" cy="9.5" r="1.5"/>
-                  <circle cx="5.736" cy="13.443" r="1.5"/>
-                  <circle cx="9.859" cy="13.443" r="1.5"/>
-                  <circle cx="1.613" cy="17.387" r="1.5"/>
-                  <circle cx="5.736" cy="17.387" r="1.5"/>
+              <li class="work-tab" role="tab" tabindex="0" data-index="3">
+                <span class="tab-glow"></span>
+                <span class="tab-border-glow"></span>
+                <svg class="folder-icon" viewBox="0 0 38 28" aria-hidden="true">
+                  <path class="fi-back" d="M0,5 V2 Q0,0 2,0 H12 L16,5 H36 Q38,5 38,7 V26 Q38,28 36,28 H2 Q0,28 0,26 Z" fill="url(#fi-grad-back)"/>
+                  <rect class="fi-sheet fi-sheet-1" x="3" y="8" width="32" height="17" rx="1.5" fill="#f8f8ff"/>
+                  <rect class="fi-sheet fi-sheet-2" x="4" y="10" width="30" height="15" rx="1.5" fill="#eae6f0"/>
+                  <path class="fi-front" d="M0,14 H38 V26 Q38,28 36,28 H2 Q0,28 0,26 Z" fill="url(#fi-grad-front)"/>
                 </svg>
-              </span>
-            </li>
-          </ul>
-          <!-- #endregion SIDEBAR -->
+                <span class="tab-content">
+                  <span class="tab-company">LUKOV Plast</span>
+                  <span class="tab-position">obsluha</span>
+                </span>
+                <span class="arrow-wrap">
+                  <svg viewBox="0 0 16 19" aria-hidden="true">
+                    <circle cx="1.613" cy="1.613" r="1.5"/>
+                    <circle cx="5.736" cy="1.613" r="1.5"/>
+                    <circle cx="5.736" cy="5.557" r="1.5"/>
+                    <circle cx="9.859" cy="5.557" r="1.5"/>
+                    <circle cx="9.859" cy="9.5" r="1.5"/>
+                    <circle cx="13.981" cy="9.5" r="1.5"/>
+                    <circle cx="5.736" cy="13.443" r="1.5"/>
+                    <circle cx="9.859" cy="13.443" r="1.5"/>
+                    <circle cx="1.613" cy="17.387" r="1.5"/>
+                    <circle cx="5.736" cy="17.387" r="1.5"/>
+                  </svg>
+                </span>
+              </li>
+            </ul>
+            <!-- #endregion WORK SIDEBAR -->
 
-          <!-- #region EXP CARDS — картки досвіду -->
-          <div class="exp-card-container">
+            <!-- #region WORK CARDS -->
+            <div class="work-card-container">
 
-            <!-- #region EXP CARD: Magna Exteriors -->
-            <div class="exp-card visible" data-index="0" onclick="toggleDetails(this)">
-              <header class="exp-summary">
-                <div class="exp-text">
-                  <h3>Operátor výrobních strojů</h3>
-                  <p class="company">Magna Exteriors (Bohemia) s.r.o.</p>
-                  <p class="period">
-                    <i class="ph ph-calendar-blank"></i> 01. 07. 2024 - současnost
-                  </p>
-                  <p class="short-desc">
-                    Obsluha strojů pro výrobu a zpracování plastových výrobků.
-                  </p>
-                </div>
-                <div class="logo-wrapper">
-                  <svg class="logo-3d-container" id="logo3d-magna" viewBox="8.218 16.913 562.23 94.174" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Magna Exteriors logo"><use href="./logo/logos-sprite.svg#logo-magna"/></svg>
-                </div>
-              </header>
-              <section class="exp-details">
-                <ul class="exp-details-inner">
-                  <li>Montáž a kompletace plastových komponentů pro automobilový průmysl</li>
-                  <li>Průběžná vizuální kontrola kvality výrobků, včetně identifikace a třídění vadných kusů</li>
-                  <li>Spolupráce s týmem na optimalizaci výrobních procesů a důsledné dodržování bezpečnostních předpisů</li>
-                  <li>Udržování vysoké produktivity i v období zvýšené výrobní zátěže</li>
-                </ul>
-              </section>
-              <button class="toggle-details-btn" type="button" onclick="event.stopPropagation(); toggleDetails(this.closest('.exp-card'));">
-                <span class="btn-text">Zobrazit podrobnosti</span>
-                <span class="btn-text-hide">Skrýt podrobnosti</span>
-                <i class="ph-bold ph-caret-down"></i>
-              </button>
+              <div class="work-card visible" data-index="0" onclick="toggleDetails(this)">
+                <header class="work-summary">
+                  <div class="work-text">
+                    <h3>Operátor výrobních strojů</h3>
+                    <p class="company">Magna Exteriors (Bohemia) s.r.o.</p>
+                    <p class="period tabular-nums">
+                      <i class="ph ph-calendar-blank"></i> 01. 07. 2024 - současnost
+                    </p>
+                    <p class="short-desc">
+                      Obsluha strojů pro výrobu a zpracování plastových výrobků.
+                    </p>
+                  </div>
+                  <div class="logo-wrapper">
+                    <svg class="logo-3d-container" id="logo3d-magna" viewBox="8.218 5 562.23 124" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Magna Exteriors logo"><use href="./logo/logos-sprite.svg#logo-magna"/></svg>
+                  </div>
+                </header>
+                <section class="work-details">
+                  <ul class="work-details-inner">
+                    <li>Montáž a kompletace plastových komponentů pro automobilový průmysl</li>
+                    <li>Průběžná vizuální kontrola kvality výrobků, včetně identifikace a třídění vadných kusů</li>
+                    <li>Spolupráce s týmem na optimalizaci výrobních procesů a důsledné dodržování bezpečnostních předpisů</li>
+                    <li>Udržování vysoké produktivity i v období zvýšené výrobní zátěže</li>
+                  </ul>
+                </section>
+                <button class="show-more-btn" type="button" onclick="event.stopPropagation(); toggleDetails(this.closest('.work-card'));">
+                  <span class="btn-text">Zobrazit podrobnosti</span>
+                  <span class="btn-text-hide">Skrýt podrobnosti</span>
+                  <i class="ph-bold ph-caret-down"></i>
+                </button>
+              </div>
+
+              <div class="work-card" data-index="1" onclick="toggleDetails(this)">
+                <header class="work-summary">
+                  <div class="work-text">
+                    <h3>Pracovník ve výrobě optických komponentů</h3>
+                    <p class="company">asphericon s.r.o.</p>
+                    <p class="period tabular-nums">
+                      <i class="ph ph-calendar-blank"></i> 01. 06. 2023 - 18. 06. 2024
+                    </p>
+                    <p class="short-desc">
+                      Dělník ve výrobě - výroba optických komponentů (obsluha CNC-strojů).
+                    </p>
+                  </div>
+                  <div class="logo-wrapper">
+                    <svg class="logo-3d-container" id="logo3d-asphericon" viewBox="0 0 3811 2055" preserveAspectRatio="xMidYMid meet" role="img" aria-label="asphericon logo"><use href="./logo/logos-sprite.svg#logo-asphericon"/></svg>
+                  </div>
+                </header>
+                <section class="work-details">
+                  <ul class="work-details-inner">
+                    <li>Práce s přesnými CNC stroji při výrobě optických komponentů s mikronovou tolerancí</li>
+                    <li>Obsluha softwaru při použití CORS pro přípravu programů broušení a leštění, zadávání parametrů do CNC strojů řízených systémem Siemens</li>
+                    <li>Měření pomocí kontaktních i bezkontaktních přístrojů. Práce s posuvnými měřítky, mikrometry a měřicími sondami</li>
+                    <li>Kalibrace měřicích zařízení. Využití interferometrického měření (fringe) pro přesnou kalibraci a korekci strojů</li>
+                    <li>Opracování optických čoček podle přesných technických specifikací zákazníka</li>
+                    <li>Úzká spolupráce s oddělením kontroly kvality, detailní předávání směn s informacemi o stavu výroby</li>
+                    <li>Diagnostika a řešení běžných technických problémů během provozu</li>
+                  </ul>
+                </section>
+                <button class="show-more-btn" type="button" onclick="event.stopPropagation(); toggleDetails(this.closest('.work-card'));">
+                  <span class="btn-text">Zobrazit podrobnosti</span>
+                  <span class="btn-text-hide">Skrýt podrobnosti</span>
+                  <i class="ph-bold ph-caret-down"></i>
+                </button>
+              </div>
+
+              <div class="work-card" data-index="2" onclick="toggleDetails(this)">
+                <header class="work-summary">
+                  <div class="work-text">
+                    <h3>Operátor obráběcích strojů</h3>
+                    <p class="company">PRECIOSA, a. s.</p>
+                    <p class="period tabular-nums">
+                      <i class="ph ph-calendar-blank"></i> 01. 06. 2022 - 31. 05. 2023
+                    </p>
+                    <p class="short-desc">
+                      Strojník seřizovač - obsluha obráběcích strojů (kromě dřevoobráběcích).
+                    </p>
+                  </div>
+                  <div class="logo-wrapper">
+                    <svg class="logo-3d-container" id="logo3d-preciosa" viewBox="14 8 165 138" preserveAspectRatio="xMidYMid meet" role="img" aria-label="PRECIOSA logo"><use href="./logo/logos-sprite.svg#logo-preciosa"/></svg>
+                  </div>
+                </header>
+                <section class="work-details">
+                  <ul class="work-details-inner">
+                    <li>Zpracování křehkých materiálů (sklo, drahé kameny) s vysokými nároky na přesnost</li>
+                    <li>Seřizování výrobních zařízení a provádění základní údržby</li>
+                    <li>Přesná kontrola rozměrů pomocí různých měřicích přístrojů</li>
+                    <li>Identifikace a hlášení poruch výrobních zařízení</li>
+                    <li>Nastavování parametrů broušení a leštění podle typu zpracovávaného výrobku</li>
+                    <li>Seřizování tmelicích stanic, nastavení pracovních cyklů a rotačních bubnů s plynovými hořáky</li>
+                  </ul>
+                </section>
+                <button class="show-more-btn" type="button" onclick="event.stopPropagation(); toggleDetails(this.closest('.work-card'));">
+                  <span class="btn-text">Zobrazit podrobnosti</span>
+                  <span class="btn-text-hide">Skrýt podrobnosti</span>
+                  <i class="ph-bold ph-caret-down"></i>
+                </button>
+              </div>
+
+              <div class="work-card" data-index="3" onclick="toggleDetails(this)">
+                <header class="work-summary">
+                  <div class="work-text">
+                    <h3>Operátor výrobních strojů</h3>
+                    <p class="company">LUKOV Plast s. r. o.</p>
+                    <p class="period tabular-nums">
+                      <i class="ph ph-calendar-blank"></i> 16. 08. 2021 - 31. 05. 2022
+                    </p>
+                    <p class="short-desc">
+                      Obsluha strojů pro výrobu a zpracování plastových výrobků.
+                    </p>
+                  </div>
+                  <div class="logo-wrapper">
+                    <svg class="logo-3d-container" id="logo3d-lukov" viewBox="0 0 599.157210 106.789103" preserveAspectRatio="xMidYMid meet" role="img" aria-label="LUKOV Plast logo"><use href="./logo/logos-sprite.svg#logo-lukov"/></svg>
+                  </div>
+                </header>
+                <section class="work-details">
+                  <ul class="work-details-inner">
+                    <li>Obsluha a základní údržba strojů pro výrobu plastových dílů</li>
+                    <li>Kontrola kvality výrobků, spolupráce v týmu</li>
+                  </ul>
+                </section>
+                <button class="show-more-btn" type="button" onclick="event.stopPropagation(); toggleDetails(this.closest('.work-card'));">
+                  <span class="btn-text">Zobrazit podrobnosti</span>
+                  <span class="btn-text-hide">Skrýt podrobnosti</span>
+                  <i class="ph-bold ph-caret-down"></i>
+                </button>
+              </div>
+
             </div>
-            <!-- #endregion EXP CARD: Magna Exteriors -->
-
-            <!-- #region EXP CARD: asphericon -->
-            <div class="exp-card" data-index="1" onclick="toggleDetails(this)">
-              <header class="exp-summary">
-                <div class="exp-text">
-                  <h3>Pracovník ve výrobě optických komponentů</h3>
-                  <p class="company">asphericon s.r.o.</p>
-                  <p class="period">
-                    <i class="ph ph-calendar-blank"></i> 01. 06. 2023 - 18. 06. 2024
-                  </p>
-                  <p class="short-desc">
-                    Dělník ve výrobě - výroba optických komponentů (obsluha CNC-strojů).
-                  </p>
-                </div>
-                <div class="logo-wrapper">
-                  <svg class="logo-3d-container" id="logo3d-asphericon" viewBox="0 0 3811 2055" preserveAspectRatio="xMidYMid meet" role="img" aria-label="asphericon logo"><use href="./logo/logos-sprite.svg#logo-asphericon"/></svg>
-                </div>
-              </header>
-              <section class="exp-details">
-                <ul class="exp-details-inner">
-                  <li>Práce s přesnými CNC stroji při výrobě optických komponentů s mikronovou tolerancí</li>
-                  <li>Obsluha softwaru při použití CORS pro přípravu programů broušení a leštění, zadávání parametrů do CNC strojů řízených systémem Siemens</li>
-                  <li>Měření pomocí kontaktních i bezkontaktních přístrojů. Práce s posuvnými měřítky, mikrometry a měřicími sondami</li>
-                  <li>Kalibrace měřicích zařízení. Využití interferometrického měření (fringe) pro přesnou kalibraci a korekci strojů</li>
-                  <li>Opracování optických čoček podle přesných technických specifikací zákazníka</li>
-                  <li>Úzká spolupráce s oddělením kontroly kvality, detailní předávání směn s informacemi o stavu výroby</li>
-                  <li>Diagnostika a řešení běžných technických problémů během provozu</li>
-                </ul>
-              </section>
-              <button class="toggle-details-btn" type="button" onclick="event.stopPropagation(); toggleDetails(this.closest('.exp-card'));">
-                <span class="btn-text">Zobrazit podrobnosti</span>
-                <span class="btn-text-hide">Skrýt podrobnosti</span>
-                <i class="ph-bold ph-caret-down"></i>
-              </button>
-            </div>
-            <!-- #endregion EXP CARD: asphericon -->
-
-            <!-- #region EXP CARD: PRECIOSA -->
-            <div class="exp-card" data-index="2" onclick="toggleDetails(this)">
-              <header class="exp-summary">
-                <div class="exp-text">
-                  <h3>Operátor obráběcích strojů</h3>
-                  <p class="company">PRECIOSA, a. s.</p>
-                  <p class="period">
-                    <i class="ph ph-calendar-blank"></i> 01. 06. 2022 - 31. 05. 2023
-                  </p>
-                  <p class="short-desc">
-                    Strojník seřizovač - obsluha obráběcích strojů (kromě dřevoobráběcích).
-                  </p>
-                </div>
-                <div class="logo-wrapper">
-                  <svg class="logo-3d-container" id="logo3d-preciosa" viewBox="14 8 165 138" preserveAspectRatio="xMidYMid meet" role="img" aria-label="PRECIOSA logo"><use href="./logo/logos-sprite.svg#logo-preciosa"/></svg>
-                </div>
-              </header>
-              <section class="exp-details">
-                <ul class="exp-details-inner">
-                  <li>Zpracování křehkých materiálů (sklo, drahé kameny) s vysokými nároky na přesnost</li>
-                  <li>Seřizování výrobních zařízení a provádění základní údržby</li>
-                  <li>Přesná kontrola rozměrů pomocí různých měřicích přístrojů</li>
-                  <li>Identifikace a hlášení poruch výrobních zařízení</li>
-                  <li>Nastavování parametrů broušení a leštění podle typu zpracovávaného výrobku</li>
-                  <li>Seřizování tmelicích stanic, nastavení pracovních cyklů a rotačních bubnů s plynovými hořáky</li>
-                </ul>
-              </section>
-              <button class="toggle-details-btn" type="button" onclick="event.stopPropagation(); toggleDetails(this.closest('.exp-card'));">
-                <span class="btn-text">Zobrazit podrobnosti</span>
-                <span class="btn-text-hide">Skrýt podrobnosti</span>
-                <i class="ph-bold ph-caret-down"></i>
-              </button>
-            </div>
-            <!-- #endregion EXP CARD: PRECIOSA -->
-
-            <!-- #region EXP CARD: LUKOV Plast -->
-            <div class="exp-card" data-index="3" onclick="toggleDetails(this)">
-              <header class="exp-summary">
-                <div class="exp-text">
-                  <h3>Operátor výrobních strojů</h3>
-                  <p class="company">LUKOV Plast s. r. o.</p>
-                  <p class="period">
-                    <i class="ph ph-calendar-blank"></i> 16. 08. 2021 - 31. 05. 2022
-                  </p>
-                  <p class="short-desc">
-                    Obsluha strojů pro výrobu a zpracování plastových výrobků.
-                  </p>
-                </div>
-                <div class="logo-wrapper">
-                  <svg class="logo-3d-container" id="logo3d-lukov" viewBox="0 0 599.157210 106.789103" preserveAspectRatio="xMidYMid meet" role="img" aria-label="LUKOV Plast logo"><use href="./logo/logos-sprite.svg#logo-lukov"/></svg>
-                </div>
-              </header>
-              <section class="exp-details">
-                <ul class="exp-details-inner">
-                  <li>Obsluha a základní údržba strojů pro výrobu plastových dílů</li>
-                  <li>Kontrola kvality výrobků, spolupráce v týmu</li>
-                </ul>
-              </section>
-              <button class="toggle-details-btn" type="button" onclick="event.stopPropagation(); toggleDetails(this.closest('.exp-card'));">
-                <span class="btn-text">Zobrazit podrobnosti</span>
-                <span class="btn-text-hide">Skrýt podrobnosti</span>
-                <i class="ph-bold ph-caret-down"></i>
-              </button>
-            </div>
-            <!-- #endregion EXP CARD: LUKOV Plast -->
-
+            <!-- #endregion WORK CARDS -->
           </div>
-          <!-- #endregion EXP CARDS -->
         </div>
       </section>
-      <!-- #endregion SECTION 2: Pracovní zkušenosti -->
+      <!-- #endregion SECTION 2: Work -->
 
-      <!-- #region SECTION 3: Dovednosti (SKILLS) -->
+      <!-- #region SECTION 3: Skills -->
       <section class="section">
-        <h2 class="section-title">
-          <i class="ph-bold ph-wrench section-icon"></i> Dovednosti
-        </h2>
-        <ul class="skills-grid">
-          <!-- Технічні навички -->
-          <li class="skills-category">
-            <h3>Technické znalosti</h3>
-            <ul class="skill-tag-list">
-              <li class="skill-tag">Obsluha CNC strojů</li>
-              <li class="skill-tag">Software Cors</li>
-              <li class="skill-tag">Siemens systémy</li>
-              <li class="skill-tag">Přesné měření</li>
-              <li class="skill-tag">Kalibrace přístrojů</li>
-              <li class="skill-tag">Seřizování strojů</li>
-              <li class="skill-tag">Nastavení cyklů</li>
-              <li class="skill-tag">Práce s CVD diamantem</li>
-              <li class="skill-tag">
-                Použití polyuretanových a semišových nástrojů
-              </li>
-              <li class="skill-tag">Zodpovědnost za kvalitu a bezpečnost</li>
-              <li class="skill-tag">Práce s plasty</li>
-              <li class="skill-tag">Práce se sklem</li>
-              <li class="skill-tag">Optické komponenty</li>
-              <li class="skill-tag">Diagnostika poruch</li>
-              <li class="skill-tag">AI prompting</li>
-              <li class="skill-tag">Pokročilý uživatel PC</li>
-            </ul>
-          </li>
+        <div class="section-body">
+          <h2 class="section-title">
+            <i class="ph-bold ph-wrench section-icon"></i> Dovednosti
+          </h2>
+          <ul class="skills-list">
+            <li class="skills-group glass-card">
+              <h3>Technické znalosti</h3>
+              <ul class="skill-tags">
+                <li class="skill-tag">Obsluha CNC strojů</li>
+                <li class="skill-tag">Software Cors</li>
+                <li class="skill-tag">Siemens systémy</li>
+                <li class="skill-tag">Přesné měření</li>
+                <li class="skill-tag">Kalibrace přístrojů</li>
+                <li class="skill-tag">Seřizování strojů</li>
+                <li class="skill-tag">Nastavení cyklů</li>
+                <li class="skill-tag">Práce s CVD diamantem</li>
+                <li class="skill-tag">
+                  Použití polyuretanových a semišových nástrojů
+                </li>
+                <li class="skill-tag">Zodpovědnost za kvalitu a bezpečnost</li>
+                <li class="skill-tag">Práce s plasty</li>
+                <li class="skill-tag">Práce se sklem</li>
+                <li class="skill-tag">Optické komponenty</li>
+                <li class="skill-tag">Diagnostika poruch</li>
+                <li class="skill-tag">AI prompting</li>
+                <li class="skill-tag">Pokročilý uživatel PC</li>
+              </ul>
+            </li>
 
-          <!-- Особисті якості -->
-          <li class="skills-category">
-            <h3>Osobní vlastnosti</h3>
-            <ul class="skill-tag-list">
-              <li class="skill-tag">Rychlá adaptabilita</li>
-              <li class="skill-tag">Odolnost proti stresu</li>
-              <li class="skill-tag">Pozornost k detailům</li>
-              <li class="skill-tag">Zodpovědnost</li>
-              <li class="skill-tag">Ochota učit se</li>
-              <li class="skill-tag">Týmová spolupráce</li>
-              <li class="skill-tag">Samostatnost</li>
-            </ul>
-          </li>
-        </ul>
+            <li class="skills-group glass-card">
+              <h3>Osobní vlastnosti</h3>
+              <ul class="skill-tags">
+                <li class="skill-tag">Rychlá adaptabilita</li>
+                <li class="skill-tag">Odolnost proti stresu</li>
+                <li class="skill-tag">Pozornost k detailům</li>
+                <li class="skill-tag">Zodpovědnost</li>
+                <li class="skill-tag">Ochota učit se</li>
+                <li class="skill-tag">Týmová spolupráce</li>
+                <li class="skill-tag">Samostatnost</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
       </section>
-      <!-- #endregion SECTION 3: Dovednosti -->
+      <!-- #endregion SECTION 3: Skills -->
 
-      <!-- #region SECTION 4: Vzdělání · Jazyky · Zájmy -->
+      <!-- #region SECTION 4: Profile -->
       <section class="section">
-        <article class="profil-wrap">
-          <section class="profil-cols">
-            <!-- #region COL: Vzdělání -->
-            <article class="profil-col">
-              <h3 class="profil-col-title">
-                <i class="ph-bold ph-graduation-cap"></i> Vzdělání
-              </h3>
-              <ul class="edu-list">
-                <li class="edu-row">
-                  <i class="ph-fill ph-certificate"></i>
-                  <p>
-                    <span class="edu-title">Bakalářský titul (nostrifikace)</span>
-                    <span class="edu-sub">Ukrajina</span>
-                  </p>
-                </li>
-              </ul>
+        <div class="section-body">
+          <article class="info-card glass-card">
+            <section class="info-columns">
+              <article class="info-column">
+                <h3 class="info-column-title">
+                  <i class="ph-bold ph-graduation-cap"></i> Vzdělání
+                </h3>
+                <ul class="edu-list">
+                  <li class="edu-row">
+                    <i class="ph-fill ph-certificate"></i>
+                    <p>
+                      <span class="edu-title tabular-nums">Bakalářský titul (nostrifikace)</span>
+                      <span class="edu-sub">Ukrajina</span>
+                    </p>
+                  </li>
+                </ul>
 
-              <h4 class="edu-subgroup-title">Kurzy</h4>
+                <h4 class="edu-subgroup-title">Kurzy</h4>
 
-              <ul class="edu-list">
-                <li class="edu-row">
-                  <i class="ph-fill ph-code"></i>
-                  <p>
-                    <span class="edu-title">GO IT - Fullstack Development</span>
-                    <span class="edu-sub">probíhá · začátečník</span>
-                  </p>
-                </li>
-                <li class="edu-row">
-                  <i class="ph-fill ph-flower-lotus"></i>
-                  <p>
-                    <span class="edu-title">Sportovní masér (69-037-M)</span>
-                    <span class="edu-sub">
-                      dokončeno · osvědčení o získání kvalifikace
-                    </span>
-                  </p>
-                </li>
-              </ul>
-            </article>
-            <!-- #endregion COL: Vzdělání -->
+                <ul class="edu-list">
+                  <li class="edu-row">
+                    <i class="ph-fill ph-code"></i>
+                    <p>
+                      <span class="edu-title tabular-nums">GO IT - Fullstack Development</span>
+                      <span class="edu-sub">probíhá · začátečník</span>
+                    </p>
+                  </li>
+                  <li class="edu-row">
+                    <i class="ph-fill ph-flower-lotus"></i>
+                    <p>
+                      <span class="edu-title tabular-nums">Sportovní masér (69-037-M)</span>
+                      <span class="edu-sub">
+                        dokončeno · osvědčení o získání kvalifikace
+                      </span>
+                    </p>
+                  </li>
+                </ul>
+              </article>
 
-            <!-- #region COL: Jazyky -->
-            <article class="profil-col">
-              <h3 class="profil-col-title">
-                <i class="ph-bold ph-translate"></i> Jazyky
-              </h3>
-              <ul class="lang-simple">
-                <li><i class="ph ph-flag-pennant"></i> Čeština - B1</li>
-                <li>
-                  <i class="ph ph-flag-pennant"></i> Ukrajinština - rodný jazyk
-                </li>
-                <li>
-                  <i class="ph ph-flag-pennant"></i> Angličtina - elementary
-                </li>
-              </ul>
-            </article>
-            <!-- #endregion COL: Jazyky -->
+              <article class="info-column">
+                <h3 class="info-column-title">
+                  <i class="ph-bold ph-translate"></i> Jazyky
+                </h3>
+                <ul class="lang-simple">
+                  <li><i class="ph ph-flag-pennant"></i> Čeština - B1</li>
+                  <li>
+                    <i class="ph ph-flag-pennant"></i> Ukrajinština - rodný jazyk
+                  </li>
+                  <li>
+                    <i class="ph ph-flag-pennant"></i> Angličtina - elementary
+                  </li>
+                </ul>
+              </article>
 
-            <!-- #region COL: Zájmy -->
-            <article class="profil-col">
-              <h3 class="profil-col-title">
-                <i class="ph-bold ph-lightning"></i> Zájmy
-              </h3>
-              <ul class="zajmy-simple">
-                <li>
-                  <i class="ph ph-gear-six"></i> Práce s technickým vybavením
-                </li>
-                <li>
-                  <i class="ph ph-book-open-text"></i> Osobní rozvoj a vzdělávání
-                </li>
-                <li><i class="ph ph-barbell"></i> Sport a kondice</li>
-              </ul>
-            </article>
-            <!-- #endregion COL: Zájmy -->
-          </section>
-        </article>
+              <article class="info-column">
+                <h3 class="info-column-title">
+                  <i class="ph-bold ph-lightning"></i> Zájmy
+                </h3>
+                <ul class="zajmy-simple">
+                  <li>
+                    <i class="ph ph-gear-six"></i> Práce s technickým vybavením
+                  </li>
+                  <li>
+                    <i class="ph ph-book-open-text"></i> Osobní rozvoj a vzdělávání
+                  </li>
+                  <li><i class="ph ph-barbell"></i> Sport a kondice</li>
+                </ul>
+              </article>
+            </section>
+          </article>
+        </div>
       </section>
-      <!-- #endregion SECTION 4: Vzdělání · Jazyky · Zájmy -->
+      <!-- #endregion SECTION 4: Profile -->
     </main>
     <!-- #endregion MAIN -->
 

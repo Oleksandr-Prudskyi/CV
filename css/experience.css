@@ -1,11 +1,11 @@
-/* EXPERIENCE — sidebar navigation + card container
-   Desktop: sidebar зліва + одна картка справа
-   Tablet (<=900px): горизонтальні таби + картка
-   Mobile (<=600px): всі картки стопкою, sidebar прихований */
+/* EXPERIENCE - sidebar navigation + card container
+  Desktop: sidebar зліва + одна картка справа
+  Tablet (<900px): горизонтальні таби + картка
+  Mobile (<600px): всі картки стопкою, sidebar прихований */
 
 /* ===== TWO-PANEL LAYOUT ===== */
 
-.exp-layout {
+.work-layout {
   display: flex;
   gap: var(--layout-gap);
   align-items: flex-start;
@@ -13,7 +13,7 @@
 
 /* ===== SIDEBAR NAVIGATION ===== */
 
-.exp-sidebar {
+.work-sidebar {
   flex: 0 0 var(--sidebar-w);
   min-width: 0;
   display: flex;
@@ -21,7 +21,7 @@
   gap: 0.5rem;
 }
 
-.exp-tab {
+.work-tab {
   position: relative;
   display: flex;
   align-items: center;
@@ -42,7 +42,7 @@
     box-shadow 300ms ease;
 }
 
-.exp-tab::before {
+.work-tab::before {
   content: "";
   position: absolute;
   inset: 1px;
@@ -52,7 +52,7 @@
   transition: background 300ms ease;
 }
 
-.exp-tab::after {
+.work-tab::after {
   content: "";
   position: absolute;
   width: 3.5px;
@@ -67,20 +67,20 @@
     width 300ms ease;
 }
 
-.exp-tab:hover::after {
+.work-tab:hover::after {
   transform: translateX(2px);
   opacity: 0.8;
 }
 
-.exp-tab:hover::before {
+.work-tab:hover::before {
   background: var(--card-bg-hover);
 }
 
-.exp-tab:hover {
+.work-tab:hover {
   box-shadow: 0 6px 20px rgba(79, 66, 181, 0.14);
 }
 
-.exp-tab.active::after {
+.work-tab.active::after {
   opacity: 1;
   width: 4px;
   background: linear-gradient(
@@ -91,12 +91,12 @@
   );
 }
 
-.exp-tab.active {
+.work-tab.active {
   border-color: rgba(212, 175, 55, 0.3);
   box-shadow: 0 8px 28px rgba(79, 66, 181, 0.18);
 }
 
-.exp-tab.active::before {
+.work-tab.active::before {
   background: var(--card-bg-hover);
 }
 
@@ -129,15 +129,15 @@
   top: var(--mouse-y, 50%);
 }
 
-.exp-tab:hover .tab-glow {
+.work-tab:hover .tab-glow {
   opacity: 0.08;
 }
 
-.exp-tab:hover .tab-border-glow {
+.work-tab:hover .tab-border-glow {
   opacity: 0.1;
 }
 
-.exp-tab.active .tab-glow {
+.work-tab.active .tab-glow {
   opacity: 0.05;
 }
 
@@ -172,30 +172,30 @@
   filter: drop-shadow(0 -1px 2px rgba(212, 175, 55, 0.3));
 }
 
-.exp-tab:hover .fi-sheet-1,
-.exp-tab:focus-visible .fi-sheet-1 {
+.work-tab:hover .fi-sheet-1,
+.work-tab:focus-visible .fi-sheet-1 {
   transform: rotateX(-15deg);
 }
 
-.exp-tab:hover .fi-sheet-2,
-.exp-tab:focus-visible .fi-sheet-2 {
+.work-tab:hover .fi-sheet-2,
+.work-tab:focus-visible .fi-sheet-2 {
   transform: rotateX(-25deg);
 }
 
-.exp-tab:hover .fi-front,
-.exp-tab:focus-visible .fi-front {
+.work-tab:hover .fi-front,
+.work-tab:focus-visible .fi-front {
   transform: rotateX(-55deg);
 }
 
-.exp-tab.active .fi-sheet-1 {
+.work-tab.active .fi-sheet-1 {
   transform: rotateX(-10deg);
 }
 
-.exp-tab.active .fi-sheet-2 {
+.work-tab.active .fi-sheet-2 {
   transform: rotateX(-18deg);
 }
 
-.exp-tab.active .fi-front {
+.work-tab.active .fi-front {
   transform: rotateX(-35deg);
 }
 
@@ -212,7 +212,7 @@
   transition: transform 300ms ease;
 }
 
-.exp-tab:hover .tab-content {
+.work-tab:hover .tab-content {
   transform: translateX(3px);
 }
 
@@ -225,7 +225,7 @@
   transition: color 300ms ease;
 }
 
-.exp-tab.active .tab-company {
+.work-tab.active .tab-company {
   color: var(--tanzanite-dark);
 }
 
@@ -239,7 +239,7 @@
   transition: color 300ms ease;
 }
 
-.exp-tab.active .tab-position {
+.work-tab.active .tab-position {
   color: var(--tanzanite-light);
 }
 
@@ -271,15 +271,15 @@
   fill: white;
 }
 
-.exp-tab:hover .arrow-wrap {
+.work-tab:hover .arrow-wrap {
   box-shadow: 0 3px 10px rgba(79, 66, 181, 0.35);
 }
 
-.exp-tab:hover .arrow-wrap svg {
+.work-tab:hover .arrow-wrap svg {
   animation: arrowSlide 1s linear infinite;
 }
 
-.exp-tab.active .arrow-wrap {
+.work-tab.active .arrow-wrap {
   background: linear-gradient(
     135deg,
     var(--gold) 0%,
@@ -301,7 +301,7 @@
 
 /* ===== CARD CONTAINER ===== */
 
-.exp-card-container {
+.work-card-container {
   flex: 1;
   min-width: 0;
   position: relative;
@@ -309,7 +309,7 @@
 
 /* ===== EXPERIENCE CARD ===== */
 
-.exp-card {
+.work-card {
   position: relative;
   display: none;
   flex-direction: column;
@@ -324,7 +324,7 @@
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.exp-card.visible {
+.work-card.visible {
   display: flex;
   animation: cardFadeIn 350ms ease both;
 }
@@ -340,17 +340,17 @@
   }
 }
 
-.exp-card:hover {
+.work-card:hover {
   background: var(--card-bg-hover);
   border-color: rgba(79, 66, 181, 0.2);
   box-shadow: 0 8px 25px rgba(79, 66, 181, 0.18);
 }
 
-.exp-card.expanded {
+.work-card.expanded {
   border-color: var(--gold);
 }
 
-.exp-card::before {
+.work-card::before {
   content: "";
   display: block;
   flex-shrink: 0;
@@ -361,7 +361,7 @@
 
 /* --- Card summary --- */
 
-.exp-summary {
+.work-summary {
   flex: 1;
   display: flex;
   align-items: center;
@@ -369,12 +369,12 @@
   padding: 1.6rem 1.8rem 1rem;
 }
 
-.exp-text {
+.work-text {
   flex: 1;
   min-width: 0;
 }
 
-.exp-summary h3 {
+.work-summary h3 {
   margin-bottom: 0.4rem;
   font-family: "Playfair Display", serif;
   font-size: clamp(1.1rem, 1.5vw + 0.3rem, 1.3rem);
@@ -382,14 +382,14 @@
   color: var(--tanzanite);
 }
 
-.exp-summary .company {
+.work-summary .company {
   margin-bottom: 0.3rem;
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--deep-purple);
 }
 
-.exp-summary .period {
+.work-summary .period {
   display: flex;
   align-items: center;
   gap: 0.4rem;
@@ -397,16 +397,14 @@
   font-size: 0.85rem;
   font-style: italic;
   color: var(--silver);
-  font-variant-numeric: tabular-nums;
-  font-feature-settings: "tnum" 1, "lnum" 1;
 }
 
-.exp-summary .period i {
+.work-summary .period i {
   font-size: 0.9rem;
   color: var(--tanzanite-light);
 }
 
-.exp-summary .short-desc {
+.work-summary .short-desc {
   font-size: 0.9rem;
   line-height: 1.55;
   color: var(--deep-purple);
@@ -450,7 +448,7 @@
 
 /* --- Details (expanded) --- */
 
-.exp-details {
+.work-details {
   max-height: 0;
   opacity: 0;
   overflow: hidden;
@@ -459,16 +457,16 @@
     opacity 0.3s ease;
 }
 
-.exp-card.expanded .exp-details {
+.work-card.expanded .work-details {
   opacity: 1;
 }
 
-.exp-details-inner {
+.work-details-inner {
   padding: 0.8rem 1.8rem 0.4rem;
   border-top: 1px dashed rgba(79, 66, 181, 0.15);
 }
 
-.exp-details-inner li {
+.work-details-inner li {
   position: relative;
   padding: 0 0 0.5rem 1.3rem;
   font-size: 0.82rem;
@@ -476,11 +474,11 @@
   color: var(--deep-purple);
 }
 
-.exp-details-inner li:last-child {
+.work-details-inner li:last-child {
   padding-bottom: 0;
 }
 
-.exp-details-inner li::before {
+.work-details-inner li::before {
   content: "\25B8";
   position: absolute;
   left: 0;
@@ -490,7 +488,7 @@
 
 /* --- Toggle button --- */
 
-.toggle-details-btn {
+.show-more-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -513,7 +511,7 @@
   transition: all 0.3s ease;
 }
 
-.toggle-details-btn:hover {
+.show-more-btn:hover {
   background: linear-gradient(
     135deg,
     rgba(79, 66, 181, 0.08) 0%,
@@ -522,36 +520,36 @@
   color: var(--tanzanite-dark);
 }
 
-.toggle-details-btn i {
+.show-more-btn i {
   font-size: 1rem;
   transition: transform 0.3s ease;
 }
 
-.exp-card.expanded .toggle-details-btn i {
+.work-card.expanded .show-more-btn i {
   transform: rotate(180deg);
 }
 
-.exp-card.expanded .toggle-details-btn .btn-text {
+.work-card.expanded .show-more-btn .btn-text {
   display: none;
 }
 
-.exp-card.expanded .toggle-details-btn .btn-text-hide {
+.work-card.expanded .show-more-btn .btn-text-hide {
   display: inline;
 }
 
-.toggle-details-btn .btn-text-hide {
+.show-more-btn .btn-text-hide {
   display: none;
 }
 
-/* ===== RESPONSIVE — TABLET ===== */
+/* ===== RESPONSIVE - TABLET ===== */
 
 @media (max-width: 900px) {
-  .exp-layout {
+  .work-layout {
     flex-direction: column;
     align-items: stretch;
   }
 
-  .exp-sidebar {
+  .work-sidebar {
     flex: none;
     width: 100%;
     flex-direction: row;
@@ -560,7 +558,7 @@
     gap: 0.5rem;
   }
 
-  .exp-tab {
+  .work-tab {
     flex: 1 1 0;
     min-width: 0;
     flex-direction: column;
@@ -570,7 +568,7 @@
     gap: 0.4rem;
   }
 
-  .exp-tab::after {
+  .work-tab::after {
     width: auto;
     height: 3px;
     inset: 0.3rem 0.6rem auto 0.6rem;
@@ -579,12 +577,12 @@
     transition: transform 300ms ease 100ms, opacity 300ms ease 100ms;
   }
 
-  .exp-tab:hover::after {
+  .work-tab:hover::after {
     transform: scaleX(1);
     opacity: 1;
   }
 
-  .exp-tab.active::after {
+  .work-tab.active::after {
     width: auto;
     transform: scaleX(1);
   }
@@ -618,7 +616,7 @@
     transform: rotate(90deg);
   }
 
-  .exp-tab:hover .arrow-wrap svg {
+  .work-tab:hover .arrow-wrap svg {
     animation: arrowSlideDown 1s ease infinite;
     animation-delay: 150ms;
   }
@@ -638,12 +636,12 @@
     }
   }
 
-  .exp-card-container {
+  .work-card-container {
     flex: none;
     width: 100%;
   }
 
-  .exp-summary {
+  .work-summary {
     padding: 1.4rem 1.4rem 0.8rem;
     gap: 1.2rem;
   }
@@ -653,19 +651,19 @@
     height: 70px;
   }
 
-  .exp-details-inner {
+  .work-details-inner {
     padding: 0.7rem 1.4rem 0.3rem;
   }
 }
 
-/* ===== RESPONSIVE — MOBILE ===== */
+/* ===== RESPONSIVE - MOBILE ===== */
 
 @media (max-width: 600px) {
-  .exp-sidebar {
+  .work-sidebar {
     display: none;
   }
 
-  .exp-card-container {
+  .work-card-container {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -673,32 +671,34 @@
     max-width: 100%;
   }
 
-  .exp-card {
+  .work-card {
     display: flex !important;
     flex: none;
     width: 100%;
     animation: none !important;
   }
 
-  .exp-summary {
+  .work-summary {
     flex-direction: column;
     align-items: flex-start;
     padding: 1.2rem 1rem 0.8rem;
     gap: 0.8rem;
   }
 
-  .exp-summary h3 {
+  .work-summary h3 {
     font-size: 1.1rem;
   }
 
   .logo-wrapper {
     position: relative;
     width: fit-content;
-    max-width: 120px;
-    height: 75px;
+    max-width: 160px;
+    min-width: 130px;
+    height: 96px;
     float: none;
     align-self: center;
-    padding: 0;
+    padding: 10px 0 0;
+    overflow: visible;
   }
 
   .logo-wrapper .logo-3d-container {
@@ -710,11 +710,16 @@
     max-height: 100%;
   }
 
-  .exp-details-inner {
+  #logo3d-preciosa {
+    width: 103%;
+    transform: translateX(0) translateY(0);
+  }
+
+  .work-details-inner {
     padding: 0.6rem 1rem 0.3rem;
   }
 
-  .exp-details-inner li {
+  .work-details-inner li {
     font-size: 0.78rem;
   }
 }

@@ -13,10 +13,23 @@
   --tanzanite-dark: #3a2f8c;
   --tanzanite-light: #6b5bce;
   --gold: #d4af37;
+  --gold-dark: #b8941f;
+  --gold-light: #e6c84a;
   --pearl: #f8f8ff;
   --deep-purple: #2a1b5d;
   --silver: #c0c0c0;
   --shadow: rgba(79, 66, 181, 0.12);
+  --card-bg: rgba(255, 255, 255, 0.55);
+  --card-bg-hover: rgba(255, 255, 255, 0.72);
+  --card-border: rgba(255, 255, 255, 0.6);
+  --accent-gradient: linear-gradient(
+    to bottom,
+    var(--tanzanite-light),
+    var(--tanzanite),
+    var(--tanzanite-dark)
+  );
+  --sidebar-w: 280px;
+  --layout-gap: 1.5rem;
 }
 
 /* Smooth scroll для якорів */

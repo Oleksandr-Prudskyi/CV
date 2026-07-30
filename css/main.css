@@ -16,8 +16,11 @@
 /* Contact cards (всередині hero) */
 @import "./contacts.css";
 
-/* Main content: container, sections, experience cards */
+/* Main content: container, sections, profile-card, counter */
 @import "./portfolio.css";
+
+/* Experience section: sidebar, tabs, cards */
+@import "./experience.css";
 
 /* Skills grid + tags */
 @import "./skills.css";

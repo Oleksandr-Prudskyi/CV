@@ -43,22 +43,6 @@ function copyEmail() {
     });
 }
 
-// Toggle expandable work details
-function toggleDetails(card) {
-  var details = card.querySelector(".exp-details");
-  var isExpanded = card.classList.contains("expanded");
-
-  if (isExpanded) {
-    details.style.maxHeight = "0px";
-    details.style.opacity = "0";
-    card.classList.remove("expanded");
-  } else {
-    card.classList.add("expanded");
-    details.style.maxHeight = details.scrollHeight + "px";
-    details.style.opacity = "1";
-  }
-}
-
 // Digital Work Counter (from 16.08.2021, Europe/Prague timezone)
 var counterYearsEl = document.getElementById("counterYears");
 var counterMonthsEl = document.getElementById("counterMonths");

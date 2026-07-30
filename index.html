@@ -97,6 +97,21 @@
   <!-- #endregion HEAD -->
 
   <body>
+    <!-- #region SVG DEFS — градієнти для folder-іконок -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true">
+      <defs>
+        <linearGradient id="fi-grad-back" x1="0.5" y1="0" x2="0.5" y2="1">
+          <stop offset="0" stop-color="#b8941f"/>
+          <stop offset="1" stop-color="#9b7d14"/>
+        </linearGradient>
+        <linearGradient id="fi-grad-front" x1="0.5" y1="0" x2="0.5" y2="1">
+          <stop offset="0" stop-color="#e6c84a"/>
+          <stop offset="1" stop-color="#d4af37"/>
+        </linearGradient>
+      </defs>
+    </svg>
+    <!-- #endregion SVG DEFS -->
+
     <!-- #region CLOUDS — декоративні хмари на фоні -->
     <aside class="clouds" aria-hidden="true">
       <span class="cloud cloud-1"></span>
@@ -388,218 +403,270 @@
           </p>
         </header>
 
-        <!-- Сітка 4 карток робочих місць -->
-        <ul class="experience-grid">
-          <!-- #region EXP CARD: Magna Exteriors -->
-          <li class="exp-card" onclick="toggleDetails(this)">
-            <header class="exp-summary">
-              <div class="exp-text">
-                <h3>Operátor výrobních strojů</h3>
-                <p class="company">Magna Exteriors (Bohemia) s.r.o.</p>
-                <p class="period">
-                  <i class="ph ph-calendar-blank"></i> 01. 07. 2024 - současnost
-                </p>
-                <p class="short-desc">
-                  Obsluha strojů pro výrobu a zpracování plastových výrobků.
-                </p>
-              </div>
-              <div class="logo-wrapper">
-                <svg class="logo-3d-container" id="logo3d-magna" viewBox="8.218 0 562.23 125.087" preserveAspectRatio="xMidYMid meet" style="width: 180px;height: auto" role="img" aria-label="Magna Exteriors logo"><use href="./logo/logos-sprite.svg#logo-magna"/></svg>
-              </div>
-            </header>
-            <section class="exp-details">
-              <ul class="exp-details-inner">
-                <li>
-                  Montáž a kompletace plastových komponentů pro automobilový
-                  průmysl
-                </li>
-                <li>
-                  Průběžná vizuální kontrola kvality výrobků, včetně identifikace
-                  a třídění vadných kusů
-                </li>
-                <li>
-                  Spolupráce s týmem na optimalizaci výrobních procesů a důsledné
-                  dodržování bezpečnostních předpisů
-                </li>
-                <li>
-                  Udržování vysoké produktivity i v období zvýšené výrobní zátěže
-                </li>
-              </ul>
-            </section>
-            <button
-              class="toggle-details-btn"
-              type="button"
-              onclick="
-                event.stopPropagation();
-                toggleDetails(this.closest('.exp-card'));
-              "
-            >
-              <span class="btn-text">Zobrazit podrobnosti</span>
-              <span class="btn-text-hide">Skrýt podrobnosti</span>
-              <i class="ph-bold ph-caret-down"></i>
-            </button>
-          </li>
-          <!-- #endregion EXP CARD: Magna Exteriors -->
+        <!-- Sidebar + картка досвіду -->
+        <div class="exp-layout">
 
-          <!-- #region EXP CARD: asphericon -->
-          <li class="exp-card" onclick="toggleDetails(this)">
-            <header class="exp-summary">
-              <div class="exp-text">
-                <h3>Pracovník ve výrobě optických komponentů</h3>
-                <p class="company">asphericon s.r.o.</p>
-                <p class="period">
-                  <i class="ph ph-calendar-blank"></i> 01. 06. 2023 - 18. 06. 2024
-                </p>
-                <p class="short-desc">
-                  Dělník ve výrobě - výroba optických komponentů (obsluha
-                  CNC-strojů).
-                </p>
-              </div>
-              <div class="logo-wrapper">
-                <svg class="logo-3d-container" id="logo3d-asphericon" viewBox="0 0 3811 2055" preserveAspectRatio="xMidYMid meet" style="width: 180px;height: auto" role="img" aria-label="asphericon logo"><use href="./logo/logos-sprite.svg#logo-asphericon"/></svg>
-              </div>
-            </header>
-            <section class="exp-details">
-              <ul class="exp-details-inner">
-                <li>
-                  Práce s přesnými CNC stroji při výrobě optických komponentů s
-                  mikronovou tolerancí
-                </li>
-                <li>
-                  Obsluha softwaru při použití CORS pro přípravu programů
-                  broušení a leštění, zadávání parametrů do CNC strojů řízených
-                  systémem Siemens
-                </li>
-                <li>
-                  Měření pomocí kontaktních i bezkontaktních přístrojů. Práce s
-                  posuvnými měřítky, mikrometry a měřicími sondami
-                </li>
-                <li>
-                  Kalibrace měřicích zařízení. Využití interferometrického měření
-                  (fringe) pro přesnou kalibraci a korekci strojů
-                </li>
-                <li>
-                  Opracování optických čoček podle přesných technických
-                  specifikací zákazníka
-                </li>
-                <li>
-                  Úzká spolupráce s oddělením kontroly kvality, detailní
-                  předávání směn s informacemi o stavu výroby
-                </li>
-                <li>
-                  Diagnostika a řešení běžných technických problémů během provozu
-                </li>
-              </ul>
-            </section>
-            <button
-              class="toggle-details-btn"
-              type="button"
-              onclick="
-                event.stopPropagation();
-                toggleDetails(this.closest('.exp-card'));
-              "
-            >
-              <span class="btn-text">Zobrazit podrobnosti</span>
-              <span class="btn-text-hide">Skrýt podrobnosti</span>
-              <i class="ph-bold ph-caret-down"></i>
-            </button>
-          </li>
-          <!-- #endregion EXP CARD: asphericon -->
+          <!-- #region SIDEBAR — навігація по компаніях -->
+          <ul class="exp-sidebar" id="expSidebar" role="tablist">
+            <li class="exp-tab active" role="tab" tabindex="0" data-index="0">
+              <span class="tab-glow"></span>
+              <span class="tab-border-glow"></span>
+              <svg class="folder-icon" viewBox="0 0 38 28" aria-hidden="true">
+                <path class="fi-back" d="M0,5 V2 Q0,0 2,0 H12 L16,5 H36 Q38,5 38,7 V26 Q38,28 36,28 H2 Q0,28 0,26 Z" fill="url(#fi-grad-back)"/>
+                <rect class="fi-sheet fi-sheet-1" x="3" y="8" width="32" height="17" rx="1.5" fill="#f8f8ff"/>
+                <rect class="fi-sheet fi-sheet-2" x="4" y="10" width="30" height="15" rx="1.5" fill="#eae6f0"/>
+                <path class="fi-front" d="M0,14 H38 V26 Q38,28 36,28 H2 Q0,28 0,26 Z" fill="url(#fi-grad-front)"/>
+              </svg>
+              <span class="tab-content">
+                <span class="tab-company">Magna Exteriors</span>
+                <span class="tab-position">obsluha</span>
+              </span>
+              <span class="arrow-wrap">
+                <svg viewBox="0 0 16 19" aria-hidden="true">
+                  <circle cx="1.613" cy="1.613" r="1.5"/>
+                  <circle cx="5.736" cy="1.613" r="1.5"/>
+                  <circle cx="5.736" cy="5.557" r="1.5"/>
+                  <circle cx="9.859" cy="5.557" r="1.5"/>
+                  <circle cx="9.859" cy="9.5" r="1.5"/>
+                  <circle cx="13.981" cy="9.5" r="1.5"/>
+                  <circle cx="5.736" cy="13.443" r="1.5"/>
+                  <circle cx="9.859" cy="13.443" r="1.5"/>
+                  <circle cx="1.613" cy="17.387" r="1.5"/>
+                  <circle cx="5.736" cy="17.387" r="1.5"/>
+                </svg>
+              </span>
+            </li>
 
-          <!-- #region EXP CARD: PRECIOSA -->
-          <li class="exp-card" onclick="toggleDetails(this)">
-            <header class="exp-summary">
-              <div class="exp-text">
-                <h3>Operátor obráběcích strojů</h3>
-                <p class="company">PRECIOSA, a. s.</p>
-                <p class="period">
-                  <i class="ph ph-calendar-blank"></i> 01. 06. 2022 - 31. 05. 2023
-                </p>
-                <p class="short-desc">
-                  Strojník seřizovač - obsluha obráběcích strojů (kromě
-                  dřevoobráběcích).
-                </p>
-              </div>
-              <div class="logo-wrapper">
-                <svg class="logo-3d-container" id="logo3d-preciosa" viewBox="0 0 192.756 145" preserveAspectRatio="xMidYMid meet" style="width: 180px;height: auto;" role="img" aria-label="PRECIOSA logo"><use href="./logo/logos-sprite.svg#logo-preciosa"/></svg>
-              </div>
-            </header>
-            <section class="exp-details">
-              <ul class="exp-details-inner">
-                <li>
-                  Zpracování křehkých materiálů (sklo, drahé kameny) s vysokými
-                  nároky na přesnost
-                </li>
-                <li>Seřizování výrobních zařízení a provádění základní údržby</li>
-                <li>
-                  Přesná kontrola rozměrů pomocí různých měřicích přístrojů
-                </li>
-                <li>Identifikace a hlášení poruch výrobních zařízení</li>
-                <li>
-                  Nastavování parametrů broušení a leštění podle typu
-                  zpracovávaného výrobku
-                </li>
-                <li>
-                  Seřizování tmelicích stanic, nastavení pracovních cyklů a
-                  rotačních bubnů s plynovými hořáky
-                </li>
-              </ul>
-            </section>
-            <button
-              class="toggle-details-btn"
-              type="button"
-              onclick="
-                event.stopPropagation();
-                toggleDetails(this.closest('.exp-card'));
-              "
-            >
-              <span class="btn-text">Zobrazit podrobnosti</span>
-              <span class="btn-text-hide">Skrýt podrobnosti</span>
-              <i class="ph-bold ph-caret-down"></i>
-            </button>
-          </li>
-          <!-- #endregion EXP CARD: PRECIOSA -->
+            <li class="exp-tab" role="tab" tabindex="0" data-index="1">
+              <span class="tab-glow"></span>
+              <span class="tab-border-glow"></span>
+              <svg class="folder-icon" viewBox="0 0 38 28" aria-hidden="true">
+                <path class="fi-back" d="M0,5 V2 Q0,0 2,0 H12 L16,5 H36 Q38,5 38,7 V26 Q38,28 36,28 H2 Q0,28 0,26 Z" fill="url(#fi-grad-back)"/>
+                <rect class="fi-sheet fi-sheet-1" x="3" y="8" width="32" height="17" rx="1.5" fill="#f8f8ff"/>
+                <rect class="fi-sheet fi-sheet-2" x="4" y="10" width="30" height="15" rx="1.5" fill="#eae6f0"/>
+                <path class="fi-front" d="M0,14 H38 V26 Q38,28 36,28 H2 Q0,28 0,26 Z" fill="url(#fi-grad-front)"/>
+              </svg>
+              <span class="tab-content">
+                <span class="tab-company">asphericon</span>
+                <span class="tab-position">dělník</span>
+              </span>
+              <span class="arrow-wrap">
+                <svg viewBox="0 0 16 19" aria-hidden="true">
+                  <circle cx="1.613" cy="1.613" r="1.5"/>
+                  <circle cx="5.736" cy="1.613" r="1.5"/>
+                  <circle cx="5.736" cy="5.557" r="1.5"/>
+                  <circle cx="9.859" cy="5.557" r="1.5"/>
+                  <circle cx="9.859" cy="9.5" r="1.5"/>
+                  <circle cx="13.981" cy="9.5" r="1.5"/>
+                  <circle cx="5.736" cy="13.443" r="1.5"/>
+                  <circle cx="9.859" cy="13.443" r="1.5"/>
+                  <circle cx="1.613" cy="17.387" r="1.5"/>
+                  <circle cx="5.736" cy="17.387" r="1.5"/>
+                </svg>
+              </span>
+            </li>
 
-          <!-- #region EXP CARD: LUKOV Plast -->
-          <li class="exp-card" onclick="toggleDetails(this)">
-            <header class="exp-summary">
-              <div class="exp-text">
-                <h3>Operátor výrobních strojů</h3>
-                <p class="company">LUKOV Plast s. r. o.</p>
-                <p class="period">
-                  <i class="ph ph-calendar-blank"></i> 16. 08. 2021 - 31. 05. 2022
-                </p>
-                <p class="short-desc">
-                  Obsluha strojů pro výrobu a zpracování plastových výrobků.
-                </p>
-              </div>
-              <div class="logo-wrapper">
-                <svg class="logo-3d-container" id="logo3d-lukov" viewBox="0 0 599.157210 106.789103" preserveAspectRatio="xMidYMid meet" style="width: 180px;height: auto;" role="img" aria-label="LUKOV Plast logo"><use href="./logo/logos-sprite.svg#logo-lukov"/></svg>
-              </div>
-            </header>
-            <section class="exp-details">
-              <ul class="exp-details-inner">
-                <li>
-                  Obsluha a základní údržba strojů pro výrobu plastových dílů
-                </li>
-                <li>Kontrola kvality výrobků, spolupráce v týmu</li>
-              </ul>
-            </section>
-            <button
-              class="toggle-details-btn"
-              type="button"
-              onclick="
-                event.stopPropagation();
-                toggleDetails(this.closest('.exp-card'));
-              "
-            >
-              <span class="btn-text">Zobrazit podrobnosti</span>
-              <span class="btn-text-hide">Skrýt podrobnosti</span>
-              <i class="ph-bold ph-caret-down"></i>
-            </button>
-          </li>
-          <!-- #endregion EXP CARD: LUKOV Plast -->
-        </ul>
+            <li class="exp-tab" role="tab" tabindex="0" data-index="2">
+              <span class="tab-glow"></span>
+              <span class="tab-border-glow"></span>
+              <svg class="folder-icon" viewBox="0 0 38 28" aria-hidden="true">
+                <path class="fi-back" d="M0,5 V2 Q0,0 2,0 H12 L16,5 H36 Q38,5 38,7 V26 Q38,28 36,28 H2 Q0,28 0,26 Z" fill="url(#fi-grad-back)"/>
+                <rect class="fi-sheet fi-sheet-1" x="3" y="8" width="32" height="17" rx="1.5" fill="#f8f8ff"/>
+                <rect class="fi-sheet fi-sheet-2" x="4" y="10" width="30" height="15" rx="1.5" fill="#eae6f0"/>
+                <path class="fi-front" d="M0,14 H38 V26 Q38,28 36,28 H2 Q0,28 0,26 Z" fill="url(#fi-grad-front)"/>
+              </svg>
+              <span class="tab-content">
+                <span class="tab-company">PRECIOSA</span>
+                <span class="tab-position">seřizovač-obsluha</span>
+              </span>
+              <span class="arrow-wrap">
+                <svg viewBox="0 0 16 19" aria-hidden="true">
+                  <circle cx="1.613" cy="1.613" r="1.5"/>
+                  <circle cx="5.736" cy="1.613" r="1.5"/>
+                  <circle cx="5.736" cy="5.557" r="1.5"/>
+                  <circle cx="9.859" cy="5.557" r="1.5"/>
+                  <circle cx="9.859" cy="9.5" r="1.5"/>
+                  <circle cx="13.981" cy="9.5" r="1.5"/>
+                  <circle cx="5.736" cy="13.443" r="1.5"/>
+                  <circle cx="9.859" cy="13.443" r="1.5"/>
+                  <circle cx="1.613" cy="17.387" r="1.5"/>
+                  <circle cx="5.736" cy="17.387" r="1.5"/>
+                </svg>
+              </span>
+            </li>
+
+            <li class="exp-tab" role="tab" tabindex="0" data-index="3">
+              <span class="tab-glow"></span>
+              <span class="tab-border-glow"></span>
+              <svg class="folder-icon" viewBox="0 0 38 28" aria-hidden="true">
+                <path class="fi-back" d="M0,5 V2 Q0,0 2,0 H12 L16,5 H36 Q38,5 38,7 V26 Q38,28 36,28 H2 Q0,28 0,26 Z" fill="url(#fi-grad-back)"/>
+                <rect class="fi-sheet fi-sheet-1" x="3" y="8" width="32" height="17" rx="1.5" fill="#f8f8ff"/>
+                <rect class="fi-sheet fi-sheet-2" x="4" y="10" width="30" height="15" rx="1.5" fill="#eae6f0"/>
+                <path class="fi-front" d="M0,14 H38 V26 Q38,28 36,28 H2 Q0,28 0,26 Z" fill="url(#fi-grad-front)"/>
+              </svg>
+              <span class="tab-content">
+                <span class="tab-company">LUKOV Plast</span>
+                <span class="tab-position">obsluha</span>
+              </span>
+              <span class="arrow-wrap">
+                <svg viewBox="0 0 16 19" aria-hidden="true">
+                  <circle cx="1.613" cy="1.613" r="1.5"/>
+                  <circle cx="5.736" cy="1.613" r="1.5"/>
+                  <circle cx="5.736" cy="5.557" r="1.5"/>
+                  <circle cx="9.859" cy="5.557" r="1.5"/>
+                  <circle cx="9.859" cy="9.5" r="1.5"/>
+                  <circle cx="13.981" cy="9.5" r="1.5"/>
+                  <circle cx="5.736" cy="13.443" r="1.5"/>
+                  <circle cx="9.859" cy="13.443" r="1.5"/>
+                  <circle cx="1.613" cy="17.387" r="1.5"/>
+                  <circle cx="5.736" cy="17.387" r="1.5"/>
+                </svg>
+              </span>
+            </li>
+          </ul>
+          <!-- #endregion SIDEBAR -->
+
+          <!-- #region EXP CARDS — картки досвіду -->
+          <div class="exp-card-container">
+
+            <!-- #region EXP CARD: Magna Exteriors -->
+            <div class="exp-card visible" data-index="0" onclick="toggleDetails(this)">
+              <header class="exp-summary">
+                <div class="exp-text">
+                  <h3>Operátor výrobních strojů</h3>
+                  <p class="company">Magna Exteriors (Bohemia) s.r.o.</p>
+                  <p class="period">
+                    <i class="ph ph-calendar-blank"></i> 01. 07. 2024 - současnost
+                  </p>
+                  <p class="short-desc">
+                    Obsluha strojů pro výrobu a zpracování plastových výrobků.
+                  </p>
+                </div>
+                <div class="logo-wrapper">
+                  <svg class="logo-3d-container" id="logo3d-magna" viewBox="8.218 16.913 562.23 94.174" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Magna Exteriors logo"><use href="./logo/logos-sprite.svg#logo-magna"/></svg>
+                </div>
+              </header>
+              <section class="exp-details">
+                <ul class="exp-details-inner">
+                  <li>Montáž a kompletace plastových komponentů pro automobilový průmysl</li>
+                  <li>Průběžná vizuální kontrola kvality výrobků, včetně identifikace a třídění vadných kusů</li>
+                  <li>Spolupráce s týmem na optimalizaci výrobních procesů a důsledné dodržování bezpečnostních předpisů</li>
+                  <li>Udržování vysoké produktivity i v období zvýšené výrobní zátěže</li>
+                </ul>
+              </section>
+              <button class="toggle-details-btn" type="button" onclick="event.stopPropagation(); toggleDetails(this.closest('.exp-card'));">
+                <span class="btn-text">Zobrazit podrobnosti</span>
+                <span class="btn-text-hide">Skrýt podrobnosti</span>
+                <i class="ph-bold ph-caret-down"></i>
+              </button>
+            </div>
+            <!-- #endregion EXP CARD: Magna Exteriors -->
+
+            <!-- #region EXP CARD: asphericon -->
+            <div class="exp-card" data-index="1" onclick="toggleDetails(this)">
+              <header class="exp-summary">
+                <div class="exp-text">
+                  <h3>Pracovník ve výrobě optických komponentů</h3>
+                  <p class="company">asphericon s.r.o.</p>
+                  <p class="period">
+                    <i class="ph ph-calendar-blank"></i> 01. 06. 2023 - 18. 06. 2024
+                  </p>
+                  <p class="short-desc">
+                    Dělník ve výrobě - výroba optických komponentů (obsluha CNC-strojů).
+                  </p>
+                </div>
+                <div class="logo-wrapper">
+                  <svg class="logo-3d-container" id="logo3d-asphericon" viewBox="0 0 3811 2055" preserveAspectRatio="xMidYMid meet" role="img" aria-label="asphericon logo"><use href="./logo/logos-sprite.svg#logo-asphericon"/></svg>
+                </div>
+              </header>
+              <section class="exp-details">
+                <ul class="exp-details-inner">
+                  <li>Práce s přesnými CNC stroji při výrobě optických komponentů s mikronovou tolerancí</li>
+                  <li>Obsluha softwaru při použití CORS pro přípravu programů broušení a leštění, zadávání parametrů do CNC strojů řízených systémem Siemens</li>
+                  <li>Měření pomocí kontaktních i bezkontaktních přístrojů. Práce s posuvnými měřítky, mikrometry a měřicími sondami</li>
+                  <li>Kalibrace měřicích zařízení. Využití interferometrického měření (fringe) pro přesnou kalibraci a korekci strojů</li>
+                  <li>Opracování optických čoček podle přesných technických specifikací zákazníka</li>
+                  <li>Úzká spolupráce s oddělením kontroly kvality, detailní předávání směn s informacemi o stavu výroby</li>
+                  <li>Diagnostika a řešení běžných technických problémů během provozu</li>
+                </ul>
+              </section>
+              <button class="toggle-details-btn" type="button" onclick="event.stopPropagation(); toggleDetails(this.closest('.exp-card'));">
+                <span class="btn-text">Zobrazit podrobnosti</span>
+                <span class="btn-text-hide">Skrýt podrobnosti</span>
+                <i class="ph-bold ph-caret-down"></i>
+              </button>
+            </div>
+            <!-- #endregion EXP CARD: asphericon -->
+
+            <!-- #region EXP CARD: PRECIOSA -->
+            <div class="exp-card" data-index="2" onclick="toggleDetails(this)">
+              <header class="exp-summary">
+                <div class="exp-text">
+                  <h3>Operátor obráběcích strojů</h3>
+                  <p class="company">PRECIOSA, a. s.</p>
+                  <p class="period">
+                    <i class="ph ph-calendar-blank"></i> 01. 06. 2022 - 31. 05. 2023
+                  </p>
+                  <p class="short-desc">
+                    Strojník seřizovač - obsluha obráběcích strojů (kromě dřevoobráběcích).
+                  </p>
+                </div>
+                <div class="logo-wrapper">
+                  <svg class="logo-3d-container" id="logo3d-preciosa" viewBox="14 8 165 138" preserveAspectRatio="xMidYMid meet" role="img" aria-label="PRECIOSA logo"><use href="./logo/logos-sprite.svg#logo-preciosa"/></svg>
+                </div>
+              </header>
+              <section class="exp-details">
+                <ul class="exp-details-inner">
+                  <li>Zpracování křehkých materiálů (sklo, drahé kameny) s vysokými nároky na přesnost</li>
+                  <li>Seřizování výrobních zařízení a provádění základní údržby</li>
+                  <li>Přesná kontrola rozměrů pomocí různých měřicích přístrojů</li>
+                  <li>Identifikace a hlášení poruch výrobních zařízení</li>
+                  <li>Nastavování parametrů broušení a leštění podle typu zpracovávaného výrobku</li>
+                  <li>Seřizování tmelicích stanic, nastavení pracovních cyklů a rotačních bubnů s plynovými hořáky</li>
+                </ul>
+              </section>
+              <button class="toggle-details-btn" type="button" onclick="event.stopPropagation(); toggleDetails(this.closest('.exp-card'));">
+                <span class="btn-text">Zobrazit podrobnosti</span>
+                <span class="btn-text-hide">Skrýt podrobnosti</span>
+                <i class="ph-bold ph-caret-down"></i>
+              </button>
+            </div>
+            <!-- #endregion EXP CARD: PRECIOSA -->
+
+            <!-- #region EXP CARD: LUKOV Plast -->
+            <div class="exp-card" data-index="3" onclick="toggleDetails(this)">
+              <header class="exp-summary">
+                <div class="exp-text">
+                  <h3>Operátor výrobních strojů</h3>
+                  <p class="company">LUKOV Plast s. r. o.</p>
+                  <p class="period">
+                    <i class="ph ph-calendar-blank"></i> 16. 08. 2021 - 31. 05. 2022
+                  </p>
+                  <p class="short-desc">
+                    Obsluha strojů pro výrobu a zpracování plastových výrobků.
+                  </p>
+                </div>
+                <div class="logo-wrapper">
+                  <svg class="logo-3d-container" id="logo3d-lukov" viewBox="0 0 599.157210 106.789103" preserveAspectRatio="xMidYMid meet" role="img" aria-label="LUKOV Plast logo"><use href="./logo/logos-sprite.svg#logo-lukov"/></svg>
+                </div>
+              </header>
+              <section class="exp-details">
+                <ul class="exp-details-inner">
+                  <li>Obsluha a základní údržba strojů pro výrobu plastových dílů</li>
+                  <li>Kontrola kvality výrobků, spolupráce v týmu</li>
+                </ul>
+              </section>
+              <button class="toggle-details-btn" type="button" onclick="event.stopPropagation(); toggleDetails(this.closest('.exp-card'));">
+                <span class="btn-text">Zobrazit podrobnosti</span>
+                <span class="btn-text-hide">Skrýt podrobnosti</span>
+                <i class="ph-bold ph-caret-down"></i>
+              </button>
+            </div>
+            <!-- #endregion EXP CARD: LUKOV Plast -->
+
+          </div>
+          <!-- #endregion EXP CARDS -->
+        </div>
       </section>
       <!-- #endregion SECTION 2: Pracovní zkušenosti -->
 
@@ -734,6 +801,7 @@
     <!-- #endregion MAIN -->
 
     <script src="js/main.js"></script>
+    <script src="js/experience.js"></script>
     <script src="js/animations.js"></script>
   </body>
 </html>

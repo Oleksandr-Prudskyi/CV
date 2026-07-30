@@ -136,40 +136,6 @@
       panelObserver.observe(socialPanel, { attributes: true });
     }
 
-    // --- EXPERIENCE CARDS: dramatic staggered entrance on scroll ---
-    var expCards = document.querySelectorAll(".exp-card");
-    if (expCards.length > 0) {
-      expCards.forEach(function (card) {
-        card.style.opacity = "0";
-        card.style.transform = "translateY(60px) scale(0.85)";
-      });
-
-      var expObserver = new IntersectionObserver(
-        function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              var grid = entry.target;
-              var cards = grid.querySelectorAll(".exp-card");
-              anime({
-                targets: cards,
-                opacity: [0, 1],
-                translateY: [60, 0],
-                scale: [0.85, 1],
-                delay: anime.stagger(250),
-                duration: 800,
-                easing: "easeOutQuart",
-              });
-              expObserver.unobserve(grid);
-            }
-          });
-        },
-        { threshold: 0.05 },
-      );
-
-      var expGrid = document.querySelector(".experience-grid");
-      if (expGrid) expObserver.observe(expGrid);
-    }
-
     // --- SKILL TAGS: dramatic pop-in wave on scroll ---
     var skillTags = document.querySelectorAll(".skill-tag");
     if (skillTags.length > 0) {

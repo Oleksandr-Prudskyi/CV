@@ -68,6 +68,11 @@
   letter-spacing: 0.5px;
 }
 
+.contact-card .phone-link {
+  color: var(--deep-purple);
+  text-decoration: none;
+}
+
 .contact-card .desktop-phone {
   display: inline-block;
 }

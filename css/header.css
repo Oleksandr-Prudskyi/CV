@@ -83,6 +83,11 @@
   flex-shrink: 0;
 }
 
+.contact-bar .phone-link {
+  color: white;
+  text-decoration: none;
+}
+
 /* RESPONSIVE - мобільна адаптація */
 
 @media (max-width: 768px) {

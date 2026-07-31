@@ -1,7 +1,7 @@
-/* FOOTER - декоративні та допоміжні елементи
+/*
 - Floating clouds (хмари на фоні)
 - Decorative circles (декоративні кола)
-- Download CV button (плаваюча кнопка завантаження)
+- Download CV button
 - Photo modal (lightbox для фото) */
 
 /* FLOATING CLOUDS - напівпрозорі фіолетово-золоті плями дрейфують зліва направо */
@@ -244,7 +244,7 @@
   }
 }
 
-/* ідпис під кнопкою "Krátký životopis" */
+/* підпис під кнопкою "Krátký životopis" */
 .download-label {
   font-family: "Roboto Condensed", Arial, sans-serif;
   font-size: 0.65rem;

@@ -1,9 +1,25 @@
 (function () {
   "use strict";
 
+  function toggleDetails(card) {
+    var details = card.querySelector(".work-details");
+    var isExpanded = card.classList.contains("expanded");
+
+    if (isExpanded) {
+      details.style.maxHeight = "0px";
+      details.style.opacity = "0";
+      card.classList.remove("expanded");
+    } else {
+      card.classList.add("expanded");
+      details.style.maxHeight = details.scrollHeight + "px";
+      details.style.opacity = "1";
+    }
+  }
+
   function init() {
     bindTabClicks();
     bindGlowTracking();
+    bindCardClicks();
   }
 
   function bindTabClicks() {
@@ -16,6 +32,21 @@
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
           selectCard(parseInt(tab.dataset.index));
+          return;
+        }
+        var tabsArr = Array.from(tabs);
+        var currentIdx = tabsArr.indexOf(tab);
+        var nextIdx = -1;
+        if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+          nextIdx = (currentIdx + 1) % tabsArr.length;
+        } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+          nextIdx = (currentIdx - 1 + tabsArr.length) % tabsArr.length;
+        }
+        if (nextIdx >= 0) {
+          e.preventDefault();
+          var nextTab = tabsArr[nextIdx];
+          nextTab.focus();
+          selectCard(parseInt(nextTab.dataset.index));
         }
       });
     });
@@ -23,7 +54,10 @@
 
   function selectCard(index) {
     document.querySelectorAll(".work-tab").forEach(function (tab) {
-      tab.classList.toggle("active", parseInt(tab.dataset.index) === index);
+      var isActive = parseInt(tab.dataset.index) === index;
+      tab.classList.toggle("active", isActive);
+      tab.setAttribute("aria-selected", String(isActive));
+      tab.setAttribute("tabindex", isActive ? "0" : "-1");
     });
 
     document.querySelectorAll(".work-card").forEach(function (card) {
@@ -43,13 +77,38 @@
     });
   }
 
+  function bindCardClicks() {
+    var container = document.querySelector(".work-card-container");
+    if (!container) return;
+
+    container.addEventListener("click", function (e) {
+      var btn = e.target.closest(".show-more-btn");
+      if (btn) {
+        e.stopPropagation();
+        toggleDetails(btn.closest(".work-card"));
+        return;
+      }
+
+      var card = e.target.closest(".work-card");
+      if (card) {
+        toggleDetails(card);
+      }
+    });
+  }
+
   function bindGlowTracking() {
+    var ticking = false;
     document.addEventListener("mousemove", function (e) {
-      var tabs = document.querySelectorAll(".work-tab");
-      tabs.forEach(function (tab) {
-        var rect = tab.getBoundingClientRect();
-        tab.style.setProperty("--mouse-x", e.clientX - rect.left + "px");
-        tab.style.setProperty("--mouse-y", e.clientY - rect.top + "px");
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        var tabs = document.querySelectorAll(".work-tab");
+        tabs.forEach(function (tab) {
+          var rect = tab.getBoundingClientRect();
+          tab.style.setProperty("--mouse-x", e.clientX - rect.left + "px");
+          tab.style.setProperty("--mouse-y", e.clientY - rect.top + "px");
+        });
+        ticking = false;
       });
     });
   }
@@ -60,18 +119,3 @@
     init();
   }
 })();
-
-function toggleDetails(card) {
-  var details = card.querySelector(".work-details");
-  var isExpanded = card.classList.contains("expanded");
-
-  if (isExpanded) {
-    details.style.maxHeight = "0px";
-    details.style.opacity = "0";
-    card.classList.remove("expanded");
-  } else {
-    card.classList.add("expanded");
-    details.style.maxHeight = details.scrollHeight + "px";
-    details.style.opacity = "1";
-  }
-}

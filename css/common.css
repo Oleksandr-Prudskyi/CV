@@ -17,7 +17,7 @@
   --gold-light: #e6c84a;
   --pearl: #f8f8ff;
   --deep-purple: #2a1b5d;
-  --silver: #c0c0c0;
+  --silver: #757575;
   --shadow: rgba(79, 66, 181, 0.12);
   --card-bg: rgba(255, 255, 255, 0.55);
   --card-bg-hover: rgba(255, 255, 255, 0.72);
@@ -32,7 +32,6 @@
   --layout-gap: 1.5rem;
   --glass-blur: 12px;
   --glass-border: rgba(255, 255, 255, 0.6);
-  --radius-card: 12px;
 }
 
 html {
@@ -87,7 +86,7 @@ a {
   backdrop-filter: blur(var(--glass-blur));
   -webkit-backdrop-filter: blur(var(--glass-blur));
   border: 1px solid var(--glass-border);
-  border-radius: var(--radius-card);
+  border-radius: 12px;
   box-shadow: 0 4px 16px var(--shadow);
   transition: all 0.3s ease;
 }
@@ -96,8 +95,6 @@ a {
 .tabular-nums {
   font-variant-numeric: tabular-nums;
   font-feature-settings: "tnum" 1, "lnum" 1;
-  -webkit-font-feature-settings: "tnum" 1, "lnum" 1;
-  -moz-font-feature-settings: "tnum" 1, "lnum" 1;
 }
 
 /* Utility: round action button */

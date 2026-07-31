@@ -1,10 +1,10 @@
 /* Base: reset, змінні, типографіка */
 @import "./common.css";
 
-/* Page-level decorations: clouds, deco-circles, side-buttons, photo-modal */
-@import "./footer.css";
+/* Page extras: clouds, circles, side-buttons, photo-modal */
+@import "./page-extras.css";
 
-/* Floating social button + panel (всередині side-buttons) */
+/* Social button + panel */
 @import "./social.css";
 
 /* Fixed header: contact-bar */
@@ -13,11 +13,11 @@
 /* Hero section */
 @import "./hero.css";
 
-/* Contact cards (всередині hero) */
+/* Contact cards */
 @import "./contacts.css";
 
-/* Main content: container, sections, about-card, counter */
-@import "./portfolio.css";
+/* Sections: container, section, about-card, counter */
+@import "./sections.css";
 
 /* Experience section: sidebar, tabs, cards */
 @import "./experience.css";

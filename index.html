@@ -13,7 +13,7 @@
     />
     <meta
       property="og:image"
-      content="https://cv-oleksandr-prudskyi.vercel.app/image-html-hello.png?v=3"
+      content="https://cv-oleksandr-prudskyi.vercel.app/image/image-html-hello.png?v=3"
     />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -28,6 +28,7 @@
       name="keywords"
       content="Oleksandr Prudskyi, Prudskyi Oleksandr, Олександр Прудський, CNC operátor, Liberec, životopis, CV"
     />
+    <meta name="author" content="Oleksandr Prudskyi" />
     <link rel="canonical" href="https://cv-oleksandr-prudskyi.vercel.app/" />
 
     <!-- #region ASSETS -->
@@ -88,6 +89,7 @@
   <!-- #endregion HEAD -->
 
   <body>
+    <a class="skip-link" href="#aboutSection">Přejít na obsah</a>
     <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true">
       <defs>
         <linearGradient id="fi-grad-back" x1="0.5" y1="0" x2="0.5" y2="1">
@@ -189,7 +191,7 @@
       >
         &times;
       </button>
-      <img src="/image/photo.png" alt="Oleksandr Prudskyi" />
+      <img src="/image/photo.png" alt="Oleksandr Prudskyi" onclick="event.stopPropagation()" />
     </aside>
     <!-- #endregion PHOTO MODAL -->
 
@@ -389,7 +391,7 @@
 
             <!-- #region WORK SIDEBAR -->
             <ul class="work-sidebar" id="expSidebar" role="tablist">
-              <li class="work-tab active" role="tab" tabindex="0" data-index="0">
+              <li class="work-tab active" role="tab" tabindex="0" data-index="0" aria-selected="true" aria-controls="work-panel-0">
                 <span class="tab-glow"></span>
                 <span class="tab-border-glow"></span>
                 <svg class="folder-icon" viewBox="0 0 38 28" aria-hidden="true">
@@ -418,7 +420,7 @@
                 </span>
               </li>
 
-              <li class="work-tab" role="tab" tabindex="0" data-index="1">
+              <li class="work-tab" role="tab" tabindex="-1" data-index="1" aria-selected="false" aria-controls="work-panel-1">
                 <span class="tab-glow"></span>
                 <span class="tab-border-glow"></span>
                 <svg class="folder-icon" viewBox="0 0 38 28" aria-hidden="true">
@@ -447,7 +449,7 @@
                 </span>
               </li>
 
-              <li class="work-tab" role="tab" tabindex="0" data-index="2">
+              <li class="work-tab" role="tab" tabindex="-1" data-index="2" aria-selected="false" aria-controls="work-panel-2">
                 <span class="tab-glow"></span>
                 <span class="tab-border-glow"></span>
                 <svg class="folder-icon" viewBox="0 0 38 28" aria-hidden="true">
@@ -476,7 +478,7 @@
                 </span>
               </li>
 
-              <li class="work-tab" role="tab" tabindex="0" data-index="3">
+              <li class="work-tab" role="tab" tabindex="-1" data-index="3" aria-selected="false" aria-controls="work-panel-3">
                 <span class="tab-glow"></span>
                 <span class="tab-border-glow"></span>
                 <svg class="folder-icon" viewBox="0 0 38 28" aria-hidden="true">
@@ -510,7 +512,7 @@
             <!-- #region WORK CARDS -->
             <div class="work-card-container">
 
-              <div class="work-card visible" data-index="0" onclick="toggleDetails(this)">
+              <div class="work-card visible" data-index="0" id="work-panel-0" role="tabpanel" onclick="toggleDetails(this)">
                 <header class="work-summary">
                   <div class="work-text">
                     <h3>Operátor výrobních strojů</h3>
@@ -541,7 +543,7 @@
                 </button>
               </div>
 
-              <div class="work-card" data-index="1" onclick="toggleDetails(this)">
+              <div class="work-card" data-index="1" id="work-panel-1" role="tabpanel" onclick="toggleDetails(this)">
                 <header class="work-summary">
                   <div class="work-text">
                     <h3>Pracovník ve výrobě optických komponentů</h3>
@@ -575,7 +577,7 @@
                 </button>
               </div>
 
-              <div class="work-card" data-index="2" onclick="toggleDetails(this)">
+              <div class="work-card" data-index="2" id="work-panel-2" role="tabpanel" onclick="toggleDetails(this)">
                 <header class="work-summary">
                   <div class="work-text">
                     <h3>Operátor obráběcích strojů</h3>
@@ -608,7 +610,7 @@
                 </button>
               </div>
 
-              <div class="work-card" data-index="3" onclick="toggleDetails(this)">
+              <div class="work-card" data-index="3" id="work-panel-3" role="tabpanel" onclick="toggleDetails(this)">
                 <header class="work-summary">
                   <div class="work-text">
                     <h3>Operátor výrobních strojů</h3>
@@ -769,6 +771,10 @@
       <!-- #endregion SECTION 4: Profile -->
     </main>
     <!-- #endregion MAIN -->
+
+    <footer class="site-footer">
+      <p>&copy; 2025 Oleksandr Prudskyi</p>
+    </footer>
 
     <script src="js/main.js"></script>
     <script src="js/experience.js"></script>

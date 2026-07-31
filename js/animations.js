@@ -7,7 +7,10 @@
     else document.addEventListener("DOMContentLoaded", fn);
   }
 
+  var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   ready(function () {
+    if (prefersReducedMotion) return;
     // --- HERO BG: line-by-line stroke-draw like hand-painting ---
     function initHeroBgDraw() {
       var symbol = document.getElementById("icon-ukr-picture");

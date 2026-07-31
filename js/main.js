@@ -94,7 +94,7 @@ function updateWorkCounter() {
 }
 
 updateWorkCounter();
-setInterval(updateWorkCounter, 1000);
+setInterval(updateWorkCounter, 60000);
 
 // Scroll behavior: contact bar
 window.addEventListener("scroll", function () {

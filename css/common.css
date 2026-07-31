@@ -127,3 +127,43 @@ a {
 .circle-btn:active {
   transform: scale(0.95);
 }
+
+/* Skip navigation link */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 10001;
+  padding: 0.6rem 1.2rem;
+  background: var(--tanzanite);
+  color: #fff;
+  border-radius: 0 0 8px 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Focus-visible for interactive elements */
+.circle-btn:focus-visible,
+.work-tab:focus-visible,
+.show-more-btn:focus-visible,
+.work-card:focus-visible,
+.social-links a:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

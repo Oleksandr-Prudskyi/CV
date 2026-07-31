@@ -363,3 +363,47 @@
     font-size: 0.58rem;
   }
 }
+
+/* SITE FOOTER */
+.site-footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  font-size: 0.8rem;
+  color: var(--silver);
+  letter-spacing: 0.3px;
+}
+
+/* PRINT STYLES */
+@media print {
+  .clouds, .deco-circle, .side-buttons, .contact-bar,
+  .photo-modal, .hero-bg-svg, .hero-bg-draw,
+  .show-more-btn, .copy-btn, .copy-btn-hero {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .hero { padding: 1rem 0; }
+  .hero::before { display: none; }
+  .glass-card {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: 1px solid #ccc;
+    box-shadow: none;
+    background: #fff;
+  }
+  .section {
+    opacity: 1;
+    transform: none;
+    animation: none;
+    break-inside: avoid;
+  }
+  .work-card { display: flex !important; break-inside: avoid; }
+  .work-details { max-height: none !important; opacity: 1 !important; }
+  .work-sidebar { display: none; }
+  a[href]::after { content: " (" attr(href) ")"; font-size: 0.7em; color: #666; }
+  .social-links a[href]::after { content: none; }
+}

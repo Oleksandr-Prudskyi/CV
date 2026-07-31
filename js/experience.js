@@ -17,13 +17,26 @@
           e.preventDefault();
           selectCard(parseInt(tab.dataset.index));
         }
+        if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+          e.preventDefault();
+          var next = tab.nextElementSibling || tabs[0];
+          next.focus();
+        }
+        if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+          e.preventDefault();
+          var prev = tab.previousElementSibling || tabs[tabs.length - 1];
+          prev.focus();
+        }
       });
     });
   }
 
   function selectCard(index) {
     document.querySelectorAll(".work-tab").forEach(function (tab) {
-      tab.classList.toggle("active", parseInt(tab.dataset.index) === index);
+      var isActive = parseInt(tab.dataset.index) === index;
+      tab.classList.toggle("active", isActive);
+      tab.setAttribute("aria-selected", isActive ? "true" : "false");
+      tab.setAttribute("tabindex", isActive ? "0" : "-1");
     });
 
     document.querySelectorAll(".work-card").forEach(function (card) {

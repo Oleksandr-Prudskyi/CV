@@ -6,9 +6,11 @@ function copyPartials() {
   return {
     name: "copy-partials",
     closeBundle() {
-      var source = resolve("partials");
-      var target = resolve("dist/partials");
-      if (existsSync(source)) cpSync(source, target, { recursive: true });
+      ["partials", "js", "img"].forEach(function (folder) {
+        var source = resolve(folder);
+        var target = resolve("dist", folder);
+        if (existsSync(source)) cpSync(source, target, { recursive: true });
+      });
     },
   };
 }

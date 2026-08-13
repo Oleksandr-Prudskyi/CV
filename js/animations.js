@@ -1,4 +1,3 @@
-// anime.js powered animations for CV site
 (function () {
   "use strict";
 
@@ -8,14 +7,16 @@
   }
 
   ready(function () {
-    // --- HERO BG: line-by-line stroke-draw like hand-painting ---
     function initHeroBgDraw() {
       var symbol = document.getElementById("icon-ukr-picture");
       var heroSection = document.querySelector(".hero");
       var heroBgSvg = document.querySelector(".hero-bg-svg");
       if (!symbol || !heroSection || !heroBgSvg) return;
 
-      var drawSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      var drawSvg = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "svg",
+      );
       drawSvg.setAttribute("class", "hero-bg-draw");
       drawSvg.setAttribute("viewBox", symbol.getAttribute("viewBox"));
       drawSvg.setAttribute("preserveAspectRatio", "xMidYMid slice");
@@ -40,7 +41,9 @@
         targets: drawPaths,
         strokeDashoffset: [anime.setDashoffset, 0],
         easing: "easeInOutSine",
-        duration: function () { return anime.random(1200, 2800); },
+        duration: function () {
+          return anime.random(1200, 2800);
+        },
         delay: anime.stagger(35, { from: "first" }),
         complete: function () {
           heroBgSvg.classList.add("revealed");
@@ -66,8 +69,6 @@
       });
       bodyObserver.observe(document.body, { childList: true, subtree: true });
     }
-
-    // --- CONTACT BAR LOGO: elastic scale-in when bar appears ---
     var contactBar = document.getElementById("contactBar");
     var logoSvg = document.querySelector(".top-logo svg");
     var logoAnimated = false;
@@ -102,8 +103,6 @@
       });
       observer.observe(contactBar, { attributes: true });
     }
-
-    // --- SOCIAL PANEL: staggered icon entrance ---
     var socialPanel = document.getElementById("socialPanel");
     if (socialPanel) {
       var panelObserver = new MutationObserver(function (mutations) {
@@ -135,8 +134,6 @@
       });
       panelObserver.observe(socialPanel, { attributes: true });
     }
-
-    // --- SKILL TAGS: dramatic pop-in wave on scroll ---
     var skillTags = document.querySelectorAll(".skill-tag");
     if (skillTags.length > 0) {
       skillTags.forEach(function (tag) {
@@ -168,8 +165,6 @@
         skillObserver.observe(skillsGrid);
       }
     }
-
-    // --- CONTACT CARDS in hero: staggered pop-in ---
     var contactCards = document.querySelectorAll(".contact-grid .contact-card");
     if (contactCards.length > 0) {
       contactCards.forEach(function (card) {
@@ -189,9 +184,7 @@
         });
       }, 800);
     }
-
-    // --- SECTION TITLES: slide-in on scroll ---
-    var sectionTitles = document.querySelectorAll(".section-title");
+    var sectionTitles = document.querySelectorAll(".title-section");
     sectionTitles.forEach(function (title) {
       var titleObserver = new IntersectionObserver(
         function (entries) {
@@ -212,8 +205,6 @@
       );
       titleObserver.observe(title);
     });
-
-    // --- FLOATING ACTIONS: attention pulse after page load ---
     var floatingActions = document.querySelector(".side-buttons");
     if (floatingActions) {
       var buttons = floatingActions.querySelectorAll(

@@ -1,23 +1,8 @@
-/* container, section, about-card, work-counter */
-
-.container {
-  position: relative;
-  z-index: 1;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1.5rem 1rem;
-}
-
 .section {
   margin-bottom: 1.5rem;
   opacity: 0;
   transform: translateY(30px);
   animation: fadeInUp 0.8s ease-out forwards;
-}
-
-.section-body {
-  display: flex;
-  flex-direction: column;
 }
 
 .section:nth-child(1) {
@@ -33,7 +18,7 @@
   animation-delay: 0.4s;
 }
 
-.section-title {
+.title-section {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -45,7 +30,7 @@
   color: var(--tanzanite);
 }
 
-.section-title::after {
+.title-section::after {
   content: "";
   position: absolute;
   bottom: -10px;
@@ -55,13 +40,12 @@
   background: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
 }
 
-.section-title .section-icon {
+.title-section .icon-section {
   font-size: 1.5rem;
   color: var(--gold);
 }
 
-/* ABOUT CARD */
-.about-card {
+.card-about {
   position: relative;
   padding: 0.8rem;
   background: rgba(255, 255, 255, 0.55);
@@ -69,12 +53,12 @@
   overflow: hidden;
 }
 
-.about-card:hover {
+.card-about:hover {
   background: rgba(255, 255, 255, 0.7);
   box-shadow: 0 6px 20px rgba(79, 66, 181, 0.15);
 }
 
-.about-card::before {
+.card-about::before {
   content: "";
   position: absolute;
   top: 0;
@@ -86,7 +70,7 @@
   transform: translate(30%, -30%);
 }
 
-.about-card p {
+.card-about p {
   position: relative;
   z-index: 1;
   margin-bottom: 0.45rem;
@@ -95,12 +79,11 @@
   color: var(--deep-purple);
 }
 
-.about-card p:last-child {
+.card-about p:last-child {
   margin-bottom: 0;
 }
 
-/* WORK HEADER */
-.work-header {
+.header-work {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -109,12 +92,11 @@
   margin-bottom: 1.2rem;
 }
 
-.work-header .section-title {
+.header-work .title-section {
   margin-bottom: 0;
 }
 
-/* WORK COUNTER */
-.work-counter {
+.counter-work {
   position: relative;
   flex-shrink: 0;
   display: flex;
@@ -131,7 +113,7 @@
   overflow: hidden;
 }
 
-.work-counter::before {
+.counter-work::before {
   content: "";
   position: absolute;
   top: 0;
@@ -148,7 +130,7 @@
   );
 }
 
-.work-counter .counter-label {
+.counter-work .counter-label {
   margin-right: 0.6rem;
   font-family: "Roboto Condensed", Arial, sans-serif;
   font-size: 0.6rem;
@@ -159,14 +141,14 @@
   white-space: nowrap;
 }
 
-.work-counter .counter-part {
+.counter-work .counter-part {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
   min-width: 32px;
 }
 
-.work-counter .counter-number {
+.counter-work .counter-number {
   font-family: "Roboto Condensed", Arial, sans-serif;
   font-size: 1.3rem;
   font-weight: 700;
@@ -176,7 +158,7 @@
   animation: counterGlow 3s ease-in-out infinite;
 }
 
-.work-counter .counter-unit {
+.counter-work .counter-unit {
   margin-top: 0.15rem;
   font-family: "Roboto Condensed", Arial, sans-serif;
   font-size: 0.5rem;
@@ -186,7 +168,7 @@
   opacity: 0.7;
 }
 
-.work-counter .counter-sep {
+.counter-work .counter-sep {
   margin: 0 0.15rem;
   padding-bottom: 0.6rem;
   font-size: 1.1rem;
@@ -207,50 +189,42 @@
   }
 }
 
-/* RESPONSIVE */
-
 @media (max-width: 480px) {
-  .container {
-    padding: 2rem 1rem;
-  }
-  .work-counter {
+  .counter-work {
     padding: 0.7rem 1rem;
   }
-  .work-counter .counter-number {
+  .counter-work .counter-number {
     font-size: 1.1rem;
   }
-  .work-counter .counter-part {
+  .counter-work .counter-part {
     min-width: 26px;
   }
 }
 
 @media (max-width: 768px) {
-  .container {
-    padding: 1rem 0.5rem;
-  }
   .section {
     margin-bottom: 1.2rem;
   }
-  .section-title {
+  .title-section {
     margin-bottom: 0.8rem;
     font-size: 2rem;
   }
-  .section-title .section-icon {
+  .title-section .icon-section {
     font-size: 1.8rem;
   }
-  .work-header {
+  .header-work {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
   }
-  .work-counter {
+  .counter-work {
     align-self: stretch;
     justify-content: center;
   }
-  .about-card {
+  .card-about {
     padding: 0.8rem;
   }
-  .about-card p {
+  .card-about p {
     font-size: 0.9rem;
     line-height: 1.5;
   }

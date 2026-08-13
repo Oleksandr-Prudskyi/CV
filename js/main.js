@@ -1,4 +1,4 @@
-fetch("./logo/logos-sprite.svg")
+fetch("/img/logos-sprite.svg")
   .then(function (r) {
     return r.text();
   })
@@ -13,30 +13,26 @@ fetch("./logo/logos-sprite.svg")
     console.warn("Logo sprite load failed:", e);
   });
 
-(function () {
+function initializeApp() {
   "use strict";
 
   function isMobile() {
     return window.innerWidth <= 768;
   }
-
-  // Copy email
   function copyEmail() {
     var email = "oleksandr.prudskyi@gmail.com";
     navigator.clipboard
       .writeText(email)
       .then(function () {
-        document
-          .querySelectorAll(".copy-btn, .copy-btn-hero")
-          .forEach(function (btn) {
-            var originalHTML = btn.innerHTML;
-            btn.innerHTML = '<i class="ph ph-check-circle"></i> Zkopírováno!';
-            btn.classList.add("copied");
-            setTimeout(function () {
-              btn.innerHTML = originalHTML;
-              btn.classList.remove("copied");
-            }, 2000);
-          });
+        document.querySelectorAll(".btn-copy").forEach(function (btn) {
+          var originalHTML = btn.innerHTML;
+          btn.innerHTML = '<i class="ph ph-check-circle"></i> Zkopírováno!';
+          btn.classList.add("copied");
+          setTimeout(function () {
+            btn.innerHTML = originalHTML;
+            btn.classList.remove("copied");
+          }, 2000);
+        });
       })
       .catch(function () {
         var textArea = document.createElement("textarea");
@@ -49,11 +45,9 @@ fetch("./logo/logos-sprite.svg")
       });
   }
 
-  document.querySelectorAll(".copy-btn, .copy-btn-hero").forEach(function (btn) {
+  document.querySelectorAll(".btn-copy").forEach(function (btn) {
     btn.addEventListener("click", copyEmail);
   });
-
-  // Digital Work Counter (from 16.08.2021, Europe/Prague timezone)
   var counterYearsEl = document.getElementById("counterYears");
   var counterMonthsEl = document.getElementById("counterMonths");
   var counterDaysEl = document.getElementById("counterDays");
@@ -114,27 +108,54 @@ fetch("./logo/logos-sprite.svg")
       counterInterval = setInterval(updateWorkCounter, 1000);
     }
   });
-
-  // Scroll behavior: contact bar
   var contactBar = document.getElementById("contactBar");
   var aboutSection = document.getElementById("aboutSection");
+  var goitSection = document.getElementById("goitContainer");
   var scrollTicking = false;
+  var hideContactBarForGoit = false;
+
+  function updateContactBarVisibility() {
+    if (!contactBar || !aboutSection) return;
+    var aboutTop = aboutSection.getBoundingClientRect().top;
+    var shouldShowByScroll = aboutTop <= 80;
+    var shouldShow = shouldShowByScroll && !hideContactBarForGoit;
+    contactBar.classList.toggle("visible", shouldShow);
+  }
+
+  if (goitSection && "IntersectionObserver" in window) {
+    var goitObserver = new IntersectionObserver(
+      function (entries) {
+        var entry = entries[0];
+        var goitIsDeepInView =
+          !!entry && entry.boundingClientRect.top <= window.innerHeight * 0.35;
+        hideContactBarForGoit = !!(
+          entry &&
+          entry.isIntersecting &&
+          entry.intersectionRatio >= 0.6 &&
+          goitIsDeepInView
+        );
+        updateContactBarVisibility();
+      },
+      {
+        root: null,
+        threshold: [0, 0.2, 0.4, 0.6, 0.8, 1],
+        rootMargin: "0px 0px -20% 0px",
+      },
+    );
+
+    goitObserver.observe(goitSection);
+  }
 
   window.addEventListener("scroll", function () {
     if (scrollTicking) return;
     scrollTicking = true;
     requestAnimationFrame(function () {
-      var aboutTop = aboutSection.getBoundingClientRect().top;
-      if (aboutTop <= 80) {
-        contactBar.classList.add("visible");
-      } else {
-        contactBar.classList.remove("visible");
-      }
+      updateContactBarVisibility();
       scrollTicking = false;
     });
   });
 
-  // Intersection Observer for scroll animations
+  updateContactBarVisibility();
   var observerOptions = {
     threshold: 0.1,
     rootMargin: "0px 0px -100px 0px",
@@ -150,8 +171,6 @@ fetch("./logo/logos-sprite.svg")
   document.querySelectorAll(".section").forEach(function (section) {
     observer.observe(section);
   });
-
-  // Download CV Button
   document.getElementById("dlCvBtn").addEventListener("click", function () {
     var btn = this;
     if (btn.classList.contains("downloading") || btn.classList.contains("done"))
@@ -175,8 +194,6 @@ fetch("./logo/logos-sprite.svg")
       }, 2500);
     }, 700);
   });
-
-  // Social Panel Toggle
   var socialBtn = document.getElementById("socialBtn");
   var socialPanel = document.getElementById("socialPanel");
 
@@ -193,8 +210,6 @@ fetch("./logo/logos-sprite.svg")
       socialPanel.classList.remove("open");
     }
   });
-
-  // Telegram: mobile opens app, desktop opens new tab
   var telegramLink = document.querySelector(".telegram-link");
   if (telegramLink) {
     telegramLink.addEventListener("click", function (e) {
@@ -204,8 +219,6 @@ fetch("./logo/logos-sprite.svg")
       }
     });
   }
-
-  // Photo Lightbox
   var photoModal = document.getElementById("photoModal");
   var avatarBtn = document.getElementById("avatarPlaceholder");
   var modalCloseBtn = document.querySelector(".photo-modal-close");
@@ -227,10 +240,11 @@ fetch("./logo/logos-sprite.svg")
 
   if (avatarBtn) avatarBtn.addEventListener("click", openPhotoModal);
   if (photoModal) photoModal.addEventListener("click", closePhotoModal);
-  if (modalCloseBtn) modalCloseBtn.addEventListener("click", function (e) {
-    e.stopPropagation();
-    closePhotoModal();
-  });
+  if (modalCloseBtn)
+    modalCloseBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      closePhotoModal();
+    });
 
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape") closePhotoModal();
@@ -239,4 +253,30 @@ fetch("./logo/logos-sprite.svg")
       if (modalCloseBtn) modalCloseBtn.focus();
     }
   });
-})();
+}
+console.log(
+  "[main.js] Module loaded, document.readyState:",
+  document.readyState,
+);
+
+function safeInitialize() {
+  if (window.__appInitialized) {
+    console.log("[main.js] App already initialized, skipping");
+    return;
+  }
+
+  window.__appInitialized = true;
+  console.log("[main.js] Initializing app");
+  if (!document.getElementById("socialBtn")) {
+    console.log("[main.js] socialBtn not found, waiting for DOM");
+    return;
+  }
+
+  initializeApp();
+}
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", safeInitialize);
+} else {
+  safeInitialize();
+}
+window.initializeApp = initializeApp;

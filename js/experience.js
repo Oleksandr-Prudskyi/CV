@@ -60,7 +60,7 @@
       tab.setAttribute("tabindex", isActive ? "0" : "-1");
     });
 
-    document.querySelectorAll(".work-card").forEach(function (card) {
+    document.querySelectorAll(".card-work").forEach(function (card) {
       var isTarget = parseInt(card.dataset.index) === index;
 
       if (isTarget) {
@@ -82,14 +82,14 @@
     if (!container) return;
 
     container.addEventListener("click", function (e) {
-      var btn = e.target.closest(".show-more-btn");
+      var btn = e.target.closest(".btn-show-more");
       if (btn) {
         e.stopPropagation();
         toggleDetails(btn.closest(".work-card"));
         return;
       }
 
-      var card = e.target.closest(".work-card");
+      var card = e.target.closest(".card-work");
       if (card) {
         toggleDetails(card);
       }

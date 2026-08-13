@@ -1,6 +1,3 @@
-/* CONTACTS - картки контактів у Hero + кнопки копіювання */
-
-/* Контейнер контактних карток */
 .contact-grid {
   display: flex;
   flex-wrap: wrap;
@@ -8,18 +5,15 @@
   animation: fadeInUp 1s ease-out 0.4s both;
 }
 
-/* Email картка займає всю ширину */
 .contact-grid .email-card {
   flex-basis: 100%;
 }
 
-/* Інші картки по 2 в рядку */
 .contact-grid .contact-card:not(.email-card) {
   flex: 1;
   min-width: calc(50% - 0.4rem);
 }
 
-/* Одна картка контакту */
 .contact-card {
   --glass-blur: 10px;
   display: flex;
@@ -81,10 +75,7 @@
   display: none;
 }
 
-/* COPY BUTTONS - кнопки копіювання email */
-
-/* Маленька кнопка (у верхній панелі .contact-bar) */
-.copy-btn {
+.btn-copy {
   padding: 0.3rem 0.6rem;
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -96,13 +87,12 @@
   transition: all 0.3s ease;
 }
 
-.copy-btn:hover {
+.btn-copy:hover {
   background: rgba(255, 255, 255, 0.35);
   transform: scale(1.05);
 }
 
-/* Велика кнопка (у hero контакт-картці) */
-.copy-btn-hero {
+.hero-copy-btn {
   padding: 0.4rem 0.7rem;
   background: linear-gradient(
     135deg,
@@ -118,7 +108,7 @@
   cursor: pointer;
 }
 
-.copy-btn-hero:hover {
+.hero-copy-btn:hover {
   background: linear-gradient(
     135deg,
     var(--tanzanite) 0%,
@@ -127,14 +117,11 @@
   box-shadow: 0 4px 15px var(--shadow);
 }
 
-/* Стан "успішно скопійовано" */
-.copy-btn.copied,
-.copy-btn-hero.copied {
+.btn-copy.copied,
+.hero-copy-btn.copied {
   background: #28a745;
   border-color: #28a745;
 }
-
-/* RESPONSIVE */
 
 @media (max-width: 768px) {
   .contact-card .desktop-phone {
@@ -175,7 +162,7 @@
     word-break: break-all;
     overflow-wrap: break-word;
   }
-  .contact-card.email-card .copy-btn-hero {
+  .contact-card.email-card .hero-copy-btn {
     width: 100%;
     margin-top: 0.5rem;
   }

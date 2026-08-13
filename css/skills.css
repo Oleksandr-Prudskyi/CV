@@ -1,14 +1,10 @@
-/* DOVEDNOSTI - skills-list, skills-group, skill-tag */
-
-/* Сітка категорій навичок (технічні / особисті) */
 .skills-list {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
 }
 
-/* Одна категорія навичок */
-.skills-group {
+.card-skills {
   --glass-blur: 10px;
   flex: 1 1 calc(50% - 0.5rem);
   min-width: 300px;
@@ -21,19 +17,18 @@
   box-shadow: 0 2px 12px var(--shadow);
 }
 
-.skills-group:hover {
+.card-skills:hover {
   background: rgba(255, 255, 255, 0.55);
   box-shadow: 0 4px 18px var(--shadow);
 }
 
-.skills-group h3 {
+.card-skills h3 {
   margin: 0;
   font-family: "Playfair Display", serif;
   font-size: 1.2rem;
   color: var(--tanzanite);
 }
 
-/* Список тегів навичок */
 .skill-tags {
   display: flex;
   flex-wrap: wrap;
@@ -43,7 +38,6 @@
   margin: 0;
 }
 
-/* Один тег навички */
 .skill-tag {
   display: inline-flex;
   align-items: center;
@@ -65,17 +59,15 @@
   box-shadow: 0 2px 8px rgba(79, 66, 181, 0.12);
 }
 
-/* RESPONSIVE */
-
 @media (max-width: 768px) {
   .skills-list {
     flex-direction: column;
   }
-  .skills-group {
+  .card-skills {
     flex: 1 1 100%;
     min-width: 100%;
   }
-  .skills-group h3 {
+  .card-skills h3 {
     font-size: 1rem;
   }
   .skill-tag {

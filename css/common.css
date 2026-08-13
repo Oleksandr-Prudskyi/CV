@@ -1,13 +1,11 @@
-/* :root variables, base typography, reset */
-
-/* Reset */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* CSS Variables */
 :root {
   --tanzanite: #4f42b5;
   --tanzanite-dark: #3a2f8c;
@@ -47,6 +45,20 @@ body {
   overflow-x: hidden;
 }
 
+.container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+}
+
+.section-body {
+  display: flex;
+  flex-direction: column;
+}
+
 ul,
 ol {
   list-style: none;
@@ -57,14 +69,12 @@ a {
   text-decoration: none;
 }
 
-/* Phosphor icons - alignment */
 .ph,
 .ph-bold,
 .ph-fill {
   vertical-align: middle;
 }
 
-/* Phone number toggle */
 .mobile-phone {
   display: none;
 }
@@ -81,7 +91,6 @@ a {
   }
 }
 
-/* Utility: glassmorphism card */
 .glass-card {
   backdrop-filter: blur(var(--glass-blur));
   -webkit-backdrop-filter: blur(var(--glass-blur));
@@ -91,18 +100,22 @@ a {
   transition: all 0.3s ease;
 }
 
-/* Utility: tabular numbers */
 .tabular-nums {
   font-variant-numeric: tabular-nums;
-  font-feature-settings: "tnum" 1, "lnum" 1;
+  font-feature-settings:
+    "tnum" 1,
+    "lnum" 1;
 }
 
-/* Utility: round action button */
 .circle-btn {
   position: relative;
   width: 52px;
   height: 52px;
-  background: linear-gradient(135deg, var(--tanzanite-light) 0%, var(--tanzanite-dark) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--tanzanite-light) 0%,
+    var(--tanzanite-dark) 100%
+  );
   border: 3px solid var(--tanzanite);
   border-radius: 50%;
   box-shadow: 0 4px 18px var(--shadow);
@@ -118,7 +131,9 @@ a {
 .circle-btn:hover {
   transform: scale(1.12);
   border-color: var(--gold);
-  box-shadow: 0 6px 28px var(--shadow), 0 0 0 4px rgba(212, 175, 55, 0.2);
+  box-shadow:
+    0 6px 28px var(--shadow),
+    0 0 0 4px rgba(212, 175, 55, 0.2);
 }
 
 .circle-btn:active {

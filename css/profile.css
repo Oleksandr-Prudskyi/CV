@@ -1,16 +1,11 @@
-/* PROFILE - комбінована картка VZDĚLÁNÍ · JAZYKY · ZÁJMY
-Три колонки в одній обгортці з вертикальними роздільниками */
-
-/* Зовнішня обгортка (стиль скляної картки) */
-.info-card {
+.card-info {
   background: rgba(255, 255, 255, 0.5);
 }
 
-.info-card:hover {
+.card-info:hover {
   box-shadow: 0 6px 22px rgba(79, 66, 181, 0.14);
 }
 
-/* Три колонки через flex */
 .info-columns {
   display: flex;
   gap: 0;
@@ -24,12 +19,10 @@
   padding: 1.3rem 1.5rem;
 }
 
-/* Вертикальні роздільники між колонками */
 .info-column:not(:last-child) {
   border-right: 1px solid rgba(79, 66, 181, 0.08);
 }
 
-/* Заголовок колонки (з іконкою) */
 .info-column-title {
   display: flex;
   align-items: center;
@@ -46,14 +39,12 @@
   color: var(--gold);
 }
 
-/* VZDĚLÁNÍ - диплом + курси */
 .edu-list {
   display: flex;
   flex-direction: column;
   gap: 0.7rem;
 }
 
-/* Один пункт освіти */
 .edu-row {
   display: flex;
   align-items: center;
@@ -93,7 +84,6 @@
   color: var(--silver);
 }
 
-/* Підзаголовок "Kurzy" між списками */
 .edu-subgroup-title {
   margin: 0.75rem 0 0.25rem 0;
   padding-left: 2px;
@@ -106,7 +96,6 @@
   opacity: 0.85;
 }
 
-/* JAZYKY · ZÁJMY - прості списки з іконками */
 .lang-simple,
 .zajmy-simple {
   display: flex;
@@ -130,7 +119,6 @@
   border-bottom: none;
 }
 
-/* Кольори іконок: жалюзі - синій, інтереси - золотий */
 .lang-simple li i {
   font-size: 1.1rem;
   color: var(--tanzanite-light);
@@ -143,11 +131,8 @@
   flex-shrink: 0;
 }
 
-
-/* RESPONSIVE - мобільна адаптація */
-
 @media (max-width: 768px) {
-  .info-card {
+  .card-info {
     display: flex;
     justify-content: center;
   }

@@ -1,29 +1,21 @@
-/* Base: reset, змінні, типографіка */
 @import "./common.css";
 
-/* Page extras: clouds, circles, side-buttons, photo-modal */
 @import "./page-extras.css";
 
-/* Social button + panel */
 @import "./social.css";
 
-/* Fixed header: contact-bar */
 @import "./header.css";
 
-/* Hero section */
 @import "./hero.css";
 
-/* Contact cards */
 @import "./contacts.css";
 
-/* Sections: container, section, about-card, counter */
 @import "./sections.css";
 
-/* Experience section: sidebar, tabs, cards */
 @import "./experience.css";
 
-/* Skills grid + tags */
 @import "./skills.css";
 
-/* Profile: vzdělání, jazyky, zájmy */
 @import "./profile.css";
+
+@import "./goit-viewer.css";

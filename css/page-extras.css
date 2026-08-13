@@ -1,10 +1,3 @@
-/*
-- Floating clouds (хмари на фоні)
-- Decorative circles (декоративні кола)
-- Download CV button
-- Photo modal (lightbox для фото) */
-
-/* FLOATING CLOUDS - напівпрозорі фіолетово-золоті плями дрейфують зліва направо */
 .clouds {
   position: fixed;
   top: 0;
@@ -27,7 +20,12 @@
   left: -10%;
   width: 400px;
   height: 160px;
-  background: radial-gradient(ellipse, rgba(107, 91, 206, 0.2) 0%, rgba(107, 91, 206, 0.06) 50%, transparent 80%);
+  background: radial-gradient(
+    ellipse,
+    rgba(107, 91, 206, 0.2) 0%,
+    rgba(107, 91, 206, 0.06) 50%,
+    transparent 80%
+  );
   animation: drift 55s linear infinite;
 }
 
@@ -36,7 +34,12 @@
   left: -15%;
   width: 320px;
   height: 120px;
-  background: radial-gradient(ellipse, rgba(212, 175, 55, 0.16) 0%, rgba(212, 175, 55, 0.05) 50%, transparent 80%);
+  background: radial-gradient(
+    ellipse,
+    rgba(212, 175, 55, 0.16) 0%,
+    rgba(212, 175, 55, 0.05) 50%,
+    transparent 80%
+  );
   animation: drift 70s linear infinite;
   animation-delay: -20s;
 }
@@ -46,7 +49,12 @@
   left: -20%;
   width: 450px;
   height: 170px;
-  background: radial-gradient(ellipse, rgba(107, 91, 206, 0.18) 0%, rgba(107, 91, 206, 0.06) 50%, transparent 80%);
+  background: radial-gradient(
+    ellipse,
+    rgba(107, 91, 206, 0.18) 0%,
+    rgba(107, 91, 206, 0.06) 50%,
+    transparent 80%
+  );
   animation: drift 60s linear infinite;
   animation-delay: -35s;
 }
@@ -56,7 +64,12 @@
   left: -12%;
   width: 300px;
   height: 110px;
-  background: radial-gradient(ellipse, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.05) 50%, transparent 80%);
+  background: radial-gradient(
+    ellipse,
+    rgba(212, 175, 55, 0.15) 0%,
+    rgba(212, 175, 55, 0.05) 50%,
+    transparent 80%
+  );
   animation: drift 50s linear infinite;
   animation-delay: -12s;
 }
@@ -66,7 +79,12 @@
   left: -18%;
   width: 380px;
   height: 140px;
-  background: radial-gradient(ellipse, rgba(107, 91, 206, 0.17) 0%, rgba(107, 91, 206, 0.05) 50%, transparent 80%);
+  background: radial-gradient(
+    ellipse,
+    rgba(107, 91, 206, 0.17) 0%,
+    rgba(107, 91, 206, 0.05) 50%,
+    transparent 80%
+  );
   animation: drift 65s linear infinite;
   animation-delay: -42s;
 }
@@ -80,7 +98,6 @@
   }
 }
 
-/* DECORATIVE CIRCLES - два великі фіолетово-золоті кола що повільно пульсують */
 .deco-circle {
   position: fixed;
   z-index: 0;
@@ -94,7 +111,12 @@
   right: 5%;
   width: 300px;
   height: 300px;
-  background: radial-gradient(circle, rgba(107, 91, 206, 0.35) 0%, rgba(107, 91, 206, 0.12) 45%, transparent 75%);
+  background: radial-gradient(
+    circle,
+    rgba(107, 91, 206, 0.35) 0%,
+    rgba(107, 91, 206, 0.12) 45%,
+    transparent 75%
+  );
   animation: float 15s ease-in-out infinite;
 }
 
@@ -103,11 +125,15 @@
   left: 3%;
   width: 350px;
   height: 350px;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.28) 0%, rgba(212, 175, 55, 0.08) 45%, transparent 75%);
+  background: radial-gradient(
+    circle,
+    rgba(212, 175, 55, 0.28) 0%,
+    rgba(212, 175, 55, 0.08) 45%,
+    transparent 75%
+  );
   animation: float 20s ease-in-out infinite reverse;
 }
 
-/* FLOATING ACTIONS - обгортка для кнопок справа (download + social) */
 .side-buttons {
   position: fixed;
   top: 50%;
@@ -120,7 +146,6 @@
   gap: 1.2rem;
 }
 
-/* DOWNLOAD CV BUTTON */
 .download-wrapper {
   display: flex;
   flex-direction: column;
@@ -128,9 +153,6 @@
   gap: 0.45rem;
 }
 
-/* .download-btn base: see .circle-btn in common.css */
-
-/* Стрілка вниз: shaft (тіло) + head (голівка) */
 .dl-arrow-shaft {
   position: absolute;
   top: 45%;
@@ -155,7 +177,6 @@
   transition: all 0.3s ease;
 }
 
-/* Поличка-приймач знизу (золота смужка) */
 .dl-tray {
   position: absolute;
   bottom: 2px;
@@ -169,7 +190,6 @@
   transition: all 0.3s ease;
 }
 
-/* Стан "downloading" - стрілка падає на поличку */
 .download-btn.downloading .dl-arrow-shaft {
   animation: dl-drop 0.6s ease forwards;
 }
@@ -182,7 +202,6 @@
   animation: dl-tray-flash 0.6s ease forwards;
 }
 
-/* Стан "done" - стрілка стає галочкою ✓ */
 .download-btn.done {
   background: linear-gradient(135deg, var(--gold) 0%, #c9a227 100%);
   border-color: var(--gold);
@@ -207,7 +226,6 @@
   opacity: 0;
 }
 
-/* Анімації стрілки під час завантаження */
 @keyframes dl-drop {
   0% {
     transform: translate(-50%, -55%);
@@ -244,7 +262,6 @@
   }
 }
 
-/* підпис під кнопкою "Krátký životopis" */
 .download-label {
   font-family: "Roboto Condensed", Arial, sans-serif;
   font-size: 0.65rem;
@@ -261,7 +278,6 @@
   color: var(--gold);
 }
 
-/* PHOTO MODAL - lightbox для розгортання фото */
 .photo-modal {
   display: none;
   position: fixed;
@@ -277,7 +293,6 @@
   animation: modalFadeIn 0.3s ease;
 }
 
-/* Клас .open додається через JS при кліку на аватар */
 .photo-modal.open {
   display: flex;
 }
@@ -292,7 +307,6 @@
   animation: modalZoomIn 0.3s ease;
 }
 
-/* Кнопка закриття × */
 .photo-modal-close {
   position: absolute;
   top: 1.5rem;
@@ -336,7 +350,6 @@
   }
 }
 
-/* RESPONSIVE - кнопки переїжджають вниз на мобільних */
 @media (max-width: 768px) {
   .side-buttons {
     top: auto;

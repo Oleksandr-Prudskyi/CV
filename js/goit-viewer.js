@@ -17,6 +17,8 @@ function initializeGoitViewer() {
   var mobileCardsRoot = null;
   var inlineDetails = null;
   var mobileDetailsVisible = true;
+  var mobileExpandedIndexes = new Set();
+  var mobileDetailNodes = new Map();
 
   function buildInlineDetailsHTML(item, index) {
     var linkHtml = item.href
@@ -53,68 +55,100 @@ function initializeGoitViewer() {
     );
   }
 
-  function animateInlineOpen(targetBtn, item, index) {
-    if (!inlineDetails || !targetBtn) return;
+  function animateDetailOpen(detail, targetBtn, item, index) {
+    if (!detail || !targetBtn) return;
 
-    inlineDetails.innerHTML = buildInlineDetailsHTML(item, index);
-    inlineDetails.dataset.ownerIndex = String(index);
+    detail.innerHTML = buildInlineDetailsHTML(item, index);
+    detail.dataset.ownerIndex = String(index);
 
     if (
-      inlineDetails.parentNode !== targetBtn.parentNode ||
-      inlineDetails.previousElementSibling !== targetBtn
+      detail.parentNode !== targetBtn.parentNode ||
+      detail.previousElementSibling !== targetBtn
     ) {
-      targetBtn.insertAdjacentElement("afterend", inlineDetails);
+      targetBtn.insertAdjacentElement("afterend", detail);
     }
 
-    inlineDetails.classList.add("is-open");
-    inlineDetails.style.height = "0px";
-    inlineDetails.style.opacity = "0";
-    inlineDetails.style.transform = "translateY(-8px)";
+    detail.classList.add("is-open");
+    detail.style.height = "0px";
+    detail.style.opacity = "0";
+    detail.style.transform = "translateY(-8px)";
 
     requestAnimationFrame(function () {
-      var h = inlineDetails.scrollHeight;
-      inlineDetails.style.height = h + "px";
-      inlineDetails.style.opacity = "1";
-      inlineDetails.style.transform = "translateY(0)";
+      var height = detail.scrollHeight;
+      detail.style.height = height + "px";
+      detail.style.opacity = "1";
+      detail.style.transform = "translateY(0)";
     });
 
     var onEndOpen = function (e) {
       if (e.propertyName !== "height") return;
-      inlineDetails.removeEventListener("transitionend", onEndOpen);
-      if (inlineDetails.classList.contains("is-open")) {
-        inlineDetails.style.height = "auto";
+      detail.removeEventListener("transitionend", onEndOpen);
+      if (detail.classList.contains("is-open")) {
+        detail.style.height = "auto";
       }
     };
-    inlineDetails.addEventListener("transitionend", onEndOpen);
+    detail.removeEventListener("transitionend", onEndOpen);
+    detail.addEventListener("transitionend", onEndOpen);
   }
 
-  function animateInlineClose(done) {
-    if (!inlineDetails || !inlineDetails.parentNode) {
+  function animateDetailClose(detail, done) {
+    if (!detail || !detail.parentNode) {
       if (done) done();
       return;
     }
 
-    inlineDetails.style.height = inlineDetails.scrollHeight + "px";
-    inlineDetails.classList.remove("is-open");
+    detail.style.height = detail.scrollHeight + "px";
+    detail.classList.remove("is-open");
 
     requestAnimationFrame(function () {
-      inlineDetails.style.height = "0px";
-      inlineDetails.style.opacity = "0";
-      inlineDetails.style.transform = "translateY(-8px)";
+      detail.style.height = "0px";
+      detail.style.opacity = "0";
+      detail.style.transform = "translateY(-8px)";
     });
 
     var onEndClose = function (e) {
       if (e.propertyName !== "height") return;
-      inlineDetails.removeEventListener("transitionend", onEndClose);
-      if (
-        !inlineDetails.classList.contains("is-open") &&
-        inlineDetails.parentNode
-      ) {
-        inlineDetails.parentNode.removeChild(inlineDetails);
+      detail.removeEventListener("transitionend", onEndClose);
+      if (!detail.classList.contains("is-open") && detail.parentNode) {
+        detail.parentNode.removeChild(detail);
       }
       if (done) done();
     };
-    inlineDetails.addEventListener("transitionend", onEndClose);
+    detail.removeEventListener("transitionend", onEndClose);
+    detail.addEventListener("transitionend", onEndClose);
+  }
+
+  function animateInlineOpen(targetBtn, item, index) {
+    animateDetailOpen(inlineDetails, targetBtn, item, index);
+  }
+
+  function animateInlineClose(done) {
+    animateDetailClose(inlineDetails, done);
+  }
+
+  function openMobileDetail(button, item, index) {
+    if (!button) return null;
+
+    var detail = mobileDetailNodes.get(index);
+    if (!detail) {
+      detail = document.createElement("div");
+      detail.className = "goit-inline-details";
+      mobileDetailNodes.set(index, detail);
+    }
+
+    if (
+      detail.classList.contains("is-open") &&
+      detail.dataset.ownerIndex === String(index)
+    ) {
+      return detail;
+    }
+
+    animateDetailOpen(detail, button, item, index);
+    return detail;
+  }
+
+  function closeMobileDetail(detail, onClosed) {
+    animateDetailClose(detail, onClosed);
   }
 
   function isMobileLayout() {
@@ -142,40 +176,66 @@ function initializeGoitViewer() {
       mobileCardsRoot.style.display = "";
     }
 
-    if (list) {
-      var buttons = list.querySelectorAll(".list-item");
+    if (!list) return;
+
+    var buttons = list.querySelectorAll(".list-item");
+
+    if (mobile) {
       for (var i = 0; i < buttons.length; i++) {
-        var expanded = i === current && (!mobile || mobileDetailsVisible);
-        buttons[i].classList.toggle("is-expanded", expanded);
-      }
+        var button = buttons[i];
+        var detail = mobileDetailNodes.get(i);
+        var item = items[i] || {};
+        var shouldExpand = mobileExpandedIndexes.has(i);
 
-      if (inlineDetails) {
-        if (mobile && current >= 0 && !shouldHide) {
-          var targetBtn = buttons[current];
-          if (targetBtn) {
-            var item = items[current] || {};
-            var ownerIndex = inlineDetails.dataset.ownerIndex;
-            var shouldMove = ownerIndex !== String(current);
+        button.classList.toggle("is-expanded", shouldExpand);
+        button.setAttribute("aria-pressed", String(shouldExpand));
 
-            if (inlineDetails.parentNode && shouldMove) {
-              animateInlineClose(function () {
-                animateInlineOpen(targetBtn, item, current);
-              });
-            } else if (!inlineDetails.parentNode) {
-              animateInlineOpen(targetBtn, item, current);
-            } else {
-              animateInlineOpen(targetBtn, item, current);
+        if (shouldExpand) {
+          openMobileDetail(button, item, i);
+        } else if (detail) {
+          closeMobileDetail(detail, function () {
+            if (mobileDetailNodes.get(i) === detail) {
+              mobileDetailNodes.delete(i);
             }
-          }
-        } else {
-          animateInlineClose();
+          });
         }
+      }
+      return;
+    }
+
+    for (var i = 0; i < buttons.length; i++) {
+      var expanded = i === current && (!mobile || mobileDetailsVisible);
+      buttons[i].classList.toggle("is-expanded", expanded);
+      buttons[i].setAttribute("aria-pressed", String(expanded));
+    }
+
+    if (inlineDetails) {
+      if (current >= 0 && !shouldHide) {
+        var targetBtn = buttons[current];
+        if (targetBtn) {
+          var item = items[current] || {};
+          var ownerIndex = inlineDetails.dataset.ownerIndex;
+          var shouldMove = ownerIndex !== String(current);
+
+          if (inlineDetails.parentNode && shouldMove) {
+            animateInlineClose(function () {
+              animateInlineOpen(targetBtn, item, current);
+            });
+          } else if (!inlineDetails.parentNode) {
+            animateInlineOpen(targetBtn, item, current);
+          } else {
+            animateInlineOpen(targetBtn, item, current);
+          }
+        }
+      } else {
+        animateInlineClose();
       }
     }
   }
   if (goitToggle && listCollapse) {
     goitToggle.addEventListener("click", function () {
       var open = this.classList.toggle("is-open");
+      this.setAttribute("aria-expanded", String(open));
       if (open) {
         listCollapse.style.height = "auto";
         var h = listCollapse.scrollHeight;
@@ -231,21 +291,48 @@ function initializeGoitViewer() {
     }
   }
   function select(index, forceShow) {
-    var sameIndex = current === index;
-    if (sameIndex && isMobileLayout()) {
-      mobileDetailsVisible =
-        typeof forceShow === "boolean" ? forceShow : !mobileDetailsVisible;
+    if (isMobileLayout()) {
+      var item = items[index];
+      current = index;
+
+      if (typeof forceShow === "boolean" && forceShow) {
+        mobileExpandedIndexes.add(index);
+      } else {
+        if (mobileExpandedIndexes.has(index)) {
+          mobileExpandedIndexes.delete(index);
+        } else {
+          mobileExpandedIndexes.add(index);
+        }
+      }
+
+      if (item && typeof item.deviceWidth === "number") {
+        setDeviceByWidth(item.deviceWidth);
+      }
+
+      loadFrame(item);
+      if (linkBtn) linkBtn.href = item.href || "#";
+      if (infoBox) {
+        infoBox.innerHTML = item.desc || "";
+      }
+      if (list) {
+        var buttons = list.querySelectorAll(".list-item");
+        for (var i = 0; i < buttons.length; i++) {
+          var expanded = mobileExpandedIndexes.has(i);
+          buttons[i].classList.toggle("is-active", expanded);
+          buttons[i].classList.toggle("is-expanded", expanded);
+          buttons[i].setAttribute("aria-pressed", String(expanded));
+        }
+      }
+
+      layout();
       updateMobileDetailsVisibility();
       return;
     }
 
+    var sameIndex = current === index;
     if (sameIndex) return;
     current = index;
     var item = items[index];
-
-    if (isMobileLayout()) {
-      mobileDetailsVisible = true;
-    }
 
     if (item && typeof item.deviceWidth === "number") {
       setDeviceByWidth(item.deviceWidth);
@@ -261,8 +348,10 @@ function initializeGoitViewer() {
       for (var i = 0; i < buttons.length; i++) {
         if (i === index) {
           buttons[i].classList.add("is-active");
+          buttons[i].setAttribute("aria-pressed", "true");
         } else {
           buttons[i].classList.remove("is-active");
+          buttons[i].setAttribute("aria-pressed", "false");
         }
       }
     }
@@ -286,6 +375,7 @@ function initializeGoitViewer() {
       var btn = document.createElement("button");
       btn.className = "list-item goit-list-item";
       btn.type = "button";
+      btn.setAttribute("aria-pressed", "false");
       btn.innerHTML =
         '<span class="arrow">' +
         '<span class="arrow-body"></span>' +
@@ -300,9 +390,14 @@ function initializeGoitViewer() {
         "</span>";
 
       btn.addEventListener("focus", function () {
+        if (isMobileLayout()) return;
         select(i);
       });
       btn.addEventListener("click", function () {
+        if (isMobileLayout()) {
+          select(i);
+          return;
+        }
         select(i);
       });
 

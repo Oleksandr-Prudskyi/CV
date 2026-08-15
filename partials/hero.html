@@ -1,5 +1,5 @@
 <!-- #region HERO -->
-<section class="hero">
+<section class="hero" id="heroSection" aria-labelledby="heroTitle">
   <svg
     class="hero-bg-svg"
     viewBox="0 0 45 32"
@@ -17,10 +17,19 @@
         aria-label="Zobrazit fotografii"
       >
         <i class="ph ph-user avatar-icon"></i>
-        <img src="/img/photo.png" alt="Oleksandr Prudskyi" id="avatarImage" />
+        <picture>
+          <source srcset="/img/photo.webp" type="image/webp" />
+          <img
+            src="/img/photo.png"
+            alt="Oleksandr Prudskyi"
+            id="avatarImage"
+            decoding="async"
+            fetchpriority="high"
+          />
+        </picture>
       </button>
     </div>
-    <h1>OLEKSANDR<br />PRUDSKYI</h1>
+    <h1 id="heroTitle">OLEKSANDR<br />PRUDSKYI</h1>
     <p class="birth-info">
       <time class="birth-date" datetime="1997-09-26">26. 09. 1997</time>
       <span

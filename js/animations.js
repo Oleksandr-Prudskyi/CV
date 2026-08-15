@@ -12,6 +12,11 @@
       var heroSection = document.querySelector(".hero");
       var heroBgSvg = document.querySelector(".hero-bg-svg");
       if (!symbol || !heroSection || !heroBgSvg) return;
+      var isMobileViewport = window.matchMedia("(max-width: 768px)").matches;
+      var preserveAspectRatio = isMobileViewport
+        ? "xMidYMid slice"
+        : "xMidYMid meet";
+      heroBgSvg.setAttribute("preserveAspectRatio", preserveAspectRatio);
 
       var drawSvg = document.createElementNS(
         "http://www.w3.org/2000/svg",
@@ -19,7 +24,7 @@
       );
       drawSvg.setAttribute("class", "hero-bg-draw");
       drawSvg.setAttribute("viewBox", symbol.getAttribute("viewBox"));
-      drawSvg.setAttribute("preserveAspectRatio", "xMidYMid slice");
+      drawSvg.setAttribute("preserveAspectRatio", preserveAspectRatio);
       drawSvg.setAttribute("aria-hidden", "true");
 
       var paths = symbol.querySelectorAll("path");
@@ -42,15 +47,17 @@
         strokeDashoffset: [anime.setDashoffset, 0],
         easing: "easeInOutSine",
         duration: function () {
-          return anime.random(1200, 2800);
+          return isMobileViewport
+            ? anime.random(2800, 5000)
+            : anime.random(1800, 3600);
         },
-        delay: anime.stagger(35, { from: "first" }),
+        delay: anime.stagger(isMobileViewport ? 80 : 45, { from: "first" }),
         complete: function () {
           heroBgSvg.classList.add("revealed");
           anime({
             targets: drawSvg,
             opacity: 0,
-            duration: 1200,
+            duration: isMobileViewport ? 2200 : 1600,
             easing: "easeOutQuad",
           });
         },
@@ -87,7 +94,7 @@
                 rotate: ["-3deg", "0deg"],
                 opacity: [0, 1],
                 duration: 1200,
-                easing: "easeOutCubic",
+                easing: "easeInOutCubic",
                 complete: function () {
                   logoSvg.style.transition = "";
                 },

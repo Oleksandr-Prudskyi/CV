@@ -109,18 +109,21 @@ function initializeApp() {
     }
   });
   var contactBar = document.getElementById("contactBar");
+  var heroSection = document.querySelector(".hero");
   var aboutSection = document.getElementById("aboutSection");
   var goitSection = document.getElementById("goitContainer");
   var scrollTicking = false;
   var hideContactBarForGoit = false;
 
   function updateContactBarVisibility() {
-    if (!contactBar || !aboutSection) return;
+    if (!contactBar) return;
 
-    if (isMobile()) {
-      contactBar.classList.add("visible");
+    if (heroSection && heroSection.getBoundingClientRect().bottom > 0) {
+      contactBar.classList.remove("visible");
       return;
     }
+
+    if (!aboutSection) return;
 
     var aboutTop = aboutSection.getBoundingClientRect().top;
     var shouldShowByScroll = aboutTop <= 80;
@@ -212,7 +215,8 @@ function initializeApp() {
   if (socialBtn) {
     socialBtn.addEventListener("click", function (e) {
       e.stopPropagation();
-      socialPanel.classList.toggle("open");
+      var isOpen = socialPanel.classList.toggle("open");
+      socialBtn.setAttribute("aria-expanded", String(isOpen));
     });
   }
 
@@ -220,6 +224,7 @@ function initializeApp() {
     var wrapper = document.querySelector(".social-box");
     if (socialPanel && wrapper && !wrapper.contains(e.target)) {
       socialPanel.classList.remove("open");
+      if (socialBtn) socialBtn.setAttribute("aria-expanded", "false");
     }
   });
   var photoModal = document.getElementById("photoModal");
@@ -250,7 +255,11 @@ function initializeApp() {
     });
 
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") closePhotoModal();
+    if (e.key === "Escape") {
+      closePhotoModal();
+      if (socialPanel) socialPanel.classList.remove("open");
+      if (socialBtn) socialBtn.setAttribute("aria-expanded", "false");
+    }
     if (e.key === "Tab" && photoModal.classList.contains("open")) {
       e.preventDefault();
       if (modalCloseBtn) modalCloseBtn.focus();

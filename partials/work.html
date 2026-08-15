@@ -1,8 +1,8 @@
 <!-- #region SECTION 2: Work -->
-<section class="section">
+<section class="section" id="workSection" aria-labelledby="workTitle">
   <div class="container">
     <header class="header-work">
-      <h2 class="title-section">
+      <h2 class="title-section" id="workTitle">
         <i class="ph-bold ph-factory icon-section"></i> Praxe
       </h2>
 
@@ -31,8 +31,12 @@
     </header>
 
     <!-- #region SUBSECTION 1: Výrobní zkušenosti (Manufacturing Experience) -->
-    <article class="work-subsection">
-      <h3 class="work-subsection-title">
+    <article
+      class="work-subsection"
+      id="experienceSection"
+      aria-labelledby="experienceTitle"
+    >
+      <h3 class="work-subsection-title" id="experienceTitle">
         <i class="ph ph-suitcase-simple"></i> Výrobní zkušenosti
       </h3>
 
@@ -534,15 +538,25 @@
     <!-- #endregion SUBSECTION 1: Výrobní zkušenosti -->
 
     <!-- #region SUBSECTION 2: GoIT Learning Projects -->
-    <article class="work-subsection">
-      <h3 class="work-subsection-title">
+    <article
+      class="work-subsection work-subsection-goit"
+      id="goitSection"
+      aria-labelledby="goitTitle"
+    >
+      <h3 class="work-subsection-title" id="goitTitle">
         <i class="ph ph-graduation-cap"></i> GoIT Learning
       </h3>
 
       <div class="goit-container" id="goitContainer">
         <div class="wrap goit-wrap">
           <aside class="goit-sidebar">
-            <button class="btn goit-toggle" id="goitToggle" type="button">
+            <button
+              class="btn goit-toggle"
+              id="goitToggle"
+              type="button"
+              aria-expanded="false"
+              aria-controls="goitListCollapse"
+            >
               <span>GoIT</span>
               <span class="goit-chevron"></span>
             </button>

@@ -54,11 +54,6 @@ body {
   padding: 1.5rem 1rem;
 }
 
-.section-body {
-  display: flex;
-  flex-direction: column;
-}
-
 ul,
 ol {
   list-style: none;

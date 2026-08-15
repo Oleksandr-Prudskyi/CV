@@ -81,17 +81,37 @@
     var container = document.querySelector(".work-card-container");
     if (!container) return;
 
+    document.querySelectorAll(".card-work").forEach(function (card) {
+      card.setAttribute("tabindex", "0");
+      card.setAttribute("role", "button");
+      card.setAttribute("aria-expanded", String(card.classList.contains("expanded")));
+
+      card.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          toggleDetails(card);
+          card.setAttribute("aria-expanded", String(card.classList.contains("expanded")));
+        }
+      });
+    });
+
     container.addEventListener("click", function (e) {
       var btn = e.target.closest(".btn-show-more");
       if (btn) {
+        e.preventDefault();
         e.stopPropagation();
-        toggleDetails(btn.closest(".work-card"));
+        var card = btn.closest(".card-work");
+        toggleDetails(card);
+        if (card) {
+          card.setAttribute("aria-expanded", String(card.classList.contains("expanded")));
+        }
         return;
       }
 
       var card = e.target.closest(".card-work");
       if (card) {
         toggleDetails(card);
+        card.setAttribute("aria-expanded", String(card.classList.contains("expanded")));
       }
     });
   }

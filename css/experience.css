@@ -323,6 +323,11 @@
   box-shadow: 0 8px 25px rgba(79, 66, 181, 0.18);
 }
 
+.card-work:focus-visible {
+  outline: 2px solid rgba(79, 66, 181, 0.7);
+  outline-offset: 3px;
+}
+
 .card-work.expanded {
   border-color: var(--gold);
 }

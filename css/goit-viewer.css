@@ -488,10 +488,6 @@
   display: none;
 }
 
-.goit-mobile-cards.is-collapsed {
-  display: none !important;
-}
-
 .goit-inline-details {
   width: 100%;
   margin: 0;

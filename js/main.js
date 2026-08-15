@@ -116,6 +116,12 @@ function initializeApp() {
 
   function updateContactBarVisibility() {
     if (!contactBar || !aboutSection) return;
+
+    if (isMobile()) {
+      contactBar.classList.add("visible");
+      return;
+    }
+
     var aboutTop = aboutSection.getBoundingClientRect().top;
     var shouldShowByScroll = aboutTop <= 80;
     var shouldShow = shouldShowByScroll && !hideContactBarForGoit;
@@ -125,6 +131,12 @@ function initializeApp() {
   if (goitSection && "IntersectionObserver" in window) {
     var goitObserver = new IntersectionObserver(
       function (entries) {
+        if (isMobile()) {
+          hideContactBarForGoit = false;
+          updateContactBarVisibility();
+          return;
+        }
+
         var entry = entries[0];
         var goitIsDeepInView =
           !!entry && entry.boundingClientRect.top <= window.innerHeight * 0.35;
@@ -210,15 +222,6 @@ function initializeApp() {
       socialPanel.classList.remove("open");
     }
   });
-  var telegramLink = document.querySelector(".telegram-link");
-  if (telegramLink) {
-    telegramLink.addEventListener("click", function (e) {
-      if (isMobile()) {
-        e.preventDefault();
-        window.location.href = "tg://resolve?domain=PrO_Libra";
-      }
-    });
-  }
   var photoModal = document.getElementById("photoModal");
   var avatarBtn = document.getElementById("avatarPlaceholder");
   var modalCloseBtn = document.querySelector(".photo-modal-close");
@@ -254,21 +257,13 @@ function initializeApp() {
     }
   });
 }
-console.log(
-  "[main.js] Module loaded, document.readyState:",
-  document.readyState,
-);
-
 function safeInitialize() {
   if (window.__appInitialized) {
-    console.log("[main.js] App already initialized, skipping");
     return;
   }
 
   window.__appInitialized = true;
-  console.log("[main.js] Initializing app");
   if (!document.getElementById("socialBtn")) {
-    console.log("[main.js] socialBtn not found, waiting for DOM");
     return;
   }
 

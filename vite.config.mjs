@@ -6,7 +6,7 @@ function copyPartials() {
   return {
     name: "copy-partials",
     closeBundle() {
-      ["partials", "js", "img"].forEach(function (folder) {
+      ["Files", "partials", "js", "img"].forEach(function (folder) {
         var source = resolve(folder);
         var target = resolve("dist", folder);
         if (existsSync(source)) cpSync(source, target, { recursive: true });

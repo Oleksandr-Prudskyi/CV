@@ -117,21 +117,29 @@
           if (m.attributeName === "class") {
             if (socialPanel.classList.contains("open")) {
               var links = socialPanel.querySelectorAll(".social-links a");
+              var nickname = socialPanel.querySelector(".social-nickname");
+              anime.remove(links);
+              if (nickname) anime.remove(nickname);
+              links.forEach(function (link) {
+                link.style.opacity = "0";
+                link.style.transform = "translateX(-20px)";
+              });
               anime({
                 targets: links,
-                scale: [0, 1],
+                translateX: [-20, 0],
                 opacity: [0, 1],
-                delay: anime.stagger(80, { start: 120 }),
-                duration: 450,
-                easing: "easeOutBack",
+                delay: anime.stagger(100, { from: "first" }),
+                duration: 400,
+                easing: "easeOutCubic",
               });
-              var nickname = socialPanel.querySelector(".social-nickname");
               if (nickname) {
+                nickname.style.opacity = "0";
+                nickname.style.transform = "translateX(-15px)";
                 anime({
                   targets: nickname,
                   opacity: [0, 1],
                   translateX: [-15, 0],
-                  duration: 400,
+                  duration: 350,
                   easing: "easeOutCubic",
                 });
               }

@@ -8,6 +8,7 @@
     "js/animations.js",
     "js/goit-data.js",
     "js/goit-viewer.js",
+    "js/innovations.js",
   ];
 
   function loadFragment(element) {

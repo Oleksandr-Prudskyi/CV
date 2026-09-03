@@ -6,10 +6,9 @@
   z-index: 1000;
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 1.5rem;
-  border-radius: 4px;
-  padding: 0.4rem 1.5rem;
+  padding: 0;
+  border-radius: 0;
   background: linear-gradient(
     135deg,
     var(--tanzanite) 0%,
@@ -20,6 +19,10 @@
   transform: translateY(-100%);
   opacity: 0;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contact-bar > * {
+  margin-block: auto;
 }
 
 .contact-bar.visible {
@@ -69,7 +72,8 @@
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  font-size: 0.9rem;
+  margin-inline: auto;
+  font-size: 1rem;
   font-weight: 400;
 }
 
@@ -94,25 +98,26 @@
   .contact-bar {
     flex-wrap: wrap;
     justify-content: center;
-    gap: 0.4rem 1rem;
-    padding: 0.5rem 1rem;
+    gap: 0.35rem 1rem;
+    padding: 0;
     text-align: center;
   }
   .top-logo svg {
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
   }
   .contact-bar .name {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
   }
   .contact-bar .contact-info {
     flex-wrap: wrap;
     justify-content: center;
-    gap: 0.3rem 1rem;
-    font-size: 0.7rem;
+    gap: 0.25rem 1rem;
+    margin-inline: 0;
+    font-size: 0.82rem;
     flex: 1 1 100%;
   }
   .contact-bar .icon {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
 }

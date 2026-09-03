@@ -136,14 +136,34 @@
 
 .side-buttons {
   position: fixed;
-  top: 50%;
-  right: 1.5rem;
-  transform: translateY(-50%);
+  top: auto;
+  right: 1.25rem;
+  bottom: 1.5rem;
+  transform: none;
   z-index: 999;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.2rem;
+  gap: 0.8rem;
+  opacity: 0.55;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.side-buttons:hover,
+.side-buttons:focus-within {
+  opacity: 1;
+}
+
+main {
+  padding-bottom: 6rem;
+}
+
+@media (max-width: 768px) {
+  main {
+    padding-bottom: 8rem;
+  }
 }
 
 .download-wrapper {
@@ -353,13 +373,24 @@
 @media (max-width: 768px) {
   .side-buttons {
     top: auto;
-    right: 1rem;
-    bottom: 2rem;
+    right: 0.6rem;
+    bottom: 1rem;
     transform: none;
+    gap: 0.4rem;
+    opacity: 0.4;
+  }
+  .side-buttons:hover,
+  .side-buttons:focus-within,
+  .side-buttons:active {
+    opacity: 1;
+  }
+  .side-buttons .download-label,
+  .side-buttons .social-label {
+    display: none;
   }
   .download-btn {
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
   }
   .dl-arrow-shaft {
     height: 14px;

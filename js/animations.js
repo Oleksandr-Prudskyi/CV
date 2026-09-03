@@ -45,20 +45,17 @@
       anime({
         targets: drawPaths,
         strokeDashoffset: [anime.setDashoffset, 0],
-        easing: "easeInOutSine",
-        duration: function () {
-          return isMobileViewport
-            ? anime.random(2800, 5000)
-            : anime.random(1800, 3600);
-        },
-        delay: anime.stagger(isMobileViewport ? 80 : 45, { from: "first" }),
+        easing: "linear",
+        duration: isMobileViewport ? 900 : 700,
+        delay: anime.stagger(isMobileViewport ? 55 : 40, { from: "first" }),
+        endDelay: 700,
         complete: function () {
           heroBgSvg.classList.add("revealed");
           anime({
             targets: drawSvg,
             opacity: 0,
-            duration: isMobileViewport ? 2200 : 1600,
-            easing: "easeOutQuad",
+            duration: 1200,
+            easing: "linear",
           });
         },
       });
@@ -158,19 +155,24 @@
 
       var skillsGrid = document.querySelector(".skills-list");
       if (skillsGrid) {
+        var revealSkills = function () {
+          anime({
+            targets: ".skill-tag",
+            opacity: [null, 1],
+            scale: [null, 1],
+            translateY: [null, 0],
+            delay: anime.stagger(60, { from: "first" }),
+            duration: 500,
+            easing: "easeOutBack",
+          });
+        };
+        var skillsRevealed = false;
         var skillObserver = new IntersectionObserver(
           function (entries) {
             entries.forEach(function (entry) {
-              if (entry.isIntersecting) {
-                anime({
-                  targets: ".skill-tag",
-                  opacity: [0, 1],
-                  scale: [0, 1],
-                  translateY: [30, 0],
-                  delay: anime.stagger(60, { from: "first" }),
-                  duration: 500,
-                  easing: "easeOutBack",
-                });
+              if (entry.isIntersecting && !skillsRevealed) {
+                skillsRevealed = true;
+                revealSkills();
                 skillObserver.unobserve(entry.target);
               }
             });
@@ -178,6 +180,17 @@
           { threshold: 0.05 },
         );
         skillObserver.observe(skillsGrid);
+        // Safety fallback: if animation hasn't fired within 2s
+        // (e.g. tab loaded already scrolled past, prefers-reduced-motion),
+        // force the tags visible so nothing is stuck invisible.
+        window.setTimeout(function () {
+          if (skillsRevealed) return;
+          skillsRevealed = true;
+          skillTags.forEach(function (tag) {
+            tag.style.opacity = "1";
+            tag.style.transform = "none";
+          });
+        }, 2000);
       }
     }
     var contactCards = document.querySelectorAll(".contact-grid .contact-card");

@@ -185,43 +185,6 @@
     });
   }
 
-  if (!isMobile()) {
-    var trailColors = ["#7d2432", "#a33d43", "#b18a4a", "#c6a66b"];
-    var trailPool = [];
-    var trailSize = 12;
-    var trailIndex = 0;
-    var trailThrottle = 0;
-
-    for (var t = 0; t < trailSize; t++) {
-      var dot = document.createElement("div");
-      dot.className = "cursor-dot";
-      dot.style.background = trailColors[t % trailColors.length];
-      document.body.appendChild(dot);
-      trailPool.push(dot);
-    }
-
-    document.addEventListener("mousemove", function (e) {
-      var now = Date.now();
-      if (now - trailThrottle < 40) return;
-      trailThrottle = now;
-
-      var dot = trailPool[trailIndex % trailSize];
-      dot.style.opacity = "0.7";
-      dot.style.transform = "scale(1)";
-      dot.style.left = e.clientX - 3 + "px";
-      dot.style.top = e.clientY - 3 + "px";
-      dot.style.transition = "none";
-
-      void dot.offsetWidth;
-
-      dot.style.transition =
-        "opacity 600ms ease-out, transform 600ms ease-out";
-      dot.style.opacity = "0";
-      dot.style.transform = "scale(0.2)";
-
-      trailIndex++;
-    });
-  }
 
   if (!isMobile()) {
     var magneticBtns = document.querySelectorAll(".side-buttons .circle-btn");

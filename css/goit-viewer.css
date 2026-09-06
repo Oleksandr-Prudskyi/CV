@@ -459,20 +459,17 @@
   font-size: 14px;
   color: var(--deep-purple);
   line-height: 1.7;
-  min-height: 200px;
+  min-height: auto;
   width: auto;
   max-width: 100%;
   box-shadow: 0 4px 12px rgba(79, 66, 181, 0.04);
 }
 
-@media (max-width: 768px) {
+/* min-width: 768 — tablet+desktop: expanded info-box, hide inline-details (description lives in info-box) */
+@media (min-width: 768px) {
   .goit-info-box {
-    min-height: auto;
+    min-height: 200px;
   }
-}
-
-/* Desktop: hide inline accordion expansion — description lives in .goit-info-box below the list to avoid duplication */
-@media (min-width: 769px) {
   .goit-inline-details {
     display: none !important;
   }
@@ -602,7 +599,153 @@
   box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
 }
 
-@media (max-width: 768px) {
+/* Tablet (min-width: 768): sidebar becomes a horizontal row of square buttons at top (matches Praxe pattern), info-box + preview stacked below. Overridden at min-width: 1024 (desktop restores grid). */
+@media (min-width: 768px) {
+  .goit-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .goit-sidebar {
+    max-width: 100%;
+    width: 100%;
+    gap: 14px;
+  }
+
+  /* Row is compact and always open — hide collapse toggle */
+  .goit-toggle {
+    display: none;
+  }
+
+  .goit-list-collapse {
+    overflow: visible;
+    height: auto !important;
+    max-height: none;
+  }
+
+  .goit-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: stretch;
+    gap: 0.55rem;
+  }
+
+  .list-item {
+    flex: 1 1 0;
+    min-width: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0.85rem 0.5rem 0.75rem;
+    min-height: 88px;
+    gap: 0.3rem;
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .item-number {
+    font-size: 20px;
+    min-width: auto;
+    line-height: 1;
+  }
+
+  .item-title {
+    display: block;
+    font-size: 13.5px;
+    line-height: 1.25;
+    text-align: center;
+  }
+
+  .arrow {
+    display: none;
+  }
+
+  .goit-info-box {
+    margin: 0;
+    min-height: 140px;
+  }
+
+  .goit-preview {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .goit-window {
+    height: clamp(380px, 48vh, 540px);
+    min-height: 380px;
+  }
+
+  .goit-mobile-cards {
+    display: none;
+  }
+}
+
+/* min-width: 1024 — desktop: restore grid (sidebar left, preview right) after tablet row-of-tabs */
+@media (min-width: 1024px) {
+  .goit-wrap {
+    display: grid;
+    grid-template-columns: minmax(260px, 320px) minmax(0, 1fr);
+    gap: 20px;
+    align-items: start;
+  }
+
+  .goit-sidebar {
+    max-width: 320px;
+    gap: 12px;
+  }
+
+  .goit-toggle {
+    display: flex;
+  }
+
+  .goit-list-collapse {
+    overflow: hidden;
+    height: auto;
+    max-height: none;
+  }
+
+  .goit-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .list-item {
+    flex: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: left;
+    padding: 13px 14px;
+    min-height: auto;
+    gap: 12px;
+  }
+
+  .item-title {
+    font-size: 15px;
+    text-align: left;
+  }
+
+  .arrow {
+    display: block;
+  }
+
+  .goit-info-box {
+    margin: 12px 0 0 0;
+    min-height: 200px;
+  }
+
+  .goit-window {
+    height: clamp(520px, 62vh, 680px);
+    min-height: 520px;
+  }
+}
+
+@media (max-width: 600px) {
   .goit-wrap {
     display: block;
   }

@@ -1,4 +1,11 @@
+/* ============================================================
+   profile — Vzdělání / Jazyky / Zájmy card grid
+   Mobile-first. Base = mobile (stacked, centered), enhancements at 768.
+   ============================================================ */
+
 .card-info {
+  display: flex;
+  justify-content: center;
   background: rgba(255, 255, 255, 0.5);
 }
 
@@ -6,9 +13,12 @@
   box-shadow: 0 6px 22px rgba(79, 66, 181, 0.14);
 }
 
+/* Base = mobile: single column stack, borders on bottom */
 .info-columns {
   display: flex;
+  flex-direction: column;
   gap: 0;
+  width: 100%;
 }
 
 .info-column {
@@ -16,16 +26,19 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 1.3rem 1.5rem;
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid rgba(79, 66, 181, 0.08);
+  text-align: center;
 }
 
-.info-column:not(:last-child) {
-  border-right: 1px solid rgba(79, 66, 181, 0.08);
+.info-column:last-child {
+  border-bottom: none;
 }
 
 .info-column-title {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   margin-bottom: 1rem;
   font-family: "Playfair Display", serif;
@@ -42,29 +55,36 @@
 .edu-list {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 0.7rem;
 }
 
 .edu-row {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 0.8rem;
   padding: 0.6rem 0.8rem;
   background: rgba(79, 66, 181, 0.04);
-  border-left: 3px solid var(--tanzanite);
+  border-top: 3px solid var(--tanzanite);
   border-radius: 10px;
+  text-align: center;
   transition: all 0.25s ease;
 }
 
 .edu-row:hover {
-  transform: translateX(3px);
+  transform: translateY(-3px);
   background: rgba(79, 66, 181, 0.08);
+}
+
+.edu-row > p {
+  width: 100%;
 }
 
 .edu-row.edu-row-secondary {
   padding: 0.45rem 0.7rem;
   background: rgba(79, 66, 181, 0.02);
-  border-left-width: 2px;
+  border-top-width: 2px;
   opacity: 0.72;
 }
 
@@ -120,19 +140,23 @@
 .zajmy-simple {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 0;
 }
 
 .lang-simple li,
 .zajmy-simple li {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 0.6rem;
   padding: 0.7rem 0;
   border-bottom: 1px solid rgba(79, 66, 181, 0.08);
   font-size: 1.05rem;
   font-weight: 500;
   color: var(--deep-purple);
+  text-align: center;
 }
 
 .lang-simple li:last-child,
@@ -152,51 +176,62 @@
   flex-shrink: 0;
 }
 
-@media (max-width: 768px) {
+/* min-width: 768 — tablet+desktop: side-by-side columns, left-aligned rows */
+@media (min-width: 768px) {
   .card-info {
-    display: flex;
-    justify-content: center;
+    display: block;
   }
+
   .info-columns {
-    flex-direction: column;
-    width: 100%;
+    flex-direction: row;
+    width: auto;
   }
+
   .info-column {
-    flex: 1;
-    border-right: none;
-    border-bottom: 1px solid rgba(79, 66, 181, 0.08);
-    padding: 1rem 1.2rem;
-    text-align: center;
+    padding: 1.3rem 1.5rem;
+    border-bottom: none;
+    text-align: left;
   }
+
+  .info-column:not(:last-child) {
+    border-right: 1px solid rgba(79, 66, 181, 0.08);
+  }
+
   .info-column-title {
-    justify-content: center;
+    justify-content: flex-start;
   }
+
+  .edu-list {
+    align-items: stretch;
+  }
+
   .edu-row {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    border-left: none;
-    border-top: 3px solid var(--tanzanite);
-    text-align: center;
+    border-top: none;
+    border-left: 3px solid var(--tanzanite);
+    text-align: left;
   }
+
   .edu-row:hover {
-    transform: translateY(-3px);
+    transform: translateX(3px);
   }
-  .edu-row > p {
-    width: 100%;
+
+  .edu-row.edu-row-secondary {
+    border-top: none;
+    border-left-width: 2px;
   }
-  .lang-simple li,
-  .zajmy-simple li {
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-  }
-  .edu-list,
+
   .lang-simple,
   .zajmy-simple {
-    align-items: center;
+    align-items: stretch;
   }
-  .info-column:last-child {
-    border-bottom: none;
+
+  .lang-simple li,
+  .zajmy-simple li {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: left;
   }
 }

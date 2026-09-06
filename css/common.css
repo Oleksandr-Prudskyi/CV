@@ -190,24 +190,32 @@ a {
   padding: 1.5rem 1rem;
 }
 
-/* ------ Responsive contact toggle (phone/email tel: on mobile only) ------ */
+/* ------ Responsive contact toggle (mobile-first: phones show tel: link, tablet+ show plain text with copy btn) ------ */
 .mobile-phone,
-.mobile-email {
+.mobile-email,
+span.mobile-phone,
+span.mobile-email {
+  display: inline-block;
+}
+.desktop-phone,
+.desktop-email,
+span.desktop-phone,
+span.desktop-email {
   display: none;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .mobile-phone,
-  .mobile-email {
-    display: block;
-  }
+  .mobile-email,
   span.mobile-phone,
   span.mobile-email {
-    display: inline;
+    display: none;
   }
   .desktop-phone,
-  .desktop-email {
-    display: none;
+  .desktop-email,
+  span.desktop-phone,
+  span.desktop-email {
+    display: inline-block;
   }
 }
 
@@ -228,11 +236,11 @@ a {
     "lnum" 1;
 }
 
-/* ------ Circle button base ------ */
+/* ------ Circle button base — mobile-first (40px on phones, 52px from tablet+) ------ */
 .circle-btn {
   position: relative;
-  width: 52px;
-  height: 52px;
+  width: 40px;
+  height: 40px;
   background: linear-gradient(
     135deg,
     var(--tanzanite-light) 0%,
@@ -260,4 +268,11 @@ a {
 
 .circle-btn:active {
   transform: scale(0.95);
+}
+
+@media (min-width: 768px) {
+  .circle-btn {
+    width: 52px;
+    height: 52px;
+  }
 }

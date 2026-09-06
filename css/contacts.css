@@ -1,17 +1,24 @@
+/* ============================================================
+   contact-grid (hero contact card)
+   Mobile-first. Breakpoints: 320 / 768 / 1024 / 1440 (min-width).
+   ============================================================ */
+
+/* Base — mobile: column stack, full-width cards */
 .contact-grid {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   gap: 0.6rem;
   animation: fadeInUp 1s ease-out 0.4s both;
 }
 
-.contact-grid .email-card {
-  flex-basis: 100%;
+.contact-grid .contact-card:not(.email-card) {
+  min-width: 100%;
+  flex: 1 1 auto;
 }
 
-.contact-grid .contact-card:not(.email-card) {
-  flex: 1;
-  min-width: calc(50% - 0.4rem);
+.contact-grid .email-card {
+  flex-basis: 100%;
 }
 
 .contact-card {
@@ -30,7 +37,7 @@
 }
 
 .contact-card .icon {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: var(--tanzanite);
   flex-shrink: 0;
 }
@@ -44,7 +51,7 @@
 
 .contact-card .label {
   display: block;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   color: var(--silver);
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -52,7 +59,7 @@
 
 .contact-card .value {
   display: block;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 400;
   color: var(--deep-purple);
   font-family:
@@ -60,6 +67,7 @@
     sans-serif;
   font-variant-numeric: lining-nums tabular-nums;
   letter-spacing: 0.5px;
+  word-break: break-word;
 }
 
 .contact-card .phone-link,
@@ -77,12 +85,32 @@
 
 .contact-card .desktop-phone,
 .contact-card .desktop-email {
-  display: inline-block;
+  display: none;
 }
 
 .contact-card .mobile-phone,
 .contact-card .mobile-email {
-  display: none;
+  display: inline-block;
+}
+
+.contact-card.email-card {
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.contact-card.email-card .text {
+  width: 100%;
+}
+
+.contact-card.email-card .value {
+  font-size: 0.9rem;
+  word-break: break-all;
+  overflow-wrap: break-word;
+}
+
+.contact-card.email-card .hero-copy-btn {
+  width: 100%;
+  margin-top: 0.5rem;
 }
 
 .btn-copy {
@@ -133,49 +161,52 @@
   border-color: #28a745;
 }
 
-@media (max-width: 768px) {
+/* min-width: 768 — tablet+desktop: 2-column layout, revealed .desktop-* variants (with copy button) */
+@media (min-width: 768px) {
+  .contact-grid {
+    flex-direction: row;
+  }
+
+  .contact-grid .contact-card:not(.email-card) {
+    flex: 1;
+    min-width: calc(50% - 0.4rem);
+  }
+
+  .contact-card .icon {
+    font-size: 2rem;
+  }
+
+  .contact-card .label {
+    font-size: 0.85rem;
+  }
+
+  .contact-card .value {
+    font-size: 1.1rem;
+    word-break: normal;
+  }
+
   .contact-card .desktop-phone,
   .contact-card .desktop-email {
-    display: none;
-  }
-  .contact-card .mobile-phone,
-  .contact-card .mobile-email {
     display: inline-block;
   }
-  .contact-grid {
-    flex-direction: column;
+
+  .contact-card .mobile-phone,
+  .contact-card .mobile-email {
+    display: none;
   }
-  .contact-grid .contact-card:not(.email-card) {
-    min-width: 100%;
-    flex: 1 1 auto;
-  }
-  .contact-card {
-    padding: 0.8rem;
-  }
-  .contact-card .icon {
-    font-size: 1.5rem;
-  }
-  .contact-card .label {
-    font-size: 0.75rem;
-  }
-  .contact-card .value {
-    font-size: 1rem;
-    word-break: break-word;
-  }
+
   .contact-card.email-card {
-    flex-direction: column;
-    gap: 0.6rem;
+    flex-direction: row;
+    gap: 0.8rem;
   }
-  .contact-card.email-card .text {
-    width: 100%;
-  }
+
   .contact-card.email-card .value {
-    font-size: 0.9rem;
-    word-break: break-all;
-    overflow-wrap: break-word;
+    font-size: 1.1rem;
+    word-break: normal;
   }
+
   .contact-card.email-card .hero-copy-btn {
-    width: 100%;
-    margin-top: 0.5rem;
+    width: auto;
+    margin-top: 0;
   }
 }

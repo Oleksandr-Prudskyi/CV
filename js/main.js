@@ -17,7 +17,7 @@ function initializeApp() {
   "use strict";
 
   function isMobile() {
-    return window.innerWidth <= 768;
+    return window.innerWidth <= 600;
   }
   function copyEmail() {
     var email = "oleksandr.prudskyi@gmail.com";

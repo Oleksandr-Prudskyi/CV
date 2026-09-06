@@ -382,9 +382,6 @@ function initializeGoitViewer() {
         '<span class="arrow-top"></span>' +
         '<span class="arrow-bot"></span>' +
         "</span>" +
-        '<span class="item-number">' +
-        (i + 1) +
-        ".</span>" +
         '<span class="item-title">' +
         item.title +
         "</span>";

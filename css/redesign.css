@@ -186,8 +186,10 @@ body::before {
 }
 
 .contact-bar {
-  gap: clamp(0.75rem, 2vw, 1.75rem);
-  padding: 0;
+  gap: clamp(0.5rem, 1.2vw, 1.5rem);
+  padding: 5px 0;
+  margin: 0;
+  justify-content: center;
   border-radius: 0;
   background: var(--color-charcoal);
   color: var(--color-linen-light);
@@ -207,9 +209,11 @@ body::before {
 
 .contact-bar .contact-info {
   gap: clamp(0.75rem, 2vw, 1.6rem);
-  margin-inline: auto;
+  margin: 0;
+  padding: 0;
   font-size: clamp(0.85rem, 1.2vw, 1rem);
   letter-spacing: 0.03em;
+  justify-content: center;
 }
 
 .contact-bar .icon {
@@ -1141,6 +1145,7 @@ body::before {
     padding-inline: 1.25rem;
   }
 }
+
 
 @media (max-width: 360px) {
   .contact-bar {

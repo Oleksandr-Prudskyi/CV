@@ -1,3 +1,10 @@
+/* ============================================================
+   contact-bar — sticky top header
+   Mobile-first. Breakpoints: 320 / 768 / 1024 / 1440 (min-width).
+   All viewports: whole group центрована як єдиний блок.
+   ============================================================ */
+
+/* Base — mobile (< 320): найменший smart-phone */
 .contact-bar {
   position: fixed;
   top: 0;
@@ -6,8 +13,11 @@
   z-index: 1000;
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  padding: 0;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+  margin: 0;
+  padding: 5px 0;
   border-radius: 0;
   background: linear-gradient(
     135deg,
@@ -15,14 +25,11 @@
     var(--tanzanite-dark) 100%
   );
   color: white;
+  text-align: center;
   box-shadow: 0 4px 20px var(--shadow);
   transform: translateY(-100%);
   opacity: 0;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.contact-bar > * {
-  margin-block: auto;
 }
 
 .contact-bar.visible {
@@ -37,8 +44,8 @@
 }
 
 .top-logo svg {
-  width: 52px;
-  height: 52px;
+  width: 26px;
+  height: 26px;
   color: #fff;
   fill: currentColor;
   opacity: 0;
@@ -61,31 +68,36 @@
 }
 
 .contact-bar .name {
+  margin: 0;
+  padding: 0;
   font-family: "Playfair Display", serif;
-  font-size: 1.4rem;
+  font-size: 0.85rem;
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   flex-shrink: 0;
 }
 
 .contact-bar .contact-info {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  margin-inline: auto;
-  font-size: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.8rem;
+  margin: 0;
+  padding: 0;
+  font-size: 0.78rem;
   font-weight: 400;
 }
 
 .contact-bar .contact-item {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
   white-space: nowrap;
 }
 
 .contact-bar .icon {
-  font-size: 1.1rem;
+  font-size: 0.85rem;
   flex-shrink: 0;
 }
 
@@ -94,30 +106,101 @@
   text-decoration: none;
 }
 
-@media (max-width: 768px) {
-  .contact-bar {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.35rem 1rem;
-    padding: 0;
-    text-align: center;
-  }
+/* min-width: 320 — стандартний smart-phone */
+@media (min-width: 320px) {
   .top-logo svg {
     width: 28px;
     height: 28px;
   }
+
   .contact-bar .name {
     font-size: 0.95rem;
+    letter-spacing: 1px;
   }
+
   .contact-bar .contact-info {
-    flex-wrap: wrap;
-    justify-content: center;
     gap: 0.25rem 1rem;
-    margin-inline: 0;
     font-size: 0.82rem;
-    flex: 1 1 100%;
   }
+
   .contact-bar .icon {
     font-size: 0.9rem;
+  }
+}
+
+/* min-width: 768 — tablet */
+@media (min-width: 768px) {
+  .top-logo svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  .contact-bar {
+    gap: 0.5rem 1.2rem;
+  }
+
+  .contact-bar .name {
+    font-size: 1.15rem;
+  }
+
+  .contact-bar .contact-info {
+    gap: 0.3rem 1.1rem;
+    font-size: 0.9rem;
+  }
+
+  .contact-bar .icon {
+    font-size: 1rem;
+  }
+}
+
+/* min-width: 1024 — desktop */
+@media (min-width: 1024px) {
+  .top-logo svg {
+    width: 48px;
+    height: 48px;
+  }
+
+  .contact-bar {
+    flex-wrap: nowrap;
+    gap: 1.25rem;
+  }
+
+  .contact-bar .name {
+    font-size: 1.3rem;
+  }
+
+  .contact-bar .contact-info {
+    flex-wrap: nowrap;
+    gap: 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  .contact-bar .icon {
+    font-size: 1.05rem;
+  }
+}
+
+/* min-width: 1440 — large desktop */
+@media (min-width: 1440px) {
+  .top-logo svg {
+    width: 52px;
+    height: 52px;
+  }
+
+  .contact-bar {
+    gap: 1.5rem;
+  }
+
+  .contact-bar .name {
+    font-size: 1.4rem;
+  }
+
+  .contact-bar .contact-info {
+    gap: 1.5rem;
+    font-size: 1rem;
+  }
+
+  .contact-bar .icon {
+    font-size: 1.1rem;
   }
 }

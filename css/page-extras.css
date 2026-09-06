@@ -134,35 +134,44 @@
   animation: float 20s ease-in-out infinite reverse;
 }
 
+/* Base — mobile: compact side-buttons */
 .side-buttons {
   position: fixed;
   top: auto;
-  right: 1.25rem;
-  bottom: 1.5rem;
+  right: 0.6rem;
+  bottom: 1rem;
   transform: none;
   z-index: 999;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.8rem;
-  opacity: 0.55;
+  gap: 0.4rem;
+  opacity: 0.4;
   transition:
     opacity 0.3s ease,
     transform 0.3s ease;
 }
 
 .side-buttons:hover,
-.side-buttons:focus-within {
+.side-buttons:focus-within,
+.side-buttons:active {
   opacity: 1;
 }
 
 main {
-  padding-bottom: 6rem;
+  padding-bottom: 8rem;
 }
 
-@media (max-width: 768px) {
+/* min-width: 768 — tablet+desktop: larger side-buttons, main footer smaller */
+@media (min-width: 768px) {
+  .side-buttons {
+    right: 1.25rem;
+    bottom: 1.5rem;
+    gap: 0.8rem;
+    opacity: 0.55;
+  }
   main {
-    padding-bottom: 8rem;
+    padding-bottom: 6rem;
   }
 }
 
@@ -173,12 +182,13 @@ main {
   gap: 0.45rem;
 }
 
+/* dl-* — mobile-first sizes, larger at min-width: 768 */
 .dl-arrow-shaft {
   position: absolute;
   top: 45%;
   left: 50%;
   width: 3px;
-  height: 21px;
+  height: 14px;
   background: #fff;
   border-radius: 2px;
   transform: translate(-50%, -55%);
@@ -189,8 +199,8 @@ main {
   position: absolute;
   top: 45%;
   left: 50%;
-  width: 16px;
-  height: 16px;
+  width: 10px;
+  height: 10px;
   border-right: 3px solid #fff;
   border-bottom: 3px solid #fff;
   transform: translate(-50%, -15%) rotate(45deg);
@@ -199,15 +209,29 @@ main {
 
 .dl-tray {
   position: absolute;
-  bottom: 2px;
+  bottom: 8px;
   left: 50%;
-  width: 20px;
+  width: 16px;
   height: 4px;
   background: var(--gold);
   border-radius: 2px;
   opacity: 0.9;
   transform: translateX(-50%);
   transition: all 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .dl-arrow-shaft {
+    height: 21px;
+  }
+  .dl-arrow-head {
+    width: 16px;
+    height: 16px;
+  }
+  .dl-tray {
+    width: 20px;
+    bottom: 2px;
+  }
 }
 
 .download-btn.downloading .dl-arrow-shaft {
@@ -283,8 +307,9 @@ main {
 }
 
 .download-label {
+  display: none;
   font-family: "Roboto Condensed", Arial, sans-serif;
-  font-size: 0.65rem;
+  font-size: 0.58rem;
   font-weight: 600;
   letter-spacing: 0.3px;
   white-space: nowrap;
@@ -296,6 +321,13 @@ main {
 .download-wrapper:hover .download-label {
   opacity: 1;
   color: var(--gold);
+}
+
+@media (min-width: 768px) {
+  .download-label {
+    display: block;
+    font-size: 0.65rem;
+  }
 }
 
 .photo-modal {
@@ -370,40 +402,3 @@ main {
   }
 }
 
-@media (max-width: 768px) {
-  .side-buttons {
-    top: auto;
-    right: 0.6rem;
-    bottom: 1rem;
-    transform: none;
-    gap: 0.4rem;
-    opacity: 0.4;
-  }
-  .side-buttons:hover,
-  .side-buttons:focus-within,
-  .side-buttons:active {
-    opacity: 1;
-  }
-  .side-buttons .download-label,
-  .side-buttons .social-label {
-    display: none;
-  }
-  .download-btn {
-    width: 40px;
-    height: 40px;
-  }
-  .dl-arrow-shaft {
-    height: 14px;
-  }
-  .dl-arrow-head {
-    width: 10px;
-    height: 10px;
-  }
-  .dl-tray {
-    width: 16px;
-    bottom: 8px;
-  }
-  .download-label {
-    font-size: 0.58rem;
-  }
-}

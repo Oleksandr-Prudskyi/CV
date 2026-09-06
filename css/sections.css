@@ -1,5 +1,10 @@
+/* ============================================================
+   sections — title-section, header-work, counter-work, card-about
+   Mobile-first. Breakpoints: 320 / 768 / 1024 / 1440 (min-width).
+   ============================================================ */
+
 .section {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
   opacity: 0;
   transform: translateY(30px);
   animation: fadeInUp 0.8s ease-out forwards;
@@ -23,9 +28,9 @@
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  margin-bottom: 1.2rem;
+  margin-bottom: 0.8rem;
   font-family: "Playfair Display", serif;
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 700;
   color: var(--tanzanite);
 }
@@ -41,7 +46,7 @@
 }
 
 .title-section .icon-section {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   color: var(--gold);
 }
 
@@ -74,8 +79,8 @@
   position: relative;
   z-index: 1;
   margin-bottom: 0.45rem;
-  font-size: 1rem;
-  line-height: 1.55;
+  font-size: 0.9rem;
+  line-height: 1.5;
   color: var(--deep-purple);
 }
 
@@ -83,12 +88,13 @@
   margin-bottom: 0;
 }
 
+/* header-work — Base: stacked (mobile) */
 .header-work {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
+  align-items: flex-start;
+  gap: 1rem;
   margin-bottom: 1.2rem;
 }
 
@@ -96,13 +102,16 @@
   margin-bottom: 0;
 }
 
+/* counter-work — Base: mobile, stretched */
 .counter-work {
   position: relative;
+  align-self: stretch;
   flex-shrink: 0;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.4rem;
-  padding: 0.8rem 1.5rem;
+  padding: 0.7rem 1rem;
   background: linear-gradient(
     135deg,
     var(--deep-purple) 0%,
@@ -145,12 +154,12 @@
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  min-width: 32px;
+  min-width: 26px;
 }
 
 .counter-work .counter-number {
   font-family: "Roboto Condensed", Arial, sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-weight: 700;
   line-height: 1;
   letter-spacing: 1px;
@@ -189,7 +198,8 @@
   }
 }
 
-@media (max-width: 480px) {
+/* min-width: 320 — bump counter numbers on standard phones */
+@media (min-width: 320px) {
   .counter-work {
     padding: 0.7rem 1rem;
   }
@@ -201,31 +211,43 @@
   }
 }
 
-@media (max-width: 768px) {
+/* min-width: 768 — tablet+desktop: side-by-side header, larger counter */
+@media (min-width: 768px) {
   .section {
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.5rem;
   }
+
   .title-section {
-    margin-bottom: 0.8rem;
-    font-size: 2rem;
-  }
-  .title-section .icon-section {
+    margin-bottom: 1.2rem;
     font-size: 1.8rem;
   }
+
+  .title-section .icon-section {
+    font-size: 1.5rem;
+  }
+
   .header-work {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
   }
+
   .counter-work {
-    align-self: stretch;
-    justify-content: center;
+    align-self: auto;
+    padding: 0.8rem 1.5rem;
   }
-  .card-about {
-    padding: 0.8rem;
+
+  .counter-work .counter-number {
+    font-size: 1.3rem;
   }
+
+  .counter-work .counter-part {
+    min-width: 32px;
+  }
+
   .card-about p {
-    font-size: 0.9rem;
-    line-height: 1.5;
+    font-size: 1rem;
+    line-height: 1.55;
   }
 }

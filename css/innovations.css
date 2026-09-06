@@ -189,20 +189,25 @@
   border-radius: 14px;
 }
 
-@media (max-width: 1024px) {
-  .typed-subtitle {
-    display: none;
-  }
+.typed-subtitle {
+  display: none;
 }
 
-@media (min-width: 769px) {
+/* min-width: 768 — hero performance hints on tablet+ */
+@media (min-width: 768px) {
   .hero {
     will-change: transform;
   }
-
   .hero-bg-svg,
   .hero-bg-draw {
     will-change: transform;
+  }
+}
+
+/* min-width: 1024 — show typed subtitle from desktop up */
+@media (min-width: 1024px) {
+  .typed-subtitle {
+    display: flex;
   }
 }
 

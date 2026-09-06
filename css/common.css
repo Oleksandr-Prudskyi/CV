@@ -39,37 +39,37 @@
   --glass-blur: 12px;
   --glass-border: rgba(255, 255, 255, 0.6);
 
-  /* ------ Typography — font families (all support UK Cyrillic + CZ latin-ext + EN) ------ */
+  /* ------ Typography — font families (Figma reference uses Roboto; site keeps Cormorant for display headings, Inter/Roboto for body) ------ */
   --font-display: "Cormorant Garamond", "Playfair Display", Georgia, serif;
-  --font-body: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
-  --font-condensed: "Inter", "Roboto Condensed", Arial, sans-serif;
+  --font-body: "Roboto", "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-condensed: "Roboto Condensed", "Inter", Arial, sans-serif;
 
-  /* ------ Typography — fluid scale, clamp(min, ideal, max) ------ */
-  --fs-h1: clamp(2.5rem, 6.5vw, 4.75rem);   /* 40 - 76 px */
-  --fs-h2: clamp(1.75rem, 3.4vw, 2.5rem);   /* 28 - 40 px */
-  --fs-h3: clamp(1.3rem, 2.1vw, 1.7rem);    /* 20.8 - 27.2 px */
-  --fs-h4: clamp(1.05rem, 1.4vw, 1.2rem);   /* 16.8 - 19.2 px */
-  --fs-body: clamp(1rem, 1.15vw, 1.1rem);   /* 16 - 17.6 px */
-  --fs-small: clamp(0.85rem, 1vw, 0.95rem); /* 13.6 - 15.2 px */
-  --fs-micro: clamp(0.72rem, 0.85vw, 0.82rem);
+  /* ------ Typography — Figma scale (fluid clamp for mobile→desktop, target = Figma max) ------ */
+  --fs-h1: clamp(2.25rem, 4.5vw + 0.5rem, 3.5rem);   /* 36 - 56 px (Figma: 56 / lh 60 / 2%) */
+  --fs-h2: clamp(1.75rem, 2.5vw + 0.5rem, 2.25rem);  /* 28 - 36 px (Figma: 36 / lh 40 / 2%) */
+  --fs-h3: 1.25rem;                                    /* 20 px fixed (Figma: 20 / lh 24 / 2%) */
+  --fs-h4: 1rem;                                       /* 16 px (Figma has no h4; use body-medium visual level) */
+  --fs-body: 1rem;                                     /* 16 px (Figma body / lh 24 / 2%) */
+  --fs-small: 0.75rem;                                 /* 12 px (Figma small / lh 14 / 4%) */
+  --fs-micro: 0.6875rem;                               /* 11 px (below Figma; used for micro caps labels) */
 
-  /* ------ Weights (Cormorant: 500 600 700; Inter: 400 500 600 700) ------ */
+  /* ------ Weights (Roboto: 400 500 700) ------ */
   --fw-regular: 400;
   --fw-medium: 500;
   --fw-semibold: 600;
   --fw-bold: 700;
 
-  /* ------ Line heights ------ */
-  --lh-tight: 1.1;
-  --lh-snug: 1.25;
-  --lh-normal: 1.5;
-  --lh-relaxed: 1.65;
+  /* ------ Line heights (per Figma: h1 60/56 ≈ 1.07, h2 40/36 ≈ 1.11, h3 24/20 = 1.2, body 24/16 = 1.5, small 14/12 ≈ 1.17) ------ */
+  --lh-tight: 1.11;    /* h1/h2 */
+  --lh-snug: 1.2;      /* h3 */
+  --lh-normal: 1.5;    /* body */
+  --lh-relaxed: 1.5;   /* uniform body per Figma */
 
-  /* ------ Letter spacing ------ */
-  --tracking-tight: -0.01em;
-  --tracking-normal: 0;
-  --tracking-wide: 0.03em;
-  --tracking-caps: 0.08em;
+  /* ------ Letter spacing (Figma: 2% headings/body, 4% buttons/small) ------ */
+  --tracking-tight: 0.02em;
+  --tracking-normal: 0.02em;
+  --tracking-wide: 0.04em;
+  --tracking-caps: 0.04em;
 }
 
 html {
@@ -82,7 +82,8 @@ body {
   font-family: var(--font-body);
   font-size: var(--fs-body);
   line-height: var(--lh-normal);
-  font-weight: 500;
+  font-weight: var(--fw-regular);
+  letter-spacing: var(--tracking-normal);
   color: var(--deep-purple);
   background: linear-gradient(135deg, var(--pearl) 0%, #e8e4f3 100%);
   overflow-x: hidden;
@@ -91,14 +92,14 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* ------ Base heading rules — harmonized scale, weights 500-700 for readable emphasis ------ */
+/* ------ Base heading rules — Figma scale (h1/h2 bold 700, h3 medium 500) ------ */
 h1,
 .h1 {
   font-family: var(--font-display);
   font-size: var(--fs-h1);
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   line-height: var(--lh-tight);
-  letter-spacing: var(--tracking-tight);
+  letter-spacing: var(--tracking-normal);
   margin: 0;
 }
 
@@ -106,7 +107,7 @@ h2,
 .h2 {
   font-family: var(--font-display);
   font-size: var(--fs-h2);
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   line-height: var(--lh-tight);
   letter-spacing: var(--tracking-normal);
   margin: 0 0 0.6em;
@@ -114,10 +115,11 @@ h2,
 
 h3,
 .h3 {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: var(--fs-h3);
-  font-weight: 600;
+  font-weight: var(--fw-medium);
   line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-normal);
   margin: 0 0 0.5em;
 }
 
@@ -125,17 +127,17 @@ h4,
 .h4 {
   font-family: var(--font-body);
   font-size: var(--fs-h4);
-  font-weight: 600;
-  line-height: var(--lh-snug);
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-normal);
+  letter-spacing: var(--tracking-normal);
   margin: 0 0 0.4em;
 }
 
 p {
   font-size: var(--fs-body);
-  font-weight: 500;
-  line-height: var(--lh-relaxed);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-normal);
+  letter-spacing: var(--tracking-normal);
   margin: 0 0 1em;
 }
 
@@ -152,6 +154,22 @@ small,
 .text-small {
   font-size: var(--fs-small);
   line-height: var(--lh-normal);
+}
+
+/* Utility class for decorative spans that want h4 sizing without heading semantics */
+.text-h4 {
+  font-family: var(--font-body);
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-snug);
+}
+
+/* Utility class for italic subtle metadata (dates, byline periods) */
+.text-meta {
+  font-size: var(--fs-small);
+  font-style: italic;
+  line-height: var(--lh-normal);
+  color: var(--silver);
 }
 
 .text-micro,
@@ -180,6 +198,30 @@ a {
   vertical-align: middle;
 }
 
+/* ------ Skip-to-main link (accessibility) ------ */
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.75rem 1.25rem;
+  background: var(--tanzanite);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border-radius: 0 0 8px 0;
+  transform: translateY(-120%);
+  transition: transform 0.25s ease;
+  z-index: 10001;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
 /* ------ Layout helpers ------ */
 .container {
   position: relative;
@@ -192,29 +234,21 @@ a {
 
 /* ------ Responsive contact toggle (mobile-first: phones show tel: link, tablet+ show plain text with copy btn) ------ */
 .mobile-phone,
-.mobile-email,
-span.mobile-phone,
-span.mobile-email {
+.mobile-email {
   display: inline-block;
 }
 .desktop-phone,
-.desktop-email,
-span.desktop-phone,
-span.desktop-email {
+.desktop-email {
   display: none;
 }
 
 @media (min-width: 768px) {
   .mobile-phone,
-  .mobile-email,
-  span.mobile-phone,
-  span.mobile-email {
+  .mobile-email {
     display: none;
   }
   .desktop-phone,
-  .desktop-email,
-  span.desktop-phone,
-  span.desktop-email {
+  .desktop-email {
     display: inline-block;
   }
 }

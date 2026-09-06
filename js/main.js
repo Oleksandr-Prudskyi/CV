@@ -186,7 +186,26 @@ function initializeApp() {
   document.querySelectorAll(".section").forEach(function (section) {
     observer.observe(section);
   });
-  document.getElementById("dlCvBtn").addEventListener("click", function () {
+  var heroCvBtn = document.getElementById("heroCvBtn");
+  if (heroCvBtn) {
+    heroCvBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      var href = heroCvBtn.getAttribute("href");
+      if (isMobile()) {
+        var link = document.createElement("a");
+        link.href = href;
+        link.download = "CV_Oleksandr_Prudskyi.pdf";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      } else {
+        window.open(href, "_blank", "noopener");
+      }
+    });
+  }
+
+  var dlBtnEl = document.getElementById("dlCvBtn");
+  if (dlBtnEl) dlBtnEl.addEventListener("click", function () {
     var btn = this;
     if (btn.classList.contains("downloading") || btn.classList.contains("done"))
       return;

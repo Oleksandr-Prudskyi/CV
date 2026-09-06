@@ -70,9 +70,10 @@
 .contact-bar .name {
   margin: 0;
   padding: 0;
-  font-family: "Playfair Display", serif;
+  font-family: var(--font-display);
   font-size: 0.85rem;
   font-weight: 700;
+  line-height: 1;
   letter-spacing: 0.5px;
   flex-shrink: 0;
 }
@@ -96,6 +97,15 @@
   white-space: nowrap;
 }
 
+.contact-bar .contact-item-text {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: 1;
+  letter-spacing: inherit;
+}
+
 .contact-bar .icon {
   font-size: 0.85rem;
   flex-shrink: 0;
@@ -112,17 +122,14 @@
     width: 28px;
     height: 28px;
   }
-
   .contact-bar .name {
     font-size: 0.95rem;
     letter-spacing: 1px;
   }
-
   .contact-bar .contact-info {
     gap: 0.25rem 1rem;
     font-size: 0.82rem;
   }
-
   .contact-bar .icon {
     font-size: 0.9rem;
   }
@@ -134,20 +141,16 @@
     width: 40px;
     height: 40px;
   }
-
   .contact-bar {
     gap: 0.5rem 1.2rem;
   }
-
   .contact-bar .name {
     font-size: 1.15rem;
   }
-
   .contact-bar .contact-info {
     gap: 0.3rem 1.1rem;
     font-size: 0.9rem;
   }
-
   .contact-bar .icon {
     font-size: 1rem;
   }
@@ -159,22 +162,18 @@
     width: 48px;
     height: 48px;
   }
-
   .contact-bar {
     flex-wrap: nowrap;
     gap: 1.25rem;
   }
-
   .contact-bar .name {
     font-size: 1.3rem;
   }
-
   .contact-bar .contact-info {
     flex-wrap: nowrap;
     gap: 1.25rem;
     font-size: 0.95rem;
   }
-
   .contact-bar .icon {
     font-size: 1.05rem;
   }
@@ -186,20 +185,16 @@
     width: 52px;
     height: 52px;
   }
-
   .contact-bar {
     gap: 1.5rem;
   }
-
   .contact-bar .name {
     font-size: 1.4rem;
   }
-
   .contact-bar .contact-info {
     gap: 1.5rem;
     font-size: 1rem;
   }
-
   .contact-bar .icon {
     font-size: 1.1rem;
   }

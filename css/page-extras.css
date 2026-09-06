@@ -134,44 +134,18 @@
   animation: float 20s ease-in-out infinite reverse;
 }
 
-/* Base — mobile: compact side-buttons */
+/* Base — mobile: side-buttons hidden (CTAs moved to hero); modal DOM залишається доступним для avatar click */
 .side-buttons {
-  position: fixed;
-  top: auto;
-  right: 0.6rem;
-  bottom: 1rem;
-  transform: none;
-  z-index: 999;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.4rem;
-  opacity: 0.4;
-  transition:
-    opacity 0.3s ease,
-    transform 0.3s ease;
-}
-
-.side-buttons:hover,
-.side-buttons:focus-within,
-.side-buttons:active {
-  opacity: 1;
+  display: none;
 }
 
 main {
-  padding-bottom: 8rem;
+  padding-bottom: 2rem;
 }
 
-/* min-width: 768 — tablet+desktop: larger side-buttons, main footer smaller */
 @media (min-width: 768px) {
-  .side-buttons {
-    right: 1.25rem;
-    bottom: 1.5rem;
-    gap: 0.8rem;
-    opacity: 0.55;
-  }
   main {
-    padding-bottom: 6rem;
+    padding-bottom: 3rem;
   }
 }
 
@@ -308,7 +282,7 @@ main {
 
 .download-label {
   display: none;
-  font-family: "Roboto Condensed", Arial, sans-serif;
+  font-family: var(--font-condensed);
   font-size: 0.58rem;
   font-weight: 600;
   letter-spacing: 0.3px;

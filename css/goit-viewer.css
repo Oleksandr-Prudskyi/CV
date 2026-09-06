@@ -48,8 +48,9 @@
   background: rgba(255, 255, 255, 0.3);
   border: 1px solid rgba(79, 66, 181, 0.18);
   border-radius: 10px;
-  font-size: 16px;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-bold);
   color: var(--tanzanite);
   letter-spacing: 0.5px;
   transition: all 0.3s ease;
@@ -164,8 +165,9 @@
 }
 
 .item-title {
-  font-size: 15px;
-  font-weight: 500;
+  margin: 0;
+  font-size: var(--fs-body);
+  font-weight: var(--fw-medium);
   color: var(--deep-purple);
   transition: color 300ms ease;
 }
@@ -294,8 +296,8 @@
   border: 1px solid var(--card-border);
   border-radius: 8px;
   color: white;
-  font-size: 15px;
-  font-weight: 600;
+  font-size: var(--fs-small);
+  font-weight: var(--fw-semibold);
   letter-spacing: 0.5px;
   position: relative;
   overflow: hidden;
@@ -356,8 +358,8 @@
   position: relative;
   z-index: 2;
   padding: 7px 18px;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: var(--fs-small);
+  font-weight: var(--fw-semibold);
   color: var(--deep-purple);
   cursor: pointer;
   text-align: center;
@@ -456,9 +458,9 @@
   background: rgba(255, 255, 255, 0.22);
   border: 1px solid rgba(79, 66, 181, 0.12);
   border-radius: 10px;
-  font-size: 14px;
+  font-size: var(--fs-body);
   color: var(--deep-purple);
-  line-height: 1.7;
+  line-height: var(--lh-relaxed);
   min-height: auto;
   width: auto;
   max-width: 100%;
@@ -585,8 +587,8 @@
   border: 1px solid var(--card-border);
   border-radius: 6px;
   color: white;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: var(--fs-small);
+  font-weight: var(--fw-semibold);
   letter-spacing: 0.5px;
   flex-shrink: 0;
   transition: all 0.35s ease;
@@ -620,7 +622,7 @@
 
   .goit-list-collapse {
     overflow: visible;
-    height: auto !important;
+    height: auto;
     max-height: none;
   }
 
@@ -655,8 +657,7 @@
 
   .item-title {
     display: block;
-    font-size: 13.5px;
-    line-height: 1.25;
+    line-height: var(--lh-snug);
     text-align: center;
   }
 
@@ -726,7 +727,6 @@
   }
 
   .item-title {
-    font-size: 15px;
     text-align: left;
   }
 
@@ -754,12 +754,7 @@
     flex-basis: auto;
     width: 100%;
     max-width: 100%;
-  }
-
-  .goit-list-collapse {
-    overflow: visible;
-    height: auto !important;
-    max-height: none;
+    gap: 14px;
   }
 
   .goit-list {
@@ -809,8 +804,7 @@
 
   .item-title {
     display: inline;
-    font-size: 15px;
-    font-weight: 600;
+    font-weight: var(--fw-semibold);
     text-align: center;
   }
 
@@ -835,26 +829,18 @@
 
   .goit-device-bar label {
     padding: 7px 12px;
-    font-size: 13px;
   }
 
   .goit-link-btn {
     padding: 8px 16px;
-    font-size: 14px;
   }
 
   .goit-toggle {
     padding: 10px 14px;
-    font-size: 15px;
   }
 
   .list-item {
     padding: 12px 10px;
-    font-size: 14px;
-  }
-
-  .item-title {
-    font-size: 14px;
   }
 }
 
@@ -873,14 +859,8 @@
     gap: 8px;
   }
 
-  .item-number {
-    font-size: 14px;
-    min-width: 20px;
-  }
-
   .item-title {
     display: inline;
-    font-size: 14px;
   }
 
   .goit-preview-card {

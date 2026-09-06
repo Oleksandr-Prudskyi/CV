@@ -150,7 +150,7 @@
       }
     }
 
-    setTimeout(typeStep, 1200);
+    setTimeout(typeStep, 4000);
   }
 
   if (!isMobile()) {

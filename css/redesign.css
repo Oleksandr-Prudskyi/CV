@@ -54,9 +54,9 @@ body {
     linear-gradient(90deg, rgba(125, 36, 50, 0.018) 1px, transparent 1px);
   background-size: 5px 5px, 7px 7px;
   color: var(--color-charcoal);
-  font-family: "Inter", "Segoe UI", sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-normal);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -85,9 +85,10 @@ body::before {
   animation-timing-function: ease-in-out;
 }
 
+/* Base — mobile: section-about tighter vertical padding */
 .section-about {
   position: relative;
-  padding-block: clamp(2.5rem, 5vw, 4.5rem);
+  padding-block: clamp(2rem, 8vw, 4rem);
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -159,17 +160,18 @@ body::before {
   display: none;
 }
 
+/* Base — mobile: title centered, full width. Font-size + family inherit from base h2 (common.css). */
 .title-section {
   display: flex;
   align-items: baseline;
+  justify-content: center;
   gap: var(--space-2);
+  width: 100%;
   margin-bottom: 1.8rem;
   color: var(--color-charcoal);
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 600;
   letter-spacing: 0;
-  line-height: 1.05;
+  line-height: var(--lh-tight);
+  text-align: center;
 }
 
 .title-section::after {
@@ -202,7 +204,7 @@ body::before {
 
 .contact-bar .name {
   color: var(--color-linen-light);
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: var(--font-display);
   font-size: clamp(1.15rem, 2vw, 1.6rem);
   letter-spacing: 0.04em;
 }
@@ -228,11 +230,12 @@ body::before {
   color: var(--color-gold);
 }
 
+/* Base — mobile: compact hero, tighter padding */
 .hero {
-  min-height: 100svh;
+  min-height: auto;
   align-items: stretch;
   justify-content: center;
-  padding: clamp(4.5rem, 8vw, 6rem) clamp(1rem, 7vw, 5rem) clamp(2rem, 5vw, 4rem);
+  padding: 5.5rem clamp(1rem, 7vw, 5rem) 2.5rem;
   overflow: hidden;
 }
 
@@ -257,15 +260,23 @@ body::before {
   animation: none;
 }
 
+/* Base — mobile: single-column stacked hero */
 .hero-content {
   display: grid;
-  grid-template-columns: minmax(170px, 0.42fr) minmax(0, 1fr);
-  grid-template-areas: "photo copy" "photo contacts";
+  grid-template-columns: 1fr;
+  grid-template-areas: "photo" "copy" "cta" "contacts";
   align-items: center;
+  justify-items: center;
   gap: 1rem clamp(2rem, 6vw, 6rem);
   width: min(100%, 1120px);
   max-width: none;
-  text-align: left;
+  text-align: center;
+}
+
+.hero-actions {
+  grid-area: cta;
+  justify-content: center;
+  margin: 0;
 }
 
 .avatar-wrapper {
@@ -281,9 +292,10 @@ body::before {
   animation: avatarRingPulse 6s ease-in-out 2s 2;
 }
 
+/* Base — mobile: smaller avatar */
 .avatar-placeholder {
-  width: clamp(170px, 24vw, 265px);
-  height: clamp(210px, 30vw, 330px);
+  width: min(62vw, 220px);
+  height: min(72vw, 270px);
   border: 8px solid var(--color-linen-light);
   border-radius: 0;
   background: var(--color-charcoal);
@@ -299,26 +311,23 @@ body::before {
   box-shadow: 16px 16px 0 var(--color-burgundy);
 }
 
+/* Base — mobile: h1 aligned auto */
 .hero h1 {
   grid-area: copy;
-  align-self: end;
+  align-self: auto;
   margin: 0;
   color: var(--color-charcoal);
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(3rem, 8vw, 6.5rem);
-  font-weight: 600;
-  line-height: 0.94;
-  letter-spacing: 0;
   background: none;
   -webkit-text-fill-color: initial;
   animation: fadeInUp 900ms ease-in-out 180ms both;
 }
 
 
+/* Base — mobile: contact-grid tighter top margin */
 .contact-grid {
   grid-area: contacts;
   width: 100%;
-  margin-top: 1.25rem;
+  margin-top: 0.75rem;
   gap: 0.6rem;
 }
 
@@ -340,23 +349,19 @@ body::before {
 
 .contact-card .label {
   color: var(--color-muted);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
 }
 
 .contact-card .value,
 .contact-card .phone-link,
 .contact-card .email-link {
   color: var(--color-charcoal);
-  font-size: 1.05rem;
 }
 
 .btn,
 .btn-copy,
 .btn-show-more {
   border-radius: var(--radius-control);
-  font-family: "Inter", "Segoe UI", sans-serif;
+  font-family: var(--font-body);
 }
 
 .btn-copy,
@@ -403,12 +408,11 @@ body::before {
 }
 
 .card-about p {
-  max-width: 72ch;
   color: var(--color-charcoal);
-  font-family: "Inter", "Segoe UI", sans-serif;
-  font-size: clamp(1.05rem, 1.35vw, 1.28rem);
-  line-height: 1.6;
-  letter-spacing: 0.01em;
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-normal);
+  letter-spacing: var(--tracking-normal);
 }
 
 .header-work {
@@ -447,14 +451,14 @@ body::before {
   color: var(--color-muted);
 }
 
+/* Base — mobile: subsection title centered. Font from base h3 (common.css). */
 .work-subsection-title {
+  justify-content: center;
   margin-top: 0;
   padding-bottom: 0.7rem;
   border-bottom: 1px solid var(--color-line);
   color: var(--color-charcoal);
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 1.55rem;
-  font-weight: 600;
+  text-align: center;
 }
 
 .work-subsection-title i {
@@ -462,9 +466,10 @@ body::before {
   text-shadow: none;
 }
 
+/* Base — mobile: goit subsection tighter padding */
 .work-subsection-goit {
   justify-content: center;
-  padding-block: clamp(1.5rem, 4vw, 3rem);
+  padding-block: clamp(1rem, 4vw, 2.5rem);
 }
 
 .work-subsection-goit .goit-container {
@@ -519,7 +524,7 @@ body::before {
 .info-column-title,
 .edu-title {
   color: var(--color-burgundy);
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: var(--font-body);
 }
 
 .contact-bar .contact-info,
@@ -537,7 +542,7 @@ body::before {
 .goit-container,
 .goit-container button,
 .goit-container label {
-  font-family: "Inter", "Segoe UI", sans-serif;
+  font-family: var(--font-body);
 }
 
 .tab-position,
@@ -545,7 +550,7 @@ body::before {
 .edu-sub,
 .counter-work .counter-label,
 .counter-work .counter-unit {
-  font-family: "Inter", "Segoe UI", sans-serif;
+  font-family: var(--font-body);
 }
 
 .arrow-wrap {
@@ -600,9 +605,11 @@ body::before {
 }
 
 .work-summary h3 {
-  font-size: clamp(1.45rem, 2vw, 2rem);
-  font-weight: 600;
-  line-height: 1.1;
+  font-family: var(--font-body);
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-normal);
 }
 
 .work-summary .company,
@@ -631,7 +638,7 @@ body::before {
   background: var(--color-burgundy);
   color: var(--color-linen-light);
   box-shadow: inset 0 -3px 0 rgba(37, 35, 35, 0.25);
-  font-weight: 600;
+  font-weight: var(--fw-medium);
   transition:
     background-color var(--motion),
     color var(--motion),
@@ -684,8 +691,9 @@ body::before {
 }
 
 .card-skills h3 {
-  font-size: 1.55rem;
-  font-weight: 600;
+  font-family: var(--font-body);
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-medium);
 }
 
 .skill-tag {
@@ -715,14 +723,17 @@ body::before {
   padding: 1.5rem clamp(1rem, 2vw, 2rem);
 }
 
+/* Base — mobile: columns stack vertically, use bottom border instead of right */
 .info-column:not(:last-child) {
-  border-right-color: var(--color-line);
+  border-right: 0;
+  border-bottom-color: var(--color-line);
 }
 
 .info-column-title {
-  font-size: 1.55rem;
-  font-weight: 600;
-  line-height: 1.15;
+  font-family: var(--font-body);
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-snug);
 }
 
 .info-column-title i,
@@ -730,15 +741,27 @@ body::before {
   color: var(--color-gold);
 }
 
+/* Base — mobile: edu-row centered, top-border accent, narrower */
 .edu-row {
+  width: min(100%, 18rem);
+  align-self: center;
+  align-items: center;
   padding: 0.7rem 0.8rem;
-  border-left: 3px solid var(--color-burgundy);
-  border-radius: 0;
+  border-top: 3px solid var(--color-burgundy);
+  border-right: 0;
+  border-bottom: 0;
+  border-left: 0;
+  border-radius: 8px;
   background: rgba(125, 36, 50, 0.05);
+  text-align: center;
   transition:
     transform var(--motion-fast),
     background-color var(--motion-fast),
     border-color var(--motion-fast);
+}
+
+.edu-row > .edu-text {
+  text-align: center;
 }
 
 .edu-row:hover {
@@ -988,150 +1011,82 @@ body::before {
   transform: scaleX(1);
 }
 
-@media (max-width: 768px) {
+/* ============================================================
+   Mobile-first media queries. Breakpoints: 320 / 768 / 1024 / 1440 (min-width, exact — no ±1).
+   Base rules above are mobile-first (compact); these blocks scale up.
+   ============================================================ */
+
+/* min-width: 768 — TABLET+ : hero grid photo-side-by-side, sections left-aligned, edu-row row-layout */
+@media (min-width: 768px) {
   .hero {
-    min-height: auto;
-    padding-top: 5.5rem;
-    padding-bottom: 2.5rem;
+    min-height: 100svh;
+    padding-top: clamp(4.5rem, 8vw, 6rem);
+    padding-bottom: clamp(2rem, 5vw, 4rem);
   }
 
   .hero-content {
-    grid-template-columns: 1fr;
-    grid-template-areas: "photo" "copy" "contacts";
-    justify-items: center;
-    text-align: center;
-  }
-
-  .avatar-placeholder {
-    width: min(62vw, 220px);
-    height: min(72vw, 270px);
-  }
-
-  .hero h1 {
-    align-self: auto;
-    font-size: clamp(3.2rem, 15vw, 5rem);
-  }
-
-
-  .contact-grid {
-    margin-top: 0.75rem;
-  }
-
-  .contact-card {
+    grid-template-columns: minmax(170px, 0.42fr) minmax(0, 1fr);
+    grid-template-areas: "photo copy" "photo cta" "photo contacts";
+    justify-items: normal;
     text-align: left;
   }
 
+  .hero-actions {
+    justify-content: flex-start;
+  }
+
+  .avatar-placeholder {
+    width: clamp(170px, 24vw, 265px);
+    height: clamp(210px, 30vw, 330px);
+  }
+
+  .hero h1 {
+    align-self: end;
+  }
+
+  .contact-grid {
+    margin-top: 1.25rem;
+  }
+
   .section-about {
-    padding-block: clamp(2rem, 8vw, 4rem);
-  }
-
-  .contact-card.email-card {
-    align-items: center;
-    text-align: center;
-  }
-
-  .contact-card.email-card .icon {
-    margin-bottom: 0.1rem;
-  }
-
-  .contact-card.email-card .text {
-    align-items: center;
-  }
-
-  .contact-card.email-card .hero-copy-btn {
-    width: min(100%, 13rem);
-    margin-top: 0.2rem;
+    padding-block: clamp(2.5rem, 5vw, 4.5rem);
   }
 
   .title-section,
   .header-work .title-section {
-    justify-content: center;
-    width: 100%;
-    text-align: center;
+    justify-content: flex-start;
+    width: auto;
+    text-align: left;
   }
 
   .work-subsection-title {
-    justify-content: center;
-    text-align: center;
+    justify-content: flex-start;
+    text-align: left;
   }
 
   .work-subsection-goit {
-    padding-block: clamp(1rem, 4vw, 2.5rem);
+    padding-block: clamp(1.5rem, 4vw, 3rem);
   }
 
   .edu-row {
-    width: min(100%, 18rem);
-    align-self: center;
+    width: auto;
+    align-self: stretch;
     align-items: center;
-    border-top: 3px solid var(--color-burgundy);
-    border-right: 0;
-    border-bottom: 0;
-    border-left: 0;
-    border-radius: 8px;
-    text-align: center;
-  }
-
-  .edu-row > p {
-    text-align: center;
-  }
-
-  .info-columns {
     border-top: 0;
+    border-left: 3px solid var(--color-burgundy);
+    border-radius: 0;
+    text-align: left;
+  }
+
+  .edu-row > .edu-text {
+    text-align: left;
   }
 
   .info-column:not(:last-child) {
-    border-right: 0;
-    border-bottom-color: var(--color-line);
-  }
-}
-
-@media (max-width: 480px) {
-  body {
-    background-size: 4px 4px, 6px 6px;
+    border-right-color: var(--color-line);
+    border-bottom: 0;
   }
 
-  .container {
-    padding-inline: 0.85rem;
-  }
-
-  .hero::after {
-    right: -4rem;
-    bottom: 3rem;
-    width: 11rem;
-    height: 11rem;
-  }
-
-  .title-section {
-    font-size: 2.15rem;
-  }
-
-  .counter-work {
-    width: 100%;
-    justify-content: space-between;
-    padding-inline: 0.65rem;
-  }
-
-  .counter-work .counter-label {
-    margin-right: 0.2rem;
-  }
-
-  .card-work,
-  .card-skills,
-  .card-about,
-  .card-info {
-    box-shadow: 3px 3px 0 rgba(125, 36, 50, 0.1);
-  }
-
-  .work-summary {
-    padding-inline: 1rem;
-  }
-
-  .goit-wrap {
-    padding: 0.5rem;
-  }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
   .container {
     padding-inline: 1.5rem;
   }
@@ -1146,42 +1101,10 @@ body::before {
   }
 }
 
-
-@media (max-width: 360px) {
-  .contact-bar {
-    padding-inline: 0;
-  }
-
-  .contact-bar .name {
-    font-size: 0.85rem;
-  }
-
-  .contact-bar .contact-info {
-    gap: 0.25rem 0.7rem;
-    font-size: 0.75rem;
-  }
-
-  .hero h1 {
-    font-size: clamp(2.8rem, 15vw, 4rem);
-  }
-
-  .counter-work {
-    gap: 0.2rem;
-    padding-inline: 0.45rem;
-  }
-
-  .counter-work .counter-number {
-    font-size: 0.95rem;
-  }
-
-  .counter-work .counter-unit,
-  .counter-work .counter-label {
-    font-size: 0.42rem;
-  }
-
-  .side-buttons {
-    right: 0.55rem;
-    bottom: 1rem;
+/* min-width: 1024 — DESKTOP: goit wider sidebar, work-summary full padding */
+@media (min-width: 1024px) {
+  .work-summary {
+    padding-inline: 1.8rem;
   }
 }
 

@@ -74,14 +74,14 @@
   gap: 2px;
   height: 0;
   overflow: visible;
-  font-family: "Roboto Condensed", "Inter", sans-serif;
+  font-family: var(--font-condensed);
   font-size: clamp(0.95rem, 2.5vw, 1.25rem);
   font-weight: 400;
   letter-spacing: 2px;
   color: var(--color-muted);
   white-space: nowrap;
   pointer-events: none;
-  animation: fadeInUp 1s ease-out 0.25s both;
+  animation: fadeInUp 1s ease-out 4s both;
 }
 
 .typed-text {

@@ -233,16 +233,24 @@ function initializeGoitViewer() {
     }
   }
   if (goitToggle && listCollapse) {
+    // Init: list is visible by default (natural CSS height auto).
+    // Mark toggle as "open" so first click enters the close branch and animates properly.
+    // overflow: visible so hover translateY(-2px) on list-items doesn't clip their top border.
+    goitToggle.classList.add("is-open");
+    goitToggle.setAttribute("aria-expanded", "true");
+    listCollapse.style.height = "auto";
+    listCollapse.style.overflow = "visible";
+
     goitToggle.addEventListener("click", function () {
       var open = this.classList.toggle("is-open");
       this.setAttribute("aria-expanded", String(open));
+      // Clip during animation (needed for height transition).
+      listCollapse.style.overflow = "hidden";
       if (open) {
-        listCollapse.style.height = "auto";
         var h = listCollapse.scrollHeight;
-        listCollapse.style.height = "0px";
-        listCollapse.offsetHeight;
         listCollapse.style.height = h + "px";
       } else {
+        // Set explicit height first (so transition can animate from a real value)
         listCollapse.style.height = listCollapse.scrollHeight + "px";
         listCollapse.offsetHeight;
         listCollapse.style.height = "0px";
@@ -252,6 +260,8 @@ function initializeGoitViewer() {
     listCollapse.addEventListener("transitionend", function () {
       if (goitToggle.classList.contains("is-open")) {
         listCollapse.style.height = "auto";
+        // Unclip after animation so hover states aren't cropped.
+        listCollapse.style.overflow = "visible";
       }
     });
   }
@@ -377,14 +387,14 @@ function initializeGoitViewer() {
       btn.type = "button";
       btn.setAttribute("aria-pressed", "false");
       btn.innerHTML =
-        '<span class="arrow">' +
+        '<span class="arrow" aria-hidden="true">' +
         '<span class="arrow-body"></span>' +
         '<span class="arrow-top"></span>' +
         '<span class="arrow-bot"></span>' +
         "</span>" +
-        '<span class="item-title">' +
+        '<p class="item-title">' +
         item.title +
-        "</span>";
+        "</p>";
 
       btn.addEventListener("focus", function () {
         if (isMobileLayout()) return;

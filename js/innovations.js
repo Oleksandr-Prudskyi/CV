@@ -153,37 +153,7 @@
     setTimeout(typeStep, 4000);
   }
 
-  if (!isMobile()) {
-    var workCards = document.querySelectorAll(".card-work");
-    workCards.forEach(function (card) {
-      card.addEventListener("mousemove", function (e) {
-        if (!card.classList.contains("visible")) return;
-
-        var rect = card.getBoundingClientRect();
-        var x = (e.clientX - rect.left) / rect.width - 0.5;
-        var y = (e.clientY - rect.top) / rect.height - 0.5;
-
-        card.classList.remove("tilt-reset");
-        card.classList.add("tilt-active");
-        card.style.transform =
-          "rotateY(" + x * 5 + "deg) rotateX(" + -y * 5 + "deg)";
-      });
-
-      card.addEventListener("mouseleave", function () {
-        card.classList.remove("tilt-active");
-        card.classList.add("tilt-reset");
-        card.style.transform = "";
-
-        card.addEventListener(
-          "transitionend",
-          function () {
-            card.classList.remove("tilt-reset");
-          },
-          { once: true }
-        );
-      });
-    });
-  }
+  /* card-work mouse-tracking tilt removed per user request */
 
 
   if (!isMobile()) {

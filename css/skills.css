@@ -60,7 +60,8 @@
   font-size: var(--fs-body);
   font-weight: var(--fw-regular);
   color: inherit;
-  line-height: 1;
+  line-height: 1.15;
+  text-align: center;
 }
 
 .skill-tag:hover {

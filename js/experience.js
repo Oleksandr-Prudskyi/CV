@@ -18,7 +18,6 @@
 
   function init() {
     bindTabClicks();
-    bindGlowTracking();
     bindCardClicks();
   }
 

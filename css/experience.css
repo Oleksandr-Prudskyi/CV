@@ -80,40 +80,10 @@
   background: var(--card-bg-hover);
 }
 
+/* mouse-tracking glow removed per user request — tab-glow/tab-border-glow hidden */
 .tab-glow,
 .tab-border-glow {
-  position: absolute;
-  width: 280px;
-  height: 280px;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(circle closest-side at center, white, transparent);
-  opacity: 0;
-  transition: opacity 300ms ease;
-  pointer-events: none;
-}
-
-.tab-glow {
-  z-index: 3;
-  left: var(--mouse-x, 50%);
-  top: var(--mouse-y, 50%);
-}
-
-.tab-border-glow {
-  z-index: 1;
-  left: var(--mouse-x, 50%);
-  top: var(--mouse-y, 50%);
-}
-
-.work-tab:hover .tab-glow {
-  opacity: 0.08;
-}
-
-.work-tab:hover .tab-border-glow {
-  opacity: 0.1;
-}
-
-.work-tab.active .tab-glow {
-  opacity: 0.05;
+  display: none;
 }
 
 .folder-icon {
@@ -591,8 +561,8 @@
   }
 
   .folder-icon {
-    width: 51px;
-    height: 37px;
+    width: 36px;
+    height: 26px;
   }
 
   .arrow-wrap {
@@ -721,8 +691,8 @@
   }
 
   .folder-icon {
-    width: 60px;
-    height: 44px;
+    width: 42px;
+    height: 31px;
   }
 
   .arrow-wrap {

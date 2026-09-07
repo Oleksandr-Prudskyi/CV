@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Oleksandr Prudskyi - CV</title>
 
-    <meta property="og:title" content="Oleksandr Prudskyi - životopis" />
+    <meta property="og:title" content="Oleksandr Prudskyi - Liberec, +420 773 714 660" />
     <meta
       property="og:description"
-      content="Interaktivní životopis. 5 let praxe ve výrobě (CNC, optika, přesné měření). Průběžně se učím IT."
+      content="Oleksandr Prudskyi (Олександр Прудський) - Liberec, Česká republika. Kontakt: +420 773 714 660."
     />
     <meta
       property="og:image"
@@ -17,21 +17,36 @@
     />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Oleksandr Prudskyi - CV" />
     <meta property="og:type" content="profile" />
     <meta property="og:locale" content="cs_CZ" />
+    <meta property="og:locale:alternate" content="uk_UA" />
+    <meta property="og:locale:alternate" content="en_US" />
+
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Oleksandr Prudskyi - Liberec, +420 773 714 660" />
+    <meta
+      name="twitter:description"
+      content="Oleksandr Prudskyi (Олександр Прудський) - Liberec, Česká republika. Kontakt: +420 773 714 660."
+    />
+    <meta
+      name="twitter:image"
+      content="https://cv-oleksandr-prudskyi.vercel.app/image-html-hello.png?v=3"
+    />
 
     <meta
       name="description"
-      content="Oleksandr Prudskyi - životopis. Pět let praxe ve výrobě (CNC, optické komponenty, přesné měření). Průběžně se učím IT. Liberec, Česká republika."
+      content="Oleksandr Prudskyi (Олександр Прудський) - Liberec, Česká republika. Kontakt: +420 773 714 660."
     />
     <meta
       name="keywords"
-      content="Oleksandr Prudskyi, Prudskyi Oleksandr, Олександр Прудський, CNC operátor, Liberec, životopis, CV"
+      content="Oleksandr Prudskyi, Prudskyi Oleksandr, Alexander Prudsky, Prudsky Oleksandr, Олександр Прудський, Прудський Олександр, Liberec, +420 773 714 660"
     />
     <meta name="author" content="Oleksandr Prudskyi" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://cv-oleksandr-prudskyi.vercel.app/" />
+    <link rel="me" href="https://www.linkedin.com/in/oleksandr-prudskyi-788a11372/" />
+    <link rel="me" href="https://github.com/Oleksandr-Prudskyi" />
 
     <!-- #region ASSETS -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -75,27 +90,61 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Oleksandr Prudskyi",
-        "alternateName": [
-          "Prudskyi Oleksandr",
-          "Олександр Прудський",
-          "Прудський Олександр"
-        ],
-        "telephone": "+420773714660",
-        "email": "oleksandr.prudskyi@gmail.com",
-        "url": "https://cv-oleksandr-prudskyi.vercel.app",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Liberec",
-          "addressRegion": "Liberecký kraj",
-          "addressCountry": "CZ"
-        },
-        "jobTitle": "Operátor výrobních strojů",
-        "knowsLanguage": ["cs", "uk", "en"],
-        "sameAs": [
-          "https://www.linkedin.com/in/oleksandr-prudskyi-788a11372/",
-          "https://github.com/Oleksandr-Prudskyi"
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://cv-oleksandr-prudskyi.vercel.app/#person",
+            "name": "Oleksandr Prudskyi",
+            "givenName": "Oleksandr",
+            "familyName": "Prudskyi",
+            "alternateName": [
+              "Prudskyi Oleksandr",
+              "Alexander Prudsky",
+              "Prudsky Oleksandr",
+              "Олександр Прудський",
+              "Прудський Олександр"
+            ],
+            "image": "https://cv-oleksandr-prudskyi.vercel.app/img/photo.webp",
+            "telephone": "+420773714660",
+            "email": "oleksandr.prudskyi@gmail.com",
+            "url": "https://cv-oleksandr-prudskyi.vercel.app",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Liberec",
+              "addressRegion": "Liberecký kraj",
+              "addressCountry": "CZ"
+            },
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+420773714660",
+              "contactType": "personal",
+              "email": "oleksandr.prudskyi@gmail.com",
+              "availableLanguage": ["cs", "uk", "en"]
+            },
+            "jobTitle": "Operátor výrobních strojů",
+            "hasOccupation": {
+              "@type": "Occupation",
+              "name": "Operátor výrobních strojů",
+              "occupationLocation": {
+                "@type": "City",
+                "name": "Liberec"
+              }
+            },
+            "knowsLanguage": ["cs", "uk", "en"],
+            "sameAs": [
+              "https://www.linkedin.com/in/oleksandr-prudskyi-788a11372/",
+              "https://github.com/Oleksandr-Prudskyi"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://cv-oleksandr-prudskyi.vercel.app/#website",
+            "url": "https://cv-oleksandr-prudskyi.vercel.app/",
+            "name": "Oleksandr Prudskyi - CV",
+            "description": "Osobní CV Oleksandra Prudského - Liberec, Česká republika.",
+            "inLanguage": "cs-CZ",
+            "author": { "@id": "https://cv-oleksandr-prudskyi.vercel.app/#person" }
+          }
         ]
       }
     </script>
@@ -124,46 +173,51 @@
 
     <!-- #region MAIN -->
     <main id="main">
-      <div data-load="partials/about.html">
-        <div class="skel-section">
-          <div class="skel-line skel-w30"></div>
-          <div class="skel-line skel-w90"></div>
-          <div class="skel-line skel-w80"></div>
-          <div class="skel-line skel-w70"></div>
-        </div>
-      </div>
+      <div class="ornament-zone">
+        <div class="side-ornament side-ornament-left" aria-hidden="true"></div>
+        <div class="side-ornament side-ornament-right" aria-hidden="true"></div>
 
-      <div data-load="partials/work.html">
-        <div class="skel-section">
-          <div class="skel-line skel-w30"></div>
-          <div class="skel-tabs">
-            <div class="skel-tab"></div>
-            <div class="skel-tab"></div>
-            <div class="skel-tab"></div>
-          </div>
-          <div class="skel-card skel-card-lg"></div>
-        </div>
-      </div>
-
-      <div data-load="partials/skills.html">
-        <div class="skel-section">
-          <div class="skel-line skel-w30"></div>
-          <div class="skel-tags">
-            <div class="skel-tag"></div>
-            <div class="skel-tag"></div>
-            <div class="skel-tag"></div>
-            <div class="skel-tag"></div>
-            <div class="skel-tag"></div>
-            <div class="skel-tag"></div>
+        <div data-load="partials/about.html">
+          <div class="skel-section">
+            <div class="skel-line skel-w30"></div>
+            <div class="skel-line skel-w90"></div>
+            <div class="skel-line skel-w80"></div>
+            <div class="skel-line skel-w70"></div>
           </div>
         </div>
-      </div>
 
-      <div data-load="partials/profile.html">
-        <div class="skel-section">
-          <div class="skel-line skel-w30"></div>
-          <div class="skel-line skel-w90"></div>
-          <div class="skel-line skel-w80"></div>
+        <div data-load="partials/work.html">
+          <div class="skel-section">
+            <div class="skel-line skel-w30"></div>
+            <div class="skel-tabs">
+              <div class="skel-tab"></div>
+              <div class="skel-tab"></div>
+              <div class="skel-tab"></div>
+            </div>
+            <div class="skel-card skel-card-lg"></div>
+          </div>
+        </div>
+
+        <div data-load="partials/skills.html">
+          <div class="skel-section">
+            <div class="skel-line skel-w30"></div>
+            <div class="skel-tags">
+              <div class="skel-tag"></div>
+              <div class="skel-tag"></div>
+              <div class="skel-tag"></div>
+              <div class="skel-tag"></div>
+              <div class="skel-tag"></div>
+              <div class="skel-tag"></div>
+            </div>
+          </div>
+        </div>
+
+        <div data-load="partials/profile.html">
+          <div class="skel-section">
+            <div class="skel-line skel-w30"></div>
+            <div class="skel-line skel-w90"></div>
+            <div class="skel-line skel-w80"></div>
+          </div>
         </div>
       </div>
     </main>

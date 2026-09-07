@@ -139,16 +139,6 @@
   display: none;
 }
 
-main {
-  padding-bottom: 2rem;
-}
-
-@media (min-width: 768px) {
-  main {
-    padding-bottom: 3rem;
-  }
-}
-
 .download-wrapper {
   display: flex;
   flex-direction: column;

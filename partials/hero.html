@@ -29,7 +29,9 @@
         </picture>
       </button>
     </div>
-    <h1 id="heroTitle">
+    <h1 id="heroTitle" itemscope itemtype="https://schema.org/Person" itemprop="name">
+      <meta itemprop="givenName" content="Oleksandr" />
+      <meta itemprop="familyName" content="Prudskyi" />
       <span class="hero-name-first">Oleksandr</span>
       <span class="hero-name-last">Prudskyi</span>
     </h1>
@@ -93,23 +95,23 @@
           <h3 class="value">Liberec</h3>
         </div>
       </li>
-      <li class="contact-card glass-card">
+      <li class="contact-card glass-card" itemscope itemtype="https://schema.org/ContactPoint">
         <span class="icon" aria-hidden="true"><i class="ph-fill ph-phone"></i></span>
         <div class="text">
           <p class="label">Telefon</p>
-          <h3 class="value desktop-phone">+420 773 714 660</h3>
+          <h3 class="value desktop-phone" itemprop="telephone">+420 773 714 660</h3>
           <h3 class="value mobile-phone">
-            <a href="tel:+420773714660" class="phone-link">+420 773 714 660</a>
+            <a href="tel:+420773714660" class="phone-link" itemprop="telephone">+420 773 714 660</a>
           </h3>
         </div>
       </li>
-      <li class="contact-card email-card glass-card">
+      <li class="contact-card email-card glass-card" itemscope itemtype="https://schema.org/ContactPoint">
         <span class="icon" aria-hidden="true"><i class="ph-fill ph-envelope-simple"></i></span>
         <div class="text">
           <p class="label">Email</p>
-          <h3 class="value desktop-email">oleksandr.prudskyi@gmail.com</h3>
+          <h3 class="value desktop-email" itemprop="email">oleksandr.prudskyi@gmail.com</h3>
           <h3 class="value mobile-email">
-            <a href="mailto:oleksandr.prudskyi@gmail.com" class="email-link">oleksandr.prudskyi@gmail.com</a>
+            <a href="mailto:oleksandr.prudskyi@gmail.com" class="email-link" itemprop="email">oleksandr.prudskyi@gmail.com</a>
           </h3>
         </div>
         <button

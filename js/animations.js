@@ -1,3 +1,5 @@
+import anime from "animejs";
+
 (function () {
   "use strict";
 
@@ -17,6 +19,12 @@
         ? "xMidYMid slice"
         : "xMidYMid meet";
       heroBgSvg.setAttribute("preserveAspectRatio", preserveAspectRatio);
+
+      // Mobile: SVG not fully visible — skip drawing animation, reveal static background immediately.
+      if (isMobileViewport) {
+        heroBgSvg.classList.add("revealed");
+        return;
+      }
 
       var drawSvg = document.createElementNS(
         "http://www.w3.org/2000/svg",

@@ -26,7 +26,8 @@ function initializeApp() {
       .then(function () {
         document.querySelectorAll(".btn-copy").forEach(function (btn) {
           var originalHTML = btn.innerHTML;
-          btn.innerHTML = '<i class="ph ph-check-circle"></i> Zkopírováno!';
+          btn.innerHTML =
+            '<svg class="ph-icon" aria-hidden="true"><use href="/img/phosphor-sprite.svg#ph-check-circle"/></svg> Zkopírováno!';
           btn.classList.add("copied");
           setTimeout(function () {
             btn.innerHTML = originalHTML;

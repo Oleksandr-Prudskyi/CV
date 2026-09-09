@@ -81,21 +81,25 @@
   color: var(--deep-purple);
 }
 
-/* .about-lead — O mně important lead-text: elegant serif, moderately larger than body, light weight. Fits within viewport height, no width limit. */
-.card-about .about-lead {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
+.card-about {
+  max-width: 800px;
+  margin-inline: auto;
 }
 
-.card-about .about-lead p {
-  font-family: "Roboto Slab", "Merriweather", Georgia, serif;
-  font-size: clamp(1.15rem, 1vw + 0.6rem, 1.4rem);
-  font-weight: var(--fw-medium);
-  line-height: 1.55;
-  letter-spacing: var(--tracking-normal);
+.card-about .about-lead {
+  font-family: var(--font-body);
+  font-size: clamp(0.8125rem, 0.5vw + 0.72rem, 1.15rem);
+  font-weight: var(--fw-regular);
+  line-height: 1.4;
+  letter-spacing: 0.005em;
   color: var(--deep-purple);
   margin: 0;
+}
+
+.card-about .about-lead .p-gap {
+  display: block;
+  content: "";
+  margin-top: 0.4em;
 }
 
 .card-about p:last-child {
@@ -195,7 +199,7 @@
   margin: 0 0.15rem;
   padding-bottom: 0.6rem;
   font-size: 1.1rem;
-  font-weight: 300;
+  font-weight: var(--fw-regular);
   color: var(--gold);
   opacity: 0.35;
 }

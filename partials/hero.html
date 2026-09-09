@@ -16,17 +16,16 @@
         type="button"
         aria-label="Zobrazit fotografii"
       >
-        <i class="ph ph-user avatar-icon"></i>
-        <picture>
-          <source srcset="/img/photo.webp" type="image/webp" />
-          <img
-            src="/img/photo.png"
-            alt="Oleksandr Prudskyi"
-            id="avatarImage"
-            decoding="async"
-            fetchpriority="high"
-          />
-        </picture>
+        <svg class="ph-icon avatar-icon" aria-hidden="true"><use href="/img/phosphor-sprite.svg#ph-user"/></svg>
+        <img
+          src="/img/photo.webp"
+          alt="Oleksandr Prudskyi"
+          id="avatarImage"
+          width="1280"
+          height="1920"
+          decoding="async"
+          fetchpriority="high"
+        />
       </button>
     </div>
     <h1 id="heroTitle" itemscope itemtype="https://schema.org/Person" itemprop="name">
@@ -47,7 +46,7 @@
         target="_blank"
         rel="noopener"
       >
-        <i class="ph-bold ph-download-simple" aria-hidden="true"></i>
+        <svg class="ph-icon" aria-hidden="true"><use href="/img/phosphor-sprite.svg#ph-bold-download-simple"/></svg>
         <span>Stáhnout CV</span>
       </a>
       <a
@@ -89,14 +88,14 @@
     </div>
     <ul class="contact-grid">
       <li class="contact-card glass-card">
-        <span class="icon" aria-hidden="true"><i class="ph-fill ph-map-pin"></i></span>
+        <span class="icon" aria-hidden="true"><svg class="ph-icon" aria-hidden="true"><use href="/img/phosphor-sprite.svg#ph-fill-map-pin"/></svg></span>
         <div class="text">
           <p class="label">Adresa</p>
           <h3 class="value">Liberec</h3>
         </div>
       </li>
       <li class="contact-card glass-card" itemscope itemtype="https://schema.org/ContactPoint">
-        <span class="icon" aria-hidden="true"><i class="ph-fill ph-phone"></i></span>
+        <span class="icon" aria-hidden="true"><svg class="ph-icon" aria-hidden="true"><use href="/img/phosphor-sprite.svg#ph-fill-phone"/></svg></span>
         <div class="text">
           <p class="label">Telefon</p>
           <h3 class="value desktop-phone" itemprop="telephone">+420 773 714 660</h3>
@@ -106,7 +105,7 @@
         </div>
       </li>
       <li class="contact-card email-card glass-card" itemscope itemtype="https://schema.org/ContactPoint">
-        <span class="icon" aria-hidden="true"><i class="ph-fill ph-envelope-simple"></i></span>
+        <span class="icon" aria-hidden="true"><svg class="ph-icon" aria-hidden="true"><use href="/img/phosphor-sprite.svg#ph-fill-envelope-simple"/></svg></span>
         <div class="text">
           <p class="label">Email</p>
           <h3 class="value desktop-email" itemprop="email">oleksandr.prudskyi@gmail.com</h3>
@@ -120,7 +119,7 @@
           title="Zkopírovat email"
           aria-label="Zkopírovat email"
         >
-          <i class="ph ph-copy" aria-hidden="true"></i> Zkopírovat
+          <svg class="ph-icon" aria-hidden="true"><use href="/img/phosphor-sprite.svg#ph-copy"/></svg> Zkopírovat
         </button>
       </li>
     </ul>

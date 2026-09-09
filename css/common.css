@@ -39,10 +39,10 @@
   --glass-blur: 12px;
   --glass-border: rgba(255, 255, 255, 0.6);
 
-  /* ------ Typography — font families (Figma reference uses Roboto; site keeps Cormorant for display headings, Inter/Roboto for body) ------ */
+  /* ------ Typography — font families. Only 3 loaded: Cormorant (display), Roboto (body), Playfair (hero h1). ------ */
   --font-display: "Cormorant Garamond", "Playfair Display", Georgia, serif;
-  --font-body: "Roboto", "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
-  --font-condensed: "Roboto Condensed", "Inter", Arial, sans-serif;
+  --font-body: "Roboto", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-condensed: "Roboto", "Segoe UI", Arial, sans-serif;
 
   /* ------ Typography — Figma scale (fluid clamp for mobile→desktop, target = Figma max) ------ */
   --fs-h1: clamp(2.25rem, 4.5vw + 0.5rem, 3.5rem);   /* 36 - 56 px (Figma: 56 / lh 60 / 2%) */
@@ -192,10 +192,13 @@ a {
   text-decoration: none;
 }
 
-.ph,
-.ph-bold,
-.ph-fill {
-  vertical-align: middle;
+.ph-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  vertical-align: -0.125em;
+  flex-shrink: 0;
 }
 
 /* ------ Skip-to-main link (accessibility) ------ */

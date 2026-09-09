@@ -150,7 +150,7 @@
       }
     }
 
-    setTimeout(typeStep, 4000);
+    setTimeout(typeStep, 5000);
   }
 
   /* card-work mouse-tracking tilt removed per user request */

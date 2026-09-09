@@ -76,12 +76,12 @@
   overflow: visible;
   font-family: var(--font-condensed);
   font-size: clamp(0.95rem, 2.5vw, 1.25rem);
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 2px;
-  color: var(--color-muted);
+  color: var(--color-charcoal-soft);
   white-space: nowrap;
   pointer-events: none;
-  animation: fadeInUp 1s ease-out 4s both;
+  animation: fadeInUp 1s ease-out 5s both;
 }
 
 .typed-text {
@@ -91,7 +91,7 @@
 .typed-cursor {
   display: inline-block;
   color: var(--color-burgundy);
-  font-weight: 300;
+  font-weight: var(--fw-regular);
 }
 
 @keyframes shimmer {

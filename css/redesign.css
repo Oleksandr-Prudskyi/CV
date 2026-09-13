@@ -1,7 +1,6 @@
 :root {
   --color-linen: #eee7d8;
   --color-linen-light: #f7f2e8;
-  --color-linen-dark: #ded3c1;
   --color-burgundy: #7d2432;
   --color-red: #a33d43;
   --color-charcoal: #252323;
@@ -10,12 +9,7 @@
   --color-muted: #746b63;
   --color-line: rgba(37, 35, 35, 0.16);
   --color-shadow: rgba(54, 38, 30, 0.12);
-  --space-1: 0.35rem;
   --space-2: 0.6rem;
-  --space-3: 0.9rem;
-  --space-4: 1.25rem;
-  --space-5: 1.75rem;
-  --space-6: 2.5rem;
   --radius-card: 2px;
   --radius-control: 3px;
   --shadow-soft: 0 12px 30px var(--color-shadow);
@@ -89,7 +83,6 @@ body::before {
   margin-bottom: 0;
 }
 
-/* Base — mobile: section-about tighter vertical padding */
 .section-about {
   position: relative;
   padding-block: clamp(2rem, 8vw, 4rem);
@@ -164,7 +157,6 @@ body::before {
   display: none;
 }
 
-/* Base — mobile: title centered, full width. Font-size + family inherit from base h2 (common.css). */
 .title-section {
   display: flex;
   align-items: baseline;
@@ -234,7 +226,6 @@ body::before {
   color: var(--color-gold);
 }
 
-/* Base — mobile: compact hero, tighter padding */
 .hero {
   min-height: auto;
   align-items: stretch;
@@ -264,7 +255,6 @@ body::before {
   animation: none;
 }
 
-/* Base — mobile: single-column stacked hero */
 .hero-content {
   display: grid;
   grid-template-columns: 1fr;
@@ -296,7 +286,6 @@ body::before {
   animation: avatarRingPulse 6s ease-in-out 2s 2;
 }
 
-/* Base — mobile: smaller avatar */
 .avatar-placeholder {
   width: min(62vw, 220px);
   height: min(72vw, 270px);
@@ -315,7 +304,6 @@ body::before {
   box-shadow: 16px 16px 0 var(--color-burgundy);
 }
 
-/* Base — mobile: h1 aligned auto */
 .hero h1 {
   grid-area: copy;
   align-self: auto;
@@ -323,11 +311,8 @@ body::before {
   color: var(--color-charcoal);
   background: none;
   -webkit-text-fill-color: initial;
-  animation: fadeInUp 900ms ease-in-out 180ms both;
 }
 
-
-/* Base — mobile: contact-grid tighter top margin */
 .contact-grid {
   grid-area: contacts;
   width: 100%;
@@ -455,7 +440,6 @@ body::before {
   color: var(--color-muted);
 }
 
-/* Base — mobile: subsection title centered. Font from base h3 (common.css). */
 .work-subsection-title {
   justify-content: center;
   margin-top: 0;
@@ -470,7 +454,6 @@ body::before {
   text-shadow: none;
 }
 
-/* Base — mobile: goit subsection tighter padding */
 .work-subsection-goit {
   justify-content: center;
   padding-block: clamp(1rem, 4vw, 2.5rem);
@@ -733,7 +716,6 @@ body::before {
   padding: 1.5rem clamp(1rem, 2vw, 2rem);
 }
 
-/* Base — mobile: columns stack vertically, use bottom border instead of right */
 .info-column:not(:last-child) {
   border-right: 0;
   border-bottom-color: var(--color-line);
@@ -751,7 +733,6 @@ body::before {
   color: var(--color-gold);
 }
 
-/* Base — mobile: edu-row centered, top-border accent, narrower */
 .edu-row {
   width: min(100%, 18rem);
   align-self: center;
@@ -1021,12 +1002,6 @@ body::before {
   transform: scaleX(1);
 }
 
-/* ============================================================
-   Ukrainian vyshyvanka side ornaments — vertical strips in the empty
-   side space beside the container, spanning O mně → Vzdělání.
-   Visible on min-width: 1200. Right side mirrored via scaleX(-1).
-   ============================================================ */
-
 .ornament-zone {
   position: relative;
 }
@@ -1059,12 +1034,6 @@ body::before {
   }
 }
 
-/* ============================================================
-   Mobile-first media queries. Breakpoints: 320 / 768 / 1024 / 1440 (min-width, exact — no ±1).
-   Base rules above are mobile-first (compact); these blocks scale up.
-   ============================================================ */
-
-/* min-width: 768 — TABLET+ : hero grid photo-side-by-side, sections left-aligned, edu-row row-layout */
 @media (min-width: 768px) {
   .hero {
     min-height: 100svh;
@@ -1149,7 +1118,6 @@ body::before {
   }
 }
 
-/* min-width: 1024 — DESKTOP: goit wider sidebar, work-summary full padding */
 @media (min-width: 1024px) {
   .work-summary {
     padding-inline: 1.8rem;

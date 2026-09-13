@@ -1,8 +1,3 @@
-/* ============================================================
-   profile — Vzdělání / Jazyky / Zájmy card grid
-   Mobile-first. Base = mobile (stacked, centered), enhancements at 768.
-   ============================================================ */
-
 .card-info {
   display: flex;
   justify-content: center;
@@ -13,7 +8,6 @@
   box-shadow: 0 6px 22px rgba(79, 66, 181, 0.14);
 }
 
-/* Base = mobile: single column stack, borders on bottom */
 .info-columns {
   display: flex;
   flex-direction: column;
@@ -89,7 +83,6 @@
   font-size: 1.1rem;
 }
 
-/* Secondary edu-row (Sportovní masér) — same font sizes as primary edu-row for consistency */
 .edu-row.edu-row-secondary .edu-title {
   font-size: var(--fs-h4);
   font-weight: var(--fw-semibold);
@@ -181,7 +174,6 @@
   flex-shrink: 0;
 }
 
-/* min-width: 768 — tablet+desktop: side-by-side columns, left-aligned rows */
 @media (min-width: 768px) {
   .card-info {
     display: block;

@@ -1,26 +1,5 @@
-/* ============================================================
-   sections — title-section, header-work, counter-work, card-about
-   Mobile-first. Breakpoints: 320 / 768 / 1024 / 1440 (min-width).
-   ============================================================ */
-
 .section {
   margin-bottom: 1.2rem;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInUp 0.8s ease-out forwards;
-}
-
-.section:nth-child(1) {
-  animation-delay: 0.1s;
-}
-.section:nth-child(2) {
-  animation-delay: 0.2s;
-}
-.section:nth-child(3) {
-  animation-delay: 0.3s;
-}
-.section:nth-child(4) {
-  animation-delay: 0.4s;
 }
 
 .title-section {
@@ -106,7 +85,6 @@
   margin-bottom: 0;
 }
 
-/* header-work — Base: stacked (mobile) */
 .header-work {
   display: flex;
   flex-direction: column;
@@ -120,7 +98,6 @@
   margin-bottom: 0;
 }
 
-/* counter-work — Base: mobile, stretched */
 .counter-work {
   position: relative;
   align-self: stretch;
@@ -216,7 +193,14 @@
   }
 }
 
-/* min-width: 320 — bump counter numbers on standard phones */
+/* Mobile: disable text-shadow glow (non-composited, adds CPU load without visual benefit). */
+@media (max-width: 768px) {
+  .counter-work .counter-num {
+    animation: none;
+    text-shadow: 0 0 8px rgba(107, 91, 206, 0.3);
+  }
+}
+
 @media (min-width: 320px) {
   .counter-work {
     padding: 0.7rem 1rem;
@@ -229,7 +213,6 @@
   }
 }
 
-/* min-width: 768 — tablet+desktop: side-by-side header, larger counter */
 @media (min-width: 768px) {
   .section {
     margin-bottom: 1.5rem;

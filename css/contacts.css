@@ -1,15 +1,8 @@
-/* ============================================================
-   contact-grid (hero contact card)
-   Mobile-first. Breakpoints: 320 / 768 / 1024 / 1440 (min-width).
-   ============================================================ */
-
-/* Base — mobile: column stack, full-width cards */
 .contact-grid {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   gap: 0.6rem;
-  animation: fadeInUp 1s ease-out 0.4s both;
 }
 
 .contact-grid .contact-card:not(.email-card) {
@@ -165,7 +158,6 @@
   border-color: #28a745;
 }
 
-/* min-width: 768 — tablet+desktop: 2-column layout, revealed .desktop-* variants (with copy button) */
 @media (min-width: 768px) {
   .contact-grid {
     flex-direction: row;

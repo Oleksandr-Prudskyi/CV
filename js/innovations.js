@@ -25,10 +25,9 @@
 
   if (!isMobile()) {
     var heroBgSvg = document.querySelector(".hero-bg-svg");
-    var heroBgDraw = document.querySelector(".hero-bg-draw");
     var heroSection = document.querySelector(".hero");
 
-    if (heroSection) {
+    if (heroSection && heroBgSvg) {
       var heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
       var parallaxTick = false;
 
@@ -40,7 +39,8 @@
           if (scrollY < heroBottom) {
             var offset = scrollY * 0.35;
             var transform = "scaleX(1.2) translateY(" + offset + "px)";
-            if (heroBgSvg) heroBgSvg.style.transform = transform;
+            heroBgSvg.style.transform = transform;
+            var heroBgDraw = document.querySelector(".hero-bg-draw");
             if (heroBgDraw) heroBgDraw.style.transform = transform;
           }
           parallaxTick = false;

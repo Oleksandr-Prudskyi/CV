@@ -9,22 +9,22 @@ import anime from "animejs";
   }
 
   ready(function () {
-    function initHeroBgDraw() {
+    // Narrow viewports show fills only; stroke overlay is desktop-only because
+    // fine paths clump into noise at reduced sizes.
+    function initHeroBg() {
       var symbol = document.getElementById("icon-ukr-picture");
       var heroSection = document.querySelector(".hero");
       var heroBgSvg = document.querySelector(".hero-bg-svg");
       if (!symbol || !heroSection || !heroBgSvg) return;
-      var isMobileViewport = window.matchMedia("(max-width: 768px)").matches;
-      var preserveAspectRatio = isMobileViewport
-        ? "xMidYMid slice"
-        : "xMidYMid meet";
-      heroBgSvg.setAttribute("preserveAspectRatio", preserveAspectRatio);
 
-      // Mobile: SVG not fully visible — skip drawing animation, reveal static background immediately.
-      if (isMobileViewport) {
-        heroBgSvg.classList.add("revealed");
-        return;
-      }
+      var isNarrowViewport = window.matchMedia("(max-width: 1023px)").matches;
+      heroBgSvg.setAttribute(
+        "preserveAspectRatio",
+        isNarrowViewport ? "xMidYMid slice" : "xMidYMid meet",
+      );
+      heroBgSvg.classList.add("revealed");
+
+      if (isNarrowViewport) return;
 
       var drawSvg = document.createElementNS(
         "http://www.w3.org/2000/svg",
@@ -32,229 +32,96 @@ import anime from "animejs";
       );
       drawSvg.setAttribute("class", "hero-bg-draw");
       drawSvg.setAttribute("viewBox", symbol.getAttribute("viewBox"));
-      drawSvg.setAttribute("preserveAspectRatio", preserveAspectRatio);
+      drawSvg.setAttribute("preserveAspectRatio", "xMidYMid meet");
       drawSvg.setAttribute("aria-hidden", "true");
-
-      var paths = symbol.querySelectorAll("path");
-      paths.forEach(function (p) {
-        var clone = p.cloneNode(true);
-        drawSvg.appendChild(clone);
+      symbol.querySelectorAll("path").forEach(function (p) {
+        drawSvg.appendChild(p.cloneNode(true));
       });
-
       heroSection.insertBefore(drawSvg, heroBgSvg);
-
-      var drawPaths = drawSvg.querySelectorAll("path");
-      drawPaths.forEach(function (path) {
-        var length = path.getTotalLength ? path.getTotalLength() : 200;
-        path.style.strokeDasharray = length;
-        path.style.strokeDashoffset = length;
-      });
-
-      anime({
-        targets: drawPaths,
-        strokeDashoffset: [anime.setDashoffset, 0],
-        easing: "linear",
-        duration: isMobileViewport ? 900 : 700,
-        delay: anime.stagger(isMobileViewport ? 55 : 40, { from: "first" }),
-        endDelay: 700,
-        complete: function () {
-          heroBgSvg.classList.add("revealed");
-          anime({
-            targets: drawSvg,
-            opacity: 0,
-            duration: 1200,
-            easing: "linear",
-          });
-        },
-      });
     }
-
-    var spriteCheck = document.getElementById("icon-ukr-picture");
-    if (spriteCheck) {
-      initHeroBgDraw();
+    if (document.getElementById("icon-ukr-picture")) {
+      initHeroBg();
     } else {
       var bodyObserver = new MutationObserver(function () {
         if (document.getElementById("icon-ukr-picture")) {
           bodyObserver.disconnect();
-          initHeroBgDraw();
+          initHeroBg();
         }
       });
       bodyObserver.observe(document.body, { childList: true, subtree: true });
     }
+
+    // Contact bar top logo animation triggers when the bar becomes visible on scroll.
     var contactBar = document.getElementById("contactBar");
     var logoSvg = document.querySelector(".top-logo svg");
     var logoAnimated = false;
-
     if (contactBar && logoSvg) {
       var observer = new MutationObserver(function (mutations) {
         mutations.forEach(function (m) {
-          if (m.attributeName === "class") {
-            var isVisible = contactBar.classList.contains("visible");
-            if (isVisible && !logoAnimated) {
-              logoAnimated = true;
-              logoSvg.style.transition = "none";
-              anime({
-                targets: logoSvg,
-                scale: [0.6, 1.03, 1],
-                rotate: ["-3deg", "0deg"],
-                opacity: [0, 1],
-                duration: 1200,
-                easing: "easeInOutCubic",
-                complete: function () {
-                  logoSvg.style.transition = "";
-                },
-              });
-            }
-            if (!isVisible) {
-              logoAnimated = false;
-              logoSvg.style.opacity = "0";
-              logoSvg.style.transform = "scale(0.3)";
-            }
+          if (m.attributeName !== "class") return;
+          var isVisible = contactBar.classList.contains("visible");
+          if (isVisible && !logoAnimated) {
+            logoAnimated = true;
+            logoSvg.style.transition = "none";
+            anime({
+              targets: logoSvg,
+              scale: [0.6, 1.03, 1],
+              rotate: ["-3deg", "0deg"],
+              opacity: [0, 1],
+              duration: 1200,
+              easing: "easeInOutCubic",
+              complete: function () {
+                logoSvg.style.transition = "";
+              },
+            });
+          }
+          if (!isVisible) {
+            logoAnimated = false;
+            logoSvg.style.opacity = "0";
+            logoSvg.style.transform = "scale(0.3)";
           }
         });
       });
       observer.observe(contactBar, { attributes: true });
     }
+
+    // Social panel link animation runs when the panel opens on click.
     var socialPanel = document.getElementById("socialPanel");
     if (socialPanel) {
       var panelObserver = new MutationObserver(function (mutations) {
         mutations.forEach(function (m) {
-          if (m.attributeName === "class") {
-            if (socialPanel.classList.contains("open")) {
-              var links = socialPanel.querySelectorAll(".social-links a");
-              var nickname = socialPanel.querySelector(".social-nickname");
-              anime.remove(links);
-              if (nickname) anime.remove(nickname);
-              links.forEach(function (link) {
-                link.style.opacity = "0";
-                link.style.transform = "translateX(-20px)";
-              });
-              anime({
-                targets: links,
-                translateX: [-20, 0],
-                opacity: [0, 1],
-                delay: anime.stagger(100, { from: "first" }),
-                duration: 400,
-                easing: "easeOutCubic",
-              });
-              if (nickname) {
-                nickname.style.opacity = "0";
-                nickname.style.transform = "translateX(-15px)";
-                anime({
-                  targets: nickname,
-                  opacity: [0, 1],
-                  translateX: [-15, 0],
-                  duration: 350,
-                  easing: "easeOutCubic",
-                });
-              }
-            }
+          if (m.attributeName !== "class") return;
+          if (!socialPanel.classList.contains("open")) return;
+          var links = socialPanel.querySelectorAll(".social-links a");
+          var nickname = socialPanel.querySelector(".social-nickname");
+          anime.remove(links);
+          if (nickname) anime.remove(nickname);
+          links.forEach(function (link) {
+            link.style.opacity = "0";
+            link.style.transform = "translateX(-20px)";
+          });
+          anime({
+            targets: links,
+            translateX: [-20, 0],
+            opacity: [0, 1],
+            delay: anime.stagger(100, { from: "first" }),
+            duration: 400,
+            easing: "easeOutCubic",
+          });
+          if (nickname) {
+            nickname.style.opacity = "0";
+            nickname.style.transform = "translateX(-15px)";
+            anime({
+              targets: nickname,
+              opacity: [0, 1],
+              translateX: [-15, 0],
+              duration: 350,
+              easing: "easeOutCubic",
+            });
           }
         });
       });
       panelObserver.observe(socialPanel, { attributes: true });
-    }
-    var skillTags = document.querySelectorAll(".skill-tag");
-    if (skillTags.length > 0) {
-      skillTags.forEach(function (tag) {
-        tag.style.opacity = "0";
-        tag.style.transform = "scale(0) translateY(30px)";
-      });
-
-      var skillsGrid = document.querySelector(".skills-list");
-      if (skillsGrid) {
-        var revealSkills = function () {
-          anime({
-            targets: ".skill-tag",
-            opacity: [null, 1],
-            scale: [null, 1],
-            translateY: [null, 0],
-            delay: anime.stagger(60, { from: "first" }),
-            duration: 500,
-            easing: "easeOutBack",
-          });
-        };
-        var skillsRevealed = false;
-        var skillObserver = new IntersectionObserver(
-          function (entries) {
-            entries.forEach(function (entry) {
-              if (entry.isIntersecting && !skillsRevealed) {
-                skillsRevealed = true;
-                revealSkills();
-                skillObserver.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.05 },
-        );
-        skillObserver.observe(skillsGrid);
-        // Safety fallback: if animation hasn't fired within 2s
-        // (e.g. tab loaded already scrolled past, prefers-reduced-motion),
-        // force the tags visible so nothing is stuck invisible.
-        window.setTimeout(function () {
-          if (skillsRevealed) return;
-          skillsRevealed = true;
-          skillTags.forEach(function (tag) {
-            tag.style.opacity = "1";
-            tag.style.transform = "none";
-          });
-        }, 2000);
-      }
-    }
-    var contactCards = document.querySelectorAll(".contact-grid .contact-card");
-    if (contactCards.length > 0) {
-      contactCards.forEach(function (card) {
-        card.style.opacity = "0";
-        card.style.transform = "translateY(30px) scale(0.85)";
-      });
-
-      setTimeout(function () {
-        anime({
-          targets: ".contact-grid .contact-card",
-          opacity: [0, 1],
-          translateY: [30, 0],
-          scale: [0.85, 1],
-          delay: anime.stagger(150),
-          duration: 700,
-          easing: "easeOutBack",
-        });
-      }, 800);
-    }
-    var sectionTitles = document.querySelectorAll(".title-section");
-    sectionTitles.forEach(function (title) {
-      var titleObserver = new IntersectionObserver(
-        function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              anime({
-                targets: entry.target,
-                opacity: [0.5, 1],
-                translateX: [-20, 0],
-                duration: 700,
-                easing: "easeOutCubic",
-              });
-              titleObserver.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.5 },
-      );
-      titleObserver.observe(title);
-    });
-    var floatingActions = document.querySelector(".side-buttons");
-    if (floatingActions) {
-      var buttons = floatingActions.querySelectorAll(
-        ".download-btn, .social-btn",
-      );
-      setTimeout(function () {
-        anime({
-          targets: buttons,
-          scale: [1, 1.2, 1],
-          duration: 900,
-          delay: anime.stagger(200),
-          easing: "easeInOutSine",
-        });
-      }, 2500);
     }
   });
 })();

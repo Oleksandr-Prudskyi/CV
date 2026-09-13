@@ -156,14 +156,6 @@
   transform: translateY(0);
 }
 
-.item-number {
-  color: var(--tanzanite);
-  font-weight: 700;
-  font-size: 16px;
-  min-width: 24px;
-  font-variant-numeric: tabular-nums;
-}
-
 .item-title {
   margin: 0;
   font-size: var(--fs-body);
@@ -467,7 +459,7 @@
   box-shadow: 0 4px 12px rgba(79, 66, 181, 0.04);
 }
 
-/* min-width: 768 — tablet+desktop: expanded info-box, hide inline-details (description lives in info-box) */
+
 @media (min-width: 768px) {
   .goit-info-box {
     min-height: 200px;
@@ -615,7 +607,7 @@
     gap: 14px;
   }
 
-  /* Row is compact and always open — hide collapse toggle */
+
   .goit-toggle {
     display: none;
   }
@@ -649,12 +641,6 @@
     animation: none;
   }
 
-  .item-number {
-    font-size: 20px;
-    min-width: auto;
-    line-height: 1;
-  }
-
   .item-title {
     display: block;
     line-height: var(--lh-snug);
@@ -685,7 +671,7 @@
   }
 }
 
-/* min-width: 1024 — desktop: restore grid (sidebar left, preview right) after tablet row-of-tabs */
+
 @media (min-width: 1024px) {
   .goit-wrap {
     display: grid;
@@ -869,7 +855,7 @@
 }
 
 .logo-webstudio {
-  font-family: Raleway, sans-serif;
+  font-family: var(--font-body);
   font-size: 18px;
   font-weight: 700;
   text-transform: uppercase;

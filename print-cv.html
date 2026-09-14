@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Oleksandr Prudskyi - CV</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Carlito:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+      @page {
+        size: A4;
+        margin: 38px 68px;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        background: #fff;
+        color: #000;
+      }
+
+      body {
+        font-family: "Carlito", "Calibri", sans-serif;
+        font-size: 17px;
+        line-height: 1.32;
+        text-rendering: optimizeLegibility;
+        hyphens: none;
+        print-color-adjust: exact;
+      }
+
+      .cv {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      @media screen {
+        html {
+          background: #eee;
+          min-height: 100vh;
+        }
+        body {
+          max-width: 794px;
+          margin: 20px auto;
+          padding: 38px 68px;
+          background: #fff;
+          box-shadow: 0 2px 20px rgba(0, 0, 0, 0.12);
+        }
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-weight: bold;
+        page-break-after: avoid;
+      }
+
+      p,
+      li {
+        orphans: 2;
+        widows: 2;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      header.cv-header {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      h1 {
+        font-size: 35px;
+        letter-spacing: 0.4px;
+      }
+
+      .contact-line {
+        font-size: 15px;
+        line-height: 1.4;
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+        gap: 32px;
+        flex-wrap: wrap;
+      }
+
+      .contact-line a {
+        color: #0645ad;
+        text-decoration: underline;
+        text-decoration-thickness: 0.4px;
+        text-underline-offset: 2px;
+      }
+
+      section {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        padding-left: 24px;
+      }
+
+      section > h2 {
+        margin-left: -24px;
+      }
+
+      h2 {
+        font-size: 19px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding-bottom: 1px;
+        border-bottom: 1px solid #000;
+      }
+
+      .jobs {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .job {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        page-break-inside: avoid;
+      }
+
+      .job h3 {
+        font-size: 18px;
+        margin-left: -24px;
+      }
+
+      .job-meta {
+        font-size: 15px;
+      }
+
+      .job-desc {
+        font-style: italic;
+        color: #222;
+      }
+
+      ul {
+        list-style-position: outside;
+        padding-left: 19px;
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .skill-group-name {
+        font-weight: bold;
+      }
+
+      .edu-item,
+      .course-item {
+        page-break-inside: avoid;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cv">
+    <header class="cv-header">
+      <h1>Oleksandr Prudskyi</h1>
+      <p class="contact-line">
+        <span>Liberec</span>
+        <span>+420 773 714 660</span>
+        <span>oleksandr.prudskyi@gmail.com</span>
+        <a href="https://cv-oleksandr-prudskyi.vercel.app">cv-oleksandr-prudskyi.vercel.app</a>
+      </p>
+    </header>
+
+    <section>
+      <h2>Profil</h2>
+      <p>Ve výrobě pracuji už 5 let. Mám rád přesnost a poctivou práci.</p>
+      <p>
+        Bavilo mě pracovat s polodrahokamy, sklem a optickými komponenty v mikronové toleranci.
+        Obsluhoval jsem CNC stroje řízené systémem SIEMENS a software CORS a používal kontaktní
+        i bezkontaktní měřicí přístroje.
+      </p>
+      <p>
+        S plasty pracuji už přes dva roky v sériové výrobě. Ve výrobě považuji průběžnou
+        kontrolu za základ stabilního procesu.
+      </p>
+      <p>
+        Ve volném čase se učím IT (HTML, CSS, JavaScript) a vytvářím si vlastní malé projekty.<br />
+        S AI nástroji mi jde rutinní práce rychleji.
+      </p>
+    </section>
+
+    <section>
+      <h2>Technické znalosti</h2>
+      <p class="skill-group">
+        <span class="skill-group-name">Stroje a řízení:</span>
+        obsluha CNC strojů, systém SIEMENS, software CORS, seřizování strojů, nastavení cyklů,
+        diagnostika poruch
+      </p>
+      <p class="skill-group">
+        <span class="skill-group-name">Měření a kontrola:</span>
+        přesné měření (posuvná měřítka, mikrometry, sondy), kalibrace přístrojů,
+        interferometrické měření (fringe), průběžná kontrola výroby
+      </p>
+      <p class="skill-group">
+        <span class="skill-group-name">Materiály:</span>
+        plasty, sklo, optické komponenty (mikronová tolerance), CVD diamant,
+        polyuretanové a semišové nástroje
+      </p>
+      <p class="skill-group">
+        <span class="skill-group-name">PC:</span>
+        HTML, CSS, JavaScript, AI prompting
+      </p>
+    </section>
+
+    <section>
+      <h2>Pracovní zkušenosti</h2>
+      <div class="jobs">
+      <article class="job">
+        <h3>Magna Exteriors (Bohemia) s.r.o.</h3>
+        <p class="job-meta">07/2024 - současnost &middot; Operátor výrobních strojů</p>
+        <p class="job-desc">
+          Obsluha strojů pro výrobu a zpracování plastových výrobků.
+        </p>
+        <ul>
+          <li>Montáž a kompletace plastových komponentů pro automobilový průmysl</li>
+          <li>Průběžná vizuální kontrola výrobků</li>
+          <li>Popis příčin zastavení strojů a hlášení technických nesouladů</li>
+          <li>Udržování tempa při vysokých výrobních normách a přesčasech</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <h3>asphericon s.r.o.</h3>
+        <p class="job-meta">06/2023 - 06/2024 &middot; Dělník ve výrobě - příprava výroby optických komponentů</p>
+        <p class="job-desc">
+          Příprava výroby optických čoček na CNC strojích. Práce podle výkresové dokumentace
+          a specifikací zákazníka.
+        </p>
+        <ul>
+          <li>Práce s přesnými CNC stroji při výrobě optických komponentů s mikronovou tolerancí</li>
+          <li>Obsluha softwaru CORS pro přípravu programů broušení a leštění</li>
+          <li>Zadávání parametrů do CNC strojů řízených systémem SIEMENS</li>
+          <li>Přesné měření kontaktními i bezkontaktními přístroji (posuvná měřítka, mikrometry, měřicí sondy)</li>
+          <li>Kalibrace měřicích zařízení</li>
+          <li>Využití interferometrického měření (fringe) pro přesnou kalibraci a korekci strojů</li>
+          <li>Opracování optických čoček s dodržením předepsaných tolerancí</li>
+          <li>Oprava čoček, které nesplňovaly předepsané tolerance</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <h3>PRECIOSA, a. s.</h3>
+        <p class="job-meta">06/2022 - 05/2023 &middot; Strojník seřizovač - obsluha obráběcích strojů (kromě dřevoobráběcích)</p>
+        <p class="job-desc">
+          Seřizování a obsluha obráběcích strojů při zpracování skla a polodrahokamů.
+        </p>
+        <ul>
+          <li>Kontrola vstupní suroviny (sklo, polodrahokamy) a průběhu procesu od natmelení až po odtmelení</li>
+          <li>Sledování cyklů, časů obrábění a parametrů hotového kusu</li>
+          <li>Kontrola rozměrů a vizuální kontrola povrchu pod mikroskopem</li>
+          <li>Dílčí seřizování strojů, výměna dorazů, centrování čidel a čištění</li>
+          <li>Odstraňování drobných poruch za běhu stroje pro udržení tolerancí</li>
+          <li>Dokumentace závažnějších závad a předání mechanikům a seřizovačům</li>
+          <li>Nastavování parametrů broušení a leštění podle typu výrobku</li>
+          <li>Seřizování tmelicí stanice (rotační bubny, plynové hořáky, domačkovák) a nastavení pracovních cyklů rotační linky</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <h3>LUKOV Plast s. r. o.</h3>
+        <p class="job-meta">08/2021 - 05/2022 &middot; Operátor výrobních strojů</p>
+        <p class="job-desc">
+          Manuální výroba plastových dílů na formovacích strojích a velkých výrobních linkách.
+        </p>
+        <ul>
+          <li>Obsluha formovacích strojů a velkých výrobních linek</li>
+          <li>Automatické nařezávání fólie pro zatavení slunečních clon do aut</li>
+          <li>Ruční odstranění přebytečné fólie po zatavení</li>
+          <li>Čištění strojů a pracoviště</li>
+          <li>Práce v rychlém tempu na kontinuální výrobní lince</li>
+        </ul>
+      </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Vzdělání</h2>
+      <p class="edu-item">
+        <strong>Bakalářský titul (nostrifikace)</strong> &middot; 2019<br />
+        Lviv Veterinary University &middot; Technologie výroby a zpracování živočišných produktů
+      </p>
+    </section>
+
+    <section>
+      <h2>Kurzy a certifikáty</h2>
+      <p class="course-item">
+        <strong>GoIT Fullstack Development</strong> &middot; probíhá &middot; začátečník
+      </p>
+      <p class="course-item">
+        <strong>Sportovní masér (69-037-M)</strong> &middot; dokončeno &middot; osvědčení o kvalifikaci
+      </p>
+    </section>
+
+    <section>
+      <h2>Osobní vlastnosti</h2>
+      <p>
+        rychlá adaptabilita, odolnost proti stresu, fyzická vytrvalost, pozornost
+        k detailům, zodpovědnost, ochota učit se, týmová spolupráce a samostatnost
+      </p>
+    </section>
+
+    <section>
+      <h2>Jazyky</h2>
+      <p>
+        Ukrajinština - rodný jazyk<br />
+        Čeština - B1<br />
+        Angličtina - A1
+      </p>
+    </section>
+
+    <section>
+      <h2>Zájmy</h2>
+      <p>
+        práce s technickým vybavením a počítačem, osobní rozvoj a vzdělávání,
+        sport a kondice
+      </p>
+    </section>
+    </div>
+  </body>
+</html>

@@ -197,17 +197,20 @@ a {
   display: inline-block;
 }
 .desktop-phone,
-.desktop-email {
+.desktop-email,
+.desktop-cv {
   display: none;
 }
 
 @media (min-width: 768px) {
   .mobile-phone,
-  .mobile-email {
+  .mobile-email,
+  .mobile-cv {
     display: none;
   }
   .desktop-phone,
-  .desktop-email {
+  .desktop-email,
+  .desktop-cv {
     display: inline-block;
   }
 }

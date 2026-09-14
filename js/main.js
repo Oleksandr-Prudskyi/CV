@@ -205,30 +205,6 @@ function initializeApp() {
     });
   }
 
-  var dlBtnEl = document.getElementById("dlCvBtn");
-  if (dlBtnEl) dlBtnEl.addEventListener("click", function () {
-    var btn = this;
-    if (btn.classList.contains("downloading") || btn.classList.contains("done"))
-      return;
-    btn.classList.add("downloading");
-    setTimeout(function () {
-      btn.classList.remove("downloading");
-      btn.classList.add("done");
-      if (isMobile()) {
-        var link = document.createElement("a");
-        link.href = "Files/CV_Oleksandr_Prudskyi.pdf?v=2";
-        link.download = "Files/CV_Oleksandr_Prudskyi.pdf";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      } else {
-        window.open("Files/CV_Oleksandr_Prudskyi.pdf?v=2", "_blank");
-      }
-      setTimeout(function () {
-        btn.classList.remove("done");
-      }, 2500);
-    }, 700);
-  });
   var socialBtn = document.getElementById("socialBtn");
   var socialPanel = document.getElementById("socialPanel");
 

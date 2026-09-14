@@ -893,7 +893,6 @@ body::before {
 .goit-toggle,
 .goit-link-btn,
 .social-btn,
-.download-btn,
 .avatar-placeholder,
 .contact-card,
 .skill-tag,
@@ -949,10 +948,6 @@ body::before {
   box-shadow:
     0 6px 18px rgba(54, 38, 30, 0.24),
     0 0 0 4px rgba(177, 138, 74, 0.28);
-}
-
-.download-btn:hover {
-  background: var(--color-burgundy);
 }
 
 .social-btn:hover {

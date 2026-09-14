@@ -250,8 +250,9 @@
   background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark, #c9a227) 100%);
 }
 
-.btn-hero-primary i {
-  font-size: 1.1rem;
+.btn-hero-primary .ph-icon {
+  width: 30px;
+  height: 30px;
 }
 
 .btn-hero-secondary {

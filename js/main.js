@@ -191,16 +191,16 @@ function initializeApp() {
   if (heroCvBtn) {
     heroCvBtn.addEventListener("click", function (e) {
       e.preventDefault();
-      var href = heroCvBtn.getAttribute("href");
       if (isMobile()) {
+        var pdfHref = heroCvBtn.getAttribute("data-mobile-href");
         var link = document.createElement("a");
-        link.href = href;
-        link.download = "CV_Oleksandr_Prudskyi.pdf";
+        link.href = pdfHref;
+        link.download = "Oleksandr_Prudskyi.CV.pdf";
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
       } else {
-        window.open(href, "_blank", "noopener");
+        window.open(heroCvBtn.getAttribute("href"), "_blank", "noopener");
       }
     });
   }

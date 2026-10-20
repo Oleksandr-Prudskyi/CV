@@ -9,7 +9,7 @@
     <style>
       @page {
         size: A4;
-        margin: 38px 68px;
+        margin: 24px 64px;
       }
 
       *,
@@ -29,7 +29,7 @@
       body {
         font-family: "Carlito", "Calibri", sans-serif;
         font-size: 17px;
-        line-height: 1.32;
+        line-height: 1.24;
         text-rendering: optimizeLegibility;
         hyphens: none;
         print-color-adjust: exact;
@@ -105,7 +105,7 @@
       section {
         display: flex;
         flex-direction: column;
-        gap: 4px;
+        gap: 2px;
         padding-left: 24px;
       }
 
@@ -124,7 +124,7 @@
       .jobs {
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        gap: 5px;
       }
 
       .job {
@@ -143,9 +143,20 @@
         font-size: 15px;
       }
 
+      .job-role {
+        font-weight: 700;
+        color: #555;
+      }
+
       .job-desc {
         font-style: italic;
         color: #222;
+      }
+
+      .about-list {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
       }
 
       ul {
@@ -164,6 +175,13 @@
       .course-item {
         page-break-inside: avoid;
       }
+
+      .lang-line {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 32px;
+      }
     </style>
   </head>
   <body>
@@ -179,21 +197,19 @@
     </header>
 
     <section>
-      <h2>Profil</h2>
-      <p>Ve výrobě pracuji už 5 let. Mám rád přesnost a poctivou práci.</p>
-      <p>
-        Bavilo mě pracovat s polodrahokamy, sklem a optickými komponenty v mikronové toleranci.
-        Obsluhoval jsem CNC stroje řízené systémem SIEMENS a software CORS a používal kontaktní
-        i bezkontaktní měřicí přístroje.
-      </p>
-      <p>
-        S plasty pracuji už přes dva roky v sériové výrobě. Ve výrobě považuji průběžnou
-        kontrolu za základ stabilního procesu.
-      </p>
-      <p>
-        Ve volném čase se učím IT (HTML, CSS, JavaScript) a vytvářím si vlastní malé projekty.<br />
-        S AI nástroji mi jde rutinní práce rychleji.
-      </p>
+      <h2>O mně</h2>
+      <div class="about-list">
+        <p>Pracuji ve výrobě a technické prostředí mi vyhovuje. Mám rád přesnost a poctivou práci.</p>
+        <p>Bavilo mě pracovat s polodrahokamy, sklem a optickými komponenty v mikronové toleranci.</p>
+        <p>Obsluhoval jsem CNC stroje se systémem SIEMENS.</p>
+        <p>Pracoval jsem se softwarem CORS a s měřicími přístroji, kontaktními i bezkontaktními.</p>
+        <p>S plasty pracuji už přes dva roky v sériové výrobě.</p>
+        <p>Průběžnou kontrolu beru jako důležitou část stabilního procesu.</p>
+        <p>Vedle práce se učím IT. Zkouším HTML, CSS a JavaScript a dělám si vlastní malé projekty.</p>
+        <p>AI nástroje mi pomáhají při učení i při rutinních úkolech.</p>
+        <p>Češtinu si pořád zlepšuji a chci se víc naučit anglicky.</p>
+        <p>Rád bych našel místo, kde se budu moct učit od zkušenějších kolegů a postupně se rozvíjet v týmu.</p>
+      </div>
     </section>
 
     <section>
@@ -217,6 +233,10 @@
         <span class="skill-group-name">PC:</span>
         HTML, CSS, JavaScript, AI prompting
       </p>
+      <p class="skill-group">
+        <span class="skill-group-name">Kancelář (uživatelská úroveň):</span>
+        MS Word, Excel, Outlook, Teams, Google Docs, OneDrive, Google Drive
+      </p>
     </section>
 
     <section>
@@ -224,7 +244,7 @@
       <div class="jobs">
       <article class="job">
         <h3>Magna Exteriors (Bohemia) s.r.o.</h3>
-        <p class="job-meta">07/2024 - současnost &middot; Operátor výrobních strojů</p>
+        <p class="job-meta">07/2024 - současnost · <span class="job-role">Operátor výrobních strojů</span></p>
         <p class="job-desc">
           Obsluha strojů pro výrobu a zpracování plastových výrobků.
         </p>
@@ -238,7 +258,7 @@
 
       <article class="job">
         <h3>asphericon s.r.o.</h3>
-        <p class="job-meta">06/2023 - 06/2024 &middot; Dělník ve výrobě - příprava výroby optických komponentů</p>
+        <p class="job-meta">06/2023 - 06/2024 · <span class="job-role">Dělník ve výrobě - příprava výroby optických komponentů</span></p>
         <p class="job-desc">
           Příprava výroby optických čoček na CNC strojích. Práce podle výkresové dokumentace
           a specifikací zákazníka.
@@ -257,7 +277,7 @@
 
       <article class="job">
         <h3>PRECIOSA, a. s.</h3>
-        <p class="job-meta">06/2022 - 05/2023 &middot; Strojník seřizovač - obsluha obráběcích strojů (kromě dřevoobráběcích)</p>
+        <p class="job-meta">06/2022 - 05/2023 · <span class="job-role">Strojník seřizovač - obsluha obráběcích strojů (kromě dřevoobráběcích)</span></p>
         <p class="job-desc">
           Seřizování a obsluha obráběcích strojů při zpracování skla a polodrahokamů.
         </p>
@@ -275,7 +295,7 @@
 
       <article class="job">
         <h3>LUKOV Plast s. r. o.</h3>
-        <p class="job-meta">08/2021 - 05/2022 &middot; Operátor výrobních strojů</p>
+        <p class="job-meta">08/2021 - 05/2022 · <span class="job-role">Operátor výrobních strojů</span></p>
         <p class="job-desc">
           Manuální výroba plastových dílů na formovacích strojích a velkých výrobních linkách.
         </p>
@@ -293,42 +313,43 @@
     <section>
       <h2>Vzdělání</h2>
       <p class="edu-item">
-        <strong>Bakalářský titul (nostrifikace)</strong> &middot; 2019<br />
-        Lviv Veterinary University &middot; Technologie výroby a zpracování živočišných produktů
+        <strong>Bakalářský titul (nostrifikace)</strong> · 2019<br />
+        Lviv Veterinary University · Technologie výroby a zpracování živočišných produktů
       </p>
     </section>
 
     <section>
       <h2>Kurzy a certifikáty</h2>
       <p class="course-item">
-        <strong>GoIT Fullstack Development</strong> &middot; probíhá &middot; začátečník
+        <strong>GoIT Fullstack Development</strong> · probíhá · začátečník
       </p>
       <p class="course-item">
-        <strong>Sportovní masér (69-037-M)</strong> &middot; dokončeno &middot; osvědčení o kvalifikaci
+        <strong>Sportovní masér (69-037-M)</strong> · dokončeno · osvědčení o kvalifikaci
       </p>
     </section>
 
     <section>
       <h2>Osobní vlastnosti</h2>
       <p>
-        rychlá adaptabilita, odolnost proti stresu, fyzická vytrvalost, pozornost
-        k detailům, zodpovědnost, ochota učit se, týmová spolupráce a samostatnost
+        rychlá adaptabilita · odolnost proti stresu · fyzická vytrvalost ·
+        pozornost k detailům · zodpovědnost · ochota učit se ·
+        týmová spolupráce · samostatnost
       </p>
     </section>
 
     <section>
       <h2>Jazyky</h2>
-      <p>
-        Ukrajinština - rodný jazyk<br />
-        Čeština - B1<br />
-        Angličtina - A1
+      <p class="lang-line">
+        <span>Ukrajinština - rodný jazyk</span>
+        <span>Čeština - B1</span>
+        <span>Angličtina - A1</span>
       </p>
     </section>
 
     <section>
       <h2>Zájmy</h2>
       <p>
-        práce s technickým vybavením a počítačem, osobní rozvoj a vzdělávání,
+        práce s technickým vybavením a počítačem · osobní rozvoj a vzdělávání ·
         sport a kondice
       </p>
     </section>
